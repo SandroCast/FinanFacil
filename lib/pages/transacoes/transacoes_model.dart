@@ -8,14 +8,14 @@ class TransacoesModel extends FlutterFlowModel<TransacoesWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Model for NavBar component.
+  late NavBarModel navBarModel;
   // State field(s) for ChoiceChips widget.
   FormFieldController<List<String>>? choiceChipsValueController;
   String? get choiceChipsValue =>
       choiceChipsValueController?.value?.firstOrNull;
   set choiceChipsValue(String? val) =>
       choiceChipsValueController?.value = val != null ? [val] : [];
-  // Model for NavBar component.
-  late NavBarModel navBarModel;
 
   /// Initialization and disposal methods.
 
