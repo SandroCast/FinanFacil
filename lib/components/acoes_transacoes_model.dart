@@ -18,8 +18,8 @@ class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for SwitchListTile widget.
-  bool? switchListTileValue;
+  // State field(s) for SwitchListFixo widget.
+  bool? switchListFixoValue;
   // State field(s) for avista widget.
   String? avistaValue;
   FormFieldController<String>? avistaValueController;
@@ -33,9 +33,12 @@ class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
   final dataMask = MaskTextInputFormatter(mask: '##/##/####');
   String? Function(BuildContext, String?)? dataControllerValidator;
   DateTime? datePicked;
-  // State field(s) for status widget.
-  String? statusValue;
-  FormFieldController<String>? statusValueController;
+  // State field(s) for statusReceita widget.
+  String? statusReceitaValue;
+  FormFieldController<String>? statusReceitaValueController;
+  // State field(s) for statusDespesa widget.
+  String? statusDespesaValue;
+  FormFieldController<String>? statusDespesaValueController;
 
   /// Initialization and disposal methods.
 

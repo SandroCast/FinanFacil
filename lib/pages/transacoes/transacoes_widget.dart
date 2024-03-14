@@ -242,7 +242,9 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                           .viewInsetsOf(
                                                               context),
                                                       child:
-                                                          const AcoesTransacoesWidget(),
+                                                          const AcoesTransacoesWidget(
+                                                        tipo: 'Receita',
+                                                      ),
                                                     ),
                                                   );
                                                 },
