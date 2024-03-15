@@ -1,3 +1,4 @@
+import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -59,8 +60,8 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
     _model.descricaoController ??= TextEditingController();
     _model.descricaoFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.valorController ??= TextEditingController();
+    _model.valorFocusNode ??= FocusNode();
 
     _model.parcelasController ??= TextEditingController();
     _model.parcelasFocusNode ??= FocusNode();
@@ -216,11 +217,11 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 10.0),
                           child: FlutterFlowDropDown<String>(
-                            controller: _model.dropDownValueController ??=
+                            controller: _model.categoriaValueController ??=
                                 FormFieldController<String>(null),
                             options: ['Option 1'],
                             onChanged: (val) =>
-                                setState(() => _model.dropDownValue = val),
+                                setState(() => _model.categoriaValue = val),
                             width: double.infinity,
                             height: 50.0,
                             textStyle: FlutterFlowTheme.of(context)
@@ -262,8 +263,8 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 10.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.textController2,
-                                    focusNode: _model.textFieldFocusNode,
+                                    controller: _model.valorController,
+                                    focusNode: _model.valorFocusNode,
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -311,7 +312,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                    validator: _model.textController2Validator
+                                    validator: _model.valorControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -474,142 +475,139 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 10.0, 0.0),
-                                child: Container(
-                                  width: MediaQuery.sizeOf(context).width * 0.7,
-                                  child: TextFormField(
-                                    controller: _model.dataController,
-                                    focusNode: _model.dataFocusNode,
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText: 'Data Transação',
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                    keyboardType: TextInputType.datetime,
-                                    validator: _model.dataControllerValidator
-                                        .asValidator(context),
-                                    inputFormatters: [_model.dataMask],
-                                  ),
-                                ),
-                              ),
                               Expanded(
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          final _datePickedDate =
-                                              await showDatePicker(
-                                            context: context,
-                                            initialDate: getCurrentTimestamp,
-                                            firstDate: DateTime(1900),
-                                            lastDate: DateTime(2050),
-                                            builder: (context, child) {
-                                              return wrapInMaterialDatePickerTheme(
-                                                context,
-                                                child!,
-                                                headerBackgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                headerForegroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                headerTextStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineLarge
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          fontSize: 32.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                pickerBackgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                pickerForegroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                selectedDateTimeBackgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                selectedDateTimeForegroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                actionButtonForegroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                iconSize: 24.0,
-                                              );
-                                            },
-                                          );
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    final _datePickedDate =
+                                        await showDatePicker(
+                                      context: context,
+                                      initialDate: getCurrentTimestamp,
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2050),
+                                      builder: (context, child) {
+                                        return wrapInMaterialDatePickerTheme(
+                                          context,
+                                          child!,
+                                          headerBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          headerForegroundColor:
+                                              FlutterFlowTheme.of(context).info,
+                                          headerTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineLarge
+                                                  .override(
+                                                    fontFamily: 'Outfit',
+                                                    fontSize: 32.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                          pickerBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          pickerForegroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          selectedDateTimeBackgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          selectedDateTimeForegroundColor:
+                                              FlutterFlowTheme.of(context).info,
+                                          actionButtonForegroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          iconSize: 24.0,
+                                        );
+                                      },
+                                    );
 
-                                          if (_datePickedDate != null) {
-                                            safeSetState(() {
-                                              _model.datePicked = DateTime(
-                                                _datePickedDate.year,
-                                                _datePickedDate.month,
-                                                _datePickedDate.day,
-                                              );
-                                            });
-                                          }
-                                          setState(() {
-                                            _model.dataController?.text =
-                                                dateTimeFormat('dd/MM/y',
-                                                    _model.datePicked);
-                                          });
-                                        },
+                                    if (_datePickedDate != null) {
+                                      safeSetState(() {
+                                        _model.datePicked = DateTime(
+                                          _datePickedDate.year,
+                                          _datePickedDate.month,
+                                          _datePickedDate.day,
+                                        );
+                                      });
+                                    }
+                                    setState(() {
+                                      _model.dataController?.text =
+                                          dateTimeFormat(
+                                              'dd/MM/y', _model.datePicked);
+                                    });
+                                  },
+                                  child: Stack(
+                                    alignment: AlignmentDirectional(1.0, 0.0),
+                                    children: [
+                                      TextFormField(
+                                        controller: _model.dataController,
+                                        focusNode: _model.dataFocusNode,
+                                        autofocus: true,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: 'Data Transação',
+                                          labelStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium,
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium,
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                        keyboardType: TextInputType.datetime,
+                                        validator: _model
+                                            .dataControllerValidator
+                                            .asValidator(context),
+                                        inputFormatters: [_model.dataMask],
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 10.0, 10.0, 10.0),
                                         child: Icon(
                                           Icons.calendar_month,
                                           color: FlutterFlowTheme.of(context)
@@ -617,8 +615,8 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                           size: 25.0,
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
@@ -820,8 +818,24 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                             children: [
                               Expanded(
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    await SQLiteManager.instance
+                                        .criarNovoRegistro(
+                                      descricao:
+                                          _model.descricaoController.text,
+                                      categoria: _model.categoriaValue!,
+                                      valor: double.parse(
+                                          _model.valorController.text),
+                                      fixo: _model.switchListFixoValue!,
+                                      tipotransacao: _model.avistaValue,
+                                      parcelas: int.tryParse(
+                                          _model.parcelasController.text),
+                                      dtagendada: _model.datePicked!,
+                                      status: widget.tipo == 'Receita'
+                                          ? _model.statusReceitaValue!
+                                          : _model.statusDespesaValue!,
+                                    );
+                                    Navigator.pop(context);
                                   },
                                   text: 'Salvar',
                                   options: FFButtonOptions(

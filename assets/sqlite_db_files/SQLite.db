@@ -1,0 +1,14 @@
+
+CREATE TABLE lancamentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+  	id_usuario INT NULL,
+    descricao VARCHAR(100),
+    categoria VARCHAR(100),
+    valor DOUBLE,
+  	fixo BOOLEAN,
+  	tipo_transacao VARCHAR(20) NULL,
+  	parcelas INT NULL,
+  	dt_agendada DATETIME,
+  	status VARCHAR(20),
+    data_de_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
