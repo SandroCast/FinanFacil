@@ -312,6 +312,9 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                    keyboardType:
+                                        const TextInputType.numberWithOptions(
+                                            decimal: true),
                                     validator: _model.valorControllerValidator
                                         .asValidator(context),
                                   ),
