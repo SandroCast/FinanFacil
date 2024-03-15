@@ -2,9 +2,12 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'inicio_model.dart';
 export 'inicio_model.dart';
@@ -75,7 +78,7 @@ class _InicioWidgetState extends State<InicioWidget>
                     child: Container(
                       width: 100.0,
                       height: 100.0,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Color(0xFFE5E5E5),
                       ),
                     ),
@@ -83,10 +86,10 @@ class _InicioWidgetState extends State<InicioWidget>
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 59.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 59.0, 0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
@@ -107,14 +110,14 @@ class _InicioWidgetState extends State<InicioWidget>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 20.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
                               child: Text(
                                 'Saldo Atual',
@@ -130,7 +133,7 @@ class _InicioWidgetState extends State<InicioWidget>
                             Stack(
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     'R\$ 123,00',
                                     style: FlutterFlowTheme.of(context)
@@ -142,9 +145,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(1.0, 0.0),
+                                  alignment: AlignmentDirectional(1.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
+                                    padding: EdgeInsets.all(10.0),
                                     child: Icon(
                                       Icons.visibility_outlined,
                                       color: FlutterFlowTheme.of(context)
@@ -188,38 +191,38 @@ class _InicioWidgetState extends State<InicioWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 190.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 190.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Container(
                             width: double.infinity,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0xFFE5E5E5),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 30.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 15.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 10.0, 5.0, 0.0),
                                                   child: Container(
@@ -227,7 +230,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -250,7 +253,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       10.0,
@@ -266,11 +269,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.0,
                                                                         0.0),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -285,14 +288,14 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                           fontFamily:
                                                                               'Readex Pro',
                                                                           color:
-                                                                              const Color(0xFF00B048),
+                                                                              Color(0xFF00B048),
                                                                           fontSize:
                                                                               16.0,
                                                                         ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                              const Padding(
+                                                              Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
@@ -313,7 +316,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       20.0,
                                                                       5.0,
@@ -335,7 +338,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Readex Pro',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF00B048),
                                                                       fontSize:
                                                                           20.0,
@@ -351,7 +354,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                               ),
                                               Expanded(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           5.0, 10.0, 10.0, 0.0),
                                                   child: Container(
@@ -359,7 +362,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: const [
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -382,7 +385,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       10.0,
@@ -398,11 +401,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.0,
                                                                         0.0),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -417,14 +420,14 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                           fontFamily:
                                                                               'Readex Pro',
                                                                           color:
-                                                                              const Color(0xFFFD0101),
+                                                                              Color(0xFFFD0101),
                                                                           fontSize:
                                                                               16.0,
                                                                         ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                              const Padding(
+                                                              Padding(
                                                                 padding:
                                                                     EdgeInsetsDirectional
                                                                         .fromSTEB(
@@ -445,7 +448,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       20.0,
                                                                       5.0,
@@ -467,7 +470,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                     .override(
                                                                       fontFamily:
                                                                           'Readex Pro',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFFFD0101),
                                                                       fontSize:
                                                                           20.0,
@@ -492,11 +495,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                     children: [
                                       Stack(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 1.0),
+                                            AlignmentDirectional(0.0, 1.0),
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 15.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -504,7 +507,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 10.0,
                                                                 10.0,
@@ -515,7 +518,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         color: FlutterFlowTheme
                                                                 .of(context)
                                                             .secondaryBackground,
-                                                        boxShadow: const [
+                                                        boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -532,7 +535,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     10.0,
@@ -547,11 +550,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                           children: [
                                                             Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       -1.0,
                                                                       0.0),
                                                               child: Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         0.0,
@@ -565,7 +568,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Readex Pro',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF00B048),
                                                                         fontSize:
                                                                             16.0,
@@ -575,7 +578,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -610,7 +613,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
-                                                                              color: const Color(0xFF00B048),
+                                                                              color: Color(0xFF00B048),
                                                                             ),
                                                                       ),
                                                                     ],
@@ -657,7 +660,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -687,7 +690,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               'R\$500,00',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
-                                                                                    color: const Color(0xFF00B048),
+                                                                                    color: Color(0xFF00B048),
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -720,7 +723,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -750,7 +753,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               'R\$500,00',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
-                                                                                    color: const Color(0xFF00B048),
+                                                                                    color: Color(0xFF00B048),
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -783,7 +786,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -813,7 +816,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               'R\$500,00',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
-                                                                                    color: const Color(0xFF00B048),
+                                                                                    color: Color(0xFF00B048),
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -846,7 +849,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -876,7 +879,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               'R\$500,00',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
-                                                                                    color: const Color(0xFF00B048),
+                                                                                    color: Color(0xFF00B048),
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -909,7 +912,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -939,7 +942,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               'R\$500,00',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
-                                                                                    color: const Color(0xFF00B048),
+                                                                                    color: Color(0xFF00B048),
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -972,7 +975,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             0.0,
@@ -1002,7 +1005,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               'R\$500,00',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
-                                                                                    color: const Color(0xFF00B048),
+                                                                                    color: Color(0xFF00B048),
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -1053,7 +1056,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                   'receitaPendente')
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: InkWell(
                                                     splashColor:
@@ -1074,8 +1077,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       width: 60.0,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            const Color(0xFFE5E5E5),
-                                                        boxShadow: const [
+                                                            Color(0xFFE5E5E5),
+                                                        boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -1092,11 +1095,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       ),
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 1.0),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1119,7 +1122,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                   'receitaPendente')
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: InkWell(
                                                     splashColor:
@@ -1140,8 +1143,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       width: 60.0,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            const Color(0xFFE5E5E5),
-                                                        boxShadow: const [
+                                                            Color(0xFFE5E5E5),
+                                                        boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -1171,11 +1174,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.0, 1.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           5.0,
@@ -1203,17 +1206,17 @@ class _InicioWidgetState extends State<InicioWidget>
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 100.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Stack(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.0, 1.0),
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 15.0),
                                               child: Row(
@@ -1222,7 +1225,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   10.0,
@@ -1234,7 +1237,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
-                                                          boxShadow: const [
+                                                          boxShadow: [
                                                             BoxShadow(
                                                               blurRadius: 4.0,
                                                               color: Color(
@@ -1252,7 +1255,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       10.0,
@@ -1265,11 +1268,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.0,
                                                                         0.0),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -1284,7 +1287,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                           fontFamily:
                                                                               'Readex Pro',
                                                                           color:
-                                                                              const Color(0xFFFD0101),
+                                                                              Color(0xFFFD0101),
                                                                           fontSize:
                                                                               16.0,
                                                                         ),
@@ -1292,7 +1295,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         0.0,
@@ -1327,7 +1330,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Readex Pro',
-                                                                                color: const Color(0xFFFD0101),
+                                                                                color: Color(0xFFFD0101),
                                                                               ),
                                                                         ),
                                                                       ],
@@ -1366,7 +1369,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         0.0,
@@ -1401,7 +1404,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               .bodyMedium
                                                                               .override(
                                                                                 fontFamily: 'Readex Pro',
-                                                                                color: const Color(0xFFFD0101),
+                                                                                color: Color(0xFFFD0101),
                                                                               ),
                                                                         ),
                                                                       ],
@@ -1454,14 +1457,14 @@ class _InicioWidgetState extends State<InicioWidget>
                                                   opacity: 0.0,
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Container(
                                                       width: 60.0,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            const Color(0xFFE5E5E5),
-                                                        boxShadow: const [
+                                                            Color(0xFFE5E5E5),
+                                                        boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
                                                             color: Color(
@@ -1478,11 +1481,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                       ),
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 1.0),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1503,13 +1506,13 @@ class _InicioWidgetState extends State<InicioWidget>
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Container(
                                                     width: 60.0,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFE5E5E5),
-                                                      boxShadow: const [
+                                                      color: Color(0xFFE5E5E5),
+                                                      boxShadow: [
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -1538,11 +1541,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         ),
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, 1.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         5.0,
@@ -1586,23 +1589,23 @@ class _InicioWidgetState extends State<InicioWidget>
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Stack(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             children: [
                               Container(
                                 width: 50.0,
                                 height: 50.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.network(
@@ -1615,7 +1618,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Janeiro 2024',
                                       textAlign: TextAlign.center,
@@ -1632,7 +1635,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 20.0, 0.0),
                                 child: badges.Badge(
                                   badgeContent: Text(
@@ -1649,14 +1652,14 @@ class _InicioWidgetState extends State<InicioWidget>
                                   badgeColor:
                                       FlutterFlowTheme.of(context).primary,
                                   elevation: 4.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   position: badges.BadgePosition.topEnd(),
                                   animationType:
                                       badges.BadgeAnimationType.scale,
                                   toAnimate: true,
                                   child: Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    alignment: AlignmentDirectional(1.0, 0.0),
                                     child: Icon(
                                       Icons.notifications_none,
                                       color: FlutterFlowTheme.of(context)
@@ -1675,11 +1678,11 @@ class _InicioWidgetState extends State<InicioWidget>
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.navBarModel,
                   updateCallback: () => setState(() {}),
-                  child: const NavBarWidget(
+                  child: NavBarWidget(
                     ativo: 1,
                   ),
                 ),

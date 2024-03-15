@@ -202,7 +202,7 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
       );
     }
 
-    return SizedBox(
+    return Container(
       height: widget.options.height,
       width: widget.options.width,
       child: ElevatedButton(

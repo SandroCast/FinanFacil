@@ -4,8 +4,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
 import 'acoes_transacoes_model.dart';
 export 'acoes_transacoes_model.dart';
 
@@ -33,8 +38,8 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -75,68 +80,65 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      elevation: 5.0,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(0.0),
-          bottomRight: Radius.circular(0.0),
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
-        ),
-      ),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: const BorderRadius.only(
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      child: Material(
+        color: Colors.transparent,
+        elevation: 5.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(20.0),
             topRight: Radius.circular(20.0),
           ),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 20.0),
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                      child: Container(
-                        width: 50.0,
-                        height: 4.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          borderRadius: BorderRadius.circular(8.0),
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(0.0),
+              bottomRight: Radius.circular(0.0),
+              topLeft: Radius.circular(20.0),
+              topRight: Radius.circular(20.0),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 20.0),
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        child: Container(
+                          width: 50.0,
+                          height: 4.0,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
+              Flexible(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 20.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -149,8 +151,8 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: widget.tipo == 'Receita'
-                                          ? const Color(0xFF00B048)
-                                          : const Color(0xFFFD0101),
+                                          ? Color(0xFF00B048)
+                                          : Color(0xFFFD0101),
                                       fontSize: 30.0,
                                     ),
                               ),
@@ -163,7 +165,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 10.0),
                           child: TextFormField(
                             controller: _model.descricaoController,
@@ -211,12 +213,12 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 10.0),
                           child: FlutterFlowDropDown<String>(
                             controller: _model.dropDownValueController ??=
                                 FormFieldController<String>(null),
-                            options: const ['Option 1'],
+                            options: ['Option 1'],
                             onChanged: (val) =>
                                 setState(() => _model.dropDownValue = val),
                             width: double.infinity,
@@ -240,7 +242,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                             borderColor: FlutterFlowTheme.of(context).alternate,
                             borderWidth: 2.0,
                             borderRadius: 8.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 16.0, 4.0),
                             hidesUnderline: true,
                             isOverButton: true,
@@ -249,7 +251,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -257,7 +259,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                             children: [
                               Flexible(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 10.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.textController2,
@@ -316,12 +318,12 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                               ),
                               Container(
                                 width: 150.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: SwitchListTile.adaptive(
                                   value: _model.switchListFixoValue ??= false,
                                   onChanged: (newValue) async {
                                     setState(() =>
-                                        _model.switchListFixoValue = newValue);
+                                        _model.switchListFixoValue = newValue!);
                                   },
                                   title: Text(
                                     'FIXO',
@@ -350,14 +352,14 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                         ),
                         if (!_model.switchListFixoValue!)
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 10.0, 0.0),
                                     child: FlutterFlowDropDown<String>(
                                       controller:
@@ -367,7 +369,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                       ),
                                       options: List<String>.from(
                                           ['A VISTA', 'PARCELADO']),
-                                      optionLabels: const ['A VISTA', 'PARCELADO'],
+                                      optionLabels: ['A VISTA', 'PARCELADO'],
                                       onChanged: (val) => setState(
                                           () => _model.avistaValue = val),
                                       width: 30.0,
@@ -392,7 +394,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                           .alternate,
                                       borderWidth: 2.0,
                                       borderRadius: 8.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 4.0, 16.0, 4.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -466,16 +468,16 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 5.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 10.0, 0.0),
-                                child: SizedBox(
+                                child: Container(
                                   width: MediaQuery.sizeOf(context).width * 0.7,
                                   child: TextFormField(
                                     controller: _model.dataController,
@@ -540,7 +542,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 10.0, 10.0, 10.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
@@ -548,7 +550,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          final datePickedDate =
+                                          final _datePickedDate =
                                               await showDatePicker(
                                             context: context,
                                             initialDate: getCurrentTimestamp,
@@ -593,12 +595,12 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                             },
                                           );
 
-                                          if (datePickedDate != null) {
+                                          if (_datePickedDate != null) {
                                             safeSetState(() {
                                               _model.datePicked = DateTime(
-                                                datePickedDate.year,
-                                                datePickedDate.month,
-                                                datePickedDate.day,
+                                                _datePickedDate.year,
+                                                _datePickedDate.month,
+                                                _datePickedDate.day,
                                               );
                                             });
                                           }
@@ -624,7 +626,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                         ),
                         if (widget.tipo == 'Receita')
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -634,7 +636,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   child: Stack(
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
                                         child: FlutterFlowDropDown<String>(
                                           controller: _model
@@ -645,7 +647,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                           ),
                                           options: List<String>.from(
                                               ['PENDENTE', 'RECEBIDO']),
-                                          optionLabels: const [
+                                          optionLabels: [
                                             'PENDENTE',
                                             'RECEBIDO'
                                           ],
@@ -678,7 +680,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                           borderWidth: 2.0,
                                           borderRadius: 8.0,
                                           margin:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 4.0, 16.0, 4.0),
                                           hidesUnderline: true,
                                           isOverButton: true,
@@ -687,15 +689,15 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 2.0, 0.0),
                                         child: Container(
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             color: Colors.white,
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               'Status',
@@ -719,7 +721,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                           ),
                         if (widget.tipo == 'Despesa')
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -729,7 +731,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   child: Stack(
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
                                         child: FlutterFlowDropDown<String>(
                                           controller: _model
@@ -740,7 +742,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                           ),
                                           options: List<String>.from(
                                               ['PENDENTE', 'PAGO']),
-                                          optionLabels: const ['PENDENTE', 'PAGO'],
+                                          optionLabels: ['PENDENTE', 'PAGO'],
                                           onChanged: (val) => setState(() =>
                                               _model.statusDespesaValue = val),
                                           height: 50.0,
@@ -770,7 +772,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                           borderWidth: 2.0,
                                           borderRadius: 8.0,
                                           margin:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 4.0, 16.0, 4.0),
                                           hidesUnderline: true,
                                           isOverButton: true,
@@ -779,15 +781,15 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 2.0, 0.0),
                                         child: Container(
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             color: Colors.white,
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               'Status',
@@ -810,7 +812,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 20.0, 20.0, 10.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -824,9 +826,9 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   text: 'Salvar',
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -836,7 +838,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                           color: Colors.white,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -850,12 +852,12 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                       ],
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!);
+      ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+    );
   }
 }
