@@ -1,3 +1,4 @@
+import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -20,13 +21,13 @@ class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
   FocusNode? descricaoFocusNode;
   TextEditingController? descricaoController;
   String? Function(BuildContext, String?)? descricaoControllerValidator;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for categoria widget.
+  String? categoriaValue;
+  FormFieldController<String>? categoriaValueController;
+  // State field(s) for valor widget.
+  FocusNode? valorFocusNode;
+  TextEditingController? valorController;
+  String? Function(BuildContext, String?)? valorControllerValidator;
   // State field(s) for SwitchListFixo widget.
   bool? switchListFixoValue;
   // State field(s) for avista widget.
@@ -36,12 +37,12 @@ class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
   FocusNode? parcelasFocusNode;
   TextEditingController? parcelasController;
   String? Function(BuildContext, String?)? parcelasControllerValidator;
+  DateTime? datePicked;
   // State field(s) for data widget.
   FocusNode? dataFocusNode;
   TextEditingController? dataController;
   final dataMask = MaskTextInputFormatter(mask: '##/##/####');
   String? Function(BuildContext, String?)? dataControllerValidator;
-  DateTime? datePicked;
   // State field(s) for statusReceita widget.
   String? statusReceitaValue;
   FormFieldController<String>? statusReceitaValueController;
@@ -59,8 +60,8 @@ class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
     descricaoFocusNode?.dispose();
     descricaoController?.dispose();
 
-    textFieldFocusNode?.dispose();
-    textController2?.dispose();
+    valorFocusNode?.dispose();
+    valorController?.dispose();
 
     parcelasFocusNode?.dispose();
     parcelasController?.dispose();

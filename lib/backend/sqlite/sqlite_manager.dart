@@ -23,19 +23,37 @@ class SQLiteManager {
     }
     _database = await initializeDatabaseFromDbFile(
       'sqlite',
-      'sqlite.db',
+      'SQLite.db',
     );
   }
 
   /// START READ QUERY CALLS
 
-  Future<List<UsuariosRow>> usuarios() => performUsuarios(
-        _database,
-      );
-
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
+
+  Future criarNovoRegistro({
+    String? descricao,
+    String? categoria,
+    double? valor,
+    bool? fixo,
+    String? tipotransacao,
+    int? parcelas,
+    DateTime? dtagendada,
+    String? status,
+  }) =>
+      performCriarNovoRegistro(
+        _database,
+        descricao: descricao,
+        categoria: categoria,
+        valor: valor,
+        fixo: fixo,
+        tipotransacao: tipotransacao,
+        parcelas: parcelas,
+        dtagendada: dtagendada,
+        status: status,
+      );
 
   /// END UPDATE QUERY CALLS
 }
