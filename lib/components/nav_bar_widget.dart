@@ -1,3 +1,4 @@
+import '/components/acoes_transacoes_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -233,8 +234,9 @@ class _NavBarWidgetState extends State<NavBarWidget>
     context.watch<FFAppState>();
 
     return SizedBox(
-      height: 200.0,
+      height: double.infinity,
       child: Stack(
+        alignment: const AlignmentDirectional(0.0, 1.0),
         children: [
           Align(
             alignment: const AlignmentDirectional(0.0, 1.0),
@@ -396,15 +398,9 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                 size: 30.0,
                               ),
                               onPressed: () async {
-                                if (FFAppState().Flutuante != 'menuMais') {
-                                  FFAppState().update(() {
-                                    FFAppState().Flutuante = 'menuMais';
-                                  });
-                                } else {
-                                  FFAppState().update(() {
-                                    FFAppState().Flutuante = '';
-                                  });
-                                }
+                                FFAppState().update(() {
+                                  FFAppState().Flutuante = 'menuPlus';
+                                });
                               },
                             ),
                           ),
@@ -444,21 +440,33 @@ class _NavBarWidgetState extends State<NavBarWidget>
               ),
             ),
           ),
-          if (FFAppState().Flutuante == 'menuMais')
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
+          if (FFAppState().Flutuante == 'menuPlus')
+            InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                FFAppState().update(() {
+                  FFAppState().Flutuante = '';
+                });
+              },
+              child: SizedBox(
+                height: double.infinity,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 90.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Opacity(
+                              opacity: 0.0,
+                              child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Container(
@@ -484,13 +492,35 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                 ).animateOnPageLoad(animationsMap[
                                     'containerOnPageLoadAnimation1']!),
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 26.0, 0.0),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 26.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        context: context,
+                                        builder: (context) {
+                                          return Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: const AcoesTransacoesWidget(
+                                              tipo: 'Receita',
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => safeSetState(() {}));
+                                    },
                                     child: Container(
                                       width: 110.0,
                                       decoration: BoxDecoration(
@@ -514,12 +544,34 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                               ),
                                         ),
                                       ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'containerOnPageLoadAnimation2']!),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        26.0, 0.0, 0.0, 0.0),
+                                    ),
+                                  ).animateOnPageLoad(animationsMap[
+                                      'containerOnPageLoadAnimation2']!),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      26.0, 0.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        context: context,
+                                        builder: (context) {
+                                          return Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: const AcoesTransacoesWidget(
+                                              tipo: 'Despesa',
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => safeSetState(() {}));
+                                    },
                                     child: Container(
                                       width: 110.0,
                                       decoration: BoxDecoration(
@@ -543,22 +595,28 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                               ),
                                         ),
                                       ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'containerOnPageLoadAnimation3']!),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                    ),
+                                  ).animateOnPageLoad(animationsMap[
+                                      'containerOnPageLoadAnimation3']!),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 80.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Align(
+                      ),
+                    ),
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Opacity(
+                              opacity: 0.0,
+                              child: Align(
                                 alignment: const AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
@@ -574,7 +632,10 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                       'containerOnPageLoadAnimation4']!),
                                 ),
                               ),
-                              Align(
+                            ),
+                            Opacity(
+                              opacity: 0.0,
+                              child: Align(
                                 alignment: const AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
@@ -590,7 +651,10 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                       'containerOnPageLoadAnimation5']!),
                                 ),
                               ),
-                              Align(
+                            ),
+                            Opacity(
+                              opacity: 0.0,
+                              child: Align(
                                 alignment: const AlignmentDirectional(0.0, 1.0),
                                 child: Container(
                                   width: 10.0,
@@ -602,51 +666,51 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                 ).animateOnPageLoad(animationsMap[
                                     'containerOnPageLoadAnimation6']!),
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.0, 1.0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 22.0, 0.0),
-                                      child: Container(
-                                        width: 10.0,
-                                        height: 10.0,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFF00B048),
-                                          shape: BoxShape.circle,
-                                        ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'containerOnPageLoadAnimation7']!),
-                                    ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Align(
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 22.0, 0.0),
+                                    child: Container(
+                                      width: 10.0,
+                                      height: 10.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFF00B048),
+                                        shape: BoxShape.circle,
+                                      ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'containerOnPageLoadAnimation7']!),
                                   ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(0.0, 1.0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          22.0, 0.0, 0.0, 0.0),
-                                      child: Container(
-                                        width: 10.0,
-                                        height: 10.0,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFFD0101),
-                                          shape: BoxShape.circle,
-                                        ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'containerOnPageLoadAnimation8']!),
-                                    ),
+                                ),
+                                Align(
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        22.0, 0.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: 10.0,
+                                      height: 10.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFFD0101),
+                                        shape: BoxShape.circle,
+                                      ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'containerOnPageLoadAnimation8']!),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
         ],
