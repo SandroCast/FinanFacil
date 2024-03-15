@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import '/backend/sqlite/init.dart';
 import 'queries/read.dart';
+import 'queries/update.dart';
 
 import 'package:sqflite/sqflite.dart';
 export 'queries/read.dart';

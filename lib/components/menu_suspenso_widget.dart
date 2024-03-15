@@ -2,7 +2,10 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'menu_suspenso_model.dart';
 export 'menu_suspenso_model.dart';
 
@@ -25,8 +28,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -44,8 +47,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -58,8 +61,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(-100.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-100.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -70,8 +73,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -84,8 +87,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(100.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(100.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -96,8 +99,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -115,8 +118,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 50.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -134,8 +137,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 70.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -153,8 +156,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -167,8 +170,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(-100.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-100.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -179,8 +182,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -193,8 +196,8 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(100.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(100.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -231,29 +234,29 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
       onTap: () async {
         Navigator.pop(context);
       },
-      child: SizedBox(
+      child: Container(
         height: 180.0,
         child: Stack(
           children: [
             Align(
-              alignment: const AlignmentDirectional(0.0, 1.0),
+              alignment: AlignmentDirectional(0.0, 1.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 90.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 90.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                       child: Container(
                         width: 110.0,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF00A7C5),
+                          color: Color(0xFF00A7C5),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 10.0, 5.0, 10.0),
                           child: Text(
                             'Transferência',
@@ -274,7 +277,7 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 26.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -286,13 +289,13 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                                 context: context,
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
-                                    title: const Text('teste'),
-                                    content: const Text('teste'),
+                                    title: Text('teste'),
+                                    content: Text('teste'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(alertDialogContext),
-                                        child: const Text('Ok'),
+                                        child: Text('Ok'),
                                       ),
                                     ],
                                   );
@@ -302,11 +305,11 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                             child: Container(
                               width: 110.0,
                               decoration: BoxDecoration(
-                                color: const Color(0xFF00B048),
+                                color: Color(0xFF00B048),
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 10.0, 5.0, 10.0),
                                 child: Text(
                                   'Receita',
@@ -325,16 +328,16 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                               animationsMap['containerOnPageLoadAnimation2']!),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               26.0, 0.0, 0.0, 0.0),
                           child: Container(
                             width: 110.0,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFFD0101),
+                              color: Color(0xFFFD0101),
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   5.0, 10.0, 5.0, 10.0),
                               child: Text(
                                 'Despesa',
@@ -358,22 +361,22 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(0.0, 1.0),
+              alignment: AlignmentDirectional(0.0, 1.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                         child: Container(
                           width: 10.0,
                           height: 10.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Color(0xFF00A7C5),
                             shape: BoxShape.circle,
                           ),
@@ -382,14 +385,14 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                         child: Container(
                           width: 10.0,
                           height: 10.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Color(0xFF00A7C5),
                             shape: BoxShape.circle,
                           ),
@@ -398,11 +401,11 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Container(
                         width: 10.0,
                         height: 10.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Color(0xFF00A7C5),
                           shape: BoxShape.circle,
                         ),
@@ -414,14 +417,14 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 22.0, 0.0),
                             child: Container(
                               width: 10.0,
                               height: 10.0,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: Color(0xFF00B048),
                                 shape: BoxShape.circle,
                               ),
@@ -430,14 +433,14 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 22.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: 10.0,
                               height: 10.0,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: Color(0xFFFD0101),
                                 shape: BoxShape.circle,
                               ),

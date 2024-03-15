@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '/backend/sqlite/sqlite_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -22,7 +25,7 @@ class FFAppState extends ChangeNotifier {
 
   String _Flutuante = '';
   String get Flutuante => _Flutuante;
-  set Flutuante(String value) {
-    _Flutuante = value;
+  set Flutuante(String _value) {
+    _Flutuante = _value;
   }
 }

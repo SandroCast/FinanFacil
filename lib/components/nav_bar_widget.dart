@@ -4,7 +4,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'nav_bar_model.dart';
 export 'nav_bar_model.dart';
@@ -33,8 +35,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -52,8 +54,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -66,8 +68,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(-100.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-100.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -78,8 +80,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -92,8 +94,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: const Offset(100.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(100.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -104,8 +106,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -123,8 +125,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 50.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -142,8 +144,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 70.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -161,8 +163,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -175,8 +177,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(-100.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-100.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -187,8 +189,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(0.0, -100.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, -100.0),
+          end: Offset(0.0, 0.0),
         ),
         FadeEffect(
           curve: Curves.easeInOut,
@@ -201,8 +203,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
           curve: Curves.elasticOut,
           delay: 30.ms,
           duration: 600.ms,
-          begin: const Offset(100.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(100.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -233,17 +235,17 @@ class _NavBarWidgetState extends State<NavBarWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return SizedBox(
+    return Container(
       height: double.infinity,
       child: Stack(
-        alignment: const AlignmentDirectional(0.0, 1.0),
+        alignment: AlignmentDirectional(0.0, 1.0),
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 1.0),
+            alignment: AlignmentDirectional(0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: 75.0,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color(0x00EEEEEE),
               ),
               child: Stack(
@@ -255,7 +257,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                       Material(
                         color: Colors.transparent,
                         elevation: 0.0,
-                        shape: const RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(0.0),
@@ -269,7 +271,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                           decoration: BoxDecoration(
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 10.0,
                                 color: Color(0x1A57636C),
@@ -277,7 +279,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                 spreadRadius: 0.1,
                               )
                             ],
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(0.0),
                               bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(20.0),
@@ -301,7 +303,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               borderRadius: 30.0,
                               borderWidth: 1.0,
                               buttonSize: 50.0,
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.home_outlined,
                                 color: Color(0xFF9299A1),
                                 size: 24.0,
@@ -310,7 +312,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                 context.goNamed(
                                   'Inicio',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -325,7 +327,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               borderRadius: 30.0,
                               borderWidth: 1.0,
                               buttonSize: 50.0,
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.home_rounded,
                                 color: Color(0xFF9299A1),
                                 size: 24.0,
@@ -344,7 +346,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               borderRadius: 30.0,
                               borderWidth: 1.0,
                               buttonSize: 50.0,
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.leaderboard_outlined,
                                 color: Color(0xFF9299A1),
                                 size: 24.0,
@@ -353,7 +355,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                 context.goNamed(
                                   'Transacoes',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -368,7 +370,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               borderRadius: 30.0,
                               borderWidth: 1.0,
                               buttonSize: 50.0,
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.leaderboard_sharp,
                                 color: Color(0xFF9299A1),
                                 size: 24.0,
@@ -384,7 +386,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: FlutterFlowIconButton(
                               borderColor: Colors.transparent,
@@ -392,7 +394,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               borderWidth: 1.0,
                               buttonSize: 60.0,
                               fillColor: FlutterFlowTheme.of(context).primary,
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.add,
                                 color: Colors.white,
                                 size: 30.0,
@@ -411,7 +413,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                         borderRadius: 30.0,
                         borderWidth: 1.0,
                         buttonSize: 50.0,
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.favorite_rounded,
                           color: Color(0xFF9299A1),
                           size: 24.0,
@@ -425,7 +427,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                         borderRadius: 30.0,
                         borderWidth: 1.0,
                         buttonSize: 50.0,
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.person,
                           color: Color(0xFF9299A1),
                           size: 24.0,
@@ -451,15 +453,15 @@ class _NavBarWidgetState extends State<NavBarWidget>
                   FFAppState().Flutuante = '';
                 });
               },
-              child: SizedBox(
+              child: Container(
                 height: double.infinity,
                 child: Stack(
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 90.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 90.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -467,16 +469,16 @@ class _NavBarWidgetState extends State<NavBarWidget>
                             Opacity(
                               opacity: 0.0,
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Container(
                                   width: 110.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFF00A7C5),
+                                    color: Color(0xFF00A7C5),
                                     borderRadius: BorderRadius.circular(20.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         5.0, 10.0, 5.0, 10.0),
                                     child: Text(
                                       'Transferência',
@@ -498,7 +500,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 26.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -514,7 +516,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                           return Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: const AcoesTransacoesWidget(
+                                            child: AcoesTransacoesWidget(
                                               tipo: 'Receita',
                                             ),
                                           );
@@ -524,12 +526,12 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                     child: Container(
                                       width: 110.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFF00B048),
+                                        color: Color(0xFF00B048),
                                         borderRadius:
                                             BorderRadius.circular(20.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 10.0, 5.0, 10.0),
                                         child: Text(
                                           'Receita',
@@ -549,7 +551,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                       'containerOnPageLoadAnimation2']!),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       26.0, 0.0, 0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -565,7 +567,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                           return Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: const AcoesTransacoesWidget(
+                                            child: AcoesTransacoesWidget(
                                               tipo: 'Despesa',
                                             ),
                                           );
@@ -575,12 +577,12 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                     child: Container(
                                       width: 110.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFFD0101),
+                                        color: Color(0xFFFD0101),
                                         borderRadius:
                                             BorderRadius.circular(20.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 10.0, 5.0, 10.0),
                                         child: Text(
                                           'Despesa',
@@ -606,10 +608,10 @@ class _NavBarWidgetState extends State<NavBarWidget>
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.end,
@@ -617,14 +619,14 @@ class _NavBarWidgetState extends State<NavBarWidget>
                             Opacity(
                               opacity: 0.0,
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 5.0),
                                   child: Container(
                                     width: 10.0,
                                     height: 10.0,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Color(0xFF00A7C5),
                                       shape: BoxShape.circle,
                                     ),
@@ -636,14 +638,14 @@ class _NavBarWidgetState extends State<NavBarWidget>
                             Opacity(
                               opacity: 0.0,
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 5.0),
                                   child: Container(
                                     width: 10.0,
                                     height: 10.0,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Color(0xFF00A7C5),
                                       shape: BoxShape.circle,
                                     ),
@@ -655,11 +657,11 @@ class _NavBarWidgetState extends State<NavBarWidget>
                             Opacity(
                               opacity: 0.0,
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Container(
                                   width: 10.0,
                                   height: 10.0,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Color(0xFF00A7C5),
                                     shape: BoxShape.circle,
                                   ),
@@ -672,14 +674,14 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 1.0),
+                                  alignment: AlignmentDirectional(0.0, 1.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 22.0, 0.0),
                                     child: Container(
                                       width: 10.0,
                                       height: 10.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFF00B048),
                                         shape: BoxShape.circle,
                                       ),
@@ -688,14 +690,14 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 1.0),
+                                  alignment: AlignmentDirectional(0.0, 1.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         22.0, 0.0, 0.0, 0.0),
                                     child: Container(
                                       width: 10.0,
                                       height: 10.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFFFD0101),
                                         shape: BoxShape.circle,
                                       ),
