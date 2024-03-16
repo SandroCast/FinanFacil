@@ -273,10 +273,9 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                               .pesquisaTituloCategoria(
                                         titulo: _model.categoriaController.text,
                                       );
-                                      if (_model.retornoVarificaCategoria !=
-                                              null &&
-                                          (_model.retornoVarificaCategoria)!
-                                              .isNotEmpty) {
+                                      if (_model.retornoVarificaCategoria!
+                                              .length <
+                                          1) {
                                         await SQLiteManager.instance
                                             .novaCategoria(
                                           titulo:

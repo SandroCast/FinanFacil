@@ -33,7 +33,7 @@ Future<List<PesquisaTituloCategoriaRow>> performPesquisaTituloCategoria(
   String? titulo,
 }) {
   final query = '''
-select titulo from categorias where titulo = '${titulo}';
+select titulo from categorias where titulo = '${titulo}' LIMIT 1;
 ''';
   return _readQuery(database, query, (d) => PesquisaTituloCategoriaRow(d));
 }
