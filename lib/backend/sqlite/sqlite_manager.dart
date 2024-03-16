@@ -22,8 +22,8 @@ class SQLiteManager {
       return;
     }
     _database = await initializeDatabaseFromDbFile(
-      'sqlite',
-      'sqlite.db',
+      'dbfinancas',
+      'dbfinancas.db',
     );
   }
 
