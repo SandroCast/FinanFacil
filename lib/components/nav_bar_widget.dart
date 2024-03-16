@@ -508,6 +508,9 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      setState(() {
+                                        FFAppState().Flutuante = '';
+                                      });
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
@@ -559,6 +562,9 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      setState(() {
+                                        FFAppState().Flutuante = '';
+                                      });
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
