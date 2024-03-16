@@ -26,3 +26,22 @@ class BuscaCategoriasRow extends SqliteRow {
 }
 
 /// END BUSCACATEGORIAS
+
+/// BEGIN PESQUISATITULOCATEGORIA
+Future<List<PesquisaTituloCategoriaRow>> performPesquisaTituloCategoria(
+  Database database, {
+  String? titulo,
+}) {
+  final query = '''
+select titulo from categorias where titulo = '${titulo}';
+''';
+  return _readQuery(database, query, (d) => PesquisaTituloCategoriaRow(d));
+}
+
+class PesquisaTituloCategoriaRow extends SqliteRow {
+  PesquisaTituloCategoriaRow(Map<String, dynamic> data) : super(data);
+
+  String? get titulo => data['titulo'] as String?;
+}
+
+/// END PESQUISATITULOCATEGORIA

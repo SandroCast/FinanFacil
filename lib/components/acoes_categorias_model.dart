@@ -1,3 +1,4 @@
+import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -16,6 +17,8 @@ class AcoesCategoriasModel extends FlutterFlowModel<AcoesCategoriasWidget> {
   FocusNode? categoriaFocusNode;
   TextEditingController? categoriaController;
   String? Function(BuildContext, String?)? categoriaControllerValidator;
+  // Stores action output result for [Backend Call - SQLite (pesquisaTituloCategoria)] action in Button widget.
+  List<PesquisaTituloCategoriaRow>? retornoVarificaCategoria;
 
   /// Initialization and disposal methods.
 

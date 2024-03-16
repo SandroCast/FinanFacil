@@ -1,3 +1,4 @@
+import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -46,6 +47,13 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => AcoesCategoriasModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().msgErro = '';
+      });
+    });
 
     _model.categoriaController ??= TextEditingController();
     _model.categoriaFocusNode ??= FocusNode();
@@ -256,8 +264,33 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
                                   child: FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      setState(() {
+                                        FFAppState().msgErro = '';
+                                      });
+                                      _model.retornoVarificaCategoria =
+                                          await SQLiteManager.instance
+                                              .pesquisaTituloCategoria(
+                                        titulo: _model.categoriaController.text,
+                                      );
+                                      if (_model.retornoVarificaCategoria !=
+                                              null &&
+                                          (_model.retornoVarificaCategoria)!
+                                              .isNotEmpty) {
+                                        await SQLiteManager.instance
+                                            .novaCategoria(
+                                          titulo:
+                                              _model.categoriaController.text,
+                                        );
+                                        Navigator.pop(context);
+                                      } else {
+                                        setState(() {
+                                          FFAppState().msgErro =
+                                              'Já existe uma categoria com esse nome.';
+                                        });
+                                      }
+
+                                      setState(() {});
                                     },
                                     text: 'Salvar',
                                     options: FFButtonOptions(

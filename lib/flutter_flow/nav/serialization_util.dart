@@ -206,6 +206,8 @@ dynamic deserializeParam<T>(
         switch (T) {
           case BuscaCategoriasRow:
             return BuscaCategoriasRow(data);
+          case PesquisaTituloCategoriaRow:
+            return PesquisaTituloCategoriaRow(data);
           default:
             return null;
         }

@@ -33,6 +33,14 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<PesquisaTituloCategoriaRow>> pesquisaTituloCategoria({
+    String? titulo,
+  }) =>
+      performPesquisaTituloCategoria(
+        _database,
+        titulo: titulo,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
