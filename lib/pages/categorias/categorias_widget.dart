@@ -480,7 +480,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                             model: _model.navBarModel,
                             updateCallback: () => setState(() {}),
                             child: NavBarWidget(
-                              ativo: 2,
+                              ativo: 3,
                             ),
                           ),
                         ),
