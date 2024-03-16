@@ -13,7 +13,7 @@ Future<List<BuscaCategoriasRow>> performBuscaCategorias(
   Database database,
 ) {
   final query = '''
-select * from categorias;
+select id, titulo from categorias;
 ''';
   return _readQuery(database, query, (d) => BuscaCategoriasRow(d));
 }
