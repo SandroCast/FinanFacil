@@ -22,8 +22,8 @@ class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
   TextEditingController? descricaoController;
   String? Function(BuildContext, String?)? descricaoControllerValidator;
   // State field(s) for categoria widget.
-  String? categoriaValue;
-  FormFieldController<String>? categoriaValueController;
+  int? categoriaValue;
+  FormFieldController<int>? categoriaValueController;
   // State field(s) for valor widget.
   FocusNode? valorFocusNode;
   TextEditingController? valorController;

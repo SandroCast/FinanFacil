@@ -23,7 +23,7 @@ class SQLiteManager {
     }
     _database = await initializeDatabaseFromDbFile(
       'sqlite',
-      'SQLite.db',
+      'sqlite.db',
     );
   }
 
@@ -35,7 +35,7 @@ class SQLiteManager {
 
   Future criarNovoRegistro({
     String? descricao,
-    String? categoria,
+    int? idcategoria,
     double? valor,
     bool? fixo,
     String? tipotransacao,
@@ -46,7 +46,7 @@ class SQLiteManager {
       performCriarNovoRegistro(
         _database,
         descricao: descricao,
-        categoria: categoria,
+        idcategoria: idcategoria,
         valor: valor,
         fixo: fixo,
         tipotransacao: tipotransacao,
