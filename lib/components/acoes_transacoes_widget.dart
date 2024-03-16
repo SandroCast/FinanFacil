@@ -219,42 +219,76 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
-                                child: FlutterFlowDropDown<int>(
-                                  controller:
-                                      _model.categoriaValueController ??=
-                                          FormFieldController<int>(null),
-                                  options: List<int>.from([1, 2]),
-                                  optionLabels: ['CARRO', 'GASOLINA'],
-                                  onChanged: (val) => setState(
-                                      () => _model.categoriaValue = val),
-                                  height: 50.0,
-                                  searchHintTextStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  searchTextStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  hintText: 'Categoria...',
-                                  searchHintText: 'Pesquise a categoria...',
-                                  icon: Icon(
-                                    Icons.keyboard_arrow_down_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  elevation: 2.0,
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  borderWidth: 2.0,
-                                  borderRadius: 8.0,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 4.0, 16.0, 4.0),
-                                  hidesUnderline: true,
-                                  isOverButton: true,
-                                  isSearchable: true,
-                                  isMultiSelect: false,
+                                child: FutureBuilder<List<BuscaCategoriasRow>>(
+                                  future:
+                                      SQLiteManager.instance.buscaCategorias(),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    final categoriaBuscaCategoriasRowList =
+                                        snapshot.data!;
+                                    return FlutterFlowDropDown<int>(
+                                      controller:
+                                          _model.categoriaValueController ??=
+                                              FormFieldController<int>(null),
+                                      options: List<int>.from(
+                                          categoriaBuscaCategoriasRowList
+                                              .map((e) => e.id)
+                                              .withoutNulls
+                                              .toList()),
+                                      optionLabels:
+                                          categoriaBuscaCategoriasRowList
+                                              .map((e) => e.titulo)
+                                              .withoutNulls
+                                              .toList(),
+                                      onChanged: (val) => setState(
+                                          () => _model.categoriaValue = val),
+                                      height: 50.0,
+                                      searchHintTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .labelMedium,
+                                      searchTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      hintText: 'Categoria...',
+                                      searchHintText: 'Pesquise a categoria...',
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderWidth: 2.0,
+                                      borderRadius: 8.0,
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 4.0, 16.0, 4.0),
+                                      hidesUnderline: true,
+                                      isOverButton: true,
+                                      isSearchable: true,
+                                      isMultiSelect: false,
+                                    );
+                                  },
                                 ),
                               ),
                               Padding(
@@ -843,8 +877,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                               Expanded(
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    await SQLiteManager.instance
-                                        .criarNovoRegistro(
+                                    await SQLiteManager.instance.novoLancamento(
                                       descricao:
                                           _model.descricaoController.text,
                                       idcategoria: _model.categoriaValue!,

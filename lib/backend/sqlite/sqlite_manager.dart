@@ -29,11 +29,15 @@ class SQLiteManager {
 
   /// START READ QUERY CALLS
 
+  Future<List<BuscaCategoriasRow>> buscaCategorias() => performBuscaCategorias(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
 
-  Future criarNovoRegistro({
+  Future novoLancamento({
     String? descricao,
     int? idcategoria,
     double? valor,
@@ -43,7 +47,7 @@ class SQLiteManager {
     DateTime? dtagendada,
     String? status,
   }) =>
-      performCriarNovoRegistro(
+      performNovoLancamento(
         _database,
         descricao: descricao,
         idcategoria: idcategoria,

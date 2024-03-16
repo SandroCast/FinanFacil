@@ -7,3 +7,22 @@ Future<List<T>> _readQuery<T>(
   T Function(Map<String, dynamic>) create,
 ) =>
     database.rawQuery(query).then((r) => r.map((e) => create(e)).toList());
+
+/// BEGIN BUSCACATEGORIAS
+Future<List<BuscaCategoriasRow>> performBuscaCategorias(
+  Database database,
+) {
+  final query = '''
+select * from categorias;
+''';
+  return _readQuery(database, query, (d) => BuscaCategoriasRow(d));
+}
+
+class BuscaCategoriasRow extends SqliteRow {
+  BuscaCategoriasRow(Map<String, dynamic> data) : super(data);
+
+  int? get id => data['id'] as int?;
+  String? get titulo => data['titulo'] as String?;
+}
+
+/// END BUSCACATEGORIAS

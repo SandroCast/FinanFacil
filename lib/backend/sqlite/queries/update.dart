@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 
-/// BEGIN CRIAR NOVO REGISTRO
-Future performCriarNovoRegistro(
+/// BEGIN NOVOLANCAMENTO
+Future performNovoLancamento(
   Database database, {
   String? descricao,
   int? idcategoria,
@@ -19,4 +19,4 @@ VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', 
   return database.rawQuery(query);
 }
 
-/// END CRIAR NOVO REGISTRO
+/// END NOVOLANCAMENTO
