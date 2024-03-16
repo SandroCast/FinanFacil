@@ -229,9 +229,14 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   onChanged: (val) => setState(
                                       () => _model.categoriaValue = val),
                                   height: 50.0,
+                                  searchHintTextStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  searchTextStyle:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   hintText: 'Categoria...',
+                                  searchHintText: 'Pesquise a categoria...',
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -249,7 +254,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
                                   isOverButton: true,
-                                  isSearchable: false,
+                                  isSearchable: true,
                                   isMultiSelect: false,
                                 ),
                               ),
