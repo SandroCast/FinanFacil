@@ -408,19 +408,48 @@ class _NavBarWidgetState extends State<NavBarWidget>
                           ),
                         ],
                       ),
-                      FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30.0,
-                        borderWidth: 1.0,
-                        buttonSize: 50.0,
-                        icon: Icon(
-                          Icons.favorite_rounded,
-                          color: Color(0xFF9299A1),
-                          size: 24.0,
-                        ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
-                        },
+                      Stack(
+                        children: [
+                          if (widget.ativo != 3)
+                            FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              borderWidth: 1.0,
+                              buttonSize: 50.0,
+                              icon: Icon(
+                                Icons.pie_chart_outline,
+                                color: Color(0xFF9299A1),
+                                size: 24.0,
+                              ),
+                              onPressed: () async {
+                                context.goNamed(
+                                  'Categorias',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                    ),
+                                  },
+                                );
+                              },
+                            ),
+                          if (widget.ativo == 3)
+                            FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              borderWidth: 1.0,
+                              buttonSize: 50.0,
+                              icon: Icon(
+                                Icons.pie_chart,
+                                color: Color(0xFF9299A1),
+                                size: 24.0,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                        ],
                       ),
                       FlutterFlowIconButton(
                         borderColor: Colors.transparent,

@@ -28,4 +28,10 @@ class FFAppState extends ChangeNotifier {
   set Flutuante(String _value) {
     _Flutuante = _value;
   }
+
+  String _msgErro = '';
+  String get msgErro => _msgErro;
+  set msgErro(String _value) {
+    _msgErro = _value;
+  }
 }

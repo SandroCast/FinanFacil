@@ -52,6 +52,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Transacoes',
           path: '/transacoes',
           builder: (context, params) => TransacoesWidget(),
+        ),
+        FFRoute(
+          name: 'Categorias',
+          path: '/categorias',
+          builder: (context, params) => CategoriasWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
