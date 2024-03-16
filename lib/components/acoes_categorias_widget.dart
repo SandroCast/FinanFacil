@@ -265,6 +265,18 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                       10.0, 0.0, 0.0, 0.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
+                                      var _shouldSetState = false;
+                                      if (!(_model.categoriaController.text !=
+                                              null &&
+                                          _model.categoriaController.text !=
+                                              '')) {
+                                        setState(() {
+                                          FFAppState().msgErro =
+                                              'Campo Obrigatório**';
+                                        });
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
                                       setState(() {
                                         FFAppState().msgErro = '';
                                       });
@@ -273,6 +285,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                               .pesquisaTituloCategoria(
                                         titulo: _model.categoriaController.text,
                                       );
+                                      _shouldSetState = true;
                                       if (_model.retornoVarificaCategoria!
                                               .length <
                                           1) {
@@ -289,7 +302,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                         });
                                       }
 
-                                      setState(() {});
+                                      if (_shouldSetState) setState(() {});
                                     },
                                     text: 'Salvar',
                                     options: FFButtonOptions(
