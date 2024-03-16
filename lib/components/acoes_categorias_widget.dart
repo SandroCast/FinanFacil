@@ -47,8 +47,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
     super.initState();
     _model = createModel(context, () => AcoesCategoriasModel());
 
-    _model.tituloController ??= TextEditingController();
-    _model.tituloFocusNode ??= FocusNode();
+    _model.categoriaController ??= TextEditingController();
+    _model.categoriaFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -146,12 +146,13 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: TextFormField(
-                            controller: _model.tituloController,
-                            focusNode: _model.tituloFocusNode,
+                            controller: _model.categoriaController,
+                            focusNode: _model.categoriaFocusNode,
+                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
+                                  FlutterFlowTheme.of(context).bodyMedium,
                               hintText: 'Categoria',
                               hintStyle:
                                   FlutterFlowTheme.of(context).labelMedium,
@@ -185,7 +186,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                               ),
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
-                            validator: _model.tituloControllerValidator
+                            validator: _model.categoriaControllerValidator
                                 .asValidator(context),
                           ),
                         ),

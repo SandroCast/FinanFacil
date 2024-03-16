@@ -12,10 +12,10 @@ import 'package:provider/provider.dart';
 class AcoesCategoriasModel extends FlutterFlowModel<AcoesCategoriasWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for titulo widget.
-  FocusNode? tituloFocusNode;
-  TextEditingController? tituloController;
-  String? Function(BuildContext, String?)? tituloControllerValidator;
+  // State field(s) for categoria widget.
+  FocusNode? categoriaFocusNode;
+  TextEditingController? categoriaController;
+  String? Function(BuildContext, String?)? categoriaControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -24,8 +24,8 @@ class AcoesCategoriasModel extends FlutterFlowModel<AcoesCategoriasWidget> {
 
   @override
   void dispose() {
-    tituloFocusNode?.dispose();
-    tituloController?.dispose();
+    categoriaFocusNode?.dispose();
+    categoriaController?.dispose();
   }
 
   /// Action blocks are added here.
