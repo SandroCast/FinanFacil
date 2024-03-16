@@ -171,7 +171,6 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                           child: TextFormField(
                             controller: _model.descricaoController,
                             focusNode: _model.descricaoFocusNode,
-                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Descrição',
@@ -284,7 +283,6 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   child: TextFormField(
                                     controller: _model.valorController,
                                     focusNode: _model.valorFocusNode,
-                                    autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Valor',
@@ -434,7 +432,6 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                     child: TextFormField(
                                       controller: _model.parcelasController,
                                       focusNode: _model.parcelasFocusNode,
-                                      autofocus: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Quantidade de Parcelas',
