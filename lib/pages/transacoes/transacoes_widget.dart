@@ -615,7 +615,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                     listViewIndex];
                                             return Text(
                                               listViewBuscaCategoriasRow
-                                                  .titulo!,
+                                                  .descricao!,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,

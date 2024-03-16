@@ -13,7 +13,7 @@ Future<List<BuscaCategoriasRow>> performBuscaCategorias(
   Database database,
 ) {
   final query = '''
-select id, titulo from categorias;
+select id, descricao from lancamentos;
 ''';
   return _readQuery(database, query, (d) => BuscaCategoriasRow(d));
 }
@@ -22,7 +22,7 @@ class BuscaCategoriasRow extends SqliteRow {
   BuscaCategoriasRow(Map<String, dynamic> data) : super(data);
 
   int? get id => data['id'] as int?;
-  String? get titulo => data['titulo'] as String?;
+  String? get descricao => data['descricao'] as String?;
 }
 
 /// END BUSCACATEGORIAS
