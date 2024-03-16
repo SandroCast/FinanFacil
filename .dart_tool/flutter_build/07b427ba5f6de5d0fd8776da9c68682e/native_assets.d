@@ -1,0 +1,1 @@
+ D:\\controle_financeiro\\.dart_tool\\flutter_build\\07b427ba5f6de5d0fd8776da9c68682e\\native_assets.yaml: 
