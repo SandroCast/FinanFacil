@@ -216,39 +216,53 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 10.0),
-                          child: FlutterFlowDropDown<String>(
-                            controller: _model.categoriaValueController ??=
-                                FormFieldController<String>(null),
-                            options: ['Option 1'],
-                            onChanged: (val) =>
-                                setState(() => _model.categoriaValue = val),
-                            width: double.infinity,
-                            height: 50.0,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: FlutterFlowDropDown<int>(
+                                  controller:
+                                      _model.categoriaValueController ??=
+                                          FormFieldController<int>(null),
+                                  options: List<int>.from([1, 2]),
+                                  optionLabels: ['CARRO', 'GASOLINA'],
+                                  onChanged: (val) => setState(
+                                      () => _model.categoriaValue = val),
+                                  height: 50.0,
+                                  textStyle:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  hintText: 'Categoria...',
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  elevation: 2.0,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                  borderWidth: 2.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 4.0, 16.0, 4.0),
+                                  hidesUnderline: true,
+                                  isOverButton: true,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
                                 ),
-                            hintText: 'Categoria',
-                            icon: Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 24.0,
-                            ),
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            elevation: 2.0,
-                            borderColor: FlutterFlowTheme.of(context).alternate,
-                            borderWidth: 2.0,
-                            borderRadius: 8.0,
-                            margin: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 4.0, 16.0, 4.0),
-                            hidesUnderline: true,
-                            isOverButton: true,
-                            isSearchable: false,
-                            isMultiSelect: false,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 10.0),
+                                child: Icon(
+                                  Icons.add_circle,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         Padding(
@@ -826,7 +840,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                         .criarNovoRegistro(
                                       descricao:
                                           _model.descricaoController.text,
-                                      categoria: _model.categoriaValue!,
+                                      idcategoria: _model.categoriaValue!,
                                       valor: double.parse(
                                           _model.valorController.text),
                                       fixo: _model.switchListFixoValue!,

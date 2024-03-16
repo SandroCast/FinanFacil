@@ -4,7 +4,7 @@ import 'package:sqflite/sqflite.dart';
 Future performCriarNovoRegistro(
   Database database, {
   String? descricao,
-  String? categoria,
+  int? idcategoria,
   double? valor,
   bool? fixo,
   String? tipotransacao,
@@ -13,8 +13,8 @@ Future performCriarNovoRegistro(
   String? status,
 }) {
   final query = '''
-INSERT INTO lancamentos (descricao, categoria, valor, fixo, tipo_transacao, parcelas, dt_agendada, status)
-VALUES ('${descricao}',  '${categoria}', ${valor}, ${fixo}, '${tipotransacao}', ${parcelas}, '${dtagendada}', '${status}');
+INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcelas, dt_agendada, status)
+VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcelas}, '${dtagendada}', '${status}');
 ''';
   return database.rawQuery(query);
 }
