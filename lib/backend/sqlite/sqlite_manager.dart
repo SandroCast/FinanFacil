@@ -59,5 +59,13 @@ class SQLiteManager {
         status: status,
       );
 
+  Future novaCategoria({
+    String? titulo,
+  }) =>
+      performNovaCategoria(
+        _database,
+        titulo: titulo,
+      );
+
   /// END UPDATE QUERY CALLS
 }

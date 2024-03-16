@@ -20,3 +20,16 @@ VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', 
 }
 
 /// END NOVOLANCAMENTO
+
+/// BEGIN NOVACATEGORIA
+Future performNovaCategoria(
+  Database database, {
+  String? titulo,
+}) {
+  final query = '''
+INSERT INTO categorias(titulo) VALUES('${titulo}');
+''';
+  return database.rawQuery(query);
+}
+
+/// END NOVACATEGORIA

@@ -252,7 +252,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                               .toList()),
                                       optionLabels:
                                           categoriaBuscaCategoriasRowList
-                                              .map((e) => e.descricao)
+                                              .map((e) => e.titulo)
                                               .withoutNulls
                                               .toList(),
                                       onChanged: (val) => setState(
