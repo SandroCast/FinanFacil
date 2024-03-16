@@ -1,3 +1,4 @@
+import '/backend/sqlite/sqlite_manager.dart';
 import '/components/acoes_transacoes_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -576,6 +577,52 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                           color: Color(0xCCC6C6C6),
                                         ),
                                       ],
+                                    ),
+                                    FutureBuilder<List<BuscaCategoriasRow>>(
+                                      future: SQLiteManager.instance
+                                          .buscaCategorias(),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        final listViewBuscaCategoriasRowList =
+                                            snapshot.data!;
+                                        return ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount:
+                                              listViewBuscaCategoriasRowList
+                                                  .length,
+                                          itemBuilder:
+                                              (context, listViewIndex) {
+                                            final listViewBuscaCategoriasRow =
+                                                listViewBuscaCategoriasRowList[
+                                                    listViewIndex];
+                                            return Text(
+                                              listViewBuscaCategoriasRow
+                                                  .titulo!,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            );
+                                          },
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
