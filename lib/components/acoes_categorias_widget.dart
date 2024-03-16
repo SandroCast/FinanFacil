@@ -47,7 +47,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
     super.initState();
     _model = createModel(context, () => AcoesCategoriasModel());
 
-    _model.tituloController ??= TextEditingController(text: 'Categoria');
+    _model.tituloController ??= TextEditingController();
     _model.tituloFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -152,6 +152,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                             decoration: InputDecoration(
                               labelStyle:
                                   FlutterFlowTheme.of(context).labelMedium,
+                              hintText: 'Categoria',
                               hintStyle:
                                   FlutterFlowTheme.of(context).labelMedium,
                               enabledBorder: OutlineInputBorder(
