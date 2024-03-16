@@ -68,6 +68,54 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
 
     _model.dataController ??= TextEditingController();
     _model.dataFocusNode ??= FocusNode();
+    _model.dataFocusNode!.addListener(
+      () async {
+        final _datePickedDate = await showDatePicker(
+          context: context,
+          initialDate: getCurrentTimestamp,
+          firstDate: DateTime(1900),
+          lastDate: DateTime(2050),
+          builder: (context, child) {
+            return wrapInMaterialDatePickerTheme(
+              context,
+              child!,
+              headerBackgroundColor: FlutterFlowTheme.of(context).primary,
+              headerForegroundColor: FlutterFlowTheme.of(context).info,
+              headerTextStyle:
+                  FlutterFlowTheme.of(context).headlineLarge.override(
+                        fontFamily: 'Outfit',
+                        fontSize: 32.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+              pickerBackgroundColor:
+                  FlutterFlowTheme.of(context).secondaryBackground,
+              pickerForegroundColor: FlutterFlowTheme.of(context).primaryText,
+              selectedDateTimeBackgroundColor:
+                  FlutterFlowTheme.of(context).primary,
+              selectedDateTimeForegroundColor:
+                  FlutterFlowTheme.of(context).info,
+              actionButtonForegroundColor:
+                  FlutterFlowTheme.of(context).primaryText,
+              iconSize: 24.0,
+            );
+          },
+        );
+
+        if (_datePickedDate != null) {
+          safeSetState(() {
+            _model.datePicked = DateTime(
+              _datePickedDate.year,
+              _datePickedDate.month,
+              _datePickedDate.day,
+            );
+          });
+        }
+        setState(() {
+          _model.dataController?.text =
+              dateTimeFormat('dd/MM/y', _model.datePicked);
+        });
+      },
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -504,67 +552,6 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                     TextFormField(
                                       controller: _model.dataController,
                                       focusNode: _model.dataFocusNode,
-                                      onFieldSubmitted: (_) async {
-                                        final _datePickedDate =
-                                            await showDatePicker(
-                                          context: context,
-                                          initialDate: getCurrentTimestamp,
-                                          firstDate: DateTime(1900),
-                                          lastDate: DateTime(2050),
-                                          builder: (context, child) {
-                                            return wrapInMaterialDatePickerTheme(
-                                              context,
-                                              child!,
-                                              headerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              headerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              headerTextStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLarge
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        fontSize: 32.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                              pickerBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              pickerForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              selectedDateTimeBackgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              selectedDateTimeForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              actionButtonForegroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              iconSize: 24.0,
-                                            );
-                                          },
-                                        );
-
-                                        if (_datePickedDate != null) {
-                                          safeSetState(() {
-                                            _model.datePicked = DateTime(
-                                              _datePickedDate.year,
-                                              _datePickedDate.month,
-                                              _datePickedDate.day,
-                                            );
-                                          });
-                                        }
-                                        setState(() {
-                                          _model.dataController?.text =
-                                              dateTimeFormat(
-                                                  'dd/MM/y', _model.datePicked);
-                                        });
-                                      },
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
