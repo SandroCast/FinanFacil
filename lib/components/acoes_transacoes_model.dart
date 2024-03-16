@@ -37,12 +37,12 @@ class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
   FocusNode? parcelasFocusNode;
   TextEditingController? parcelasController;
   String? Function(BuildContext, String?)? parcelasControllerValidator;
-  DateTime? datePicked;
   // State field(s) for data widget.
   FocusNode? dataFocusNode;
   TextEditingController? dataController;
   final dataMask = MaskTextInputFormatter(mask: '##/##/####');
   String? Function(BuildContext, String?)? dataControllerValidator;
+  DateTime? datePicked;
   // State field(s) for statusReceita widget.
   String? statusReceitaValue;
   FormFieldController<String>? statusReceitaValueController;

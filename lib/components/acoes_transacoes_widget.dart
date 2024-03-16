@@ -498,147 +498,136 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Expanded(
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    final _datePickedDate =
-                                        await showDatePicker(
-                                      context: context,
-                                      initialDate: getCurrentTimestamp,
-                                      firstDate: DateTime(1900),
-                                      lastDate: DateTime(2050),
-                                      builder: (context, child) {
-                                        return wrapInMaterialDatePickerTheme(
-                                          context,
-                                          child!,
-                                          headerBackgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          headerForegroundColor:
-                                              FlutterFlowTheme.of(context).info,
-                                          headerTextStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineLarge
-                                                  .override(
-                                                    fontFamily: 'Outfit',
-                                                    fontSize: 32.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
-                                          pickerBackgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          pickerForegroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          selectedDateTimeBackgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          selectedDateTimeForegroundColor:
-                                              FlutterFlowTheme.of(context).info,
-                                          actionButtonForegroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          iconSize: 24.0,
-                                        );
-                                      },
-                                    );
-
-                                    if (_datePickedDate != null) {
-                                      safeSetState(() {
-                                        _model.datePicked = DateTime(
-                                          _datePickedDate.year,
-                                          _datePickedDate.month,
-                                          _datePickedDate.day,
-                                        );
-                                      });
-                                    }
-                                    setState(() {
-                                      _model.dataController?.text =
-                                          dateTimeFormat(
-                                              'dd/MM/y', _model.datePicked);
-                                    });
-                                  },
-                                  child: Stack(
-                                    alignment: AlignmentDirectional(1.0, 0.0),
-                                    children: [
-                                      TextFormField(
-                                        controller: _model.dataController,
-                                        focusNode: _model.dataFocusNode,
-                                        autofocus: true,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: 'Data Transação',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
+                                child: Stack(
+                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  children: [
+                                    TextFormField(
+                                      controller: _model.dataController,
+                                      focusNode: _model.dataFocusNode,
+                                      onFieldSubmitted: (_) async {
+                                        final _datePickedDate =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: getCurrentTimestamp,
+                                          firstDate: DateTime(1900),
+                                          lastDate: DateTime(2050),
+                                          builder: (context, child) {
+                                            return wrapInMaterialDatePickerTheme(
+                                              context,
+                                              child!,
+                                              headerBackgroundColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
+                                              headerForegroundColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
+                                                      .info,
+                                              headerTextStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                      .headlineLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        fontSize: 32.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                              pickerBackgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              pickerForegroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              selectedDateTimeBackgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              selectedDateTimeForegroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              actionButtonForegroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              iconSize: 24.0,
+                                            );
+                                          },
+                                        );
+
+                                        if (_datePickedDate != null) {
+                                          safeSetState(() {
+                                            _model.datePicked = DateTime(
+                                              _datePickedDate.year,
+                                              _datePickedDate.month,
+                                              _datePickedDate.day,
+                                            );
+                                          });
+                                        }
+                                        setState(() {
+                                          _model.dataController?.text =
+                                              dateTimeFormat(
+                                                  'dd/MM/y', _model.datePicked);
+                                        });
+                                      },
+                                      readOnly: true,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText: 'Data Transação',
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            width: 2.0,
                                           ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        keyboardType: TextInputType.datetime,
-                                        validator: _model
-                                            .dataControllerValidator
-                                            .asValidator(context),
-                                        inputFormatters: [_model.dataMask],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
-                                        child: Icon(
-                                          Icons.calendar_month,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 25.0,
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      keyboardType: TextInputType.datetime,
+                                      validator: _model.dataControllerValidator
+                                          .asValidator(context),
+                                      inputFormatters: [_model.dataMask],
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 10.0, 10.0, 10.0),
+                                      child: Icon(
+                                        Icons.calendar_month,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 25.0,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
