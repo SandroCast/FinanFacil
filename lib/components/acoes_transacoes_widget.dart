@@ -59,17 +59,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
     _model = createModel(context, () => AcoesTransacoesModel());
 
     // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.verificaSemCategoria =
-          await SQLiteManager.instance.verificaSemCategoria(
-        tipo: widget.tipo,
-      );
-      if (_model.verificaSemCategoria!.length < 1) {
-        await SQLiteManager.instance.criaSemCategoria(
-          tipo: widget.tipo,
-        );
-      }
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     _model.descricaoController ??= TextEditingController();
     _model.descricaoFocusNode ??= FocusNode();

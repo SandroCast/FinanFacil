@@ -18,8 +18,6 @@ import 'package:provider/provider.dart';
 class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - SQLite (verificaSemCategoria)] action in AcoesTransacoes widget.
-  List<VerificaSemCategoriaRow>? verificaSemCategoria;
   // State field(s) for descricao widget.
   FocusNode? descricaoFocusNode;
   TextEditingController? descricaoController;
