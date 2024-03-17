@@ -75,7 +75,7 @@ Future<List<BuscaLancamentosRow>> performBuscaLancamentos(
   Database database,
 ) {
   final query = '''
-select id, descricao, valor, status, dt_agendada  from lancamentos;
+select id, descricao, valor, status, dt_agendada as dtagendada  from lancamentos;
 ''';
   return _readQuery(database, query, (d) => BuscaLancamentosRow(d));
 }
