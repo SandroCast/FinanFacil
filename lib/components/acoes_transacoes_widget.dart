@@ -962,7 +962,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                       descricao:
                                           _model.descricaoController.text,
                                       idcategoria: _model.categoriaValue!,
-                                      valor: double.parse(
+                                      valor: -double.parse(
                                           _model.valorController.text),
                                       fixo: _model.switchListFixoValue!,
                                       tipotransacao: _model.avistaValue,
@@ -972,6 +972,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                       status: widget.tipo == 'Receita'
                                           ? _model.statusReceitaValue!
                                           : _model.statusDespesaValue!,
+                                      tipolancamento: widget.tipo,
                                     );
                                     Navigator.pop(context);
                                   },

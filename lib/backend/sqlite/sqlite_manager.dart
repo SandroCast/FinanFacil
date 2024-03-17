@@ -69,6 +69,7 @@ class SQLiteManager {
     int? parcelas,
     DateTime? dtagendada,
     String? status,
+    String? tipolancamento,
   }) =>
       performNovoLancamento(
         _database,
@@ -80,6 +81,7 @@ class SQLiteManager {
         parcelas: parcelas,
         dtagendada: dtagendada,
         status: status,
+        tipolancamento: tipolancamento,
       );
 
   Future novaCategoria({

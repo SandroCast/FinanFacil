@@ -371,7 +371,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
-                                                                              color: Color(0xFF00B048),
+                                                                              color: listViewBuscaLancamentosRow.tipo == 'RECEITA' ? Color(0xFF00B048) : Color(0xFFFD0101),
                                                                             ),
                                                                       ),
                                                                     ],

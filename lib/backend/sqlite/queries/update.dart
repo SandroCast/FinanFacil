@@ -11,10 +11,11 @@ Future performNovoLancamento(
   int? parcelas,
   DateTime? dtagendada,
   String? status,
+  String? tipolancamento,
 }) {
   final query = '''
-INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcelas, dt_agendada, status)
-VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcelas}, '${dtagendada}', '${status}');
+INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcelas, dt_agendada, status, tipo_lancamento)
+VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcelas}, '${dtagendada}', '${status}', '${tipolancamento}');
 ''';
   return database.rawQuery(query);
 }
