@@ -730,72 +730,12 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                             },
                                           );
 
-                                          TimeOfDay? _datePickedTime;
                                           if (_datePickedDate != null) {
-                                            _datePickedTime =
-                                                await showTimePicker(
-                                              context: context,
-                                              initialTime:
-                                                  TimeOfDay.fromDateTime(
-                                                      getCurrentTimestamp),
-                                              builder: (context, child) {
-                                                return wrapInMaterialTimePickerTheme(
-                                                  context,
-                                                  child!,
-                                                  headerBackgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  headerForegroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .info,
-                                                  headerTextStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Outfit',
-                                                            fontSize: 32.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                          ),
-                                                  pickerBackgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                  pickerForegroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText,
-                                                  selectedDateTimeBackgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  selectedDateTimeForegroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .info,
-                                                  actionButtonForegroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText,
-                                                  iconSize: 24.0,
-                                                );
-                                              },
-                                            );
-                                          }
-
-                                          if (_datePickedDate != null &&
-                                              _datePickedTime != null) {
                                             safeSetState(() {
                                               _model.datePicked = DateTime(
                                                 _datePickedDate.year,
                                                 _datePickedDate.month,
                                                 _datePickedDate.day,
-                                                _datePickedTime!.hour,
-                                                _datePickedTime.minute,
                                               );
                                             });
                                           }
