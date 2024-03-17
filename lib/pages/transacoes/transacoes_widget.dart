@@ -254,7 +254,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
+                                                          0.0, 0.0, 10.0, 0.0),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,
@@ -290,7 +290,9 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                       context),
                                                               child:
                                                                   AcoesTransacoesWidget(
-                                                                tipo: 'Receita',
+                                                                tipo:
+                                                                    listViewBuscaLancamentosRow
+                                                                        .tipo!,
                                                               ),
                                                             ),
                                                           );
@@ -309,6 +311,29 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                               MainAxisAlignment
                                                                   .spaceBetween,
                                                           children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                              child: Container(
+                                                                width: 10.0,
+                                                                height: 38.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: listViewBuscaLancamentosRow
+                                                                              .tipo ==
+                                                                          'RECEITA'
+                                                                      ? Color(
+                                                                          0xFF00B048)
+                                                                      : Color(
+                                                                          0xFFFD0101),
+                                                                ),
+                                                              ),
+                                                            ),
                                                             Expanded(
                                                               child: Column(
                                                                 mainAxisSize:
