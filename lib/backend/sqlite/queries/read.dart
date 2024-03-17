@@ -79,7 +79,7 @@ Future<List<BuscaLancamentosRow>> performBuscaLancamentos(
 ) {
   final query = '''
 SELECT lancamentos.id, descricao, valor, fixo, tipo_transacao as avista, parcelas, status, tipo, strftime('%d/%m/%Y', dt_agendada) AS dtagendada FROM lancamentos
- left join categorias on lancamentos.id_categorias = categorias.id;
+join categorias on lancamentos.id_categoria = categorias.id;
 ''';
   return _readQuery(database, query, (d) => BuscaLancamentosRow(d));
 }
