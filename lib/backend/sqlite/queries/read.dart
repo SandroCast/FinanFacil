@@ -99,3 +99,24 @@ class BuscaLancamentosRow extends SqliteRow {
 }
 
 /// END BUSCALANCAMENTOS
+
+/// BEGIN VERIFICASEMCATEGORIA
+Future<List<VerificaSemCategoriaRow>> performVerificaSemCategoria(
+  Database database, {
+  String? tipo,
+}) {
+  final query = '''
+select titulo from categorias
+where titulo = 'SEM CATEGORIA' 
+and tipo = '${tipo}';
+''';
+  return _readQuery(database, query, (d) => VerificaSemCategoriaRow(d));
+}
+
+class VerificaSemCategoriaRow extends SqliteRow {
+  VerificaSemCategoriaRow(Map<String, dynamic> data) : super(data);
+
+  String? get titulo => data['titulo'] as String?;
+}
+
+/// END VERIFICASEMCATEGORIA

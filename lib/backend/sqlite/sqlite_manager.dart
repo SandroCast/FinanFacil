@@ -60,6 +60,14 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<VerificaSemCategoriaRow>> verificaSemCategoria({
+    String? tipo,
+  }) =>
+      performVerificaSemCategoria(
+        _database,
+        tipo: tipo,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
@@ -92,6 +100,14 @@ class SQLiteManager {
       performNovaCategoria(
         _database,
         titulo: titulo,
+      );
+
+  Future criaSemCategoria({
+    String? tipo,
+  }) =>
+      performCriaSemCategoria(
+        _database,
+        tipo: tipo,
       );
 
   /// END UPDATE QUERY CALLS
