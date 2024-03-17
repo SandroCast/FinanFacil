@@ -541,7 +541,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                   ? dateTimeFormat(
                                                                       'dd/MM/y',
                                                                       _model
-                                                                          .datePicked1)
+                                                                          .datePicked2)
                                                                   : dateTimeFormat(
                                                                       'dd/MM/y',
                                                                       getCurrentTimestamp),
