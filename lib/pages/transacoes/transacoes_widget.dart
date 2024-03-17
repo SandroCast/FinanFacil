@@ -290,9 +290,8 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                       context),
                                                               child:
                                                                   AcoesTransacoesWidget(
-                                                                tipo:
-                                                                    listViewBuscaLancamentosRow
-                                                                        .tipo!,
+                                                                tipo: listViewBuscaLancamentosRow
+                                                                    .lancamento!,
                                                               ),
                                                             ),
                                                           );
@@ -325,7 +324,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                 decoration:
                                                                     BoxDecoration(
                                                                   color: listViewBuscaLancamentosRow
-                                                                              .tipo ==
+                                                                              .lancamento ==
                                                                           'Receita'
                                                                       ? Color(
                                                                           0xFF00B048)
@@ -371,7 +370,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
-                                                                              color: listViewBuscaLancamentosRow.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
+                                                                              color: listViewBuscaLancamentosRow.lancamento == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
                                                                             ),
                                                                       ),
                                                                     ],
