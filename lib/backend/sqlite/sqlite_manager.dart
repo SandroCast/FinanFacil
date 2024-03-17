@@ -41,6 +41,16 @@ class SQLiteManager {
         titulo: titulo,
       );
 
+  Future<List<BuscaLancamentoPorPeriodoRow>> buscaLancamentoPorPeriodo({
+    DateTime? inicio,
+    DateTime? fim,
+  }) =>
+      performBuscaLancamentoPorPeriodo(
+        _database,
+        inicio: inicio,
+        fim: fim,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

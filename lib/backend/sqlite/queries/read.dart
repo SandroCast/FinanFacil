@@ -45,3 +45,27 @@ class PesquisaTituloCategoriaRow extends SqliteRow {
 }
 
 /// END PESQUISATITULOCATEGORIA
+
+/// BEGIN BUSCALANCAMENTOPORPERIODO
+Future<List<BuscaLancamentoPorPeriodoRow>> performBuscaLancamentoPorPeriodo(
+  Database database, {
+  DateTime? inicio,
+  DateTime? fim,
+}) {
+  final query = '''
+select titulo, sum(valor) as valor from lancamentos
+join categorias on id_categoria = lancamentos.id
+where dt_agendada BETWEEN '${inicio}' AND '${fim}'
+group by titulo;
+''';
+  return _readQuery(database, query, (d) => BuscaLancamentoPorPeriodoRow(d));
+}
+
+class BuscaLancamentoPorPeriodoRow extends SqliteRow {
+  BuscaLancamentoPorPeriodoRow(Map<String, dynamic> data) : super(data);
+
+  String? get titulo => data['titulo'] as String?;
+  double? get valor => data['valor'] as double?;
+}
+
+/// END BUSCALANCAMENTOPORPERIODO
