@@ -69,3 +69,25 @@ class BuscaLancamentoPorPeriodoRow extends SqliteRow {
 }
 
 /// END BUSCALANCAMENTOPORPERIODO
+
+/// BEGIN BUSCALANCAMENTOS
+Future<List<BuscaLancamentosRow>> performBuscaLancamentos(
+  Database database,
+) {
+  final query = '''
+select id, descricao, valor, status, dt_agendada  from lancamentos;
+''';
+  return _readQuery(database, query, (d) => BuscaLancamentosRow(d));
+}
+
+class BuscaLancamentosRow extends SqliteRow {
+  BuscaLancamentosRow(Map<String, dynamic> data) : super(data);
+
+  String? get descricao => data['descricao'] as String?;
+  double? get valor => data['valor'] as double?;
+  String? get status => data['status'] as String?;
+  DateTime? get dtagendada => data['dtagendada'] as DateTime?;
+  int? get id => data['id'] as int?;
+}
+
+/// END BUSCALANCAMENTOS

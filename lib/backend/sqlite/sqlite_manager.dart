@@ -51,6 +51,11 @@ class SQLiteManager {
         fim: fim,
       );
 
+  Future<List<BuscaLancamentosRow>> buscaLancamentos() =>
+      performBuscaLancamentos(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

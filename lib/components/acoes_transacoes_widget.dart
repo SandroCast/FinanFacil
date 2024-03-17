@@ -82,7 +82,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
       child: Material(
         color: Colors.transparent,
         elevation: 5.0,
