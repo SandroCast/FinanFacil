@@ -56,6 +56,10 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<ContaCategoriasRow>> contaCategorias() => performContaCategorias(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

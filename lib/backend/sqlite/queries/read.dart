@@ -91,3 +91,21 @@ class BuscaLancamentosRow extends SqliteRow {
 }
 
 /// END BUSCALANCAMENTOS
+
+/// BEGIN CONTACATEGORIAS
+Future<List<ContaCategoriasRow>> performContaCategorias(
+  Database database,
+) {
+  final query = '''
+select count(*) as qtdecateg from categorias;
+''';
+  return _readQuery(database, query, (d) => ContaCategoriasRow(d));
+}
+
+class ContaCategoriasRow extends SqliteRow {
+  ContaCategoriasRow(Map<String, dynamic> data) : super(data);
+
+  int? get qtdecateg => data['qtdecateg'] as int?;
+}
+
+/// END CONTACATEGORIAS
