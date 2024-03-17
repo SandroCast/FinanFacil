@@ -354,7 +354,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              color: listViewBuscaLancamentosRow.lancamento == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
