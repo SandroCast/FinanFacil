@@ -29,8 +29,12 @@ class SQLiteManager {
 
   /// START READ QUERY CALLS
 
-  Future<List<BuscaCategoriasRow>> buscaCategorias() => performBuscaCategorias(
+  Future<List<BuscaCategoriasRow>> buscaCategorias({
+    String? tipo,
+  }) =>
+      performBuscaCategorias(
         _database,
+        tipo: tipo,
       );
 
   Future<List<PesquisaTituloCategoriaRow>> pesquisaTituloCategoria({
@@ -69,7 +73,6 @@ class SQLiteManager {
     int? parcelas,
     DateTime? dtagendada,
     String? status,
-    String? tipolancamento,
   }) =>
       performNovoLancamento(
         _database,
@@ -81,7 +84,6 @@ class SQLiteManager {
         parcelas: parcelas,
         dtagendada: dtagendada,
         status: status,
-        tipolancamento: tipolancamento,
       );
 
   Future novaCategoria({

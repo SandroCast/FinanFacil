@@ -669,19 +669,21 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                       Text(
                                                         listViewBuscaLancamentoPorPeriodoRow
                                                             .titulo!,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      15.0,
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              color: listViewBuscaLancamentoPorPeriodoRow
+                                                                          .tipo ==
+                                                                      'Receita'
+                                                                  ? Color(
+                                                                      0xFF00B048)
+                                                                  : Color(
+                                                                      0xFFFD0101),
+                                                              fontSize: 15.0,
+                                                            ),
                                                       ),
                                                       Text(
                                                         valueOrDefault<String>(
@@ -690,19 +692,21 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                               ?.toString(),
                                                           '0',
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Readex Pro',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  fontSize:
-                                                                      15.0,
-                                                                ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Readex Pro',
+                                                              color: listViewBuscaLancamentoPorPeriodoRow
+                                                                          .tipo ==
+                                                                      'Receita'
+                                                                  ? Color(
+                                                                      0xFF00B048)
+                                                                  : Color(
+                                                                      0xFFFD0101),
+                                                              fontSize: 15.0,
+                                                            ),
                                                       ),
                                                     ],
                                                   ),

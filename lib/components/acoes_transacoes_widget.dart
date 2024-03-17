@@ -217,8 +217,9 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                           children: [
                             Expanded(
                               child: FutureBuilder<List<BuscaCategoriasRow>>(
-                                future:
-                                    SQLiteManager.instance.buscaCategorias(),
+                                future: SQLiteManager.instance.buscaCategorias(
+                                  tipo: widget.tipo,
+                                ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
                                   if (!snapshot.hasData) {
@@ -241,103 +242,53 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   return Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(),
-                                    child: Stack(
-                                      children: [
-                                        FlutterFlowDropDown<int>(
-                                          controller: _model
-                                                  .categoriaValueController ??=
+                                    child: FlutterFlowDropDown<int>(
+                                      controller:
+                                          _model.categoriaValueController ??=
                                               FormFieldController<int>(null),
-                                          options: List<int>.from(
-                                              containerBuscaCategoriasRowList
-                                                  .map((e) => e.id)
-                                                  .withoutNulls
-                                                  .toList()),
-                                          optionLabels:
-                                              containerBuscaCategoriasRowList
-                                                  .map((e) => e.titulo)
-                                                  .withoutNulls
-                                                  .toList(),
-                                          onChanged: (val) => setState(() =>
-                                              _model.categoriaValue = val),
-                                          width: double.infinity,
-                                          height: 50.0,
-                                          searchHintTextStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          searchTextStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
-                                          hintText: 'Categoria...',
-                                          searchHintText:
-                                              'Pesquise a categoria...',
-                                          icon: Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          elevation: 2.0,
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          borderWidth: 2.0,
-                                          borderRadius: 8.0,
-                                          margin:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 4.0, 16.0, 4.0),
-                                          hidesUnderline: true,
-                                          isOverButton: true,
-                                          isSearchable: true,
-                                          isMultiSelect: false,
-                                        ),
-                                        if (containerBuscaCategoriasRowList
-                                                .length <
-                                            1)
-                                          Opacity(
-                                            opacity: 0.0,
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  useSafeArea: true,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child:
-                                                          AcoesCategoriasWidget(),
-                                                    );
-                                                  },
-                                                ).then((value) =>
-                                                    safeSetState(() {}));
-                                              },
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 50.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                      ],
+                                      options: List<int>.from(
+                                          containerBuscaCategoriasRowList
+                                              .map((e) => e.id)
+                                              .withoutNulls
+                                              .toList()),
+                                      optionLabels:
+                                          containerBuscaCategoriasRowList
+                                              .map((e) => e.titulo)
+                                              .withoutNulls
+                                              .toList(),
+                                      onChanged: (val) => setState(
+                                          () => _model.categoriaValue = val),
+                                      width: double.infinity,
+                                      height: 50.0,
+                                      searchHintTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .labelMedium,
+                                      searchTextStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      hintText: 'Categoria...',
+                                      searchHintText: 'Pesquise a categoria...',
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderWidth: 2.0,
+                                      borderRadius: 8.0,
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 4.0, 16.0, 4.0),
+                                      hidesUnderline: true,
+                                      isOverButton: true,
+                                      isSearchable: true,
+                                      isMultiSelect: false,
                                     ),
                                   );
                                 },
@@ -953,7 +904,6 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                     status: widget.tipo == 'Receita'
                                         ? _model.statusReceitaValue!
                                         : _model.statusDespesaValue!,
-                                    tipolancamento: widget.tipo,
                                   );
                                   Navigator.pop(context);
                                 },

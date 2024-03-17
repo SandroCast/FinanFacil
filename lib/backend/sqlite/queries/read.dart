@@ -10,10 +10,12 @@ Future<List<T>> _readQuery<T>(
 
 /// BEGIN BUSCACATEGORIAS
 Future<List<BuscaCategoriasRow>> performBuscaCategorias(
-  Database database,
-) {
+  Database database, {
+  String? tipo,
+}) {
   final query = '''
-select id, titulo from categorias;
+select id, titulo from categorias
+where tipo = '${tipo}';
 ''';
   return _readQuery(database, query, (d) => BuscaCategoriasRow(d));
 }
@@ -53,10 +55,10 @@ Future<List<BuscaLancamentoPorPeriodoRow>> performBuscaLancamentoPorPeriodo(
   DateTime? fim,
 }) {
   final query = '''
-select titulo, sum(valor) as valor from lancamentos
+select titulo, tipo, sum(valor) as valor from lancamentos
 join categorias on id_categoria = lancamentos.id
 where dt_agendada BETWEEN '${inicio}' AND '${fim}'
-group by titulo;
+group by titulo, tipo;
 ''';
   return _readQuery(database, query, (d) => BuscaLancamentoPorPeriodoRow(d));
 }
@@ -66,6 +68,7 @@ class BuscaLancamentoPorPeriodoRow extends SqliteRow {
 
   String? get titulo => data['titulo'] as String?;
   double? get valor => data['valor'] as double?;
+  String? get tipo => data['tipo'] as String?;
 }
 
 /// END BUSCALANCAMENTOPORPERIODO
@@ -75,7 +78,8 @@ Future<List<BuscaLancamentosRow>> performBuscaLancamentos(
   Database database,
 ) {
   final query = '''
-SELECT id, descricao, valor, fixo, tipo_transacao as tipo, parcelas, status, tipo_lancamento as lancamento, strftime('%d/%m/%Y', dt_agendada) AS dtagendada FROM lancamentos;
+SELECT id, descricao, valor, fixo, tipo_transacao as avista, parcelas, status, tipo, strftime('%d/%m/%Y', dt_agendada) AS dtagendada FROM lancamentos
+join categorias on lancamentos.id_categorias = categorias.id;
 ''';
   return _readQuery(database, query, (d) => BuscaLancamentosRow(d));
 }
@@ -89,9 +93,9 @@ class BuscaLancamentosRow extends SqliteRow {
   String? get dtagendada => data['dtagendada'] as String?;
   int? get id => data['id'] as int?;
   bool? get fixo => data['fixo'] as bool?;
-  String? get tipo => data['tipo'] as String?;
+  String? get avista => data['avista'] as String?;
   int? get parcelas => data['parcelas'] as int?;
-  String? get lancamento => data['lancamento'] as String?;
+  String? get tipo => data['tipo'] as String?;
 }
 
 /// END BUSCALANCAMENTOS
