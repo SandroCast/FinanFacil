@@ -360,7 +360,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                             .spaceBetween,
                                                                     children: [
                                                                       Text(
-                                                                        'Previsão: ${listViewBuscaLancamentosRow.dtagendada}',
+                                                                        'Data: ${listViewBuscaLancamentosRow.dtagendada}',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
