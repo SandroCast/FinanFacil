@@ -594,8 +594,12 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                         List<BuscaLancamentoPorPeriodoRow>>(
                                       future: SQLiteManager.instance
                                           .buscaLancamentoPorPeriodo(
-                                        inicio: _model.datePicked1,
-                                        fim: _model.datePicked2,
+                                        inicio: _model.datePicked1 != null
+                                            ? _model.datePicked1
+                                            : getCurrentTimestamp,
+                                        fim: _model.datePicked2 != null
+                                            ? _model.datePicked2
+                                            : getCurrentTimestamp,
                                       ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
