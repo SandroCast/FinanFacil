@@ -543,6 +543,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
+                                        useSafeArea: true,
                                         context: context,
                                         builder: (context) {
                                           return Padding(
@@ -597,6 +598,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
+                                        useSafeArea: true,
                                         context: context,
                                         builder: (context) {
                                           return Padding(

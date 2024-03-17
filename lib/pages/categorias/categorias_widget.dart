@@ -156,6 +156,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                   isScrollControlled: true,
                                                   backgroundColor:
                                                       Colors.transparent,
+                                                  useSafeArea: true,
                                                   context: context,
                                                   builder: (context) {
                                                     return GestureDetector(

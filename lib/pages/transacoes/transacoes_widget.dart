@@ -270,6 +270,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                             true,
                                                         backgroundColor:
                                                             Colors.transparent,
+                                                        useSafeArea: true,
                                                         context: context,
                                                         builder: (context) {
                                                           return GestureDetector(
