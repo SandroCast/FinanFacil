@@ -13,8 +13,8 @@ Future performNovoLancamento(
   String? status,
 }) {
   final query = '''
-INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcelas, dt_agendada, status)
-VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcelas}, '${dtagendada}', '${status}');
+INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcela, dt_agendada, status)
+VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', '${parcelas}', '${dtagendada}', '${status}');
 ''';
   return database.rawQuery(query);
 }

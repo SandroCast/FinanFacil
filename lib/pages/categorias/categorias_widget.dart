@@ -182,7 +182,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                 ).then((value) =>
                                                     safeSetState(() {}));
                                               },
-                                              text: 'Nova Categoria',
+                                              text: 'Categorias',
                                               options: FFButtonOptions(
                                                 height: 30.0,
                                                 padding: EdgeInsetsDirectional
