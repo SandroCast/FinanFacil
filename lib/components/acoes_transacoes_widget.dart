@@ -1,4 +1,5 @@
 import '/backend/sqlite/sqlite_manager.dart';
+import '/components/acoes_categorias_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -255,8 +256,28 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                               .map((e) => e.titulo)
                                               .withoutNulls
                                               .toList(),
-                                      onChanged: (val) => setState(
-                                          () => _model.categoriaValue = val),
+                                      onChanged: (val) async {
+                                        setState(
+                                            () => _model.categoriaValue = val);
+                                        if (categoriaBuscaCategoriasRowList
+                                                .length <
+                                            1) {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (context) {
+                                              return Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: AcoesCategoriasWidget(),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+                                        }
+                                      },
                                       height: 50.0,
                                       searchHintTextStyle:
                                           FlutterFlowTheme.of(context)
@@ -294,10 +315,30 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 10.0, 10.0, 10.0),
-                                child: Icon(
-                                  Icons.add_circle,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 24.0,
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: AcoesCategoriasWidget(),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  },
+                                  child: Icon(
+                                    Icons.add_circle,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 24.0,
+                                  ),
                                 ),
                               ),
                             ],
@@ -580,7 +621,12 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                         ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                          ),
                                       keyboardType: TextInputType.datetime,
                                       validator: _model.dataControllerValidator
                                           .asValidator(context),
