@@ -353,10 +353,15 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                         children: [
                                                           Expanded(
                                                             child: Text(
-                                                              dateTimeFormat(
-                                                                  'dd/MM/y',
-                                                                  _model
-                                                                      .datePicked1),
+                                                              _model.datePicked1 !=
+                                                                      null
+                                                                  ? dateTimeFormat(
+                                                                      'dd/MM/y',
+                                                                      _model
+                                                                          .datePicked1)
+                                                                  : dateTimeFormat(
+                                                                      'dd/MM/y',
+                                                                      getCurrentTimestamp),
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
