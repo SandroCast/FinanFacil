@@ -75,7 +75,7 @@ Future<List<BuscaLancamentosRow>> performBuscaLancamentos(
   Database database,
 ) {
   final query = '''
-select id, descricao, valor, status, dt_agendada as dtagendada  from lancamentos;
+SELECT id, descricao, valor, status, DATE_FORMAT(dt_agendada, '%d/%m/%Y') AS dtagendada FROM lancamentos;
 ''';
   return _readQuery(database, query, (d) => BuscaLancamentosRow(d));
 }
