@@ -326,7 +326,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                     BoxDecoration(
                                                                   color: listViewBuscaLancamentosRow
                                                                               .tipo ==
-                                                                          'RECEITA'
+                                                                          'Receita'
                                                                       ? Color(
                                                                           0xFF00B048)
                                                                       : Color(
@@ -371,7 +371,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
-                                                                              color: listViewBuscaLancamentosRow.tipo == 'RECEITA' ? Color(0xFF00B048) : Color(0xFFFD0101),
+                                                                              color: listViewBuscaLancamentosRow.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
                                                                             ),
                                                                       ),
                                                                     ],

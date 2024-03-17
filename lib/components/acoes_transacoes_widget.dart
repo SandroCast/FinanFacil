@@ -962,8 +962,11 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                       descricao:
                                           _model.descricaoController.text,
                                       idcategoria: _model.categoriaValue!,
-                                      valor: -double.parse(
-                                          _model.valorController.text),
+                                      valor: widget.tipo == 'Receita'
+                                          ? double.parse(
+                                              _model.valorController.text)
+                                          : (-double.parse(
+                                              _model.valorController.text)),
                                       fixo: _model.switchListFixoValue!,
                                       tipotransacao: _model.avistaValue,
                                       parcelas: int.tryParse(
