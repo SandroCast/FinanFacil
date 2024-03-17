@@ -33,16 +33,3 @@ INSERT INTO categorias(titulo) VALUES('${titulo}');
 }
 
 /// END NOVACATEGORIA
-
-/// BEGIN CRIASEMCATEGORIA
-Future performCriaSemCategoria(
-  Database database, {
-  String? tipo,
-}) {
-  final query = '''
-insert into categorias(titulo, tipo) values('SEM CATEGORIA','${tipo}');
-''';
-  return database.rawQuery(query);
-}
-
-/// END CRIASEMCATEGORIA

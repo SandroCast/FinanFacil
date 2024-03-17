@@ -58,9 +58,6 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
     super.initState();
     _model = createModel(context, () => AcoesTransacoesModel());
 
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {});
-
     _model.descricaoController ??= TextEditingController();
     _model.descricaoFocusNode ??= FocusNode();
 
