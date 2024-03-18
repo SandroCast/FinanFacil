@@ -698,7 +698,14 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                                 _model.categoriaController.text,
                                             tipo: _model.tipoValue,
                                           );
-                                          Navigator.pop(context);
+                                          if (widget.tipo != null &&
+                                              widget.tipo != '') {
+                                            Navigator.pop(context);
+                                          } else {
+                                            setState(() {
+                                              FFAppState().abaCategoria = 1;
+                                            });
+                                          }
                                         } else {
                                           setState(() {
                                             FFAppState().msgErro =
