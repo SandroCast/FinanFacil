@@ -191,10 +191,6 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                   size: 35.0,
                                 ),
                               ),
-                            Text(
-                              widget.lancamento!.fixo.toString(),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
                           ],
                         ),
                       ),
