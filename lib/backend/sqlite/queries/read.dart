@@ -106,7 +106,7 @@ Future<List<BuscaTodasAsCategoriasRow>> performBuscaTodasAsCategorias(
   Database database,
 ) {
   final query = '''
-select id, titulo, tipo from categorias;
+select id, titulo, tipo from categorias where titulo is not 'SEM CATEGORIA';
 ''';
   return _readQuery(database, query, (d) => BuscaTodasAsCategoriasRow(d));
 }

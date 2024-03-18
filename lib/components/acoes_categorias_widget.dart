@@ -488,9 +488,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                   20.0, 0.0, 20.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.tipoValueController ??=
-                                    FormFieldController<String>(
-                                  _model.tipoValue ??= widget.tipo,
-                                ),
+                                    FormFieldController<String>(null),
                                 options: ['Receita', 'Despesa'],
                                 onChanged: (val) =>
                                     setState(() => _model.tipoValue = val),
@@ -520,8 +518,6 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                 margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 4.0),
                                 hidesUnderline: true,
-                                disabled:
-                                    widget.tipo != null && widget.tipo != '',
                                 isOverButton: false,
                                 isSearchable: false,
                                 isMultiSelect: false,
