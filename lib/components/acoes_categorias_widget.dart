@@ -57,7 +57,6 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().msgErro = '';
-        FFAppState().abaCategoria = widget.aba!;
       });
     });
 
