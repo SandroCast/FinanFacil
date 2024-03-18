@@ -212,6 +212,8 @@ dynamic deserializeParam<T>(
             return BuscaLancamentoPorPeriodoRow(data);
           case BuscaLancamentosRow:
             return BuscaLancamentosRow(data);
+          case BuscaTodasAsCategoriasRow:
+            return BuscaTodasAsCategoriasRow(data);
           default:
             return null;
         }

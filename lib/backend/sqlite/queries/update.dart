@@ -25,11 +25,26 @@ VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', 
 Future performNovaCategoria(
   Database database, {
   String? titulo,
+  String? tipo,
 }) {
   final query = '''
-INSERT INTO categorias(titulo) VALUES('${titulo}');
+INSERT INTO categorias(titulo, tipo) VALUES('${titulo}', '${tipo}');
 ''';
   return database.rawQuery(query);
 }
 
 /// END NOVACATEGORIA
+
+/// BEGIN EXCLUIRCATEGORIA
+Future performExcluirCategoria(
+  Database database, {
+  int? id,
+}) {
+  final query = '''
+DELETE FROM categorias
+WHERE id = ${id};
+''';
+  return database.rawQuery(query);
+}
+
+/// END EXCLUIRCATEGORIA

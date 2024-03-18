@@ -1,8 +1,11 @@
 import '/backend/sqlite/sqlite_manager.dart';
+import '/components/deletar_categoria_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'acoes_categorias_widget.dart' show AcoesCategoriasWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -13,6 +16,9 @@ import 'package:provider/provider.dart';
 class AcoesCategoriasModel extends FlutterFlowModel<AcoesCategoriasWidget> {
   ///  State fields for stateful widgets in this component.
 
+  // State field(s) for tipo widget.
+  String? tipoValue;
+  FormFieldController<String>? tipoValueController;
   // State field(s) for categoria widget.
   FocusNode? categoriaFocusNode;
   TextEditingController? categoriaController;

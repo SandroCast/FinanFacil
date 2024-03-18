@@ -39,10 +39,12 @@ class SQLiteManager {
 
   Future<List<PesquisaTituloCategoriaRow>> pesquisaTituloCategoria({
     String? titulo,
+    String? tipo,
   }) =>
       performPesquisaTituloCategoria(
         _database,
         titulo: titulo,
+        tipo: tipo,
       );
 
   Future<List<BuscaLancamentoPorPeriodoRow>> buscaLancamentoPorPeriodo({
@@ -57,6 +59,11 @@ class SQLiteManager {
 
   Future<List<BuscaLancamentosRow>> buscaLancamentos() =>
       performBuscaLancamentos(
+        _database,
+      );
+
+  Future<List<BuscaTodasAsCategoriasRow>> buscaTodasAsCategorias() =>
+      performBuscaTodasAsCategorias(
         _database,
       );
 
@@ -88,10 +95,20 @@ class SQLiteManager {
 
   Future novaCategoria({
     String? titulo,
+    String? tipo,
   }) =>
       performNovaCategoria(
         _database,
         titulo: titulo,
+        tipo: tipo,
+      );
+
+  Future excluirCategoria({
+    int? id,
+  }) =>
+      performExcluirCategoria(
+        _database,
+        id: id,
       );
 
   /// END UPDATE QUERY CALLS
