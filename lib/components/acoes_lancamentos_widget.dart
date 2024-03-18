@@ -955,6 +955,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       totalparcelas: int.tryParse(
                                           _model.parcelasController.text),
                                     );
+                                    setState(() {});
                                   }
                                 },
                                 text: 'Salvar',
