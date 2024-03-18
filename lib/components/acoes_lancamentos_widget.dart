@@ -981,7 +981,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               _model.valorController.text)
                                           : (-double.parse(
                                               _model.valorController.text)),
-                                      fixo: _model.fixoNovoValue!,
+                                      fixo: true,
                                       tipotransacao: _model.avistaValue,
                                       parcela: int.tryParse(
                                           _model.parcelasController.text),
