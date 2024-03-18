@@ -106,7 +106,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
           ),
         ),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
