@@ -312,9 +312,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                       return Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: AcoesCategoriasWidget(
-                                          aba: 2,
-                                        ),
+                                        child: AcoesCategoriasWidget(),
                                       );
                                     },
                                   ).then((value) => safeSetState(() {}));

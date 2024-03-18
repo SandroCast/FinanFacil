@@ -175,9 +175,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                             .viewInsetsOf(
                                                                 context),
                                                         child:
-                                                            AcoesCategoriasWidget(
-                                                          aba: 1,
-                                                        ),
+                                                            AcoesCategoriasWidget(),
                                                       ),
                                                     );
                                                   },

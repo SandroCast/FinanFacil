@@ -10,14 +10,7 @@ import 'acoes_categorias_model.dart';
 export 'acoes_categorias_model.dart';
 
 class AcoesCategoriasWidget extends StatefulWidget {
-  const AcoesCategoriasWidget({
-    super.key,
-    this.tipo,
-    required this.aba,
-  });
-
-  final String? tipo;
-  final int? aba;
+  const AcoesCategoriasWidget({super.key});
 
   @override
   State<AcoesCategoriasWidget> createState() => _AcoesCategoriasWidgetState();
