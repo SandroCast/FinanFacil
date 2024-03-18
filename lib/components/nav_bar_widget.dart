@@ -1,4 +1,4 @@
-import '/components/acoes_transacoes_widget.dart';
+import '/components/acoes_lancamentos_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -353,7 +353,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               ),
                               onPressed: () async {
                                 context.goNamed(
-                                  'Transacoes',
+                                  'Lancamentos',
                                   extra: <String, dynamic>{
                                     kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
@@ -549,7 +549,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                           return Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: AcoesTransacoesWidget(
+                                            child: AcoesLancamentosWidget(
                                               tipo: 'Receita',
                                             ),
                                           );
@@ -604,7 +604,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                           return Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: AcoesTransacoesWidget(
+                                            child: AcoesLancamentosWidget(
                                               tipo: 'Despesa',
                                             ),
                                           );

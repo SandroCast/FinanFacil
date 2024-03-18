@@ -1,5 +1,5 @@
 import '/backend/sqlite/sqlite_manager.dart';
-import '/components/acoes_transacoes_widget.dart';
+import '/components/acoes_lancamentos_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -12,19 +12,19 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'transacoes_model.dart';
-export 'transacoes_model.dart';
+import 'lancamentos_model.dart';
+export 'lancamentos_model.dart';
 
-class TransacoesWidget extends StatefulWidget {
-  const TransacoesWidget({super.key});
+class LancamentosWidget extends StatefulWidget {
+  const LancamentosWidget({super.key});
 
   @override
-  State<TransacoesWidget> createState() => _TransacoesWidgetState();
+  State<LancamentosWidget> createState() => _LancamentosWidgetState();
 }
 
-class _TransacoesWidgetState extends State<TransacoesWidget>
+class _LancamentosWidgetState extends State<LancamentosWidget>
     with TickerProviderStateMixin {
-  late TransacoesModel _model;
+  late LancamentosModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -46,7 +46,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TransacoesModel());
+    _model = createModel(context, () => LancamentosModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -290,7 +290,7 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                   .viewInsetsOf(
                                                                       context),
                                                               child:
-                                                                  AcoesTransacoesWidget(
+                                                                  AcoesLancamentosWidget(
                                                                 tipo:
                                                                     listViewBuscaLancamentosRow
                                                                         .tipo!,

@@ -14,11 +14,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
-import 'acoes_transacoes_model.dart';
-export 'acoes_transacoes_model.dart';
+import 'acoes_lancamentos_model.dart';
+export 'acoes_lancamentos_model.dart';
 
-class AcoesTransacoesWidget extends StatefulWidget {
-  const AcoesTransacoesWidget({
+class AcoesLancamentosWidget extends StatefulWidget {
+  const AcoesLancamentosWidget({
     super.key,
     required this.tipo,
     this.lancamento,
@@ -28,12 +28,12 @@ class AcoesTransacoesWidget extends StatefulWidget {
   final BuscaLancamentosRow? lancamento;
 
   @override
-  State<AcoesTransacoesWidget> createState() => _AcoesTransacoesWidgetState();
+  State<AcoesLancamentosWidget> createState() => _AcoesLancamentosWidgetState();
 }
 
-class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
+class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
     with TickerProviderStateMixin {
-  late AcoesTransacoesModel _model;
+  late AcoesLancamentosModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -59,7 +59,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AcoesTransacoesModel());
+    _model = createModel(context, () => AcoesLancamentosModel());
 
     _model.descricaoController ??=
         TextEditingController(text: widget.lancamento?.descricao);
@@ -433,7 +433,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                               decoration: BoxDecoration(),
                               child: SwitchListTile.adaptive(
                                 value: _model.switchListFixoValue ??=
-                                    widget.lancamento!.fixo!,
+                                    !widget.lancamento!.fixo! ? false : true,
                                 onChanged: (newValue) async {
                                   setState(() =>
                                       _model.switchListFixoValue = newValue!);

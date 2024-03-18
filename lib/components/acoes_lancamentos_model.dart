@@ -7,7 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'acoes_transacoes_widget.dart' show AcoesTransacoesWidget;
+import 'acoes_lancamentos_widget.dart' show AcoesLancamentosWidget;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -16,7 +16,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
-class AcoesTransacoesModel extends FlutterFlowModel<AcoesTransacoesWidget> {
+class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for descricao widget.

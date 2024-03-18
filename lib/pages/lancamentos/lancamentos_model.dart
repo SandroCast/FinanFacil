@@ -1,5 +1,5 @@
 import '/backend/sqlite/sqlite_manager.dart';
-import '/components/acoes_transacoes_widget.dart';
+import '/components/acoes_lancamentos_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -7,14 +7,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'transacoes_widget.dart' show TransacoesWidget;
+import 'lancamentos_widget.dart' show LancamentosWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class TransacoesModel extends FlutterFlowModel<TransacoesWidget> {
+class LancamentosModel extends FlutterFlowModel<LancamentosWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

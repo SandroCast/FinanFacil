@@ -49,9 +49,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => InicioWidget(),
         ),
         FFRoute(
-          name: 'Transacoes',
-          path: '/transacoes',
-          builder: (context, params) => TransacoesWidget(),
+          name: 'Lancamentos',
+          path: '/lancamentos',
+          builder: (context, params) => LancamentosWidget(),
         ),
         FFRoute(
           name: 'Categorias',
