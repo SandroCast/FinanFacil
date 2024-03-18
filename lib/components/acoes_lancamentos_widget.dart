@@ -22,10 +22,12 @@ class AcoesLancamentosWidget extends StatefulWidget {
     super.key,
     required this.tipo,
     this.lancamento,
+    required this.ativo,
   });
 
   final String? tipo;
   final BuscaLancamentosRow? lancamento;
+  final int? ativo;
 
   @override
   State<AcoesLancamentosWidget> createState() => _AcoesLancamentosWidgetState();
@@ -89,8 +91,6 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Material(
       color: Colors.transparent,
       elevation: 5.0,
@@ -956,7 +956,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           _model.parcelasController.text),
                                     );
                                     Navigator.pop(context);
-                                    if (FFAppState().Flutuante == '1') {
+                                    if (widget.ativo == 1) {
                                       context.goNamed(
                                         'Inicio',
                                         extra: <String, dynamic>{
@@ -968,32 +968,37 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           ),
                                         },
                                       );
-                                    }
-                                    if (FFAppState().Flutuante == '2') {
-                                      context.goNamed(
-                                        'Lancamentos',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 0),
-                                          ),
-                                        },
-                                      );
-                                    }
-                                    if (FFAppState().Flutuante == '3') {
-                                      context.goNamed(
-                                        'Categorias',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 0),
-                                          ),
-                                        },
-                                      );
+                                    } else {
+                                      if (widget.ativo == 2) {
+                                        context.goNamed(
+                                          'Lancamentos',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
+                                        );
+                                      } else {
+                                        if (widget.ativo == 3) {
+                                          context.goNamed(
+                                            'Categorias',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        }
+                                      }
                                     }
                                   }
                                 },

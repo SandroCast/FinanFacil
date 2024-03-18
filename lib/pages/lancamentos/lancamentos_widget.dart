@@ -296,6 +296,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                         .tipo!,
                                                                 lancamento:
                                                                     listViewBuscaLancamentosRow,
+                                                                ativo: 2,
                                                               ),
                                                             ),
                                                           );

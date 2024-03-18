@@ -551,6 +551,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                                 context),
                                             child: AcoesLancamentosWidget(
                                               tipo: 'Receita',
+                                              ativo: widget.ativo!,
                                             ),
                                           );
                                         },
@@ -606,6 +607,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                                 context),
                                             child: AcoesLancamentosWidget(
                                               tipo: 'Despesa',
+                                              ativo: widget.ativo!,
                                             ),
                                           );
                                         },
