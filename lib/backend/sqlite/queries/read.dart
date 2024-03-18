@@ -93,7 +93,7 @@ class BuscaLancamentosRow extends SqliteRow {
   String? get status => data['status'] as String?;
   String? get dtagendada => data['dtagendada'] as String?;
   int? get id => data['id'] as int?;
-  bool? get fixo => data['fixo'] as bool?;
+  bool get fixo => data['fixo'] as bool;
   String? get avista => data['avista'] as String?;
   int? get parcela => data['parcela'] as int?;
   String? get tipo => data['tipo'] as String?;

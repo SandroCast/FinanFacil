@@ -30,8 +30,10 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   FocusNode? valorFocusNode;
   TextEditingController? valorController;
   String? Function(BuildContext, String?)? valorControllerValidator;
-  // State field(s) for SwitchListFixo widget.
-  bool? switchListFixoValue;
+  // State field(s) for fixoNovo widget.
+  bool? fixoNovoValue;
+  // State field(s) for fixoEdita widget.
+  bool? fixoEditaValue;
   // State field(s) for avista widget.
   String? avistaValue;
   FormFieldController<String>? avistaValueController;
