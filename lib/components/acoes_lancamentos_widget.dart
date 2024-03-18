@@ -7,7 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/actions/actions.dart' as action_blocks;
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -933,30 +933,34 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                             Expanded(
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  if (widget.lancamento != null) {
-                                    Navigator.pop(context);
-                                  } else {
-                                    await action_blocks.novoLancamento(
-                                      context,
-                                      descricao:
-                                          _model.descricaoController.text,
-                                      idcategoria: _model.categoriaValue,
-                                      valor: double.tryParse(
-                                          _model.valorController.text),
-                                      tipo: widget.tipo,
-                                      fixo: _model.fixoValue! ? 1 : 0,
-                                      tipotransacao: _model.avistaValue,
-                                      parcela: int.tryParse(
-                                          _model.parcelasController.text),
-                                      dtagendada: _model.datePicked,
-                                      status: widget.tipo == 'Receita'
-                                          ? _model.statusReceitaValue
-                                          : _model.statusDespesaValue,
-                                      totalparcelas: int.tryParse(
-                                          _model.parcelasController.text),
+                                  if (!(widget.lancamento != null)) {
+                                    unawaited(
+                                      () async {
+                                        await SQLiteManager.instance
+                                            .novoLancamento(
+                                          descricao:
+                                              _model.descricaoController.text,
+                                          idcategoria: _model.categoriaValue!,
+                                          valor: widget.tipo == 'Receita'
+                                              ? double.parse(
+                                                  _model.valorController.text)
+                                              : (-double.parse(
+                                                  _model.valorController.text)),
+                                          fixo: _model.fixoValue! ? 1 : 0,
+                                          tipotransacao: _model.avistaValue,
+                                          parcela: int.tryParse(
+                                              _model.parcelasController.text),
+                                          dtagendada: _model.datePicked!,
+                                          status: widget.tipo == 'Receita'
+                                              ? _model.statusReceitaValue!
+                                              : _model.statusDespesaValue!,
+                                          totalparcelas: int.tryParse(
+                                              _model.parcelasController.text),
+                                        );
+                                      }(),
                                     );
-                                    setState(() {});
                                   }
+                                  Navigator.pop(context);
                                 },
                                 text: 'Salvar',
                                 options: FFButtonOptions(
