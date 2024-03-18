@@ -175,16 +175,20 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                         ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 5.0, 0.0, 0.0),
-                                  child: Container(
-                                    width: 140.0,
-                                    height: 5.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      borderRadius: BorderRadius.circular(5.0),
+                                Opacity(
+                                  opacity: widget.aba == 1 ? 1.0 : 0.0,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: 140.0,
+                                      height: 5.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -221,16 +225,20 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                         ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 5.0, 0.0, 0.0),
-                                  child: Container(
-                                    width: 140.0,
-                                    height: 5.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      borderRadius: BorderRadius.circular(5.0),
+                                Opacity(
+                                  opacity: widget.aba == 2 ? 1.0 : 0.0,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 0.0),
+                                    child: Container(
+                                      width: 140.0,
+                                      height: 5.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
                                     ),
                                   ),
                                 ),
