@@ -184,8 +184,6 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       );
                                     },
                                   ).then((value) => safeSetState(() {}));
-
-                                  Navigator.pop(context);
                                 },
                                 child: Icon(
                                   Icons.delete_forever,
