@@ -59,7 +59,12 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
     _model = createModel(context, () => AcoesCategoriasModel());
 
     // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {});
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().msgErro = '';
+        FFAppState().abaCategoria = widget.aba!;
+      });
+    });
 
     _model.categoriaController ??= TextEditingController();
     _model.categoriaFocusNode ??= FocusNode();
