@@ -187,7 +187,9 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                   ),
                                 ),
                                 Opacity(
-                                  opacity: widget.aba == 1 ? 1.0 : 0.0,
+                                  opacity: FFAppState().abaCategoria == 1
+                                      ? 1.0
+                                      : 0.0,
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
@@ -248,7 +250,9 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                   ),
                                 ),
                                 Opacity(
-                                  opacity: widget.aba == 2 ? 1.0 : 0.0,
+                                  opacity: FFAppState().abaCategoria == 2
+                                      ? 1.0
+                                      : 0.0,
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
