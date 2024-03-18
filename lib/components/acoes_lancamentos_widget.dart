@@ -432,8 +432,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               width: 150.0,
                               decoration: BoxDecoration(),
                               child: SwitchListTile.adaptive(
-                                value: _model.switchListFixoValue ??=
-                                    !widget.lancamento!.fixo! ? false : true,
+                                value: _model.switchListFixoValue ??= false,
                                 onChanged: (newValue) async {
                                   setState(() =>
                                       _model.switchListFixoValue = newValue!);
