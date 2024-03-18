@@ -1,5 +1,5 @@
 import '/backend/sqlite/sqlite_manager.dart';
-import '/components/acoes_categorias_widget.dart';
+import '/components/acoes_categorias_copy_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -175,9 +175,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                             .viewInsetsOf(
                                                                 context),
                                                         child:
-                                                            AcoesCategoriasWidget(
-                                                          aba: 1,
-                                                        ),
+                                                            AcoesCategoriasCopyWidget(),
                                                       ),
                                                     );
                                                   },
