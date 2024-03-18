@@ -121,5 +121,31 @@ class SQLiteManager {
         id: id,
       );
 
+  Future editarLancamento({
+    String? descricao,
+    int? idcategoria,
+    double? valor,
+    bool? fixo,
+    String? tipotransacao,
+    int? parcela,
+    DateTime? dtagendada,
+    String? status,
+    int? totalparcelas,
+    int? id,
+  }) =>
+      performEditarLancamento(
+        _database,
+        descricao: descricao,
+        idcategoria: idcategoria,
+        valor: valor,
+        fixo: fixo,
+        tipotransacao: tipotransacao,
+        parcela: parcela,
+        dtagendada: dtagendada,
+        status: status,
+        totalparcelas: totalparcelas,
+        id: id,
+      );
+
   /// END UPDATE QUERY CALLS
 }

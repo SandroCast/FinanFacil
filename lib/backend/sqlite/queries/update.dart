@@ -63,3 +63,31 @@ WHERE id = ${id};
 }
 
 /// END EXCLUIRLANCAMENTO
+
+/// BEGIN EDITARLANCAMENTO
+Future performEditarLancamento(
+  Database database, {
+  String? descricao,
+  int? idcategoria,
+  double? valor,
+  bool? fixo,
+  String? tipotransacao,
+  int? parcela,
+  DateTime? dtagendada,
+  String? status,
+  int? totalparcelas,
+  int? id,
+}) {
+  final query = '''
+UPDATE lancamentos
+SET nome = 'NovoNome', email = 'novoemail@example.com'
+WHERE id = 5;
+
+
+INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcela, dt_agendada, status, total_parcelas)
+VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcela}, '${dtagendada}', '${status}', ${totalparcelas});
+''';
+  return database.rawQuery(query);
+}
+
+/// END EDITARLANCAMENTO

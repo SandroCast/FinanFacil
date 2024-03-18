@@ -432,7 +432,11 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               width: 150.0,
                               decoration: BoxDecoration(),
                               child: SwitchListTile.adaptive(
-                                value: _model.switchListFixoValue ??= false,
+                                value: _model.switchListFixoValue ??=
+                                    !((widget.lancamento != null) &&
+                                            widget.lancamento!.fixo!
+                                        ? false
+                                        : true),
                                 onChanged: (newValue) async {
                                   setState(() =>
                                       _model.switchListFixoValue = newValue!);
@@ -932,24 +936,27 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                             Expanded(
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  await SQLiteManager.instance.novoLancamento(
-                                    descricao: _model.descricaoController.text,
-                                    idcategoria: _model.categoriaValue!,
-                                    valor: widget.tipo == 'Receita'
-                                        ? double.parse(
-                                            _model.valorController.text)
-                                        : (-double.parse(
-                                            _model.valorController.text)),
-                                    fixo: _model.switchListFixoValue!,
-                                    tipotransacao: _model.avistaValue,
-                                    parcela: int.tryParse(
-                                        _model.parcelasController.text),
-                                    dtagendada: _model.datePicked!,
-                                    status: widget.tipo == 'Receita'
-                                        ? _model.statusReceitaValue!
-                                        : _model.statusDespesaValue!,
-                                    totalparcelas: 1,
-                                  );
+                                  if (!(widget.lancamento != null)) {
+                                    await SQLiteManager.instance.novoLancamento(
+                                      descricao:
+                                          _model.descricaoController.text,
+                                      idcategoria: _model.categoriaValue!,
+                                      valor: widget.tipo == 'Receita'
+                                          ? double.parse(
+                                              _model.valorController.text)
+                                          : (-double.parse(
+                                              _model.valorController.text)),
+                                      fixo: _model.switchListFixoValue!,
+                                      tipotransacao: _model.avistaValue,
+                                      parcela: int.tryParse(
+                                          _model.parcelasController.text),
+                                      dtagendada: _model.datePicked!,
+                                      status: widget.tipo == 'Receita'
+                                          ? _model.statusReceitaValue!
+                                          : _model.statusDespesaValue!,
+                                      totalparcelas: 1,
+                                    );
+                                  }
                                   Navigator.pop(context);
                                 },
                                 text: 'Salvar',
