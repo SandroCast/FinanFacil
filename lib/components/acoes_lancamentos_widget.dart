@@ -431,73 +431,38 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                             Container(
                               width: 150.0,
                               decoration: BoxDecoration(),
-                              child: Stack(
-                                children: [
-                                  if (widget.lancamento == null)
-                                    SwitchListTile.adaptive(
-                                      value: _model.fixoNovoValue ??= false,
-                                      onChanged: (newValue) async {
-                                        setState(() =>
-                                            _model.fixoNovoValue = newValue!);
-                                      },
-                                      title: Text(
-                                        'FIXO',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 15.0,
-                                            ),
+                              child: SwitchListTile.adaptive(
+                                value: _model.fixoValue ??=
+                                    widget.lancamento?.fixo == 1 ? true : false,
+                                onChanged: (newValue) async {
+                                  setState(() => _model.fixoValue = newValue!);
+                                },
+                                title: Text(
+                                  'FIXO',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .override(
+                                        fontFamily: 'Outfit',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        fontSize: 15.0,
                                       ),
-                                      tileColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      activeTrackColor:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      dense: false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.trailing,
-                                    ),
-                                  if (widget.lancamento != null)
-                                    SwitchListTile.adaptive(
-                                      value: _model.fixoEditaValue ??= false,
-                                      onChanged: (newValue) async {
-                                        setState(() =>
-                                            _model.fixoEditaValue = newValue!);
-                                      },
-                                      title: Text(
-                                        'FIXO',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 15.0,
-                                            ),
-                                      ),
-                                      tileColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      activeTrackColor:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      dense: false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.trailing,
-                                    ),
-                                ],
+                                ),
+                                tileColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                activeColor:
+                                    FlutterFlowTheme.of(context).primary,
+                                activeTrackColor:
+                                    FlutterFlowTheme.of(context).accent1,
+                                dense: false,
+                                controlAffinity:
+                                    ListTileControlAffinity.trailing,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      if (!_model.fixoNovoValue!)
+                      if (!_model.fixoValue!)
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 10.0),
@@ -977,7 +942,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               _model.valorController.text)
                                           : (-double.parse(
                                               _model.valorController.text)),
-                                      fixo: true,
+                                      fixo: _model.fixoValue! ? 1 : 0,
                                       tipotransacao: _model.avistaValue,
                                       parcela: int.tryParse(
                                           _model.parcelasController.text),
