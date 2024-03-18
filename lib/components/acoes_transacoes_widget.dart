@@ -303,7 +303,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  await showModalBottomSheet(
+                                  showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
                                     useSafeArea: true,
@@ -314,6 +314,7 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                             MediaQuery.viewInsetsOf(context),
                                         child: AcoesCategoriasWidget(
                                           aba: 2,
+                                          tipo: widget.tipo,
                                         ),
                                       );
                                     },

@@ -229,8 +229,9 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                          color: widget.tipo == 'Receita'
+                                              ? Color(0xFF00B048)
+                                              : Color(0xFFFD0101),
                                         ),
                                   ),
                                 ],
