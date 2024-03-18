@@ -8,28 +8,25 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'deletar_categoria_model.dart';
-export 'deletar_categoria_model.dart';
+import 'deletar_lancamento_model.dart';
+export 'deletar_lancamento_model.dart';
 
-class DeletarCategoriaWidget extends StatefulWidget {
-  const DeletarCategoriaWidget({
+class DeletarLancamentoWidget extends StatefulWidget {
+  const DeletarLancamentoWidget({
     super.key,
-    required this.id,
-    required this.titulo,
-    required this.tipo,
+    required this.lancamento,
   });
 
-  final int? id;
-  final String? titulo;
-  final String? tipo;
+  final BuscaLancamentosRow? lancamento;
 
   @override
-  State<DeletarCategoriaWidget> createState() => _DeletarCategoriaWidgetState();
+  State<DeletarLancamentoWidget> createState() =>
+      _DeletarLancamentoWidgetState();
 }
 
-class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
+class _DeletarLancamentoWidgetState extends State<DeletarLancamentoWidget>
     with TickerProviderStateMixin {
-  late DeletarCategoriaModel _model;
+  late DeletarLancamentoModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -55,7 +52,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DeletarCategoriaModel());
+    _model = createModel(context, () => DeletarLancamentoModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -130,7 +127,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              'Excluir Categoria?',
+                              'Excluir Lançamento?',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -154,22 +151,12 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'IMPORTANTE',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                        ),
-                                  ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Flexible(
                                         child: Text(
-                                          'Ao excluir uma categoria, também excluirá todas as receitas passadas e futuras referente a ela.',
+                                          'Caso o lançamento for parcelado, excluirá também todas as parcelas passadas e futuras.',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -202,7 +189,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    widget.titulo!,
+                                    widget.lancamento!.descricao!,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -224,12 +211,13 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    widget.tipo!,
+                                    widget.lancamento!.tipo!,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          color: widget.tipo == 'Receita'
+                                          color: widget.lancamento?.tipo ==
+                                                  'Receita'
                                               ? Color(0xFF00B048)
                                               : Color(0xFFFD0101),
                                         ),
@@ -280,8 +268,8 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                await SQLiteManager.instance.excluirCategoria(
-                                  id: widget.id,
+                                await SQLiteManager.instance.excluirLancamento(
+                                  id: widget.lancamento?.id,
                                 );
                                 Navigator.pop(context);
                               },

@@ -8,13 +8,14 @@ Future performNovoLancamento(
   double? valor,
   bool? fixo,
   String? tipotransacao,
-  int? parcelas,
+  int? parcela,
   DateTime? dtagendada,
   String? status,
+  int? totalparcelas,
 }) {
   final query = '''
-INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcela, dt_agendada, status)
-VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', '${parcelas}', '${dtagendada}', '${status}');
+INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcela, dt_agendada, status, total_parcelas)
+VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcela}, '${dtagendada}', '${status}', ${totalparcelas});
 ''';
   return database.rawQuery(query);
 }
@@ -48,3 +49,17 @@ WHERE id = ${id};
 }
 
 /// END EXCLUIRCATEGORIA
+
+/// BEGIN EXCLUIRLANCAMENTO
+Future performExcluirLancamento(
+  Database database, {
+  int? id,
+}) {
+  final query = '''
+DELETE FROM lancamentos
+WHERE id = ${id};
+''';
+  return database.rawQuery(query);
+}
+
+/// END EXCLUIRLANCAMENTO

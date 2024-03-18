@@ -294,6 +294,8 @@ class _TransacoesWidgetState extends State<TransacoesWidget>
                                                                 tipo:
                                                                     listViewBuscaLancamentosRow
                                                                         .tipo!,
+                                                                lancamento:
+                                                                    listViewBuscaLancamentosRow,
                                                               ),
                                                             ),
                                                           );

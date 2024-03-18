@@ -77,9 +77,10 @@ class SQLiteManager {
     double? valor,
     bool? fixo,
     String? tipotransacao,
-    int? parcelas,
+    int? parcela,
     DateTime? dtagendada,
     String? status,
+    int? totalparcelas,
   }) =>
       performNovoLancamento(
         _database,
@@ -88,9 +89,10 @@ class SQLiteManager {
         valor: valor,
         fixo: fixo,
         tipotransacao: tipotransacao,
-        parcelas: parcelas,
+        parcela: parcela,
         dtagendada: dtagendada,
         status: status,
+        totalparcelas: totalparcelas,
       );
 
   Future novaCategoria({
@@ -107,6 +109,14 @@ class SQLiteManager {
     int? id,
   }) =>
       performExcluirCategoria(
+        _database,
+        id: id,
+      );
+
+  Future excluirLancamento({
+    int? id,
+  }) =>
+      performExcluirLancamento(
         _database,
         id: id,
       );

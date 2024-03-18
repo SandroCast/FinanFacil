@@ -1,5 +1,6 @@
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/acoes_categorias_widget.dart';
+import '/components/deletar_lancamento_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -20,9 +21,11 @@ class AcoesTransacoesWidget extends StatefulWidget {
   const AcoesTransacoesWidget({
     super.key,
     required this.tipo,
+    this.lancamento,
   });
 
   final String? tipo;
+  final BuscaLancamentosRow? lancamento;
 
   @override
   State<AcoesTransacoesWidget> createState() => _AcoesTransacoesWidgetState();
@@ -58,16 +61,20 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
     super.initState();
     _model = createModel(context, () => AcoesTransacoesModel());
 
-    _model.descricaoController ??= TextEditingController();
+    _model.descricaoController ??=
+        TextEditingController(text: widget.lancamento?.descricao);
     _model.descricaoFocusNode ??= FocusNode();
 
-    _model.valorController ??= TextEditingController();
+    _model.valorController ??=
+        TextEditingController(text: widget.lancamento?.valor?.toString());
     _model.valorFocusNode ??= FocusNode();
 
-    _model.parcelasController ??= TextEditingController();
+    _model.parcelasController ??= TextEditingController(
+        text: widget.lancamento?.totalparcelas?.toString());
     _model.parcelasFocusNode ??= FocusNode();
 
-    _model.dataController ??= TextEditingController();
+    _model.dataController ??=
+        TextEditingController(text: widget.lancamento?.dtagendada);
     _model.dataFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -155,11 +162,35 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                     fontSize: 30.0,
                                   ),
                             ),
-                            Icon(
-                              Icons.delete_forever,
-                              color: FlutterFlowTheme.of(context).error,
-                              size: 35.0,
-                            ),
+                            if (widget.lancamento != null)
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    useSafeArea: true,
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: DeletarLancamentoWidget(
+                                          lancamento: widget.lancamento!,
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                },
+                                child: Icon(
+                                  Icons.delete_forever,
+                                  color: FlutterFlowTheme.of(context).error,
+                                  size: 35.0,
+                                ),
+                              ),
                           ],
                         ),
                       ),
@@ -245,7 +276,10 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                     child: FlutterFlowDropDown<int>(
                                       controller:
                                           _model.categoriaValueController ??=
-                                              FormFieldController<int>(null),
+                                              FormFieldController<int>(
+                                        _model.categoriaValue ??=
+                                            widget.lancamento?.id,
+                                      ),
                                       options: List<int>.from(
                                           containerBuscaCategoriasRowList
                                               .map((e) => e.id)
@@ -398,7 +432,8 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                               width: 150.0,
                               decoration: BoxDecoration(),
                               child: SwitchListTile.adaptive(
-                                value: _model.switchListFixoValue ??= false,
+                                value: _model.switchListFixoValue ??=
+                                    widget.lancamento!.fixo!,
                                 onChanged: (newValue) async {
                                   setState(() =>
                                       _model.switchListFixoValue = newValue!);
@@ -442,7 +477,10 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                   child: FlutterFlowDropDown<String>(
                                     controller: _model.avistaValueController ??=
                                         FormFieldController<String>(
-                                      _model.avistaValue ??= 'A VISTA',
+                                      _model.avistaValue ??=
+                                          widget.lancamento != null
+                                              ? widget.lancamento?.avista
+                                              : 'A VISTA',
                                     ),
                                     options: List<String>.from(
                                         ['A VISTA', 'PARCELADO']),
@@ -726,7 +764,9 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                                 .statusReceitaValueController ??=
                                             FormFieldController<String>(
                                           _model.statusReceitaValue ??=
-                                              'PENDENTE',
+                                              widget.lancamento != null
+                                                  ? widget.lancamento?.status
+                                                  : 'PENDENTE',
                                         ),
                                         options: List<String>.from(
                                             ['PENDENTE', 'RECEBIDO']),
@@ -813,7 +853,9 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                                 .statusDespesaValueController ??=
                                             FormFieldController<String>(
                                           _model.statusDespesaValue ??=
-                                              'PENDENTE',
+                                              widget.lancamento != null
+                                                  ? widget.lancamento?.status
+                                                  : 'PENDENTE',
                                         ),
                                         options: List<String>.from(
                                             ['PENDENTE', 'PAGO']),
@@ -901,12 +943,13 @@ class _AcoesTransacoesWidgetState extends State<AcoesTransacoesWidget>
                                             _model.valorController.text)),
                                     fixo: _model.switchListFixoValue!,
                                     tipotransacao: _model.avistaValue,
-                                    parcelas: int.tryParse(
+                                    parcela: int.tryParse(
                                         _model.parcelasController.text),
                                     dtagendada: _model.datePicked!,
                                     status: widget.tipo == 'Receita'
                                         ? _model.statusReceitaValue!
                                         : _model.statusDespesaValue!,
+                                    totalparcelas: 1,
                                   );
                                   Navigator.pop(context);
                                 },
