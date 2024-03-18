@@ -147,32 +147,43 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Container(
-                                  width: 140.0,
-                                  height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x33000000),
-                                        offset: Offset(0.0, 2.0),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Text(
-                                    'Categoria',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 16.0,
-                                        ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    setState(() {
+                                      FFAppState().abaCategoria = 1;
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 140.0,
+                                    height: 40.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Text(
+                                      'Categoria',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 16.0,
+                                          ),
+                                    ),
                                   ),
                                 ),
                                 Opacity(
@@ -197,32 +208,43 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Container(
-                                  width: 140.0,
-                                  height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x33000000),
-                                        offset: Offset(0.0, 2.0),
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Text(
-                                    'Nova Categoria',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 16.0,
-                                        ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    setState(() {
+                                      FFAppState().abaCategoria = 2;
+                                    });
+                                  },
+                                  child: Container(
+                                    width: 140.0,
+                                    height: 40.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0.0, 2.0),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Text(
+                                      'Nova Categoria',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 16.0,
+                                          ),
+                                    ),
                                   ),
                                 ),
                                 Opacity(
