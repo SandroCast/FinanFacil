@@ -1,5 +1,4 @@
 import '/backend/sqlite/sqlite_manager.dart';
-import '/components/deletar_categoria_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -285,198 +284,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                               20.0, 0.0, 20.0, 20.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            children: [
-                              FutureBuilder<List<BuscaTodasAsCategoriasRow>>(
-                                future: SQLiteManager.instance
-                                    .buscaTodasAsCategorias(),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  final listViewBuscaTodasAsCategoriasRowList =
-                                      snapshot.data!;
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        listViewBuscaTodasAsCategoriasRowList
-                                            .length,
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewBuscaTodasAsCategoriasRow =
-                                          listViewBuscaTodasAsCategoriasRowList[
-                                              listViewIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 10.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
-                                                child: Container(
-                                                  width: 50.0,
-                                                  height: 30.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 4.0,
-                                                        color:
-                                                            Color(0x33000000),
-                                                        offset:
-                                                            Offset(0.0, 2.0),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
-                                                  ),
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -1.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                10.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          listViewBuscaTodasAsCategoriasRow
-                                                              .titulo!,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: listViewBuscaTodasAsCategoriasRow
-                                                                            .tipo ==
-                                                                        'Receita'
-                                                                    ? Color(
-                                                                        0xFF00B048)
-                                                                    : Color(
-                                                                        0xFFFD0101),
-                                                                fontSize: 14.0,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          listViewBuscaTodasAsCategoriasRow
-                                                              .tipo!,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                color: listViewBuscaTodasAsCategoriasRow
-                                                                            .tipo ==
-                                                                        'Receita'
-                                                                    ? Color(
-                                                                        0xFF00B048)
-                                                                    : Color(
-                                                                        0xFFFD0101),
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  useSafeArea: true,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child:
-                                                          DeletarCategoriaWidget(
-                                                        id: listViewBuscaTodasAsCategoriasRow
-                                                            .id!,
-                                                        titulo:
-                                                            listViewBuscaTodasAsCategoriasRow
-                                                                .titulo!,
-                                                        tipo:
-                                                            listViewBuscaTodasAsCategoriasRow
-                                                                .tipo!,
-                                                      ),
-                                                    );
-                                                  },
-                                                ).then((value) =>
-                                                    safeSetState(() {}));
-                                              },
-                                              child: Container(
-                                                width: 30.0,
-                                                height: 30.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 4.0,
-                                                      color: Color(0x33000000),
-                                                      offset: Offset(0.0, 2.0),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
-                                                ),
-                                                child: Icon(
-                                                  Icons.delete_outline,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ],
+                            children: [],
                           ),
                         ),
                       if (FFAppState().abaCategoria == 2)
@@ -488,7 +296,9 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                   20.0, 0.0, 20.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.tipoValueController ??=
-                                    FormFieldController<String>(null),
+                                    FormFieldController<String>(
+                                  _model.tipoValue ??= widget.tipo,
+                                ),
                                 options: ['Receita', 'Despesa'],
                                 onChanged: (val) =>
                                     setState(() => _model.tipoValue = val),
@@ -518,6 +328,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                 margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 4.0),
                                 hidesUnderline: true,
+                                disabled:
+                                    widget.tipo != null && widget.tipo != '',
                                 isOverButton: false,
                                 isSearchable: false,
                                 isMultiSelect: false,
