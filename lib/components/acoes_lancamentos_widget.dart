@@ -826,7 +826,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     if (FFAppState().campoObrigatorio ==
                                         'parcelasNum')
                                       Text(
-                                        'Apenas Números',
+                                        'Apenas Número',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -1324,9 +1324,12 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           });
                                           return;
                                         } else {
-                                          if (!functions.verificaSeApenasNumero(
-                                              _model
-                                                  .parcelasController.text)!) {
+                                          if ((_model.fixoValue == false) &&
+                                              (_model.avistaValue ==
+                                                  'PARCELADO') &&
+                                              !functions.verificaSeApenasNumero(
+                                                  _model.parcelasController
+                                                      .text)!) {
                                             setState(() {
                                               FFAppState().campoObrigatorio =
                                                   'parcelasNum';
