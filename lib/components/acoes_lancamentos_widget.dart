@@ -1117,6 +1117,20 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               Expanded(
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
+                                      return;
+                                    }
+                                    if (_model.categoriaValue == null) {
+                                      return;
+                                    }
+                                    if (_model.avistaValue == null) {
+                                      return;
+                                    }
+                                    if (_model.datePicked == null) {
+                                      return;
+                                    }
                                     if (!(widget.lancamento != null)) {
                                       await SQLiteManager.instance
                                           .novoLancamento(
