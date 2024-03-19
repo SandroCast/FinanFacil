@@ -1282,10 +1282,11 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       });
                                       return;
                                     } else {
-                                      if (_model.precoDigitadoController.text ==
-                                              null ||
-                                          _model.precoDigitadoController.text ==
-                                              '') {
+                                      if (functions
+                                              .salvaPrecoBanco(_model
+                                                  .precoVisivelController.text)
+                                              .toString() ==
+                                          '0') {
                                         setState(() {
                                           FFAppState().campoObrigatorio =
                                               'valor';
