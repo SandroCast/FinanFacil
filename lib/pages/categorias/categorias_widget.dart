@@ -784,7 +784,9 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                       ),
                                     ),
                                     Text(
-                                      _model.datePicked1!.toString(),
+                                      _model.datePicked1 != null
+                                          ? _model.datePicked1!.toString()
+                                          : getCurrentTimestamp.toString(),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
