@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -61,7 +62,6 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        FFAppState().msgErro = '';
         FFAppState().abaCategoria = widget.aba!;
       });
     });
@@ -543,107 +543,55 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
-                              child: FlutterFlowDropDown<String>(
-                                controller: _model.tipoValueController ??=
-                                    FormFieldController<String>(
-                                  _model.tipoValue ??= widget.tipo,
-                                ),
-                                options: ['Receita', 'Despesa'],
-                                onChanged: (val) =>
-                                    setState(() => _model.tipoValue = val),
-                                width: double.infinity,
-                                height: 50.0,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
+                                  20.0, 0.0, 20.0, 10.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  FlutterFlowDropDown<String>(
+                                    controller: _model.tipoValueController ??=
+                                        FormFieldController<String>(
+                                      _model.tipoValue ??= widget.tipo,
+                                    ),
+                                    options: ['Receita', 'Despesa'],
+                                    onChanged: (val) =>
+                                        setState(() => _model.tipoValue = val),
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                        ),
+                                    hintText: 'Tipo',
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down_rounded,
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
+                                      size: 24.0,
                                     ),
-                                hintText: 'Tipo',
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 24.0,
-                                ),
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                elevation: 2.0,
-                                borderColor:
-                                    FlutterFlowTheme.of(context).alternate,
-                                borderWidth: 2.0,
-                                borderRadius: 8.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 4.0, 16.0, 4.0),
-                                hidesUnderline: true,
-                                disabled:
-                                    widget.tipo != null && widget.tipo != '',
-                                isOverButton: false,
-                                isSearchable: false,
-                                isMultiSelect: false,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 10.0, 20.0, 0.0),
-                              child: TextFormField(
-                                controller: _model.categoriaController,
-                                focusNode: _model.categoriaFocusNode,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  hintText: 'Categoria',
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    elevation: 2.0,
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderWidth: 2.0,
+                                    borderRadius: 8.0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 4.0, 16.0, 4.0),
+                                    hidesUnderline: true,
+                                    disabled: widget.tipo != null &&
+                                        widget.tipo != '',
+                                    isOverButton: false,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
                                   ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 2.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.categoriaControllerValidator
-                                    .asValidator(context),
-                              ),
-                            ),
-                            if (FFAppState().msgErro != null &&
-                                FFAppState().msgErro != '')
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
+                                  if (FFAppState().campoObrigatorio ==
+                                      'novaCategoriaTipo')
                                     Text(
-                                      FFAppState().msgErro,
+                                      'Campo Obrigatório',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -652,9 +600,96 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                                 .error,
                                           ),
                                     ),
-                                  ],
-                                ),
+                                ],
                               ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 20.0, 10.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  TextFormField(
+                                    controller: _model.categoriaController,
+                                    focusNode: _model.categoriaFocusNode,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                      hintText: 'Categoria',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model
+                                        .categoriaControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                  if (FFAppState().campoObrigatorio ==
+                                      'novaCategoriaCategoria')
+                                    Text(
+                                      'Campo Obrigatório',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                          ),
+                                    ),
+                                  if (FFAppState().campoObrigatorio ==
+                                      'categoriaExistente')
+                                    Text(
+                                      'Já existe uma categoria com esse nome.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                          ),
+                                    ),
+                                ],
+                              ),
+                            ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 30.0, 20.0, 10.0),
@@ -666,25 +701,37 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         var _shouldSetState = false;
-                                        if (!(_model.categoriaController.text !=
-                                                null &&
-                                            _model.categoriaController.text !=
-                                                '')) {
+                                        setState(() {
+                                          FFAppState().campoObrigatorio = '';
+                                        });
+                                        if (_model.tipoValue == null ||
+                                            _model.tipoValue == '') {
                                           setState(() {
-                                            FFAppState().msgErro =
-                                                'Campo Obrigatório**';
+                                            FFAppState().campoObrigatorio =
+                                                'novaCategoriaTipo';
                                           });
                                           if (_shouldSetState) setState(() {});
                                           return;
+                                        } else {
+                                          if (_model.categoriaController.text ==
+                                                  null ||
+                                              _model.categoriaController.text ==
+                                                  '') {
+                                            setState(() {
+                                              FFAppState().campoObrigatorio =
+                                                  'novaCategoriaCategoria';
+                                            });
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
                                         }
-                                        setState(() {
-                                          FFAppState().msgErro = '';
-                                        });
+
                                         _model.retornoVarificaCategoria =
                                             await SQLiteManager.instance
                                                 .pesquisaTituloCategoria(
-                                          titulo:
-                                              _model.categoriaController.text,
+                                          titulo: functions.letrasMaiusculas(
+                                              _model.categoriaController.text),
                                           tipo: _model.tipoValue,
                                         );
                                         _shouldSetState = true;
@@ -693,8 +740,9 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             1) {
                                           await SQLiteManager.instance
                                               .novaCategoria(
-                                            titulo:
-                                                _model.categoriaController.text,
+                                            titulo: functions.letrasMaiusculas(
+                                                _model
+                                                    .categoriaController.text),
                                             tipo: _model.tipoValue,
                                           );
                                           if (widget.tipo != null &&
@@ -707,8 +755,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                           }
                                         } else {
                                           setState(() {
-                                            FFAppState().msgErro =
-                                                'Já existe uma categoria com esse nome.';
+                                            FFAppState().campoObrigatorio =
+                                                'categoriaExistente';
                                           });
                                         }
 

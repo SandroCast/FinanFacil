@@ -29,12 +29,6 @@ class FFAppState extends ChangeNotifier {
     _Flutuante = _value;
   }
 
-  String _msgErro = '';
-  String get msgErro => _msgErro;
-  set msgErro(String _value) {
-    _msgErro = _value;
-  }
-
   int _abaCategoria = 0;
   int get abaCategoria => _abaCategoria;
   set abaCategoria(int _value) {
