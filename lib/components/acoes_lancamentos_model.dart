@@ -21,10 +21,19 @@ import 'package:provider/provider.dart';
 class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   ///  State fields for stateful widgets in this component.
 
+  final formKey = GlobalKey<FormState>();
   // State field(s) for descricao widget.
   FocusNode? descricaoFocusNode;
   TextEditingController? descricaoController;
   String? Function(BuildContext, String?)? descricaoControllerValidator;
+  String? _descricaoControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo é obrigatório';
+    }
+
+    return null;
+  }
+
   // State field(s) for categoria widget.
   int? categoriaValue;
   FormFieldController<int>? categoriaValueController;
@@ -32,6 +41,14 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   FocusNode? precoVisivelFocusNode;
   TextEditingController? precoVisivelController;
   String? Function(BuildContext, String?)? precoVisivelControllerValidator;
+  String? _precoVisivelControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for precoDigitado widget.
   FocusNode? precoDigitadoFocusNode;
   TextEditingController? precoDigitadoController;
@@ -61,7 +78,10 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    descricaoControllerValidator = _descricaoControllerValidator;
+    precoVisivelControllerValidator = _precoVisivelControllerValidator;
+  }
 
   @override
   void dispose() {
