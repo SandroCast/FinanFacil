@@ -112,5 +112,5 @@ double? numeroPositivo(double num) {
 }
 
 String? letrasMaiusculas(String texto) {
-  return texto.toUpperCase();
+  return texto.replaceAll(RegExp(r'\s+'), ' ').trim().toUpperCase();
 }
