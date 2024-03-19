@@ -824,6 +824,19 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       ),
                                     ),
                                     if (FFAppState().campoObrigatorio ==
+                                        'parcelasNum')
+                                      Text(
+                                        'Apenas Números',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                            ),
+                                      ),
+                                    if (FFAppState().campoObrigatorio ==
                                         'parcelas')
                                       Text(
                                         'Campo Obrigatório',
@@ -1311,28 +1324,26 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           });
                                           return;
                                         } else {
-                                          if (_model.datePicked == null) {
+                                          if (!functions.verificaSeApenasNumero(
+                                              _model
+                                                  .parcelasController.text)!) {
                                             setState(() {
                                               FFAppState().campoObrigatorio =
-                                                  'data';
+                                                  'parcelasNum';
                                             });
                                             return;
                                           } else {
-                                            if ((widget.tipo == 'Receita') &&
-                                                (_model.statusReceitaValue ==
-                                                        null ||
-                                                    _model.statusReceitaValue ==
-                                                        '')) {
+                                            if (_model.datePicked == null) {
                                               setState(() {
                                                 FFAppState().campoObrigatorio =
-                                                    'status';
+                                                    'data';
                                               });
                                               return;
                                             } else {
-                                              if ((widget.tipo == 'Despesa') &&
-                                                  (_model.statusDespesaValue ==
+                                              if ((widget.tipo == 'Receita') &&
+                                                  (_model.statusReceitaValue ==
                                                           null ||
-                                                      _model.statusDespesaValue ==
+                                                      _model.statusReceitaValue ==
                                                           '')) {
                                                 setState(() {
                                                   FFAppState()
@@ -1341,108 +1352,90 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 });
                                                 return;
                                               } else {
-                                                if (!(widget.lancamento !=
-                                                    null)) {
-                                                  await SQLiteManager.instance
-                                                      .novoLancamento(
-                                                    descricao: _model
-                                                        .descricaoController
-                                                        .text,
-                                                    idcategoria:
-                                                        _model.categoriaValue!,
-                                                    valor: widget.tipo ==
-                                                            'Receita'
-                                                        ? functions
-                                                            .salvaPrecoBanco(_model
-                                                                .precoVisivelController
-                                                                .text)!
-                                                        : (-(functions
-                                                            .salvaPrecoBanco(_model
-                                                                .precoVisivelController
-                                                                .text)!)),
-                                                    fixo: _model.fixoValue!
-                                                        ? 1
-                                                        : 0,
-                                                    tipotransacao:
-                                                        _model.avistaValue,
-                                                    parcela: int.tryParse(_model
-                                                        .parcelasController
-                                                        .text),
-                                                    dtagendada:
-                                                        _model.datePicked!,
-                                                    status: widget
-                                                                .tipo ==
-                                                            'Receita'
-                                                        ? _model
-                                                            .statusReceitaValue!
-                                                        : _model
-                                                            .statusDespesaValue!,
-                                                    totalparcelas: int.tryParse(
-                                                        _model
-                                                            .parcelasController
-                                                            .text),
-                                                  );
-                                                  Navigator.pop(context);
-                                                  if (widget.ativo == 1) {
-                                                    context.goNamed(
-                                                      'Inicio',
-                                                      extra: <String, dynamic>{
-                                                        kTransitionInfoKey:
-                                                            TransitionInfo(
-                                                          hasTransition: true,
-                                                          transitionType:
-                                                              PageTransitionType
-                                                                  .fade,
-                                                          duration: Duration(
-                                                              milliseconds: 0),
-                                                        ),
-                                                      },
-                                                    );
-                                                  } else {
-                                                    if (widget.ativo == 2) {
-                                                      context.goNamed(
-                                                        'Lancamentos',
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          kTransitionInfoKey:
-                                                              TransitionInfo(
-                                                            hasTransition: true,
-                                                            transitionType:
-                                                                PageTransitionType
-                                                                    .fade,
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    0),
-                                                          ),
-                                                        },
-                                                      );
-                                                    } else {
-                                                      if (widget.ativo == 3) {
-                                                        context.goNamed(
-                                                          'Categorias',
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            kTransitionInfoKey:
-                                                                TransitionInfo(
-                                                              hasTransition:
-                                                                  true,
-                                                              transitionType:
-                                                                  PageTransitionType
-                                                                      .fade,
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      0),
-                                                            ),
-                                                          },
-                                                        );
-                                                      }
-                                                    }
-                                                  }
+                                                if ((widget.tipo ==
+                                                        'Despesa') &&
+                                                    (_model.statusDespesaValue ==
+                                                            null ||
+                                                        _model.statusDespesaValue ==
+                                                            '')) {
+                                                  setState(() {
+                                                    FFAppState()
+                                                            .campoObrigatorio =
+                                                        'status';
+                                                  });
+                                                  return;
                                                 }
-                                                return;
                                               }
                                             }
                                           }
+                                        }
+                                      }
+                                    }
+                                  }
+
+                                  if (!(widget.lancamento != null)) {
+                                    await SQLiteManager.instance.novoLancamento(
+                                      descricao:
+                                          _model.descricaoController.text,
+                                      idcategoria: _model.categoriaValue!,
+                                      valor: widget.tipo == 'Receita'
+                                          ? functions.salvaPrecoBanco(_model
+                                              .precoVisivelController.text)!
+                                          : (-(functions.salvaPrecoBanco(_model
+                                              .precoVisivelController.text)!)),
+                                      fixo: _model.fixoValue! ? 1 : 0,
+                                      tipotransacao: _model.avistaValue,
+                                      parcela: int.tryParse(
+                                          _model.parcelasController.text),
+                                      dtagendada: _model.datePicked!,
+                                      status: widget.tipo == 'Receita'
+                                          ? _model.statusReceitaValue!
+                                          : _model.statusDespesaValue!,
+                                      totalparcelas: int.tryParse(
+                                          _model.parcelasController.text),
+                                    );
+                                    Navigator.pop(context);
+                                    if (widget.ativo == 1) {
+                                      context.goNamed(
+                                        'Inicio',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
+                                    } else {
+                                      if (widget.ativo == 2) {
+                                        context.goNamed(
+                                          'Lancamentos',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
+                                        );
+                                      } else {
+                                        if (widget.ativo == 3) {
+                                          context.goNamed(
+                                            'Categorias',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
                                         }
                                       }
                                     }

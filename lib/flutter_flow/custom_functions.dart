@@ -74,3 +74,11 @@ String? converteValorParaReal(String? valor) {
     return 'R\$ ' + '$parteInteira,$parteDecimal';
   }
 }
+
+bool? verificaSeApenasNumero(String valor) {
+  // Expressão regular para verificar se a string contém apenas números
+  final RegExp regex = RegExp(r'^[0-9]+$');
+
+  // Testa se a string satisfaz a expressão regular
+  return regex.hasMatch(valor);
+}
