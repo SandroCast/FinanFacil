@@ -1282,8 +1282,14 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       });
                                       return;
                                     } else {
-                                      if (functions.salvaPrecoBanco(_model
-                                              .precoVisivelController.text)! <
+                                      if ((_model.precoVisivelController.text !=
+                                                      null &&
+                                                  _model.precoVisivelController
+                                                          .text !=
+                                                      ''
+                                              ? functions.salvaPrecoBanco(_model
+                                                  .precoVisivelController.text)!
+                                              : 0.0) <
                                           1.0) {
                                         setState(() {
                                           FFAppState().campoObrigatorio =
