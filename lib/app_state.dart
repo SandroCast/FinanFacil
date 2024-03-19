@@ -46,4 +46,16 @@ class FFAppState extends ChangeNotifier {
   set campoObrigatorio(String _value) {
     _campoObrigatorio = _value;
   }
+
+  int _loop = 0;
+  int get loop => _loop;
+  set loop(int _value) {
+    _loop = _value;
+  }
+
+  DateTime? _DataTime;
+  DateTime? get DataTime => _DataTime;
+  set DataTime(DateTime? _value) {
+    _DataTime = _value;
+  }
 }

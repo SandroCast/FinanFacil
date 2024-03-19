@@ -82,3 +82,27 @@ bool? verificaSeApenasNumero(String valor) {
   // Testa se a string satisfaz a expressão regular
   return regex.hasMatch(valor);
 }
+
+int? stringParaInt(String parcelas) {
+  return int.parse(parcelas);
+}
+
+DateTime? adicionarUmMes(DateTime data) {
+  int year = data.year;
+  int month = data.month + 1;
+  int day = data.day;
+
+  // Se o mês for 13, ajuste para janeiro do próximo ano.
+  if (month == 13) {
+    month = 1;
+    year++;
+  }
+
+  // Verifique se o dia existe no próximo mês, senão pegue o último dia do mês.
+  if (day > DateTime(year, month + 1, 0).day) {
+    day = DateTime(year, month + 1, 0).day;
+  }
+
+  return DateTime(year, month, day, data.hour, data.minute, data.second,
+      data.millisecond, data.microsecond);
+}

@@ -1377,26 +1377,72 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                   }
 
                                   if (!(widget.lancamento != null)) {
-                                    await SQLiteManager.instance.novoLancamento(
-                                      descricao:
-                                          _model.descricaoController.text,
-                                      idcategoria: _model.categoriaValue!,
-                                      valor: widget.tipo == 'Receita'
-                                          ? functions.salvaPrecoBanco(_model
-                                              .precoVisivelController.text)!
-                                          : (-(functions.salvaPrecoBanco(_model
-                                              .precoVisivelController.text)!)),
-                                      fixo: _model.fixoValue! ? 1 : 0,
-                                      tipotransacao: _model.avistaValue,
-                                      parcela: int.tryParse(
-                                          _model.parcelasController.text),
-                                      dtagendada: _model.datePicked!,
-                                      status: widget.tipo == 'Receita'
-                                          ? _model.statusReceitaValue!
-                                          : _model.statusDespesaValue!,
-                                      totalparcelas: int.tryParse(
-                                          _model.parcelasController.text),
-                                    );
+                                    if ((_model.fixoValue == false) &&
+                                        (_model.avistaValue == 'PARCELADO')) {
+                                      setState(() {
+                                        FFAppState().DataTime =
+                                            _model.datePicked;
+                                      });
+                                      setState(() {
+                                        FFAppState().loop = 1;
+                                      });
+                                      while (functions.stringParaInt(_model
+                                              .parcelasController.text)! >=
+                                          FFAppState().loop) {
+                                        await SQLiteManager.instance
+                                            .novoLancamento(
+                                          descricao:
+                                              _model.descricaoController.text,
+                                          idcategoria: _model.categoriaValue!,
+                                          valor: widget.tipo == 'Receita'
+                                              ? functions.salvaPrecoBanco(_model
+                                                  .precoVisivelController.text)!
+                                              : (-(functions.salvaPrecoBanco(
+                                                  _model.precoVisivelController
+                                                      .text)!)),
+                                          fixo: _model.fixoValue! ? 1 : 0,
+                                          tipotransacao: _model.avistaValue,
+                                          parcela: FFAppState().loop,
+                                          dtagendada: FFAppState().DataTime!,
+                                          status: widget.tipo == 'Receita'
+                                              ? _model.statusReceitaValue!
+                                              : _model.statusDespesaValue!,
+                                          totalparcelas: int.tryParse(
+                                              _model.parcelasController.text),
+                                        );
+                                        setState(() {
+                                          FFAppState().DataTime =
+                                              functions.adicionarUmMes(
+                                                  FFAppState().DataTime!);
+                                        });
+                                        setState(() {
+                                          FFAppState().loop =
+                                              FFAppState().loop + 1;
+                                        });
+                                      }
+                                    } else {
+                                      await SQLiteManager.instance
+                                          .novoLancamento(
+                                        descricao:
+                                            _model.descricaoController.text,
+                                        idcategoria: _model.categoriaValue!,
+                                        valor: widget.tipo == 'Receita'
+                                            ? functions.salvaPrecoBanco(_model
+                                                .precoVisivelController.text)!
+                                            : (-(functions.salvaPrecoBanco(
+                                                _model.precoVisivelController
+                                                    .text)!)),
+                                        fixo: _model.fixoValue! ? 1 : 0,
+                                        tipotransacao: _model.avistaValue,
+                                        dtagendada: _model.datePicked!,
+                                        status: widget.tipo == 'Receita'
+                                            ? _model.statusReceitaValue!
+                                            : _model.statusDespesaValue!,
+                                        parcela: 0,
+                                        totalparcelas: 0,
+                                      );
+                                    }
+
                                     Navigator.pop(context);
                                     if (widget.ativo == 1) {
                                       context.goNamed(
