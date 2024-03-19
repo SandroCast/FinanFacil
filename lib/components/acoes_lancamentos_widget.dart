@@ -1282,8 +1282,12 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                   setState(() {
                                     FFAppState().campoObrigatorio = '';
                                   });
-                                  if (_model.descricaoController.text == null ||
-                                      _model.descricaoController.text == '') {
+                                  if (functions.letrasMaiusculas(_model
+                                              .descricaoController.text) ==
+                                          null ||
+                                      functions.letrasMaiusculas(_model
+                                              .descricaoController.text) ==
+                                          '') {
                                     setState(() {
                                       FFAppState().campoObrigatorio =
                                           'descricao';
@@ -1393,8 +1397,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           FFAppState().loop) {
                                         await SQLiteManager.instance
                                             .novoLancamento(
-                                          descricao:
-                                              _model.descricaoController.text,
+                                          descricao: functions.letrasMaiusculas(
+                                              _model.descricaoController.text)!,
                                           idcategoria: _model.categoriaValue!,
                                           valor: widget.tipo == 'Receita'
                                               ? functions.salvaPrecoBanco(_model
@@ -1425,8 +1429,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     } else {
                                       await SQLiteManager.instance
                                           .novoLancamento(
-                                        descricao:
-                                            _model.descricaoController.text,
+                                        descricao: functions.letrasMaiusculas(
+                                            _model.descricaoController.text)!,
                                         idcategoria: _model.categoriaValue!,
                                         valor: widget.tipo == 'Receita'
                                             ? functions.salvaPrecoBanco(_model

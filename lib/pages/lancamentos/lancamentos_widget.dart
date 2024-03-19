@@ -360,6 +360,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                             .override(
                                                                               fontFamily: 'Readex Pro',
                                                                               color: listViewBuscaLancamentosRow.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
+                                                                              fontSize: 13.0,
                                                                               fontWeight: FontWeight.w500,
                                                                             ),
                                                                       ),
