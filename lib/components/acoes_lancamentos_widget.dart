@@ -7,6 +7,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -67,10 +69,24 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
         TextEditingController(text: widget.lancamento?.descricao);
     _model.descricaoFocusNode ??= FocusNode();
 
-    _model.valorController ??=
-        TextEditingController(text: widget.lancamento?.valor?.toString());
-    _model.valorFocusNode ??= FocusNode();
+    _model.precoVisivelController ??= TextEditingController(
+        text: formatNumber(
+      widget.lancamento?.valor,
+      formatType: FormatType.custom,
+      currency: 'R\$ ',
+      format: ',##0.00#',
+      locale: 'pt_br',
+    ));
+    _model.precoVisivelFocusNode ??= FocusNode();
 
+    _model.precoDigitadoController ??= TextEditingController(
+        text: widget.lancamento?.valor != null
+            ? functions
+                .converterDoubleParaInt(widget.lancamento?.valor)
+                .toString()
+            : '0');
+    _model.precoDigitadoFocusNode ??= FocusNode();
+    _model.precoDigitadoFocusNode!.addListener(() => setState(() {}));
     _model.parcelasController ??= TextEditingController(
         text: widget.lancamento?.totalparcelas?.toString());
     _model.parcelasFocusNode ??= FocusNode();
@@ -373,60 +389,194 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Flexible(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 10.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.valorController,
-                                  focusNode: _model.valorFocusNode,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Valor',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
+                            Expanded(
+                              child: Container(
+                                height: 50.0,
+                                child: Stack(
+                                  children: [
+                                    TextFormField(
+                                      controller: _model.precoVisivelController,
+                                      focusNode: _model.precoVisivelFocusNode,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText: 'Valor',
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              fontSize: 14.0,
+                                            ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color: Color(0xFF95A1AC),
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color:
+                                                (_model.precoDigitadoFocusNode
+                                                                ?.hasFocus ??
+                                                            false) ==
+                                                        true
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary
+                                                    : Color(0xFFE0E3E7),
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 2.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        filled: true,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        contentPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                16.0, 24.0, 0.0, 24.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            fontSize: 16.0,
+                                          ),
+                                      keyboardType: TextInputType.number,
+                                      validator: _model
+                                          .precoVisivelControllerValidator
+                                          .asValidator(context),
                                     ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
+                                    Opacity(
+                                      opacity: 0.0,
+                                      child: TextFormField(
+                                        controller:
+                                            _model.precoDigitadoController,
+                                        focusNode:
+                                            _model.precoDigitadoFocusNode,
+                                        onChanged: (_) => EasyDebounce.debounce(
+                                          '_model.precoDigitadoController',
+                                          Duration(milliseconds: 0),
+                                          () async {
+                                            setState(() {
+                                              _model.precoVisivelController
+                                                      ?.text =
+                                                  functions.converteValorParaReal(
+                                                      _model
+                                                          .precoDigitadoController
+                                                          .text)!;
+                                            });
+                                          },
+                                        ),
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: 'Valor do Produto',
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 14.0,
+                                              ),
+                                          alignLabelWithHint: false,
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 16.0,
+                                              ),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          errorBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          focusedErrorBorder:
+                                              OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 2.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.transparent,
+                                          contentPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 35.0, 0.0, 35.0),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              fontSize: 1.0,
+                                            ),
+                                        keyboardType: TextInputType.number,
+                                        validator: _model
+                                            .precoDigitadoControllerValidator
+                                            .asValidator(context),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  keyboardType:
-                                      const TextInputType.numberWithOptions(
-                                          decimal: true),
-                                  validator: _model.valorControllerValidator
-                                      .asValidator(context),
+                                  ],
                                 ),
                               ),
                             ),
@@ -940,10 +1090,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           _model.descricaoController.text,
                                       idcategoria: _model.categoriaValue!,
                                       valor: widget.tipo == 'Receita'
-                                          ? double.parse(
-                                              _model.valorController.text)
-                                          : (-double.parse(
-                                              _model.valorController.text)),
+                                          ? functions.salvaPrecoBanco(_model
+                                              .precoVisivelController.text)!
+                                          : (-(functions.salvaPrecoBanco(_model
+                                              .precoVisivelController.text)!)),
                                       fixo: _model.fixoValue! ? 1 : 0,
                                       tipotransacao: _model.avistaValue,
                                       parcela: int.tryParse(

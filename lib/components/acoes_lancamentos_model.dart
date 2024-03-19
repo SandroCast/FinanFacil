@@ -7,7 +7,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'acoes_lancamentos_widget.dart' show AcoesLancamentosWidget;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -26,10 +28,14 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   // State field(s) for categoria widget.
   int? categoriaValue;
   FormFieldController<int>? categoriaValueController;
-  // State field(s) for valor widget.
-  FocusNode? valorFocusNode;
-  TextEditingController? valorController;
-  String? Function(BuildContext, String?)? valorControllerValidator;
+  // State field(s) for precoVisivel widget.
+  FocusNode? precoVisivelFocusNode;
+  TextEditingController? precoVisivelController;
+  String? Function(BuildContext, String?)? precoVisivelControllerValidator;
+  // State field(s) for precoDigitado widget.
+  FocusNode? precoDigitadoFocusNode;
+  TextEditingController? precoDigitadoController;
+  String? Function(BuildContext, String?)? precoDigitadoControllerValidator;
   // State field(s) for fixo widget.
   bool? fixoValue;
   // State field(s) for avista widget.
@@ -62,8 +68,11 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
     descricaoFocusNode?.dispose();
     descricaoController?.dispose();
 
-    valorFocusNode?.dispose();
-    valorController?.dispose();
+    precoVisivelFocusNode?.dispose();
+    precoVisivelController?.dispose();
+
+    precoDigitadoFocusNode?.dispose();
+    precoDigitadoController?.dispose();
 
     parcelasFocusNode?.dispose();
     parcelasController?.dispose();
