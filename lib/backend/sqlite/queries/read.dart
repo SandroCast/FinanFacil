@@ -58,7 +58,7 @@ Future<List<BuscaLancamentoPorPeriodoRow>> performBuscaLancamentoPorPeriodo(
   final query = '''
 select titulo, tipo, sum(valor) as valor from lancamentos
 join categorias on id_categoria = lancamentos.id
-where DATE(dt_agendada) BETWEEN DATE('${inicio}') AND DATE('${fim}')
+where dt_agendada BETWEEN '${inicio}' AND '${fim}'
 group by titulo, tipo;
 ''';
   return _readQuery(database, query, (d) => BuscaLancamentoPorPeriodoRow(d));
