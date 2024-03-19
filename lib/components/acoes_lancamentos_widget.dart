@@ -78,7 +78,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
 
     _model.precoVisivelController ??= TextEditingController(
         text: formatNumber(
-      functions.numeroPositivo(widget.lancamento!.valor!),
+      functions.numeroPositivo(
+          widget.lancamento?.valor != null ? widget.lancamento!.valor! : 0.0),
       formatType: FormatType.custom,
       currency: 'R\$ ',
       format: ',##0.00#',
