@@ -591,7 +591,6 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                               child: TextFormField(
                                 controller: _model.categoriaController,
                                 focusNode: _model.categoriaFocusNode,
-                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle:
