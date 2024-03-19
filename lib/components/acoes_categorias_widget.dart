@@ -713,9 +713,13 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                           if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
-                                          if (_model.categoriaController.text ==
+                                          if (functions.letrasMaiusculas(_model
+                                                      .categoriaController
+                                                      .text) ==
                                                   null ||
-                                              _model.categoriaController.text ==
+                                              functions.letrasMaiusculas(_model
+                                                      .categoriaController
+                                                      .text) ==
                                                   '') {
                                             setState(() {
                                               FFAppState().campoObrigatorio =
