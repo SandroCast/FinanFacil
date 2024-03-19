@@ -783,6 +783,11 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                         ),
                                       ),
                                     ),
+                                    Text(
+                                      _model.datePicked1!.toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
                                   ],
                                 ),
                               ),
