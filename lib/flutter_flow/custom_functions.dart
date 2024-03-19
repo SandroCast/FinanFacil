@@ -106,3 +106,11 @@ DateTime? adicionarUmMes(DateTime data) {
   return DateTime(year, month, day, data.hour, data.minute, data.second,
       data.millisecond, data.microsecond);
 }
+
+double? numeroPositivo(double num) {
+  return num.abs();
+}
+
+String? letrasMaiusculas(String texto) {
+  return texto.toUpperCase();
+}
