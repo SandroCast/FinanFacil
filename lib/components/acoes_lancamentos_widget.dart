@@ -65,6 +65,13 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
     super.initState();
     _model = createModel(context, () => AcoesLancamentosModel());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().campoObrigatorio = '';
+      });
+    });
+
     _model.descricaoController ??=
         TextEditingController(text: widget.lancamento?.descricao);
     _model.descricaoFocusNode ??= FocusNode();
@@ -666,7 +673,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               ),
                             ],
                           ),
-                          if (FFAppState().campoObrigatorio == 'categoria')
+                          if (FFAppState().campoObrigatorio == 'valor')
                             Text(
                               'Campo Obrigatório',
                               style: FlutterFlowTheme.of(context)
