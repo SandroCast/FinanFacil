@@ -78,7 +78,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
 
     _model.precoVisivelController ??= TextEditingController(
         text: formatNumber(
-      -(widget.lancamento!.valor!),
+      (widget.lancamento!.valor!),
       formatType: FormatType.custom,
       currency: 'R\$ ',
       format: ',##0.00#',
@@ -89,7 +89,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
     _model.precoDigitadoController ??= TextEditingController(
         text: widget.lancamento?.valor != null
             ? functions
-                .converterDoubleParaInt(-(widget.lancamento!.valor!))
+                .converterDoubleParaInt((widget.lancamento!.valor!))
                 .toString()
             : '0');
     _model.precoDigitadoFocusNode ??= FocusNode();
