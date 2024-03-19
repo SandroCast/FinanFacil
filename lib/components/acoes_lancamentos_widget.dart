@@ -107,6 +107,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Material(
       color: Colors.transparent,
       elevation: 5.0,
@@ -154,71 +156,70 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                 ],
               ),
             ),
-            Flexible(
-              child: Form(
-                key: _model.formKey,
-                autovalidateMode: AutovalidateMode.disabled,
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 20.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                widget.tipo!,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: widget.tipo == 'Receita'
-                                          ? Color(0xFF00B048)
-                                          : Color(0xFFFD0101),
-                                      fontSize: 30.0,
-                                    ),
-                              ),
-                              if (widget.lancamento != null)
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      backgroundColor: Colors.transparent,
-                                      useSafeArea: true,
-                                      context: context,
-                                      builder: (context) {
-                                        return Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: DeletarLancamentoWidget(
-                                            lancamento: widget.lancamento!,
-                                          ),
-                                        );
-                                      },
-                                    ).then((value) => safeSetState(() {}));
-                                  },
-                                  child: Icon(
-                                    Icons.delete_forever,
-                                    color: FlutterFlowTheme.of(context).error,
-                                    size: 35.0,
-                                  ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            widget.tipo!,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: widget.tipo == 'Receita'
+                                      ? Color(0xFF00B048)
+                                      : Color(0xFFFD0101),
+                                  fontSize: 30.0,
                                 ),
-                            ],
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 10.0),
-                          child: TextFormField(
+                          if (widget.lancamento != null)
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  useSafeArea: true,
+                                  context: context,
+                                  builder: (context) {
+                                    return Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: DeletarLancamentoWidget(
+                                        lancamento: widget.lancamento!,
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              },
+                              child: Icon(
+                                Icons.delete_forever,
+                                color: FlutterFlowTheme.of(context).error,
+                                size: 35.0,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextFormField(
                             controller: _model.descricaoController,
                             focusNode: _model.descricaoFocusNode,
                             obscureText: false,
@@ -261,11 +262,28 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                             validator: _model.descricaoControllerValidator
                                 .asValidator(context),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 10.0),
-                          child: Row(
+                          if (FFAppState().campoObrigatorio == 'descricao')
+                            Text(
+                              'Campo Obrigatório',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).error,
+                                    fontSize: 14.0,
+                                  ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
@@ -388,11 +406,27 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               ),
                             ],
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 10.0),
-                          child: Row(
+                          if (FFAppState().campoObrigatorio == 'categoria')
+                            Text(
+                              'Campo Obrigatório',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).error,
+                                  ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -632,65 +666,81 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               ),
                             ],
                           ),
-                        ),
-                        if (!_model.fixoValue!)
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 10.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 10.0, 0.0),
-                                    child: FlutterFlowDropDown<String>(
-                                      controller:
-                                          _model.avistaValueController ??=
-                                              FormFieldController<String>(
-                                        _model.avistaValue ??=
-                                            widget.lancamento != null
-                                                ? widget.lancamento?.avista
-                                                : 'A VISTA',
-                                      ),
-                                      options: List<String>.from(
-                                          ['A VISTA', 'PARCELADO']),
-                                      optionLabels: ['A VISTA', 'PARCELADO'],
-                                      onChanged: (val) => setState(
-                                          () => _model.avistaValue = val),
-                                      width: 30.0,
-                                      height: 50.0,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                          ),
-                                      icon: Icon(
-                                        Icons.keyboard_arrow_down_rounded,
+                          if (FFAppState().campoObrigatorio == 'categoria')
+                            Text(
+                              'Campo Obrigatório',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).error,
+                                  ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    if (!_model.fixoValue!)
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 10.0, 0.0),
+                                child: FlutterFlowDropDown<String>(
+                                  controller: _model.avistaValueController ??=
+                                      FormFieldController<String>(
+                                    _model.avistaValue ??=
+                                        widget.lancamento != null
+                                            ? widget.lancamento?.avista
+                                            : 'A VISTA',
+                                  ),
+                                  options: List<String>.from(
+                                      ['A VISTA', 'PARCELADO']),
+                                  optionLabels: ['A VISTA', 'PARCELADO'],
+                                  onChanged: (val) =>
+                                      setState(() => _model.avistaValue = val),
+                                  width: 30.0,
+                                  height: 50.0,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
-                                        size: 24.0,
                                       ),
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      elevation: 2.0,
-                                      borderColor: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      borderWidth: 2.0,
-                                      borderRadius: 8.0,
-                                      margin: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 16.0, 4.0),
-                                      hidesUnderline: true,
-                                      isOverButton: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
-                                    ),
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
                                   ),
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  elevation: 2.0,
+                                  borderColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                  borderWidth: 2.0,
+                                  borderRadius: 8.0,
+                                  margin: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 4.0, 16.0, 4.0),
+                                  hidesUnderline: true,
+                                  isOverButton: true,
+                                  isSearchable: false,
+                                  isMultiSelect: false,
                                 ),
-                                Expanded(
-                                  child: Opacity(
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Opacity(
                                     opacity: _model.avistaValue == 'PARCELADO'
                                         ? 1.0
                                         : 0.0,
@@ -743,19 +793,38 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
+                                      keyboardType: TextInputType.number,
                                       validator: _model
                                           .parcelasControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
-                                ),
-                              ],
+                                  if (FFAppState().campoObrigatorio ==
+                                      'parcelas')
+                                    Text(
+                                      'Campo Obrigatório',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                          ),
+                                    ),
+                                ],
+                              ),
                             ),
-                          ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 5.0),
-                          child: Row(
+                          ],
+                        ),
+                      ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -915,12 +984,118 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               ),
                             ],
                           ),
-                        ),
-                        if (widget.tipo == 'Receita')
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 10.0),
-                            child: Row(
+                          if (FFAppState().campoObrigatorio == 'data')
+                            Text(
+                              'Campo Obrigatório',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).error,
+                                  ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (widget.tipo == 'Despesa')
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Stack(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 5.0, 0.0, 0.0),
+                                        child: FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .statusDespesaValueController ??=
+                                              FormFieldController<String>(
+                                            _model.statusDespesaValue ??=
+                                                widget.lancamento != null
+                                                    ? widget.lancamento?.status
+                                                    : 'PENDENTE',
+                                          ),
+                                          options: List<String>.from(
+                                              ['PENDENTE', 'PAGO']),
+                                          optionLabels: ['PENDENTE', 'PAGO'],
+                                          onChanged: (val) => setState(() =>
+                                              _model.statusDespesaValue = val),
+                                          height: 50.0,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                              ),
+                                          hintText: 'Status',
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                          borderWidth: 2.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 4.0, 16.0, 4.0),
+                                          hidesUnderline: true,
+                                          isOverButton: true,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 2.0, 0.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: Text(
+                                              'Status',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        fontSize: 10.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          if (widget.tipo == 'Receita')
+                            Row(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -1012,152 +1187,98 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                 ),
                               ],
                             ),
-                          ),
-                        if (widget.tipo == 'Despesa')
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 10.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: Stack(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 5.0, 0.0, 0.0),
-                                        child: FlutterFlowDropDown<String>(
-                                          controller: _model
-                                                  .statusDespesaValueController ??=
-                                              FormFieldController<String>(
-                                            _model.statusDespesaValue ??=
-                                                widget.lancamento != null
-                                                    ? widget.lancamento?.status
-                                                    : 'PENDENTE',
-                                          ),
-                                          options: List<String>.from(
-                                              ['PENDENTE', 'PAGO']),
-                                          optionLabels: ['PENDENTE', 'PAGO'],
-                                          onChanged: (val) => setState(() =>
-                                              _model.statusDespesaValue = val),
-                                          height: 50.0,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                              ),
-                                          hintText: 'Status',
-                                          icon: Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          elevation: 2.0,
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          borderWidth: 2.0,
-                                          borderRadius: 8.0,
-                                          margin:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 4.0, 16.0, 4.0),
-                                          hidesUnderline: true,
-                                          isOverButton: true,
-                                          isSearchable: false,
-                                          isMultiSelect: false,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 2.0, 0.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: Text(
-                                              'Status',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Readex Pro',
-                                                        fontSize: 10.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                          if (FFAppState().campoObrigatorio == 'status')
+                            Text(
+                              'Campo Obrigatório',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context).error,
                                   ),
-                                ),
-                              ],
                             ),
-                          ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 20.0, 20.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    if (_model.formKey.currentState == null ||
-                                        !_model.formKey.currentState!
-                                            .validate()) {
-                                      return;
-                                    }
-                                    if (_model.categoriaValue == null) {
-                                      return;
-                                    }
-                                    if (_model.avistaValue == null) {
-                                      return;
-                                    }
-                                    if (_model.datePicked == null) {
-                                      return;
-                                    }
-                                    if (!(widget.lancamento != null)) {
-                                      await SQLiteManager.instance
-                                          .novoLancamento(
-                                        descricao:
-                                            _model.descricaoController.text,
-                                        idcategoria: _model.categoriaValue!,
-                                        valor: widget.tipo == 'Receita'
-                                            ? functions.salvaPrecoBanco(_model
-                                                .precoVisivelController.text)!
-                                            : (-(functions.salvaPrecoBanco(
-                                                _model.precoVisivelController
-                                                    .text)!)),
-                                        fixo: _model.fixoValue! ? 1 : 0,
-                                        tipotransacao: _model.avistaValue,
-                                        parcela: int.tryParse(
-                                            _model.parcelasController.text),
-                                        dtagendada: _model.datePicked!,
-                                        status: widget.tipo == 'Receita'
-                                            ? _model.statusReceitaValue!
-                                            : _model.statusDespesaValue!,
-                                        totalparcelas: int.tryParse(
-                                            _model.parcelasController.text),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          20.0, 20.0, 20.0, 10.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                setState(() {
+                                  FFAppState().campoObrigatorio = '';
+                                });
+                                if (_model.descricaoController.text == null ||
+                                    _model.descricaoController.text == '') {
+                                  setState(() {
+                                    FFAppState().campoObrigatorio = 'descricao';
+                                  });
+                                  return;
+                                } else {
+                                  if (_model.categoriaValue == null) {
+                                    setState(() {
+                                      FFAppState().campoObrigatorio =
+                                          'categoria';
+                                    });
+                                    return;
+                                  }
+                                }
+
+                                if (!(widget.lancamento != null)) {
+                                  await SQLiteManager.instance.novoLancamento(
+                                    descricao: _model.descricaoController.text,
+                                    idcategoria: _model.categoriaValue!,
+                                    valor: widget.tipo == 'Receita'
+                                        ? functions.salvaPrecoBanco(
+                                            _model.precoVisivelController.text)!
+                                        : (-(functions.salvaPrecoBanco(_model
+                                            .precoVisivelController.text)!)),
+                                    fixo: _model.fixoValue! ? 1 : 0,
+                                    tipotransacao: _model.avistaValue,
+                                    parcela: int.tryParse(
+                                        _model.parcelasController.text),
+                                    dtagendada: _model.datePicked!,
+                                    status: widget.tipo == 'Receita'
+                                        ? _model.statusReceitaValue!
+                                        : _model.statusDespesaValue!,
+                                    totalparcelas: int.tryParse(
+                                        _model.parcelasController.text),
+                                  );
+                                  Navigator.pop(context);
+                                  if (widget.ativo == 1) {
+                                    context.goNamed(
+                                      'Inicio',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  } else {
+                                    if (widget.ativo == 2) {
+                                      context.goNamed(
+                                        'Lancamentos',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
                                       );
-                                      Navigator.pop(context);
-                                      if (widget.ativo == 1) {
+                                    } else {
+                                      if (widget.ativo == 3) {
                                         context.goNamed(
-                                          'Inicio',
+                                          'Categorias',
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
@@ -1168,70 +1289,38 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             ),
                                           },
                                         );
-                                      } else {
-                                        if (widget.ativo == 2) {
-                                          context.goNamed(
-                                            'Lancamentos',
-                                            extra: <String, dynamic>{
-                                              kTransitionInfoKey:
-                                                  TransitionInfo(
-                                                hasTransition: true,
-                                                transitionType:
-                                                    PageTransitionType.fade,
-                                                duration:
-                                                    Duration(milliseconds: 0),
-                                              ),
-                                            },
-                                          );
-                                        } else {
-                                          if (widget.ativo == 3) {
-                                            context.goNamed(
-                                              'Categorias',
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                  duration:
-                                                      Duration(milliseconds: 0),
-                                                ),
-                                              },
-                                            );
-                                          }
-                                        }
                                       }
                                     }
-                                  },
-                                  text: 'Salvar',
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                  }
+                                }
+                              },
+                              text: 'Salvar',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: Colors.white,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
                                 ),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),

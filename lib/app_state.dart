@@ -40,4 +40,10 @@ class FFAppState extends ChangeNotifier {
   set abaCategoria(int _value) {
     _abaCategoria = _value;
   }
+
+  String _campoObrigatorio = '';
+  String get campoObrigatorio => _campoObrigatorio;
+  set campoObrigatorio(String _value) {
+    _campoObrigatorio = _value;
+  }
 }
