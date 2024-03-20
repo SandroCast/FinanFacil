@@ -967,7 +967,15 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             final _datePickedDate =
                                                 await showDatePicker(
                                               context: context,
-                                              initialDate: getCurrentTimestamp,
+                                              initialDate: ((widget
+                                                              .lancamento !=
+                                                          null
+                                                      ? functions
+                                                          .stringParaDateTime(
+                                                              widget.lancamento!
+                                                                  .dtagendada!)
+                                                      : getCurrentTimestamp) ??
+                                                  DateTime.now()),
                                               firstDate: DateTime(1900),
                                               lastDate: DateTime(2050),
                                               builder: (context, child) {
