@@ -887,6 +887,19 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                       .error,
                                             ),
                                       ),
+                                    if (FFAppState().campoObrigatorio ==
+                                        'parcelasMaior')
+                                      Text(
+                                        'Apenas maior que 1',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                            ),
+                                      ),
                                   ],
                                 ),
                               ),
@@ -1500,35 +1513,37 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               setState(() {});
                                             return;
                                           } else {
-                                            if ((_model.datePicked == null) &&
-                                                (widget.lancamento == null)) {
+                                            if ((_model.fixoValue == false) &&
+                                                (_model.avistaValue ==
+                                                    'PARCELADO') &&
+                                                (functions.stringParaInt(_model
+                                                        .parcelasController
+                                                        .text)! <
+                                                    2)) {
                                               setState(() {
                                                 FFAppState().campoObrigatorio =
-                                                    'data';
+                                                    'parcelasMaior';
                                               });
                                               if (_shouldSetState)
                                                 setState(() {});
                                               return;
                                             } else {
-                                              if ((widget.tipo == 'Receita') &&
-                                                  (_model.statusReceitaValue ==
-                                                          null ||
-                                                      _model.statusReceitaValue ==
-                                                          '')) {
+                                              if ((_model.datePicked == null) &&
+                                                  (widget.lancamento == null)) {
                                                 setState(() {
                                                   FFAppState()
                                                           .campoObrigatorio =
-                                                      'status';
+                                                      'data';
                                                 });
                                                 if (_shouldSetState)
                                                   setState(() {});
                                                 return;
                                               } else {
                                                 if ((widget.tipo ==
-                                                        'Despesa') &&
-                                                    (_model.statusDespesaValue ==
+                                                        'Receita') &&
+                                                    (_model.statusReceitaValue ==
                                                             null ||
-                                                        _model.statusDespesaValue ==
+                                                        _model.statusReceitaValue ==
                                                             '')) {
                                                   setState(() {
                                                     FFAppState()
@@ -1538,6 +1553,22 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
+                                                } else {
+                                                  if ((widget.tipo ==
+                                                          'Despesa') &&
+                                                      (_model.statusDespesaValue ==
+                                                              null ||
+                                                          _model.statusDespesaValue ==
+                                                              '')) {
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .campoObrigatorio =
+                                                          'status';
+                                                    });
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                    return;
+                                                  }
                                                 }
                                               }
                                             }
