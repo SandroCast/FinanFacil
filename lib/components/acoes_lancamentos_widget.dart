@@ -1039,9 +1039,20 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               });
                                             }
                                             setState(() {
-                                              _model.dataController?.text =
-                                                  dateTimeFormat('dd/MM/y',
-                                                      _model.datePicked);
+                                              _model.dataController
+                                                  ?.text = (_model.datePicked !=
+                                                      null
+                                                  ? dateTimeFormat('dd/MM/y',
+                                                      _model.datePicked)
+                                                  : (widget.lancamento != null
+                                                      ? dateTimeFormat(
+                                                          'dd/MM/y',
+                                                          functions.stringParaDateTime(
+                                                              widget.lancamento!
+                                                                  .dtagendada!))
+                                                      : dateTimeFormat(
+                                                          'dd/MM/y',
+                                                          getCurrentTimestamp)));
                                             });
                                           },
                                           child: Container(
