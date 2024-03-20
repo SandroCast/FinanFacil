@@ -970,14 +970,21 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             final _datePickedDate =
                                                 await showDatePicker(
                                               context: context,
-                                              initialDate: ((widget
-                                                              .lancamento !=
-                                                          null
-                                                      ? functions
+                                              initialDate: (() {
+                                                    if (_model.datePicked !=
+                                                        null) {
+                                                      return _model.datePicked;
+                                                    } else if (widget
+                                                            .lancamento !=
+                                                        null) {
+                                                      return functions
                                                           .stringParaDateTime(
                                                               widget.lancamento!
-                                                                  .dtagendada!)
-                                                      : getCurrentTimestamp) ??
+                                                                  .dtagendada!);
+                                                    } else {
+                                                      return getCurrentTimestamp;
+                                                    }
+                                                  }() ??
                                                   DateTime.now()),
                                               firstDate: DateTime(1900),
                                               lastDate: DateTime(2050),
@@ -1039,20 +1046,25 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               });
                                             }
                                             setState(() {
-                                              _model.dataController
-                                                  ?.text = (_model.datePicked !=
-                                                      null
-                                                  ? dateTimeFormat('dd/MM/y',
-                                                      _model.datePicked)
-                                                  : (widget.lancamento != null
-                                                      ? dateTimeFormat(
-                                                          'dd/MM/y',
-                                                          functions.stringParaDateTime(
+                                              _model.dataController?.text = () {
+                                                if (_model.datePicked != null) {
+                                                  return dateTimeFormat(
+                                                      'dd/MM/y',
+                                                      _model.datePicked);
+                                                } else if (widget.lancamento !=
+                                                    null) {
+                                                  return dateTimeFormat(
+                                                      'dd/MM/y',
+                                                      functions
+                                                          .stringParaDateTime(
                                                               widget.lancamento!
-                                                                  .dtagendada!))
-                                                      : dateTimeFormat(
-                                                          'dd/MM/y',
-                                                          getCurrentTimestamp)));
+                                                                  .dtagendada!));
+                                                } else {
+                                                  return dateTimeFormat(
+                                                      'dd/MM/y',
+                                                      getCurrentTimestamp);
+                                                }
+                                              }();
                                             });
                                           },
                                           child: Container(
