@@ -114,3 +114,7 @@ double? numeroPositivo(double num) {
 String? letrasMaiusculas(String texto) {
   return texto.replaceAll(RegExp(r'\s+'), ' ').trim().toUpperCase();
 }
+
+DateTime? stringParaDateTime(String data) {
+  return DateTime.parse(data);
+}

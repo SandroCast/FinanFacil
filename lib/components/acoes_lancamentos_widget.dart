@@ -1437,7 +1437,11 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         fixo: _model.fixoValue! ? 1 : 0,
                                         tipotransacao: _model.avistaValue,
                                         parcela: widget.lancamento?.parcela,
-                                        dtagendada: _model.datePicked!,
+                                        dtagendada: _model.datePicked != null
+                                            ? _model.datePicked!
+                                            : functions.stringParaDateTime(
+                                                widget
+                                                    .lancamento!.dtagendada!)!,
                                         status: widget.tipo == 'Receita'
                                             ? _model.statusReceitaValue!
                                             : _model.statusDespesaValue!,
@@ -1446,6 +1450,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         id: widget.lancamento?.id,
                                         idparcela: widget.lancamento?.idparcela,
                                       );
+                                      Navigator.pop(context);
                                     }
                                   } else {
                                     _model.iDUnico =
