@@ -210,7 +210,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                               Flexible(
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 20.0, 0.0, 0.0),
+                                      0.0, 20.0, 0.0, 100.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
