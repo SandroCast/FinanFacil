@@ -102,8 +102,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
         text: widget.lancamento?.totalparcelas?.toString());
     _model.parcelasFocusNode ??= FocusNode();
 
-    _model.dataController ??= TextEditingController(
-        text: dateTimeFormat('dd/MM/y', widget.lancamento?.dtagendada));
+    _model.dataController ??=
+        TextEditingController(text: widget.lancamento?.dtagendada);
     _model.dataFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -967,8 +967,14 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             final _datePickedDate =
                                                 await showDatePicker(
                                               context: context,
-                                              initialDate: (widget
-                                                      .lancamento?.dtagendada ??
+                                              initialDate: ((widget
+                                                              .lancamento !=
+                                                          null
+                                                      ? functions
+                                                          .stringParaDateTime(
+                                                              widget.lancamento!
+                                                                  .dtagendada!)
+                                                      : getCurrentTimestamp) ??
                                                   DateTime.now()),
                                               firstDate: DateTime(1900),
                                               lastDate: DateTime(2050),
@@ -1444,7 +1450,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         parcela: widget.lancamento?.parcela,
                                         dtagendada: _model.datePicked != null
                                             ? _model.datePicked!
-                                            : widget.lancamento!.dtagendada!,
+                                            : functions.stringParaDateTime(
+                                                widget
+                                                    .lancamento!.dtagendada!)!,
                                         status: widget.tipo == 'Receita'
                                             ? _model.statusReceitaValue!
                                             : _model.statusDespesaValue!,
