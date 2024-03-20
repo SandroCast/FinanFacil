@@ -395,7 +395,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                               .spaceBetween,
                                                                       children: [
                                                                         Text(
-                                                                          'Data: ${listViewBuscaLancamentosRow.dtagendada?.toString()}',
+                                                                          'Data: ${dateTimeFormat('dd/MM/y', listViewBuscaLancamentosRow.dtagendada)}',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
