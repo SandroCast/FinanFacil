@@ -159,5 +159,23 @@ class SQLiteManager {
         idparcela: idparcela,
       );
 
+  Future excluirLancamentoTodos({
+    String? idparcela,
+  }) =>
+      performExcluirLancamentoTodos(
+        _database,
+        idparcela: idparcela,
+      );
+
+  Future excluirLancamentoFuturas({
+    String? idparcela,
+    DateTime? dtagendada,
+  }) =>
+      performExcluirLancamentoFuturas(
+        _database,
+        idparcela: idparcela,
+        dtagendada: dtagendada,
+      );
+
   /// END UPDATE QUERY CALLS
 }

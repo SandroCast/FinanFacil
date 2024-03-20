@@ -91,3 +91,32 @@ WHERE id = ${id};
 }
 
 /// END EDITARLANCAMENTOPORIDLANCAMENTO
+
+/// BEGIN EXCLUIRLANCAMENTOTODOS
+Future performExcluirLancamentoTodos(
+  Database database, {
+  String? idparcela,
+}) {
+  final query = '''
+DELETE FROM lancamentos
+WHERE id > 0 and id_parcela = '${idparcela}';
+''';
+  return database.rawQuery(query);
+}
+
+/// END EXCLUIRLANCAMENTOTODOS
+
+/// BEGIN EXCLUIRLANCAMENTOFUTURAS
+Future performExcluirLancamentoFuturas(
+  Database database, {
+  String? idparcela,
+  DateTime? dtagendada,
+}) {
+  final query = '''
+DELETE FROM lancamentos
+WHERE id > 0 and id_parcela = '${idparcela}' and dt_agendada >= '${dtagendada}';
+''';
+  return database.rawQuery(query);
+}
+
+/// END EXCLUIRLANCAMENTOFUTURAS

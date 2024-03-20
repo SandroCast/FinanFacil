@@ -1,3 +1,4 @@
+import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -185,8 +186,13 @@ class _DeletarLancamentoParceladoWidgetState
                           children: [
                             Expanded(
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await SQLiteManager.instance
+                                      .excluirLancamento(
+                                    id: widget.idLancamento,
+                                  );
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
                                 },
                                 text: 'Excluir apenas esse',
                                 options: FFButtonOptions(
@@ -223,8 +229,14 @@ class _DeletarLancamentoParceladoWidgetState
                           children: [
                             Expanded(
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await SQLiteManager.instance
+                                      .excluirLancamentoFuturas(
+                                    idparcela: widget.idParcela,
+                                    dtagendada: widget.data,
+                                  );
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
                                 },
                                 text: 'Esse e os futuros',
                                 options: FFButtonOptions(
@@ -261,8 +273,13 @@ class _DeletarLancamentoParceladoWidgetState
                           children: [
                             Expanded(
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await SQLiteManager.instance
+                                      .excluirLancamentoTodos(
+                                    idparcela: widget.idParcela,
+                                  );
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
                                 },
                                 text: 'Excluir todos',
                                 options: FFButtonOptions(
