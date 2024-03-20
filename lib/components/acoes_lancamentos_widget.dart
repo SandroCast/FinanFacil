@@ -102,8 +102,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
         text: widget.lancamento?.totalparcelas?.toString());
     _model.parcelasFocusNode ??= FocusNode();
 
-    _model.dataController ??=
-        TextEditingController(text: widget.lancamento?.dtagendada);
+    _model.dataController ??= TextEditingController(
+        text: dateTimeFormat('dd/MM/y',
+            functions.stringParaDateTime(widget.lancamento!.dtagendada!)));
     _model.dataFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -334,7 +335,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                   .categoriaValueController ??=
                                               FormFieldController<int>(
                                             _model.categoriaValue ??=
-                                                widget.lancamento?.id,
+                                                widget.lancamento?.idcategoria,
                                           ),
                                           options: List<int>.from(
                                               containerBuscaCategoriasRowList
