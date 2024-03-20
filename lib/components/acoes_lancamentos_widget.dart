@@ -1090,9 +1090,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                               widget.lancamento!
                                                                   .dtagendada!));
                                                 } else {
-                                                  return dateTimeFormat(
-                                                      'dd/MM/y',
-                                                      getCurrentTimestamp);
+                                                  return 'Data';
                                                 }
                                               }();
                                             });
