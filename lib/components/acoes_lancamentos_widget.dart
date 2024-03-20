@@ -106,7 +106,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
         text: widget.lancamento != null
             ? dateTimeFormat('dd/MM/y',
                 functions.stringParaDateTime(widget.lancamento!.dtagendada!))
-            : ' ');
+            : 'Data');
     _model.dataFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -886,7 +886,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         focusNode: _model.dataFocusNode,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: 'Data Transação',
+                                          labelText: 'Data',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium,
