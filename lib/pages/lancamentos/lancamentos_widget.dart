@@ -203,16 +203,16 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                   Expanded(
                     child: Stack(
                       children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Flexible(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 20.0, 0.0, 100.0),
-                                child: SingleChildScrollView(
+                        SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 20.0, 0.0, 0.0),
                                   child: Column(
-                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
                                       FutureBuilder<List<BuscaLancamentosRow>>(
                                         future: SQLiteManager.instance
@@ -240,6 +240,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                               snapshot.data!;
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
+                                            primary: false,
                                             shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             itemCount:
@@ -514,8 +515,8 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         Align(
                           alignment: AlignmentDirectional(0.0, 1.0),
