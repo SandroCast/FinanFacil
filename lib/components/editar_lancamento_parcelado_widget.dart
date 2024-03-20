@@ -1,3 +1,4 @@
+import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -13,14 +14,30 @@ export 'editar_lancamento_parcelado_model.dart';
 class EditarLancamentoParceladoWidget extends StatefulWidget {
   const EditarLancamentoParceladoWidget({
     super.key,
-    required this.idLancamento,
-    required this.idParcela,
-    required this.data,
+    required this.descricao,
+    required this.idcategoria,
+    required this.valor,
+    required this.fixo,
+    required this.tipotransacao,
+    required this.parcela,
+    required this.dtagendada,
+    required this.status,
+    required this.totalparcelas,
+    required this.id,
+    required this.idparcela,
   });
 
-  final int? idLancamento;
-  final String? idParcela;
-  final DateTime? data;
+  final String? descricao;
+  final int? idcategoria;
+  final double? valor;
+  final int? fixo;
+  final String? tipotransacao;
+  final int? parcela;
+  final DateTime? dtagendada;
+  final String? status;
+  final int? totalparcelas;
+  final int? id;
+  final String? idparcela;
 
   @override
   State<EditarLancamentoParceladoWidget> createState() =>
@@ -185,8 +202,23 @@ class _EditarLancamentoParceladoWidgetState
                           children: [
                             Expanded(
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await SQLiteManager.instance
+                                      .editarLancamentoPorIDLancamento(
+                                    descricao: widget.descricao!,
+                                    idcategoria: widget.idcategoria!,
+                                    valor: widget.valor!,
+                                    fixo: widget.fixo!,
+                                    tipotransacao: widget.tipotransacao,
+                                    parcela: widget.parcela,
+                                    dtagendada: widget.dtagendada!,
+                                    status: widget.status!,
+                                    totalparcelas: widget.totalparcelas,
+                                    id: widget.id,
+                                    idparcela: widget.idparcela,
+                                  );
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
                                 },
                                 text: 'Alterar apenas esse',
                                 options: FFButtonOptions(
