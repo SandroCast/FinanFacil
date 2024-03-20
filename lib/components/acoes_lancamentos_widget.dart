@@ -1,7 +1,8 @@
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/acoes_categorias_widget.dart';
+import '/components/deletar_lancamento_parcelado_widget.dart';
 import '/components/deletar_lancamento_widget.dart';
-import '/components/editar_lancamento_widget.dart';
+import '/components/editar_lancamento_parcelado_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -203,21 +204,47 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    useSafeArea: true,
-                                    context: context,
-                                    builder: (context) {
-                                      return Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: DeletarLancamentoWidget(
-                                          lancamento: widget.lancamento!,
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
+                                  if (widget.lancamento?.avista ==
+                                      'PARCELADO') {
+                                    showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      useSafeArea: true,
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child:
+                                              DeletarLancamentoParceladoWidget(
+                                            idLancamento:
+                                                widget.lancamento!.id!,
+                                            idParcela:
+                                                widget.lancamento!.idparcela!,
+                                            data: functions.stringParaDateTime(
+                                                widget
+                                                    .lancamento!.dtagendada!)!,
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  } else {
+                                    showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      useSafeArea: true,
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: DeletarLancamentoWidget(
+                                            lancamento: widget.lancamento!,
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  }
                                 },
                                 child: Icon(
                                   Icons.delete_forever,
@@ -1532,11 +1559,18 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           return Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: EditarLancamentoWidget(
+                                            child:
+                                                EditarLancamentoParceladoWidget(
                                               idLancamento:
                                                   widget.lancamento!.id!,
                                               idParcela:
                                                   widget.lancamento!.idparcela!,
+                                              data: _model.datePicked != null
+                                                  ? _model.datePicked!
+                                                  : functions
+                                                      .stringParaDateTime(widget
+                                                          .lancamento!
+                                                          .dtagendada!)!,
                                             ),
                                           );
                                         },

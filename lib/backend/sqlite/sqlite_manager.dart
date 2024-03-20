@@ -67,6 +67,14 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<BuscaLancamentosPorIDParcelaRow>> buscaLancamentosPorIDParcela({
+    String? idparcela,
+  }) =>
+      performBuscaLancamentosPorIDParcela(
+        _database,
+        idparcela: idparcela,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

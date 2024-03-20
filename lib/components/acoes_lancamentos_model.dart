@@ -1,7 +1,8 @@
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/acoes_categorias_widget.dart';
+import '/components/deletar_lancamento_parcelado_widget.dart';
 import '/components/deletar_lancamento_widget.dart';
-import '/components/editar_lancamento_widget.dart';
+import '/components/editar_lancamento_parcelado_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
