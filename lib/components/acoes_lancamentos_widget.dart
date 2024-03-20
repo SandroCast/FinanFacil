@@ -1444,9 +1444,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         parcela: widget.lancamento?.parcela,
                                         dtagendada: _model.datePicked != null
                                             ? _model.datePicked!
-                                            : functions.stringParaDateTime(
-                                                widget
-                                                    .lancamento!.dtagendada!)!,
+                                            : widget.lancamento!.dtagendada!,
                                         status: widget.tipo == 'Receita'
                                             ? _model.statusReceitaValue!
                                             : _model.statusDespesaValue!,
