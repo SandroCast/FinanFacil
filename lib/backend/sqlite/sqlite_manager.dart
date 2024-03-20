@@ -81,6 +81,7 @@ class SQLiteManager {
     DateTime? dtagendada,
     String? status,
     int? totalparcelas,
+    String? idparcela,
   }) =>
       performNovoLancamento(
         _database,
@@ -93,6 +94,7 @@ class SQLiteManager {
         dtagendada: dtagendada,
         status: status,
         totalparcelas: totalparcelas,
+        idparcela: idparcela,
       );
 
   Future novaCategoria({
@@ -121,7 +123,7 @@ class SQLiteManager {
         id: id,
       );
 
-  Future editarLancamento({
+  Future editarLancamentoPorIDLancamento({
     String? descricao,
     int? idcategoria,
     double? valor,
@@ -132,8 +134,9 @@ class SQLiteManager {
     String? status,
     int? totalparcelas,
     int? id,
+    String? idparcela,
   }) =>
-      performEditarLancamento(
+      performEditarLancamentoPorIDLancamento(
         _database,
         descricao: descricao,
         idcategoria: idcategoria,
@@ -145,6 +148,7 @@ class SQLiteManager {
         status: status,
         totalparcelas: totalparcelas,
         id: id,
+        idparcela: idparcela,
       );
 
   /// END UPDATE QUERY CALLS

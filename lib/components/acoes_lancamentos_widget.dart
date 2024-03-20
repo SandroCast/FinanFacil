@@ -1,12 +1,14 @@
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/acoes_categorias_widget.dart';
 import '/components/deletar_lancamento_widget.dart';
+import '/components/editar_lancamento_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/foundation.dart';
@@ -657,10 +659,12 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         widget.lancamento?.fixo == 1
                                             ? true
                                             : false,
-                                    onChanged: (newValue) async {
-                                      setState(
-                                          () => _model.fixoValue = newValue!);
-                                    },
+                                    onChanged: (widget.lancamento != null)
+                                        ? null
+                                        : (newValue) async {
+                                            setState(() =>
+                                                _model.fixoValue = newValue!);
+                                          },
                                     title: Text(
                                       'FIXO',
                                       style: FlutterFlowTheme.of(context)
@@ -748,6 +752,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     margin: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 4.0, 16.0, 4.0),
                                     hidesUnderline: true,
+                                    disabled: widget.lancamento != null,
                                     isOverButton: true,
                                     isSearchable: false,
                                     isMultiSelect: false,
@@ -766,6 +771,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       child: TextFormField(
                                         controller: _model.parcelasController,
                                         focusNode: _model.parcelasFocusNode,
+                                        readOnly: widget.lancamento != null,
                                         obscureText: false,
                                         decoration: InputDecoration(
                                           labelText: 'Quantidade de Parcelas',
@@ -1279,6 +1285,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                             Expanded(
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  var _shouldSetState = false;
                                   setState(() {
                                     FFAppState().campoObrigatorio = '';
                                   });
@@ -1292,6 +1299,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       FFAppState().campoObrigatorio =
                                           'descricao';
                                     });
+                                    if (_shouldSetState) setState(() {});
                                     return;
                                   } else {
                                     if (_model.categoriaValue == null) {
@@ -1299,6 +1307,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         FFAppState().campoObrigatorio =
                                             'categoria';
                                       });
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
                                       if ((_model.precoVisivelController.text !=
@@ -1314,6 +1323,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           FFAppState().campoObrigatorio =
                                               'valor';
                                         });
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       } else {
                                         if ((_model.fixoValue == false) &&
@@ -1328,6 +1338,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             FFAppState().campoObrigatorio =
                                                 'parcelas';
                                           });
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
                                           if ((_model.fixoValue == false) &&
@@ -1340,6 +1351,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               FFAppState().campoObrigatorio =
                                                   'parcelasNum';
                                             });
+                                            if (_shouldSetState)
+                                              setState(() {});
                                             return;
                                           } else {
                                             if (_model.datePicked == null) {
@@ -1347,6 +1360,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 FFAppState().campoObrigatorio =
                                                     'data';
                                               });
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             } else {
                                               if ((widget.tipo == 'Receita') &&
@@ -1359,6 +1374,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           .campoObrigatorio =
                                                       'status';
                                                 });
+                                                if (_shouldSetState)
+                                                  setState(() {});
                                                 return;
                                               } else {
                                                 if ((widget.tipo ==
@@ -1372,6 +1389,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                             .campoObrigatorio =
                                                         'status';
                                                   });
+                                                  if (_shouldSetState)
+                                                    setState(() {});
                                                   return;
                                                 }
                                               }
@@ -1382,7 +1401,32 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     }
                                   }
 
-                                  if (!(widget.lancamento != null)) {
+                                  if (widget.lancamento != null) {
+                                    if (widget.lancamento?.avista ==
+                                        'PARCELADO') {
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        useSafeArea: true,
+                                        context: context,
+                                        builder: (context) {
+                                          return Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: EditarLancamentoWidget(
+                                              idLancamento:
+                                                  widget.lancamento!.id!,
+                                              idParcela:
+                                                  widget.lancamento!.idparcela!,
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => safeSetState(() {}));
+                                    }
+                                  } else {
+                                    _model.iDUnico =
+                                        await actions.geraUnicoID();
+                                    _shouldSetState = true;
                                     if ((_model.fixoValue == false) &&
                                         (_model.avistaValue == 'PARCELADO')) {
                                       setState(() {
@@ -1415,6 +1459,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               : _model.statusDespesaValue!,
                                           totalparcelas: int.tryParse(
                                               _model.parcelasController.text),
+                                          idparcela: _model.iDUnico,
                                         );
                                         setState(() {
                                           FFAppState().DataTime =
@@ -1446,6 +1491,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             : _model.statusDespesaValue!,
                                         parcela: 0,
                                         totalparcelas: 0,
+                                        idparcela: _model.iDUnico,
                                       );
                                     }
 
@@ -1495,6 +1541,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       }
                                     }
                                   }
+
+                                  if (_shouldSetState) setState(() {});
                                 },
                                 text: 'Salvar',
                                 options: FFButtonOptions(

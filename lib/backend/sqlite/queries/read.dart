@@ -79,7 +79,7 @@ Future<List<BuscaLancamentosRow>> performBuscaLancamentos(
   Database database,
 ) {
   final query = '''
-SELECT lancamentos.id, descricao, valor, fixo, tipo_transacao as avista, parcela, total_parcelas as totalparcelas, status, tipo, strftime('%d/%m/%Y', dt_agendada) AS dtagendada FROM lancamentos
+SELECT lancamentos.id, descricao, valor, fixo, tipo_transacao as avista, parcela, total_parcelas as totalparcelas, status, tipo, strftime('%d/%m/%Y', dt_agendada) AS dtagendada, id_parcela as idparcela FROM lancamentos
 join categorias on lancamentos.id_categoria = categorias.id;
 ''';
   return _readQuery(database, query, (d) => BuscaLancamentosRow(d));
@@ -98,6 +98,7 @@ class BuscaLancamentosRow extends SqliteRow {
   int? get parcela => data['parcela'] as int?;
   String? get tipo => data['tipo'] as String?;
   int? get totalparcelas => data['totalparcelas'] as int?;
+  String? get idparcela => data['idparcela'] as String?;
 }
 
 /// END BUSCALANCAMENTOS

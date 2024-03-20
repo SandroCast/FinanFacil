@@ -1,12 +1,14 @@
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/acoes_categorias_widget.dart';
 import '/components/deletar_lancamento_widget.dart';
+import '/components/editar_lancamento_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'acoes_lancamentos_widget.dart' show AcoesLancamentosWidget;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -57,6 +59,8 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   // State field(s) for statusReceita widget.
   String? statusReceitaValue;
   FormFieldController<String>? statusReceitaValueController;
+  // Stores action output result for [Custom Action - geraUnicoID] action in Button widget.
+  String? iDUnico;
 
   /// Initialization and disposal methods.
 

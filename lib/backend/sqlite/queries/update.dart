@@ -12,10 +12,11 @@ Future performNovoLancamento(
   DateTime? dtagendada,
   String? status,
   int? totalparcelas,
+  String? idparcela,
 }) {
   final query = '''
-INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcela, dt_agendada, status, total_parcelas)
-VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcela}, '${dtagendada}', '${status}', ${totalparcelas});
+INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcela, dt_agendada, status, total_parcelas, id_parcela)
+VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcela}, '${dtagendada}', '${status}', ${totalparcelas}, '${idparcela}');
 ''';
   return database.rawQuery(query);
 }
@@ -64,8 +65,8 @@ WHERE id = ${id};
 
 /// END EXCLUIRLANCAMENTO
 
-/// BEGIN EDITARLANCAMENTO
-Future performEditarLancamento(
+/// BEGIN EDITARLANCAMENTOPORIDLANCAMENTO
+Future performEditarLancamentoPorIDLancamento(
   Database database, {
   String? descricao,
   int? idcategoria,
@@ -77,17 +78,16 @@ Future performEditarLancamento(
   String? status,
   int? totalparcelas,
   int? id,
+  String? idparcela,
 }) {
   final query = '''
 UPDATE lancamentos
-SET nome = 'NovoNome', email = 'novoemail@example.com'
-WHERE id = 5;
+SET descricao = '${descricao}', id_categoria =  ${idcategoria}, valor = ${valor}, fixo = ${fixo}, tipo_transacao = '${tipotransacao}',
+parcela = ${parcela}, dt_agendada = '${dtagendada}', status = '${status}', total_parcelas = ${totalparcelas}, id_parcela = '${idparcela}'
+WHERE id = ${id};
 
-
-INSERT INTO lancamentos (descricao, id_categoria, valor, fixo, tipo_transacao, parcela, dt_agendada, status, total_parcelas)
-VALUES ('${descricao}',  ${idcategoria}, ${valor}, ${fixo}, '${tipotransacao}', ${parcela}, '${dtagendada}', '${status}', ${totalparcelas});
 ''';
   return database.rawQuery(query);
 }
 
-/// END EDITARLANCAMENTO
+/// END EDITARLANCAMENTOPORIDLANCAMENTO
