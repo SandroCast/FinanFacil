@@ -1355,7 +1355,11 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               setState(() {});
                                             return;
                                           } else {
-                                            if ((_model.datePicked == null) &&
+                                            if ((_model.dataController.text ==
+                                                        null ||
+                                                    _model.dataController
+                                                            .text ==
+                                                        '') &&
                                                 (widget.lancamento == null)) {
                                               setState(() {
                                                 FFAppState().campoObrigatorio =
