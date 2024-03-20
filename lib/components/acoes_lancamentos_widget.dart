@@ -102,8 +102,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
         text: widget.lancamento?.totalparcelas?.toString());
     _model.parcelasFocusNode ??= FocusNode();
 
-    _model.dataController ??=
-        TextEditingController(text: widget.lancamento?.dtagendada);
+    _model.dataController ??= TextEditingController(
+        text: dateTimeFormat('dd/MM/y', widget.lancamento?.dtagendada));
     _model.dataFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -967,14 +967,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             final _datePickedDate =
                                                 await showDatePicker(
                                               context: context,
-                                              initialDate: ((widget
-                                                              .lancamento !=
-                                                          null
-                                                      ? functions
-                                                          .stringParaDateTime(
-                                                              widget.lancamento!
-                                                                  .dtagendada!)
-                                                      : getCurrentTimestamp) ??
+                                              initialDate: (widget
+                                                      .lancamento?.dtagendada ??
                                                   DateTime.now()),
                                               firstDate: DateTime(1900),
                                               lastDate: DateTime(2050),
@@ -1363,12 +1357,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               setState(() {});
                                             return;
                                           } else {
-                                            if ((_model.dataController.text ==
-                                                        null ||
-                                                    _model.dataController
-                                                            .text ==
-                                                        '') &&
-                                                (widget.lancamento == null)) {
+                                            if (_model.dataController.text ==
+                                                    null ||
+                                                _model.dataController.text ==
+                                                    '') {
                                               setState(() {
                                                 FFAppState().campoObrigatorio =
                                                     'data';

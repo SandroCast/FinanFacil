@@ -395,7 +395,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                               .spaceBetween,
                                                                       children: [
                                                                         Text(
-                                                                          'Data: ${listViewBuscaLancamentosRow.dtagendada}',
+                                                                          'Data: ${listViewBuscaLancamentosRow.dtagendada?.toString()}',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
