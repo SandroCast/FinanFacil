@@ -103,8 +103,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
     _model.parcelasFocusNode ??= FocusNode();
 
     _model.dataController ??= TextEditingController(
-        text: dateTimeFormat('dd/MM/y',
-            functions.stringParaDateTime(widget.lancamento!.dtagendada!)));
+        text: widget.lancamento != null
+            ? dateTimeFormat('dd/MM/y',
+                functions.stringParaDateTime(widget.lancamento!.dtagendada!))
+            : ' ');
     _model.dataFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -1364,10 +1366,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               setState(() {});
                                             return;
                                           } else {
-                                            if (_model.dataController.text ==
-                                                    null ||
-                                                _model.dataController.text ==
-                                                    '') {
+                                            if ((_model.datePicked == null) &&
+                                                (widget.lancamento == null)) {
                                               setState(() {
                                                 FFAppState().campoObrigatorio =
                                                     'data';
