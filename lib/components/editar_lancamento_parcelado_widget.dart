@@ -352,10 +352,10 @@ class _EditarLancamentoParceladoWidgetState
                                     FFAppState().DataTime = widget.dtagendada;
                                   });
                                   setState(() {
-                                    FFAppState().loop = 0;
+                                    FFAppState().loop = 1;
                                   });
-                                  while (_model
-                                          .retornoLancamentosIdParcela!.length >
+                                  while (_model.retornoLancamentosIdParcela!
+                                          .length >=
                                       FFAppState().loop) {
                                     await SQLiteManager.instance
                                         .editarLancamentoPorIDLancamento(
@@ -366,7 +366,7 @@ class _EditarLancamentoParceladoWidgetState
                                       tipotransacao: widget.tipotransacao,
                                       parcela: _model
                                           .retornoLancamentosIdParcela?[
-                                              FFAppState().loop]
+                                              FFAppState().loop - 1]
                                           ?.parcela,
                                       dtagendada:
                                           FFAppState().loop < widget.parcela!
@@ -379,7 +379,7 @@ class _EditarLancamentoParceladoWidgetState
                                       totalparcelas: widget.totalparcelas,
                                       id: _model
                                           .retornoLancamentosIdParcela?[
-                                              FFAppState().loop]
+                                              FFAppState().loop - 1]
                                           ?.id,
                                       idparcela: widget.idparcela,
                                     );
