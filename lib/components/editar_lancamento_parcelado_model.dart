@@ -18,6 +18,8 @@ class EditarLancamentoParceladoModel
 
   // Stores action output result for [Backend Call - SQLite (buscaLancamentosPorIDParcelaPeriodo)] action in Button widget.
   List<BuscaLancamentosPorIDParcelaPeriodoRow>? retornoLancamentos;
+  // Stores action output result for [Backend Call - SQLite (buscaLancamentosPorIDParcela)] action in Button widget.
+  List<BuscaLancamentosPorIDParcelaRow>? retornoLancamentosIdParcela;
 
   /// Initialization and disposal methods.
 

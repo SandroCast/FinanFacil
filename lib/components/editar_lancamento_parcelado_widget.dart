@@ -342,8 +342,53 @@ class _EditarLancamentoParceladoWidgetState
                           children: [
                             Expanded(
                               child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  _model.retornoLancamentosIdParcela =
+                                      await SQLiteManager.instance
+                                          .buscaLancamentosPorIDParcela(
+                                    idparcela: widget.idparcela,
+                                  );
+                                  setState(() {
+                                    FFAppState().DataTime = widget.dtagendada;
+                                  });
+                                  setState(() {
+                                    FFAppState().loop = 0;
+                                  });
+                                  while (_model.retornoLancamentos!.length >
+                                      FFAppState().loop) {
+                                    await SQLiteManager.instance
+                                        .editarLancamentoPorIDLancamento(
+                                      descricao: widget.descricao!,
+                                      idcategoria: widget.idcategoria!,
+                                      valor: widget.valor!,
+                                      fixo: widget.fixo!,
+                                      tipotransacao: widget.tipotransacao,
+                                      parcela: _model
+                                          .retornoLancamentosIdParcela?[
+                                              FFAppState().loop]
+                                          ?.parcela,
+                                      dtagendada: FFAppState().DataTime!,
+                                      status: widget.status!,
+                                      totalparcelas: widget.totalparcelas,
+                                      id: _model
+                                          .retornoLancamentosIdParcela?[
+                                              FFAppState().loop]
+                                          ?.id,
+                                      idparcela: widget.idparcela,
+                                    );
+                                    setState(() {
+                                      FFAppState().DataTime =
+                                          functions.adicionarUmMes(
+                                              FFAppState().DataTime!);
+                                    });
+                                    setState(() {
+                                      FFAppState().loop = FFAppState().loop + 1;
+                                    });
+                                  }
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+
+                                  setState(() {});
                                 },
                                 text: 'Alterar todos',
                                 options: FFButtonOptions(

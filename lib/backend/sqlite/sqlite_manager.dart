@@ -67,14 +67,6 @@ class SQLiteManager {
         _database,
       );
 
-  Future<List<BuscaLancamentosPorIDParcelaRow>> buscaLancamentosPorIDParcela({
-    String? idparcela,
-  }) =>
-      performBuscaLancamentosPorIDParcela(
-        _database,
-        idparcela: idparcela,
-      );
-
   Future<List<BuscaLancamentosPorIDParcelaPeriodoRow>>
       buscaLancamentosPorIDParcelaPeriodo({
     String? idparcela,
@@ -85,6 +77,14 @@ class SQLiteManager {
             idparcela: idparcela,
             dtagendada: dtagendada,
           );
+
+  Future<List<BuscaLancamentosPorIDParcelaRow>> buscaLancamentosPorIDParcela({
+    String? idparcela,
+  }) =>
+      performBuscaLancamentosPorIDParcela(
+        _database,
+        idparcela: idparcela,
+      );
 
   /// END READ QUERY CALLS
 
