@@ -124,30 +124,30 @@ class BuscaTodasAsCategoriasRow extends SqliteRow {
 
 /// END BUSCATODASASCATEGORIAS
 
-/// BEGIN BUSCALANCAMENTOSPORIDPARCELAPERIODO
-Future<List<BuscaLancamentosPorIDParcelaPeriodoRow>>
-    performBuscaLancamentosPorIDParcelaPeriodo(
+/// BEGIN BUSCALANCAMENTOSPORIDPARCELAFUTURAS
+Future<List<BuscaLancamentosPorIDParcelaFuturasRow>>
+    performBuscaLancamentosPorIDParcelaFuturas(
   Database database, {
   String? idparcela,
-  DateTime? dtagendada,
+  int? parcela,
 }) {
   final query = '''
 SELECT id, parcela FROM lancamentos
-where id_parcela = '${idparcela}' and DATE(dt_agendada) >= DATE('${dtagendada}');
+where id_parcela = '${idparcela}' and parcela >= ${parcela};
 ''';
   return _readQuery(
-      database, query, (d) => BuscaLancamentosPorIDParcelaPeriodoRow(d));
+      database, query, (d) => BuscaLancamentosPorIDParcelaFuturasRow(d));
 }
 
-class BuscaLancamentosPorIDParcelaPeriodoRow extends SqliteRow {
-  BuscaLancamentosPorIDParcelaPeriodoRow(Map<String, dynamic> data)
+class BuscaLancamentosPorIDParcelaFuturasRow extends SqliteRow {
+  BuscaLancamentosPorIDParcelaFuturasRow(Map<String, dynamic> data)
       : super(data);
 
   int? get id => data['id'] as int?;
   int? get parcela => data['parcela'] as int?;
 }
 
-/// END BUSCALANCAMENTOSPORIDPARCELAPERIODO
+/// END BUSCALANCAMENTOSPORIDPARCELAFUTURAS
 
 /// BEGIN BUSCALANCAMENTOSPORIDPARCELA
 Future<List<BuscaLancamentosPorIDParcelaRow>>

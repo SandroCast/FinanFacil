@@ -16,8 +16,8 @@ class EditarLancamentoParceladoModel
     extends FlutterFlowModel<EditarLancamentoParceladoWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - SQLite (buscaLancamentosPorIDParcelaPeriodo)] action in Button widget.
-  List<BuscaLancamentosPorIDParcelaPeriodoRow>? retornoLancamentos;
+  // Stores action output result for [Backend Call - SQLite (buscaLancamentosPorIDParcelaFuturas)] action in Button widget.
+  List<BuscaLancamentosPorIDParcelaFuturasRow>? retornoLancamentos;
   // Stores action output result for [Backend Call - SQLite (buscaLancamentosPorIDParcela)] action in Button widget.
   List<BuscaLancamentosPorIDParcelaRow>? retornoLancamentosIdParcela;
 

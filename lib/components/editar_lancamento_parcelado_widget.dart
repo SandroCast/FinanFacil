@@ -261,9 +261,9 @@ class _EditarLancamentoParceladoWidgetState
                                 onPressed: () async {
                                   _model.retornoLancamentos =
                                       await SQLiteManager.instance
-                                          .buscaLancamentosPorIDParcelaPeriodo(
+                                          .buscaLancamentosPorIDParcelaFuturas(
                                     idparcela: widget.idparcela,
-                                    dtagendada: widget.dtagendada,
+                                    parcela: widget.parcela,
                                   );
                                   setState(() {
                                     FFAppState().DataTime = widget.dtagendada;
