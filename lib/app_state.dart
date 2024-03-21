@@ -46,10 +46,4 @@ class FFAppState extends ChangeNotifier {
   set loop(int _value) {
     _loop = _value;
   }
-
-  DateTime? _DataTime;
-  DateTime? get DataTime => _DataTime;
-  set DataTime(DateTime? _value) {
-    _DataTime = _value;
-  }
 }

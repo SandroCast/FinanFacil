@@ -86,6 +86,11 @@ class SQLiteManager {
         idparcela: idparcela,
       );
 
+  Future<List<AnosUtilizadosNoBancoRow>> anosUtilizadosNoBanco() =>
+      performAnosUtilizadosNoBanco(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

@@ -22,11 +22,17 @@ class LancamentosModel extends FlutterFlowModel<LancamentosWidget> {
   // Model for NavBar component.
   late NavBarModel navBarModel;
   // State field(s) for ChoiceChips widget.
-  FormFieldController<List<String>>? choiceChipsValueController;
-  String? get choiceChipsValue =>
-      choiceChipsValueController?.value?.firstOrNull;
-  set choiceChipsValue(String? val) =>
-      choiceChipsValueController?.value = val != null ? [val] : [];
+  FormFieldController<List<String>>? choiceChipsValueController1;
+  String? get choiceChipsValue1 =>
+      choiceChipsValueController1?.value?.firstOrNull;
+  set choiceChipsValue1(String? val) =>
+      choiceChipsValueController1?.value = val != null ? [val] : [];
+  // State field(s) for ChoiceChips widget.
+  FormFieldController<List<String>>? choiceChipsValueController2;
+  String? get choiceChipsValue2 =>
+      choiceChipsValueController2?.value?.firstOrNull;
+  set choiceChipsValue2(String? val) =>
+      choiceChipsValueController2?.value = val != null ? [val] : [];
 
   /// Initialization and disposal methods.
 
