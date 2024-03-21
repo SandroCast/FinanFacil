@@ -133,7 +133,7 @@ Future<List<BuscaLancamentosPorIDParcelaPeriodoRow>>
 }) {
   final query = '''
 SELECT id, parcela FROM lancamentos
-where id_parcela = '${idparcela}' and dt_agendada >= '${dtagendada}';
+where id_parcela = '${idparcela}' and DATE(dt_agendada) >= DATE('${dtagendada}');
 ''';
   return _readQuery(
       database, query, (d) => BuscaLancamentosPorIDParcelaPeriodoRow(d));
