@@ -556,7 +556,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                         alignment: AlignmentDirectional(0.0, -1.0),
                         child: Container(
                           width: double.infinity,
-                          height: 80.0,
+                          height: 85.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -658,7 +658,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                             initialized:
                                                 _model.choiceChipsValue1 !=
                                                     null,
-                                            alignment: WrapAlignment.start,
+                                            alignment: WrapAlignment.center,
                                             controller: _model
                                                     .choiceChipsValueController1 ??=
                                                 FormFieldController<
@@ -746,7 +746,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         chipSpacing: 12.0,
                                         rowSpacing: 12.0,
                                         multiselect: false,
-                                        alignment: WrapAlignment.start,
+                                        alignment: WrapAlignment.center,
                                         controller: _model
                                                 .choiceChipsValueController2 ??=
                                             FormFieldController<List<String>>(
