@@ -266,9 +266,6 @@ class _EditarLancamentoParceladoWidgetState
                                     parcela: widget.parcela,
                                   );
                                   setState(() {
-                                    FFAppState().DataTime = widget.dtagendada;
-                                  });
-                                  setState(() {
                                     FFAppState().loop = 0;
                                   });
                                   while (_model.retornoLancamentos!.length >
@@ -284,7 +281,9 @@ class _EditarLancamentoParceladoWidgetState
                                           .retornoLancamentos?[
                                               FFAppState().loop]
                                           ?.parcela,
-                                      dtagendada: FFAppState().DataTime!,
+                                      dtagendada: functions.adicionarMeses(
+                                          widget.dtagendada!,
+                                          FFAppState().loop)!,
                                       status: widget.status!,
                                       totalparcelas: widget.totalparcelas,
                                       id: _model
@@ -293,11 +292,6 @@ class _EditarLancamentoParceladoWidgetState
                                           ?.id,
                                       idparcela: widget.idparcela,
                                     );
-                                    setState(() {
-                                      FFAppState().DataTime =
-                                          functions.adicionarUmMes(
-                                              FFAppState().DataTime!);
-                                    });
                                     setState(() {
                                       FFAppState().loop = FFAppState().loop + 1;
                                     });
@@ -349,9 +343,6 @@ class _EditarLancamentoParceladoWidgetState
                                     idparcela: widget.idparcela,
                                   );
                                   setState(() {
-                                    FFAppState().DataTime = widget.dtagendada;
-                                  });
-                                  setState(() {
                                     FFAppState().loop = 1;
                                   });
                                   while (_model.retornoLancamentosIdParcela!
@@ -374,7 +365,10 @@ class _EditarLancamentoParceladoWidgetState
                                                   widget.dtagendada!,
                                                   (widget.parcela!) -
                                                       FFAppState().loop)!
-                                              : FFAppState().DataTime!,
+                                              : functions.adicionarMeses(
+                                                  widget.dtagendada!,
+                                                  FFAppState().loop -
+                                                      (widget.parcela!))!,
                                       status: widget.status!,
                                       totalparcelas: widget.totalparcelas,
                                       id: _model
@@ -383,13 +377,6 @@ class _EditarLancamentoParceladoWidgetState
                                           ?.id,
                                       idparcela: widget.idparcela,
                                     );
-                                    if (FFAppState().loop >= widget.parcela!) {
-                                      setState(() {
-                                        FFAppState().DataTime =
-                                            functions.adicionarUmMes(
-                                                FFAppState().DataTime!);
-                                      });
-                                    }
                                     setState(() {
                                       FFAppState().loop = FFAppState().loop + 1;
                                     });

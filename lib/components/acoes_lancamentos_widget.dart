@@ -1668,10 +1668,6 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     if ((_model.fixoValue == false) &&
                                         (_model.avistaValue == 'PARCELADO')) {
                                       setState(() {
-                                        FFAppState().DataTime =
-                                            _model.datePicked;
-                                      });
-                                      setState(() {
                                         FFAppState().loop = 1;
                                       });
                                       while (functions.stringParaInt(_model
@@ -1691,7 +1687,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           fixo: _model.fixoValue! ? 1 : 0,
                                           tipotransacao: _model.avistaValue,
                                           parcela: FFAppState().loop,
-                                          dtagendada: FFAppState().DataTime!,
+                                          dtagendada: functions.adicionarMeses(
+                                              _model.datePicked!,
+                                              FFAppState().loop - 1)!,
                                           status: widget.tipo == 'Receita'
                                               ? _model.statusReceitaValue!
                                               : _model.statusDespesaValue!,
@@ -1699,11 +1697,6 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               _model.parcelasController.text),
                                           idparcela: _model.iDUnico,
                                         );
-                                        setState(() {
-                                          FFAppState().DataTime =
-                                              functions.adicionarUmMes(
-                                                  FFAppState().DataTime!);
-                                        });
                                         setState(() {
                                           FFAppState().loop =
                                               FFAppState().loop + 1;

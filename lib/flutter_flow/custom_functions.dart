@@ -87,18 +87,21 @@ int? stringParaInt(String parcelas) {
   return int.parse(parcelas);
 }
 
-DateTime? adicionarUmMes(DateTime data) {
+DateTime? adicionarMeses(
+  DateTime data,
+  int meses,
+) {
   int year = data.year;
-  int month = data.month + 1;
+  int month = data.month + meses;
   int day = data.day;
 
-  // Se o mês for 13, ajuste para janeiro do próximo ano.
-  if (month == 13) {
-    month = 1;
+  // Se o mês for maior que 12, ajuste para janeiro do próximo ano.
+  while (month > 12) {
+    month -= 12;
     year++;
   }
 
-  // Verifique se o dia existe no próximo mês, senão pegue o último dia do mês.
+  // Verifique se o dia existe no mês atual, senão pegue o último dia do mês.
   if (day > DateTime(year, month + 1, 0).day) {
     day = DateTime(year, month + 1, 0).day;
   }
