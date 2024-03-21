@@ -794,71 +794,76 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Opacity(
-                                      opacity: _model.avistaValue == 'PARCELADO'
-                                          ? 1.0
-                                          : 0.0,
-                                      child: TextFormField(
-                                        controller: _model.parcelasController,
-                                        focusNode: _model.parcelasFocusNode,
-                                        readOnly: widget.lancamento != null,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          labelText: 'Quantidade de Parcelas',
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                              width: 2.0,
+                                    Container(
+                                      height: 50.0,
+                                      decoration: BoxDecoration(),
+                                      child: Opacity(
+                                        opacity:
+                                            _model.avistaValue == 'PARCELADO'
+                                                ? 1.0
+                                                : 0.0,
+                                        child: TextFormField(
+                                          controller: _model.parcelasController,
+                                          focusNode: _model.parcelasFocusNode,
+                                          readOnly: widget.lancamento != null,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Quantidade de Parcelas',
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 2.0,
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 2.0,
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
                                           ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                          keyboardType: TextInputType.number,
+                                          validator: _model
+                                              .parcelasControllerValidator
+                                              .asValidator(context),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        keyboardType: TextInputType.number,
-                                        validator: _model
-                                            .parcelasControllerValidator
-                                            .asValidator(context),
                                       ),
                                     ),
                                     if (FFAppState().campoObrigatorio ==
