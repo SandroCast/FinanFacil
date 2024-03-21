@@ -665,7 +665,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                     List<String>>(
                                               [
                                                 dateTimeFormat(
-                                                    'Y', getCurrentTimestamp)
+                                                    'y', getCurrentTimestamp)
                                               ],
                                             ),
                                             wrapped: true,
