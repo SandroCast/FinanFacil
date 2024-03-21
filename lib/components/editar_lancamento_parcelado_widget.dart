@@ -354,7 +354,8 @@ class _EditarLancamentoParceladoWidgetState
                                   setState(() {
                                     FFAppState().loop = 0;
                                   });
-                                  while (_model.retornoLancamentos!.length >
+                                  while (_model
+                                          .retornoLancamentosIdParcela!.length >
                                       FFAppState().loop) {
                                     await SQLiteManager.instance
                                         .editarLancamentoPorIDLancamento(
