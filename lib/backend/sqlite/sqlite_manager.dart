@@ -75,6 +75,17 @@ class SQLiteManager {
         idparcela: idparcela,
       );
 
+  Future<List<BuscaLancamentosPorIDParcelaPeriodoRow>>
+      buscaLancamentosPorIDParcelaPeriodo({
+    String? idparcela,
+    DateTime? dtagendada,
+  }) =>
+          performBuscaLancamentosPorIDParcelaPeriodo(
+            _database,
+            idparcela: idparcela,
+            dtagendada: dtagendada,
+          );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
