@@ -164,7 +164,7 @@ Future<List<BuscaLancamentosPorIDParcelaPeriodoRow>>
   DateTime? dtagendada,
 }) {
   final query = '''
-SELECT lancamentos.id, id_categoria as idcategoria, descricao, valor, fixo, tipo_transacao as avista, parcela, total_parcelas as totalparcelas, status, tipo, dt_agendada AS dtagendada, id_parcela as idparcela FROM lancamentos
+SELECT id, parcela FROM lancamentos
 where id_parcela = '${idparcela}' and dt_agendada >= '${dtagendada}';
 ''';
   return _readQuery(
@@ -175,18 +175,8 @@ class BuscaLancamentosPorIDParcelaPeriodoRow extends SqliteRow {
   BuscaLancamentosPorIDParcelaPeriodoRow(Map<String, dynamic> data)
       : super(data);
 
-  String? get descricao => data['descricao'] as String?;
-  double? get valor => data['valor'] as double?;
-  String? get status => data['status'] as String?;
-  String? get dtagendada => data['dtagendada'] as String?;
   int? get id => data['id'] as int?;
-  int get fixo => data['fixo'] as int;
-  String? get avista => data['avista'] as String?;
   int? get parcela => data['parcela'] as int?;
-  String? get tipo => data['tipo'] as String?;
-  int? get totalparcelas => data['totalparcelas'] as int?;
-  String? get idparcela => data['idparcela'] as String?;
-  int? get idcategoria => data['idcategoria'] as int?;
 }
 
 /// END BUSCALANCAMENTOSPORIDPARCELAPERIODO
