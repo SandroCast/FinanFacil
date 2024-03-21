@@ -118,3 +118,26 @@ String? letrasMaiusculas(String texto) {
 DateTime? stringParaDateTime(String data) {
   return DateTime.parse(data);
 }
+
+DateTime? subtrairMeses(
+  DateTime data,
+  int meses,
+) {
+  int year = data.year;
+  int month = data.month - meses;
+  int day = data.day;
+
+  // Se o mês for menor que 1, ajuste para dezembro do ano anterior.
+  while (month < 1) {
+    month += 12;
+    year--;
+  }
+
+  // Verifique se o dia existe no mês atual, senão pegue o último dia do mês.
+  if (day > DateTime(year, month + 1, 0).day) {
+    day = DateTime(year, month + 1, 0).day;
+  }
+
+  return DateTime(year, month, day, data.hour, data.minute, data.second,
+      data.millisecond, data.microsecond);
+}

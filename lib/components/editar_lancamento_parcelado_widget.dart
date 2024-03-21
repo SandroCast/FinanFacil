@@ -368,7 +368,13 @@ class _EditarLancamentoParceladoWidgetState
                                           .retornoLancamentosIdParcela?[
                                               FFAppState().loop]
                                           ?.parcela,
-                                      dtagendada: FFAppState().DataTime!,
+                                      dtagendada:
+                                          FFAppState().loop < widget.parcela!
+                                              ? functions.subtrairMeses(
+                                                  widget.dtagendada!,
+                                                  (widget.parcela!) -
+                                                      FFAppState().loop)!
+                                              : FFAppState().DataTime!,
                                       status: widget.status!,
                                       totalparcelas: widget.totalparcelas,
                                       id: _model
@@ -377,11 +383,13 @@ class _EditarLancamentoParceladoWidgetState
                                           ?.id,
                                       idparcela: widget.idparcela,
                                     );
-                                    setState(() {
-                                      FFAppState().DataTime =
-                                          functions.adicionarUmMes(
-                                              FFAppState().DataTime!);
-                                    });
+                                    if (FFAppState().loop >= widget.parcela!) {
+                                      setState(() {
+                                        FFAppState().DataTime =
+                                            functions.adicionarUmMes(
+                                                FFAppState().DataTime!);
+                                      });
+                                    }
                                     setState(() {
                                       FFAppState().loop = FFAppState().loop + 1;
                                     });
