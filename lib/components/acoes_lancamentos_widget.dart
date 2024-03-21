@@ -1076,7 +1076,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 20.0, 20.0, 0.0),
+                                                  10.0, 30.0, 20.0, 0.0),
                                           child: Icon(
                                             Icons.calendar_month,
                                             color: FlutterFlowTheme.of(context)
