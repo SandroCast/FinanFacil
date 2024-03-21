@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -265,39 +264,6 @@ class _EditarLancamentoParceladoWidgetState
                                     idparcela: widget.idparcela,
                                     dtagendada: widget.dtagendada,
                                   );
-                                  setState(() {
-                                    FFAppState().DataTime = widget.dtagendada;
-                                  });
-                                  setState(() {
-                                    FFAppState().loop = 0;
-                                  });
-                                  while (_model.retornoLancamentos!.length >
-                                      FFAppState().loop) {
-                                    await SQLiteManager.instance.novoLancamento(
-                                      descricao: widget.descricao!,
-                                      idcategoria: widget.idcategoria!,
-                                      valor: widget.valor!,
-                                      fixo: widget.fixo!,
-                                      tipotransacao: widget.tipotransacao,
-                                      parcela: _model
-                                          .retornoLancamentos?[
-                                              FFAppState().loop]
-                                          ?.parcela,
-                                      dtagendada: FFAppState().DataTime!,
-                                      status: widget.status!,
-                                      totalparcelas: widget.totalparcelas,
-                                      idparcela: widget.idparcela,
-                                    );
-                                    setState(() {
-                                      FFAppState().DataTime =
-                                          functions.adicionarUmMes(
-                                              FFAppState().DataTime!);
-                                    });
-                                    setState(() {
-                                      FFAppState().loop = FFAppState().loop + 1;
-                                    });
-                                  }
-                                  Navigator.pop(context);
                                   Navigator.pop(context);
 
                                   setState(() {});
