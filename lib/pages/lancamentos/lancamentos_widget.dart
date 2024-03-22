@@ -589,9 +589,15 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                             .toList()
                                             .map((label) => ChipData(label))
                                             .toList(),
-                                        onChanged: (val) => setState(() =>
-                                            _model.choiceChipsValue1 =
-                                                val?.firstOrNull),
+                                        onChanged: (val) async {
+                                          setState(() => _model.choiceAnoValue =
+                                              val?.firstOrNull);
+                                          setState(() {
+                                            FFAppState().anoSelecionado =
+                                                functions.stringParaInt(
+                                                    _model.choiceAnoValue!)!;
+                                          });
+                                        },
                                         selectedChipStyle: ChipStyle(
                                           backgroundColor: Color(0xFF66C3FF),
                                           textStyle: FlutterFlowTheme.of(
@@ -636,10 +642,10 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         rowSpacing: 12.0,
                                         multiselect: false,
                                         initialized:
-                                            _model.choiceChipsValue1 != null,
+                                            _model.choiceAnoValue != null,
                                         alignment: WrapAlignment.center,
                                         controller: _model
-                                                .choiceChipsValueController1 ??=
+                                                .choiceAnoValueController ??=
                                             FormFieldController<List<String>>(
                                           [
                                             FFAppState()
@@ -678,7 +684,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                           ChipData('Dezembro')
                                         ],
                                         onChanged: (val) => setState(() =>
-                                            _model.choiceChipsValue2 =
+                                            _model.choiceChipsValue =
                                                 val?.firstOrNull),
                                         selectedChipStyle: ChipStyle(
                                           backgroundColor: Color(0xFF66C3FF),
@@ -725,7 +731,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         multiselect: false,
                                         alignment: WrapAlignment.center,
                                         controller: _model
-                                                .choiceChipsValueController2 ??=
+                                                .choiceChipsValueController ??=
                                             FormFieldController<List<String>>(
                                           [],
                                         ),
