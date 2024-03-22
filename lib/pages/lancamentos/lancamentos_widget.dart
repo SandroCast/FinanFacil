@@ -53,6 +53,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         FFAppState().anoSelecionado = functions.obterAno(getCurrentTimestamp)!;
+        FFAppState().mesSelecionado = functions.obterMes(getCurrentTimestamp)!;
       });
     });
 
@@ -664,29 +665,26 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 5.0, 10.0, 5.0),
                                       child: FlutterFlowChoiceChips(
-                                        options: [
-                                          ChipData('Janeiro'),
-                                          ChipData('Fevereiro'),
-                                          ChipData('Março'),
-                                          ChipData('Abril'),
-                                          ChipData('Maio'),
-                                          ChipData('Junho'),
-                                          ChipData('Julho'),
-                                          ChipData('Agosto'),
-                                          ChipData('Setembro'),
-                                          ChipData('Outubro'),
-                                          ChipData('Novembro'),
-                                          ChipData('Dezembro')
-                                        ],
-                                        onChanged: (val) => setState(() =>
-                                            _model.choiceChipsValue =
-                                                val?.firstOrNull),
+                                        options: functions
+                                            .gerarListaDeMeses(
+                                                FFAppState().mesSelecionado)!
+                                            .map((label) => ChipData(label))
+                                            .toList(),
+                                        onChanged: (val) async {
+                                          setState(() => _model.choiceMesValue =
+                                              val?.firstOrNull);
+                                          setState(() {
+                                            FFAppState().mesSelecionado =
+                                                _model.choiceMesValue!;
+                                          });
+                                        },
                                         selectedChipStyle: ChipStyle(
                                           backgroundColor: Color(0xFF66C3FF),
                                           textStyle: FlutterFlowTheme.of(
@@ -730,11 +728,13 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         chipSpacing: 12.0,
                                         rowSpacing: 12.0,
                                         multiselect: false,
+                                        initialized:
+                                            _model.choiceMesValue != null,
                                         alignment: WrapAlignment.center,
                                         controller: _model
-                                                .choiceChipsValueController ??=
+                                                .choiceMesValueController ??=
                                             FormFieldController<List<String>>(
-                                          [],
+                                          [FFAppState().mesSelecionado],
                                         ),
                                         wrapped: true,
                                       ),

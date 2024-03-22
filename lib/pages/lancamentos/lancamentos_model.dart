@@ -26,12 +26,11 @@ class LancamentosModel extends FlutterFlowModel<LancamentosWidget> {
   String? get choiceAnoValue => choiceAnoValueController?.value?.firstOrNull;
   set choiceAnoValue(String? val) =>
       choiceAnoValueController?.value = val != null ? [val] : [];
-  // State field(s) for ChoiceChips widget.
-  FormFieldController<List<String>>? choiceChipsValueController;
-  String? get choiceChipsValue =>
-      choiceChipsValueController?.value?.firstOrNull;
-  set choiceChipsValue(String? val) =>
-      choiceChipsValueController?.value = val != null ? [val] : [];
+  // State field(s) for ChoiceMes widget.
+  FormFieldController<List<String>>? choiceMesValueController;
+  String? get choiceMesValue => choiceMesValueController?.value?.firstOrNull;
+  set choiceMesValue(String? val) =>
+      choiceMesValueController?.value = val != null ? [val] : [];
 
   /// Initialization and disposal methods.
 

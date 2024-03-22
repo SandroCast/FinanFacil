@@ -156,3 +156,48 @@ List<int>? gerarListaDeAnos(int ano) {
 int? obterAno(DateTime data) {
   return data.year;
 }
+
+List<String>? gerarListaDeMeses(String mes) {
+  List<String> meses = [
+    'Dezembro',
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro',
+    'Janeiro',
+    'Fevereiro'
+  ];
+  int index = meses.indexOf(mes);
+
+  if (index != 0) {
+    return meses.sublist(index - 1, index + 2);
+  } else {
+    return ['Novembro', 'Dezembro', 'Janeiro'];
+  }
+}
+
+String? obterMes(DateTime data) {
+  List<String> meses = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  ];
+  return meses[data.month - 1];
+}
