@@ -144,3 +144,15 @@ DateTime? subtrairMeses(
   return DateTime(year, month, day, data.hour, data.minute, data.second,
       data.millisecond, data.microsecond);
 }
+
+List<int>? gerarListaDeAnos(int ano) {
+  List<int> listaDeAnos = [];
+  for (int i = ano - 5; i <= ano + 5; i++) {
+    listaDeAnos.add(i);
+  }
+  return listaDeAnos;
+}
+
+int? obterAno(DateTime data) {
+  return data.year;
+}

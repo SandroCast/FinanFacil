@@ -218,8 +218,6 @@ dynamic deserializeParam<T>(
             return BuscaLancamentosPorIDParcelaFuturasRow(data);
           case BuscaLancamentosPorIDParcelaRow:
             return BuscaLancamentosPorIDParcelaRow(data);
-          case AnosUtilizadosNoBancoRow:
-            return AnosUtilizadosNoBancoRow(data);
           default:
             return null;
         }

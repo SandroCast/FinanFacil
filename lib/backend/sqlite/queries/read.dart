@@ -170,23 +170,3 @@ class BuscaLancamentosPorIDParcelaRow extends SqliteRow {
 }
 
 /// END BUSCALANCAMENTOSPORIDPARCELA
-
-/// BEGIN ANOSUTILIZADOSNOBANCO
-Future<List<AnosUtilizadosNoBancoRow>> performAnosUtilizadosNoBanco(
-  Database database,
-) {
-  final query = '''
-SELECT DISTINCT strftime('%Y', dt_agendada) AS ano
-FROM lancamentos
-ORDER BY ano;
-''';
-  return _readQuery(database, query, (d) => AnosUtilizadosNoBancoRow(d));
-}
-
-class AnosUtilizadosNoBancoRow extends SqliteRow {
-  AnosUtilizadosNoBancoRow(Map<String, dynamic> data) : super(data);
-
-  String? get ano => data['ano'] as String?;
-}
-
-/// END ANOSUTILIZADOSNOBANCO

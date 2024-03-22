@@ -46,4 +46,10 @@ class FFAppState extends ChangeNotifier {
   set loop(int _value) {
     _loop = _value;
   }
+
+  int _anoSelecionado = 0;
+  int get anoSelecionado => _anoSelecionado;
+  set anoSelecionado(int _value) {
+    _anoSelecionado = _value;
+  }
 }
