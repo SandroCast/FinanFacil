@@ -147,7 +147,7 @@ DateTime? subtrairMeses(
 
 List<int>? gerarListaDeAnos(int ano) {
   List<int> listaDeAnos = [];
-  for (int i = ano - 1; i <= ano + 5; i++) {
+  for (int i = ano - 2; i <= ano + 2; i++) {
     listaDeAnos.add(i);
   }
   return listaDeAnos;
