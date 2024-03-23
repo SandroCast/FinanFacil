@@ -57,9 +57,14 @@ class SQLiteManager {
         fim: fim,
       );
 
-  Future<List<BuscaLancamentosRow>> buscaLancamentos() =>
+  Future<List<BuscaLancamentosRow>> buscaLancamentos({
+    String? ano,
+    String? mes,
+  }) =>
       performBuscaLancamentos(
         _database,
+        ano: ano,
+        mes: mes,
       );
 
   Future<List<BuscaTodasAsCategoriasRow>> buscaTodasAsCategorias() =>
@@ -84,6 +89,18 @@ class SQLiteManager {
       performBuscaLancamentosPorIDParcela(
         _database,
         idparcela: idparcela,
+      );
+
+  Future<List<SaldoAtualRow>> saldoAtual() => performSaldoAtual(
+        _database,
+      );
+
+  Future<List<SaldoPrevistoRow>> saldoPrevisto({
+    DateTime? mesfim,
+  }) =>
+      performSaldoPrevisto(
+        _database,
+        mesfim: mesfim,
       );
 
   /// END READ QUERY CALLS

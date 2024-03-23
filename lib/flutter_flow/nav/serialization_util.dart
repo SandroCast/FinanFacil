@@ -218,6 +218,10 @@ dynamic deserializeParam<T>(
             return BuscaLancamentosPorIDParcelaFuturasRow(data);
           case BuscaLancamentosPorIDParcelaRow:
             return BuscaLancamentosPorIDParcelaRow(data);
+          case SaldoAtualRow:
+            return SaldoAtualRow(data);
+          case SaldoPrevistoRow:
+            return SaldoPrevistoRow(data);
           default:
             return null;
         }

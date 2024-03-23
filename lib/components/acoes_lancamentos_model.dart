@@ -48,6 +48,10 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   FocusNode? parcelasFocusNode;
   TextEditingController? parcelasController;
   String? Function(BuildContext, String?)? parcelasControllerValidator;
+  // State field(s) for repeticoes widget.
+  FocusNode? repeticoesFocusNode;
+  TextEditingController? repeticoesController;
+  String? Function(BuildContext, String?)? repeticoesControllerValidator;
   // State field(s) for data widget.
   FocusNode? dataFocusNode;
   TextEditingController? dataController;
@@ -81,6 +85,9 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
 
     parcelasFocusNode?.dispose();
     parcelasController?.dispose();
+
+    repeticoesFocusNode?.dispose();
+    repeticoesController?.dispose();
 
     dataFocusNode?.dispose();
     dataController?.dispose();

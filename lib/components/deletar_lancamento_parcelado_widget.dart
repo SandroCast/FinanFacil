@@ -17,11 +17,13 @@ class DeletarLancamentoParceladoWidget extends StatefulWidget {
     required this.idLancamento,
     required this.idParcela,
     required this.data,
+    required this.fixo,
   });
 
   final int? idLancamento;
   final String? idParcela;
   final DateTime? data;
+  final int? fixo;
 
   @override
   State<DeletarLancamentoParceladoWidget> createState() =>
@@ -157,7 +159,7 @@ class _DeletarLancamentoParceladoWidgetState
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'Esse lançamento e parcelado, o que deseja exluir?',
+                                      'Esse lançamento e ${widget.fixo == 1 ? 'FIXO' : 'PARCELADO'} , o que deseja exluir?',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

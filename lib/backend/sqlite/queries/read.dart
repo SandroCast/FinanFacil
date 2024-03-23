@@ -15,7 +15,7 @@ Future<List<BuscaCategoriasRow>> performBuscaCategorias(
 }) {
   final query = '''
 select id, titulo from categorias
-where tipo = '${tipo}';
+where tipo = '${tipo}' and titulo is not 'AJUSTE SALDO';
 ''';
   return _readQuery(database, query, (d) => BuscaCategoriasRow(d));
 }
@@ -76,11 +76,15 @@ class BuscaLancamentoPorPeriodoRow extends SqliteRow {
 
 /// BEGIN BUSCALANCAMENTOS
 Future<List<BuscaLancamentosRow>> performBuscaLancamentos(
-  Database database,
-) {
+  Database database, {
+  String? ano,
+  String? mes,
+}) {
   final query = '''
 SELECT lancamentos.id, id_categoria as idcategoria, descricao, valor, fixo, tipo_transacao as avista, parcela, total_parcelas as totalparcelas, status, tipo, dt_agendada AS dtagendada, id_parcela as idparcela FROM lancamentos
-join categorias on lancamentos.id_categoria = categorias.id;
+join categorias on lancamentos.id_categoria = categorias.id
+where DATE(dt_agendada) like '${ano}-${mes}-%'
+order by dt_agendada desc;
 ''';
   return _readQuery(database, query, (d) => BuscaLancamentosRow(d));
 }
@@ -109,7 +113,7 @@ Future<List<BuscaTodasAsCategoriasRow>> performBuscaTodasAsCategorias(
   Database database,
 ) {
   final query = '''
-select id, titulo, tipo from categorias where titulo is not 'SEM CATEGORIA';
+select id, titulo, tipo from categorias where titulo not in('SEM CATEGORIA', 'AJUSTE SALDO');
 ''';
   return _readQuery(database, query, (d) => BuscaTodasAsCategoriasRow(d));
 }
@@ -170,3 +174,42 @@ class BuscaLancamentosPorIDParcelaRow extends SqliteRow {
 }
 
 /// END BUSCALANCAMENTOSPORIDPARCELA
+
+/// BEGIN SALDOATUAL
+Future<List<SaldoAtualRow>> performSaldoAtual(
+  Database database,
+) {
+  final query = '''
+SELECT SUM(valor) AS saldo FROM lancamentos
+WHERE status IN ('RECEBIDO', 'PAGO');
+''';
+  return _readQuery(database, query, (d) => SaldoAtualRow(d));
+}
+
+class SaldoAtualRow extends SqliteRow {
+  SaldoAtualRow(Map<String, dynamic> data) : super(data);
+
+  double? get saldo => data['saldo'] as double?;
+}
+
+/// END SALDOATUAL
+
+/// BEGIN SALDOPREVISTO
+Future<List<SaldoPrevistoRow>> performSaldoPrevisto(
+  Database database, {
+  DateTime? mesfim,
+}) {
+  final query = '''
+select sum(valor) as valor from lancamentos
+where DATE(dt_agendada) <= '${mesfim}';
+''';
+  return _readQuery(database, query, (d) => SaldoPrevistoRow(d));
+}
+
+class SaldoPrevistoRow extends SqliteRow {
+  SaldoPrevistoRow(Map<String, dynamic> data) : super(data);
+
+  double? get valor => data['valor'] as double?;
+}
+
+/// END SALDOPREVISTO

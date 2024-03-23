@@ -58,4 +58,10 @@ class FFAppState extends ChangeNotifier {
   set mesSelecionado(String _value) {
     _mesSelecionado = _value;
   }
+
+  bool _saldoVisivel = false;
+  bool get saldoVisivel => _saldoVisivel;
+  set saldoVisivel(bool _value) {
+    _saldoVisivel = _value;
+  }
 }

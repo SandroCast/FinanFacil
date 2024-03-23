@@ -1,4 +1,5 @@
 import '/components/acoes_lancamentos_widget.dart';
+import '/components/ajustar_saldo_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -495,11 +496,29 @@ class _NavBarWidgetState extends State<NavBarWidget>
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Opacity(
-                              opacity: 0.0,
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 10.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    useSafeArea: true,
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: AjustarSaldoWidget(),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                },
                                 child: Container(
                                   width: 110.0,
                                   decoration: BoxDecoration(
@@ -510,7 +529,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5.0, 10.0, 5.0, 10.0),
                                     child: Text(
-                                      'Transferência',
+                                      'Ajuste Saldo',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -520,9 +539,9 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                           ),
                                     ),
                                   ),
-                                ).animateOnPageLoad(animationsMap[
-                                    'containerOnPageLoadAnimation1']!),
-                              ),
+                                ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation1']!),
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
@@ -655,48 +674,11 @@ class _NavBarWidgetState extends State<NavBarWidget>
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Opacity(
-                              opacity: 0.0,
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 5.0),
-                                  child: Container(
-                                    width: 10.0,
-                                    height: 10.0,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF00A7C5),
-                                      shape: BoxShape.circle,
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation4']!),
-                                ),
-                              ),
-                            ),
-                            Opacity(
-                              opacity: 0.0,
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 5.0),
-                                  child: Container(
-                                    width: 10.0,
-                                    height: 10.0,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF00A7C5),
-                                      shape: BoxShape.circle,
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation5']!),
-                                ),
-                              ),
-                            ),
-                            Opacity(
-                              opacity: 0.0,
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 1.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
                                 child: Container(
                                   width: 10.0,
                                   height: 10.0,
@@ -705,8 +687,36 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                     shape: BoxShape.circle,
                                   ),
                                 ).animateOnPageLoad(animationsMap[
-                                    'containerOnPageLoadAnimation6']!),
+                                    'containerOnPageLoadAnimation4']!),
                               ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 1.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
+                                child: Container(
+                                  width: 10.0,
+                                  height: 10.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF00A7C5),
+                                    shape: BoxShape.circle,
+                                  ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'containerOnPageLoadAnimation5']!),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 1.0),
+                              child: Container(
+                                width: 10.0,
+                                height: 10.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF00A7C5),
+                                  shape: BoxShape.circle,
+                                ),
+                              ).animateOnPageLoad(animationsMap[
+                                  'containerOnPageLoadAnimation6']!),
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.min,

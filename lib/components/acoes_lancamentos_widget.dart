@@ -103,6 +103,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
         text: widget.lancamento?.totalparcelas?.toString());
     _model.parcelasFocusNode ??= FocusNode();
 
+    _model.repeticoesController ??= TextEditingController(
+        text: widget.lancamento?.totalparcelas?.toString());
+    _model.repeticoesFocusNode ??= FocusNode();
+
     _model.dataController ??= TextEditingController(
         text: widget.lancamento != null
             ? dateTimeFormat('dd/MM/y',
@@ -204,8 +208,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  if (widget.lancamento?.avista ==
-                                      'PARCELADO') {
+                                  if ((widget.lancamento?.avista ==
+                                          'PARCELADO') ||
+                                      (widget.lancamento?.fixo == 1)) {
                                     showModalBottomSheet(
                                       isScrollControlled: true,
                                       backgroundColor: Colors.transparent,
@@ -224,6 +229,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             data: functions.stringParaDateTime(
                                                 widget
                                                     .lancamento!.dtagendada!)!,
+                                            fixo: widget.lancamento!.fixo,
                                           ),
                                         );
                                       },
@@ -911,6 +917,99 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                             ],
                           ),
                         ),
+                      if (_model.fixoValue ?? true)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextFormField(
+                                controller: _model.repeticoesController,
+                                focusNode: _model.repeticoesFocusNode,
+                                readOnly: widget.lancamento != null,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Repetir quantas vezes?',
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  hintStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                keyboardType: TextInputType.number,
+                                validator: _model.repeticoesControllerValidator
+                                    .asValidator(context),
+                              ),
+                              if (FFAppState().campoObrigatorio == 'repeticoes')
+                                Text(
+                                  'Campo Obrigatório',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                ),
+                              if (FFAppState().campoObrigatorio ==
+                                  'repeticoesMax')
+                                Text(
+                                  'Apensa de 1 a 72',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                ),
+                              if (FFAppState().campoObrigatorio ==
+                                  'repeticoesNum')
+                                Text(
+                                  'Apenas Número',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                ),
+                            ],
+                          ),
+                        ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 0.0, 10.0, 0.0),
@@ -1492,9 +1591,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           .text !=
                                                       ''
                                               ? functions.salvaPrecoBanco(_model
-                                                  .precoVisivelController.text)!
-                                              : 0.0) <
-                                          1.0) {
+                                                  .precoVisivelController.text)
+                                              : 0.0) ==
+                                          0.0) {
                                         setState(() {
                                           FFAppState().campoObrigatorio =
                                               'valor';
@@ -1546,46 +1645,104 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 setState(() {});
                                               return;
                                             } else {
-                                              if ((_model.datePicked == null) &&
-                                                  (widget.lancamento == null)) {
+                                              if ((_model.fixoValue == true) &&
+                                                  (_model.repeticoesController
+                                                              .text ==
+                                                          null ||
+                                                      _model.repeticoesController
+                                                              .text ==
+                                                          '')) {
                                                 setState(() {
                                                   FFAppState()
                                                           .campoObrigatorio =
-                                                      'data';
+                                                      'repeticoes';
                                                 });
                                                 if (_shouldSetState)
                                                   setState(() {});
                                                 return;
                                               } else {
-                                                if ((widget.tipo ==
-                                                        'Receita') &&
-                                                    (_model.statusReceitaValue ==
-                                                            null ||
-                                                        _model.statusReceitaValue ==
-                                                            '')) {
+                                                if ((_model.fixoValue ==
+                                                        true) &&
+                                                    !functions
+                                                        .verificaSeApenasNumero(
+                                                            _model
+                                                                .repeticoesController
+                                                                .text)!) {
                                                   setState(() {
                                                     FFAppState()
                                                             .campoObrigatorio =
-                                                        'status';
+                                                        'repeticoesNum';
                                                   });
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
                                                 } else {
-                                                  if ((widget.tipo ==
-                                                          'Despesa') &&
-                                                      (_model.statusDespesaValue ==
-                                                              null ||
-                                                          _model.statusDespesaValue ==
-                                                              '')) {
+                                                  if ((_model.fixoValue ==
+                                                          true) &&
+                                                      ((functions.stringParaInt(
+                                                                  _model
+                                                                      .repeticoesController
+                                                                      .text)! >
+                                                              72) ||
+                                                          (functions.stringParaInt(
+                                                                  _model
+                                                                      .repeticoesController
+                                                                      .text)! <
+                                                              1))) {
                                                     setState(() {
                                                       FFAppState()
                                                               .campoObrigatorio =
-                                                          'status';
+                                                          'repeticoesMax';
                                                     });
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                     return;
+                                                  } else {
+                                                    if ((_model.datePicked ==
+                                                            null) &&
+                                                        (widget.lancamento ==
+                                                            null)) {
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .campoObrigatorio =
+                                                            'data';
+                                                      });
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    } else {
+                                                      if ((widget.tipo ==
+                                                              'Receita') &&
+                                                          (_model.statusReceitaValue ==
+                                                                  null ||
+                                                              _model.statusReceitaValue ==
+                                                                  '')) {
+                                                        setState(() {
+                                                          FFAppState()
+                                                                  .campoObrigatorio =
+                                                              'status';
+                                                        });
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      } else {
+                                                        if ((widget.tipo ==
+                                                                'Despesa') &&
+                                                            (_model.statusDespesaValue ==
+                                                                    null ||
+                                                                _model.statusDespesaValue ==
+                                                                    '')) {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .campoObrigatorio =
+                                                                'status';
+                                                          });
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
+                                                        }
+                                                      }
+                                                    }
                                                   }
                                                 }
                                               }
@@ -1597,8 +1754,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                   }
 
                                   if (widget.lancamento != null) {
-                                    if (widget.lancamento?.avista ==
-                                        'PARCELADO') {
+                                    if ((widget.lancamento?.avista ==
+                                            'PARCELADO') ||
+                                        (widget.lancamento?.fixo == 1)) {
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
@@ -1627,7 +1785,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           .text)!)),
                                               fixo: _model.fixoValue! ? 1 : 0,
                                               tipotransacao:
-                                                  _model.avistaValue!,
+                                                  widget.lancamento!.avista!,
                                               parcela:
                                                   widget.lancamento!.parcela!,
                                               dtagendada: _model.datePicked !=
@@ -1640,8 +1798,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               status: widget.tipo == 'Receita'
                                                   ? _model.statusReceitaValue!
                                                   : _model.statusDespesaValue!,
-                                              totalparcelas: int.parse(_model
-                                                  .parcelasController.text),
+                                              totalparcelas: widget
+                                                  .lancamento!.totalparcelas!,
                                               id: widget.lancamento!.id!,
                                               idparcela:
                                                   widget.lancamento!.idparcela!,
@@ -1683,13 +1841,18 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     _model.iDUnico =
                                         await actions.geraUnicoID();
                                     _shouldSetState = true;
-                                    if ((_model.fixoValue == false) &&
-                                        (_model.avistaValue == 'PARCELADO')) {
+                                    if (((_model.fixoValue == false) &&
+                                            (_model.avistaValue ==
+                                                'PARCELADO')) ||
+                                        (_model.fixoValue == true)) {
                                       setState(() {
                                         FFAppState().loop = 1;
                                       });
                                       while (functions.stringParaInt(_model
-                                              .parcelasController.text)! >=
+                                                  .fixoValue!
+                                              ? _model.repeticoesController.text
+                                              : _model
+                                                  .parcelasController.text)! >=
                                           FFAppState().loop) {
                                         await SQLiteManager.instance
                                             .novoLancamento(
@@ -1711,8 +1874,11 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           status: widget.tipo == 'Receita'
                                               ? _model.statusReceitaValue!
                                               : _model.statusDespesaValue!,
-                                          totalparcelas: int.tryParse(
-                                              _model.parcelasController.text),
+                                          totalparcelas: _model.fixoValue!
+                                              ? int.tryParse(_model
+                                                  .repeticoesController.text)
+                                              : int.tryParse(_model
+                                                  .parcelasController.text),
                                           idparcela: _model.iDUnico,
                                         );
                                         setState(() {

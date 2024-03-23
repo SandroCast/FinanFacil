@@ -176,7 +176,7 @@ class _EditarLancamentoParceladoWidgetState
                                 children: [
                                   Flexible(
                                     child: Text(
-                                      'Esse lançamento e parcelado, o que deseja alterar?',
+                                      'Esse lançamento e ${widget.fixo == 1 ? 'FIXO' : 'PARCELADO'} , o que deseja alterar?',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

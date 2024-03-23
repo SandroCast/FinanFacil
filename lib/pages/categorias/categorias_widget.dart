@@ -4,6 +4,7 @@ import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -622,166 +623,302 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                             ),
                                           );
                                         }
-                                        final listViewBuscaLancamentoPorPeriodoRowList =
+                                        final containerBuscaLancamentoPorPeriodoRowList =
                                             snapshot.data!;
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              listViewBuscaLancamentoPorPeriodoRowList
-                                                  .length,
-                                          itemBuilder:
-                                              (context, listViewIndex) {
-                                            final listViewBuscaLancamentoPorPeriodoRow =
-                                                listViewBuscaLancamentoPorPeriodoRowList[
-                                                    listViewIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 5.0, 10.0, 0.0),
-                                              child: Container(
-                                                width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      blurRadius: 4.0,
-                                                      color: Color(0x33000000),
-                                                      offset: Offset(0.0, 2.0),
-                                                    )
+                                        return Container(
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              if (containerBuscaLancamentoPorPeriodoRowList
+                                                      .length >
+                                                  0)
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Builder(
+                                                      builder: (context) {
+                                                        final resultQuery =
+                                                            containerBuscaLancamentoPorPeriodoRowList
+                                                                .toList();
+                                                        return ListView.builder(
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          shrinkWrap: true,
+                                                          scrollDirection:
+                                                              Axis.vertical,
+                                                          itemCount: resultQuery
+                                                              .length,
+                                                          itemBuilder: (context,
+                                                              resultQueryIndex) {
+                                                            final resultQueryItem =
+                                                                resultQuery[
+                                                                    resultQueryIndex];
+                                                            return Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          5.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                              child: Container(
+                                                                width: double
+                                                                    .infinity,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  boxShadow: [
+                                                                    BoxShadow(
+                                                                      blurRadius:
+                                                                          4.0,
+                                                                      color: Color(
+                                                                          0x33000000),
+                                                                      offset: Offset(
+                                                                          0.0,
+                                                                          2.0),
+                                                                    )
+                                                                  ],
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10.0),
+                                                                ),
+                                                                child: Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0,
+                                                                          10.0),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
+                                                                    children: [
+                                                                      Text(
+                                                                        resultQueryItem
+                                                                            .titulo!,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              color: resultQueryItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
+                                                                              fontSize: 15.0,
+                                                                            ),
+                                                                      ),
+                                                                      Text(
+                                                                        resultQueryItem.tipo ==
+                                                                                'Receita'
+                                                                            ? formatNumber(
+                                                                                resultQueryItem.valor!,
+                                                                                formatType: FormatType.custom,
+                                                                                currency: 'R\$ ',
+                                                                                format: ',##0.00#',
+                                                                                locale: 'pt_br',
+                                                                              )
+                                                                            : formatNumber(
+                                                                                -(resultQueryItem.valor!),
+                                                                                formatType: FormatType.custom,
+                                                                                currency: '- R\$ ',
+                                                                                format: ',##0.00#',
+                                                                                locale: 'pt_br',
+                                                                              ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Readex Pro',
+                                                                              color: resultQueryItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
+                                                                              fontSize: 15.0,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      },
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  5.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                  0.0, 2.0),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      10.0,
+                                                                      10.0,
+                                                                      10.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Text(
+                                                                'TOTAL GERAL',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      fontSize:
+                                                                          15.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                functions.somarListaDouble(containerBuscaLancamentoPorPeriodoRowList
+                                                                            .map((e) =>
+                                                                                e.valor)
+                                                                            .withoutNulls
+                                                                            .toList())! >=
+                                                                        0.0
+                                                                    ? formatNumber(
+                                                                        functions.somarListaDouble(containerBuscaLancamentoPorPeriodoRowList
+                                                                            .map((e) =>
+                                                                                e.valor)
+                                                                            .withoutNulls
+                                                                            .toList()),
+                                                                        formatType:
+                                                                            FormatType.custom,
+                                                                        currency:
+                                                                            'R\$ ',
+                                                                        format:
+                                                                            ',##0.00#',
+                                                                        locale:
+                                                                            'pt_br',
+                                                                      )
+                                                                    : formatNumber(
+                                                                        -(functions.somarListaDouble(containerBuscaLancamentoPorPeriodoRowList
+                                                                            .map((e) =>
+                                                                                e.valor)
+                                                                            .withoutNulls
+                                                                            .toList())!),
+                                                                        formatType:
+                                                                            FormatType.custom,
+                                                                        currency:
+                                                                            '- R\$ ',
+                                                                        format:
+                                                                            ',##0.00#',
+                                                                        locale:
+                                                                            'pt_br',
+                                                                      ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color:
+                                                                          () {
+                                                                        if (functions.somarListaDouble(containerBuscaLancamentoPorPeriodoRowList.map((e) => e.valor).withoutNulls.toList())! >
+                                                                            0.0) {
+                                                                          return Color(
+                                                                              0xFF00B048);
+                                                                        } else if (functions.somarListaDouble(containerBuscaLancamentoPorPeriodoRowList.map((e) => e.valor).withoutNulls.toList())! <
+                                                                            0.0) {
+                                                                          return Color(
+                                                                              0xFFFD0101);
+                                                                        } else {
+                                                                          return FlutterFlowTheme.of(context)
+                                                                              .primaryText;
+                                                                        }
+                                                                      }(),
+                                                                      fontSize:
+                                                                          15.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
                                                 ),
-                                                child: Padding(
+                                              if (containerBuscaLancamentoPorPeriodoRowList
+                                                      .length ==
+                                                  0)
+                                                Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(10.0, 10.0,
-                                                          10.0, 10.0),
+                                                      .fromSTEB(
+                                                          0.0, 30.0, 0.0, 2.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
-                                                            .spaceBetween,
+                                                            .center,
                                                     children: [
                                                       Text(
-                                                        listViewBuscaLancamentoPorPeriodoRow
-                                                            .titulo!,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              color: listViewBuscaLancamentoPorPeriodoRow
-                                                                          .tipo ==
-                                                                      'Receita'
-                                                                  ? Color(
-                                                                      0xFF00B048)
-                                                                  : Color(
-                                                                      0xFFFD0101),
-                                                              fontSize: 15.0,
-                                                            ),
-                                                      ),
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          listViewBuscaLancamentoPorPeriodoRow
-                                                              .valor
-                                                              ?.toString(),
-                                                          '0',
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              color: listViewBuscaLancamentoPorPeriodoRow
-                                                                          .tipo ==
-                                                                      'Receita'
-                                                                  ? Color(
-                                                                      0xFF00B048)
-                                                                  : Color(
-                                                                      0xFFFD0101),
-                                                              fontSize: 15.0,
-                                                            ),
+                                                        'Não há lançamentos nesse período.',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                ),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 5.0, 10.0, 0.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(0.0, 2.0),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 10.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                'TOTAL GERAL',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 15.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                              ),
-                                              Text(
-                                                'R\$ 1000,00',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 15.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                              ),
                                             ],
                                           ),
-                                        ),
-                                      ),
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
