@@ -228,7 +228,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                               FutureBuilder<List<SaldoPrevistoRow>>(
                                 future: SQLiteManager.instance.saldoPrevisto(
                                   mesfim: functions.stringParaDateTime(
-                                      '${FFAppState().anoSelecionado.toString()}-${functions.mesParaNumero(FFAppState().mesSelecionado)}-31 23:59:59.999'),
+                                      '${FFAppState().anoSelecionado.toString()}-${functions.mesParaNumero(FFAppState().mesSelecionado)}-31 23:59:59'),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
