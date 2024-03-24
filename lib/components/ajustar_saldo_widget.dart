@@ -15,7 +15,12 @@ import 'ajustar_saldo_model.dart';
 export 'ajustar_saldo_model.dart';
 
 class AjustarSaldoWidget extends StatefulWidget {
-  const AjustarSaldoWidget({super.key});
+  const AjustarSaldoWidget({
+    super.key,
+    required this.ativo,
+  });
+
+  final int? ativo;
 
   @override
   State<AjustarSaldoWidget> createState() => _AjustarSaldoWidgetState();
@@ -528,22 +533,71 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                       functions.salvaPrecoBanco(
                                           _model.saldoVisivelController.text)!,
                                     );
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          content: Text(
-                                              _model.retornoAjuste!.toString()),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
+                                    if (_model.retornoAjuste != 0.0) {
+                                      _model.iDUnicoGerado =
+                                          await actions.geraUnicoID();
+                                      await SQLiteManager.instance
+                                          .novoLancamento(
+                                        descricao: 'AJUSTE DE SALDO',
+                                        idcategoria:
+                                            _model.retornoAjuste! > 0.0 ? 3 : 4,
+                                        valor: _model.retornoAjuste!,
+                                        fixo: 0,
+                                        tipotransacao: 'A VISTA',
+                                        dtagendada: getCurrentTimestamp,
+                                        status: _model.retornoAjuste! > 0.0
+                                            ? 'RECEBIDO'
+                                            : 'PAGO',
+                                        parcela: 0,
+                                        totalparcelas: 0,
+                                        idparcela: _model.iDUnicoGerado,
+                                      );
+                                    }
+                                    Navigator.pop(context);
+                                    if (widget.ativo == 1) {
+                                      context.goNamed(
+                                        'Inicio',
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
+                                    } else {
+                                      if (widget.ativo == 2) {
+                                        context.goNamed(
+                                          'Lancamentos',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
                                             ),
-                                          ],
+                                          },
                                         );
-                                      },
-                                    );
+                                      } else {
+                                        if (widget.ativo == 3) {
+                                          context.goNamed(
+                                            'Categorias',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        }
+                                      }
+                                    }
 
                                     setState(() {});
                                   },

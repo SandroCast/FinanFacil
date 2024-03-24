@@ -237,7 +237,10 @@ class _DeletarLancamentoWidgetState extends State<DeletarLancamentoWidget>
                                   id: widget.lancamento?.id,
                                 );
                                 Navigator.pop(context);
-                                Navigator.pop(context);
+                                if (widget.lancamento?.descricao !=
+                                    'AJUSTE DE SALDO') {
+                                  Navigator.pop(context);
+                                }
                               },
                               text: 'Excluir',
                               options: FFButtonOptions(

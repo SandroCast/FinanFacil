@@ -505,6 +505,9 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  setState(() {
+                                    FFAppState().Flutuante = '';
+                                  });
                                   showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -514,7 +517,9 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                       return Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: AjustarSaldoWidget(),
+                                        child: AjustarSaldoWidget(
+                                          ativo: widget.ativo!,
+                                        ),
                                       );
                                     },
                                   ).then((value) => safeSetState(() {}));

@@ -103,6 +103,18 @@ class SQLiteManager {
         mesfim: mesfim,
       );
 
+  Future<List<LancamentosMesAtualRow>> lancamentosMesAtual({
+    String? ano,
+    String? mes,
+    String? filtro,
+  }) =>
+      performLancamentosMesAtual(
+        _database,
+        ano: ano,
+        mes: mes,
+        filtro: filtro,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

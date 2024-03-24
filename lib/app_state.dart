@@ -47,13 +47,13 @@ class FFAppState extends ChangeNotifier {
     _loop = _value;
   }
 
-  int _anoSelecionado = 0;
+  int _anoSelecionado = 2024;
   int get anoSelecionado => _anoSelecionado;
   set anoSelecionado(int _value) {
     _anoSelecionado = _value;
   }
 
-  String _mesSelecionado = '';
+  String _mesSelecionado = 'Janeiro';
   String get mesSelecionado => _mesSelecionado;
   set mesSelecionado(String _value) {
     _mesSelecionado = _value;

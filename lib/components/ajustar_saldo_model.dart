@@ -26,6 +26,8 @@ class AjustarSaldoModel extends FlutterFlowModel<AjustarSaldoWidget> {
   String? Function(BuildContext, String?)? saldoDigitadoControllerValidator;
   // Stores action output result for [Custom Action - calcularAjusteSaldo] action in Button widget.
   double? retornoAjuste;
+  // Stores action output result for [Custom Action - geraUnicoID] action in Button widget.
+  String? iDUnicoGerado;
 
   /// Initialization and disposal methods.
 

@@ -323,6 +323,18 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       fontSize: 14.0,
                                     ),
                               ),
+                            if (FFAppState().campoObrigatorio ==
+                                'descricaoReservado')
+                              Text(
+                                'Descrição reservada pelo app, modifique algo e tente novamente',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterFlowTheme.of(context).error,
+                                      fontSize: 14.0,
+                                    ),
+                              ),
                           ],
                         ),
                       ),
@@ -1577,41 +1589,39 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     if (_shouldSetState) setState(() {});
                                     return;
                                   } else {
-                                    if (_model.categoriaValue == null) {
+                                    if (functions.letrasMaiusculas(
+                                            _model.descricaoController.text) ==
+                                        'AJUSTE DE SALDO') {
                                       setState(() {
                                         FFAppState().campoObrigatorio =
-                                            'categoria';
+                                            'descricaoReservado';
                                       });
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      if ((_model.precoVisivelController.text !=
-                                                      null &&
-                                                  _model.precoVisivelController
-                                                          .text !=
-                                                      ''
-                                              ? functions.salvaPrecoBanco(_model
-                                                  .precoVisivelController.text)
-                                              : 0.0) ==
-                                          0.0) {
+                                      if (_model.categoriaValue == null) {
                                         setState(() {
                                           FFAppState().campoObrigatorio =
-                                              'valor';
+                                              'categoria';
                                         });
                                         if (_shouldSetState) setState(() {});
                                         return;
                                       } else {
-                                        if ((_model.fixoValue == false) &&
-                                            (_model.avistaValue ==
-                                                'PARCELADO') &&
-                                            (_model.parcelasController.text ==
-                                                    null ||
-                                                _model.parcelasController
-                                                        .text ==
-                                                    '')) {
+                                        if ((_model.precoVisivelController
+                                                            .text !=
+                                                        null &&
+                                                    _model.precoVisivelController
+                                                            .text !=
+                                                        ''
+                                                ? functions.salvaPrecoBanco(
+                                                    _model
+                                                        .precoVisivelController
+                                                        .text)
+                                                : 0.0) ==
+                                            0.0) {
                                           setState(() {
                                             FFAppState().campoObrigatorio =
-                                                'parcelas';
+                                                'valor';
                                           });
                                           if (_shouldSetState) setState(() {});
                                           return;
@@ -1619,12 +1629,14 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           if ((_model.fixoValue == false) &&
                                               (_model.avistaValue ==
                                                   'PARCELADO') &&
-                                              !functions.verificaSeApenasNumero(
+                                              (_model.parcelasController.text ==
+                                                      null ||
                                                   _model.parcelasController
-                                                      .text)!) {
+                                                          .text ==
+                                                      '')) {
                                             setState(() {
                                               FFAppState().campoObrigatorio =
-                                                  'parcelasNum';
+                                                  'parcelas';
                                             });
                                             if (_shouldSetState)
                                               setState(() {});
@@ -1633,29 +1645,30 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             if ((_model.fixoValue == false) &&
                                                 (_model.avistaValue ==
                                                     'PARCELADO') &&
-                                                (functions.stringParaInt(_model
-                                                        .parcelasController
-                                                        .text)! <
-                                                    2)) {
+                                                !functions
+                                                    .verificaSeApenasNumero(
+                                                        _model
+                                                            .parcelasController
+                                                            .text)!) {
                                               setState(() {
                                                 FFAppState().campoObrigatorio =
-                                                    'parcelasMaior';
+                                                    'parcelasNum';
                                               });
                                               if (_shouldSetState)
                                                 setState(() {});
                                               return;
                                             } else {
-                                              if ((_model.fixoValue == true) &&
-                                                  (_model.repeticoesController
-                                                              .text ==
-                                                          null ||
-                                                      _model.repeticoesController
-                                                              .text ==
-                                                          '')) {
+                                              if ((_model.fixoValue == false) &&
+                                                  (_model.avistaValue ==
+                                                      'PARCELADO') &&
+                                                  (functions.stringParaInt(_model
+                                                          .parcelasController
+                                                          .text)! <
+                                                      2)) {
                                                 setState(() {
                                                   FFAppState()
                                                           .campoObrigatorio =
-                                                      'repeticoes';
+                                                      'parcelasMaior';
                                                 });
                                                 if (_shouldSetState)
                                                   setState(() {});
@@ -1663,15 +1676,16 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               } else {
                                                 if ((_model.fixoValue ==
                                                         true) &&
-                                                    !functions
-                                                        .verificaSeApenasNumero(
-                                                            _model
-                                                                .repeticoesController
-                                                                .text)!) {
+                                                    (_model.repeticoesController
+                                                                .text ==
+                                                            null ||
+                                                        _model.repeticoesController
+                                                                .text ==
+                                                            '')) {
                                                   setState(() {
                                                     FFAppState()
                                                             .campoObrigatorio =
-                                                        'repeticoesNum';
+                                                        'repeticoes';
                                                   });
                                                   if (_shouldSetState)
                                                     setState(() {});
@@ -1679,58 +1693,59 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 } else {
                                                   if ((_model.fixoValue ==
                                                           true) &&
-                                                      ((functions.stringParaInt(
-                                                                  _model
-                                                                      .repeticoesController
-                                                                      .text)! >
-                                                              72) ||
-                                                          (functions.stringParaInt(
-                                                                  _model
-                                                                      .repeticoesController
-                                                                      .text)! <
-                                                              1))) {
+                                                      !functions
+                                                          .verificaSeApenasNumero(
+                                                              _model
+                                                                  .repeticoesController
+                                                                  .text)!) {
                                                     setState(() {
                                                       FFAppState()
                                                               .campoObrigatorio =
-                                                          'repeticoesMax';
+                                                          'repeticoesNum';
                                                     });
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                     return;
                                                   } else {
-                                                    if ((_model.datePicked ==
-                                                            null) &&
-                                                        (widget.lancamento ==
-                                                            null)) {
+                                                    if ((_model.fixoValue ==
+                                                            true) &&
+                                                        ((functions.stringParaInt(
+                                                                    _model
+                                                                        .repeticoesController
+                                                                        .text)! >
+                                                                72) ||
+                                                            (functions.stringParaInt(
+                                                                    _model
+                                                                        .repeticoesController
+                                                                        .text)! <
+                                                                1))) {
                                                       setState(() {
                                                         FFAppState()
                                                                 .campoObrigatorio =
-                                                            'data';
+                                                            'repeticoesMax';
                                                       });
                                                       if (_shouldSetState)
                                                         setState(() {});
                                                       return;
                                                     } else {
-                                                      if ((widget.tipo ==
-                                                              'Receita') &&
-                                                          (_model.statusReceitaValue ==
-                                                                  null ||
-                                                              _model.statusReceitaValue ==
-                                                                  '')) {
+                                                      if ((_model.datePicked ==
+                                                              null) &&
+                                                          (widget.lancamento ==
+                                                              null)) {
                                                         setState(() {
                                                           FFAppState()
                                                                   .campoObrigatorio =
-                                                              'status';
+                                                              'data';
                                                         });
                                                         if (_shouldSetState)
                                                           setState(() {});
                                                         return;
                                                       } else {
                                                         if ((widget.tipo ==
-                                                                'Despesa') &&
-                                                            (_model.statusDespesaValue ==
+                                                                'Receita') &&
+                                                            (_model.statusReceitaValue ==
                                                                     null ||
-                                                                _model.statusDespesaValue ==
+                                                                _model.statusReceitaValue ==
                                                                     '')) {
                                                           setState(() {
                                                             FFAppState()
@@ -1740,6 +1755,22 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           if (_shouldSetState)
                                                             setState(() {});
                                                           return;
+                                                        } else {
+                                                          if ((widget.tipo ==
+                                                                  'Despesa') &&
+                                                              (_model.statusDespesaValue ==
+                                                                      null ||
+                                                                  _model.statusDespesaValue ==
+                                                                      '')) {
+                                                            setState(() {
+                                                              FFAppState()
+                                                                      .campoObrigatorio =
+                                                                  'status';
+                                                            });
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
+                                                          }
                                                         }
                                                       }
                                                     }

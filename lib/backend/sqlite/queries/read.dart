@@ -213,3 +213,35 @@ class SaldoPrevistoRow extends SqliteRow {
 }
 
 /// END SALDOPREVISTO
+
+/// BEGIN LANCAMENTOSMESATUAL
+Future<List<LancamentosMesAtualRow>> performLancamentosMesAtual(
+  Database database, {
+  String? ano,
+  String? mes,
+  String? filtro,
+}) {
+  final query = '''
+SELECT descricao, valor, fixo, tipo_transacao as avista, parcela, total_parcelas as totalparcelas, tipo, dt_agendada AS dtagendada FROM lancamentos
+join categorias on lancamentos.id_categoria = categorias.id
+where DATE(dt_agendada) like '${ano}-${mes}-%'
+and ${filtro}
+order by dt_agendada asc;
+''';
+  return _readQuery(database, query, (d) => LancamentosMesAtualRow(d));
+}
+
+class LancamentosMesAtualRow extends SqliteRow {
+  LancamentosMesAtualRow(Map<String, dynamic> data) : super(data);
+
+  String? get descricao => data['descricao'] as String?;
+  double? get valor => data['valor'] as double?;
+  int? get fixo => data['fixo'] as int?;
+  String? get avista => data['avista'] as String?;
+  int? get parcela => data['parcela'] as int?;
+  int? get totalparcelas => data['totalparcelas'] as int?;
+  String? get tipo => data['tipo'] as String?;
+  String? get dtagendada => data['dtagendada'] as String?;
+}
+
+/// END LANCAMENTOSMESATUAL

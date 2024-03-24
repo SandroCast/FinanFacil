@@ -222,6 +222,8 @@ dynamic deserializeParam<T>(
             return SaldoAtualRow(data);
           case SaldoPrevistoRow:
             return SaldoPrevistoRow(data);
+          case LancamentosMesAtualRow:
+            return LancamentosMesAtualRow(data);
           default:
             return null;
         }
