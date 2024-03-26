@@ -1,4 +1,4 @@
-package com.mycompany.controlefinanceiro
+package com.sandrocastro.controlefinanceiro
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
 {
-    "name": "controle financeiro",
-    "short_name": "controle financeiro",
+    "name": "Controle Financeiro Plus",
+    "short_name": "Controle Financeiro Plus",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
@@ -10,12 +10,12 @@
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/Icon-192.png",
+            "src": "icons/app_launcher_icon.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-512.png",
+            "src": "icons/app_launcher_icon.png",
             "sizes": "512x512",
             "type": "image/png"
         }

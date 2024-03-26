@@ -270,8 +270,8 @@ class _NavBarWidgetState extends State<NavBarWidget>
                           width: double.infinity,
                           height: 60.0,
                           decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 10.0,
@@ -452,19 +452,48 @@ class _NavBarWidgetState extends State<NavBarWidget>
                             ),
                         ],
                       ),
-                      FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30.0,
-                        borderWidth: 1.0,
-                        buttonSize: 50.0,
-                        icon: Icon(
-                          Icons.person,
-                          color: Color(0xFF9299A1),
-                          size: 24.0,
-                        ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
-                        },
+                      Stack(
+                        children: [
+                          if (widget.ativo != 4)
+                            FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              borderWidth: 1.0,
+                              buttonSize: 50.0,
+                              icon: Icon(
+                                Icons.settings_outlined,
+                                color: Color(0xFF9299A1),
+                                size: 24.0,
+                              ),
+                              onPressed: () async {
+                                context.goNamed(
+                                  'profile',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                    ),
+                                  },
+                                );
+                              },
+                            ),
+                          if (widget.ativo == 4)
+                            FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              borderWidth: 1.0,
+                              buttonSize: 50.0,
+                              icon: Icon(
+                                Icons.settings_sharp,
+                                color: Color(0xFF9299A1),
+                                size: 24.0,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
+                            ),
+                        ],
                       ),
                     ],
                   ),

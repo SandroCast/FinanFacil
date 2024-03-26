@@ -217,15 +217,12 @@ class SaldoPrevistoRow extends SqliteRow {
 /// BEGIN LANCAMENTOSMESATUAL
 Future<List<LancamentosMesAtualRow>> performLancamentosMesAtual(
   Database database, {
-  String? ano,
-  String? mes,
   String? filtro,
 }) {
   final query = '''
 SELECT descricao, valor, fixo, tipo_transacao as avista, parcela, total_parcelas as totalparcelas, tipo, dt_agendada AS dtagendada FROM lancamentos
 join categorias on lancamentos.id_categoria = categorias.id
-where DATE(dt_agendada) like '${ano}-${mes}-%'
-and ${filtro}
+where ${filtro}
 order by dt_agendada asc;
 ''';
   return _readQuery(database, query, (d) => LancamentosMesAtualRow(d));

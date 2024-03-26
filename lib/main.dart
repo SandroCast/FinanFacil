@@ -7,6 +7,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import '/backend/sqlite/sqlite_manager.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
@@ -15,6 +16,7 @@ void main() async {
   usePathUrlStrategy();
 
   await SQLiteManager.initialize();
+  await FlutterFlowTheme.initialize();
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
@@ -35,10 +37,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeMode _themeMode = ThemeMode.system;
+  Locale? _locale;
+  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
+
+  bool displaySplashImage = true;
 
   @override
   void initState() {
@@ -46,24 +51,40 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
+
+    Future.delayed(Duration(milliseconds: 1000),
+        () => setState(() => _appStateNotifier.stopShowingSplashImage()));
+  }
+
+  void setLocale(String language) {
+    setState(() => _locale = createLocale(language));
   }
 
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
+        FlutterFlowTheme.saveThemeMode(mode);
       });
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'controle financeiro',
+      title: 'Controle Financeiro Plus',
       localizationsDelegates: [
+        FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [Locale('en', '')],
+      locale: _locale,
+      supportedLocales: const [
+        Locale('pt'),
+      ],
       theme: ThemeData(
         brightness: Brightness.light,
+        useMaterial3: false,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
         useMaterial3: false,
       ),
       themeMode: _themeMode,

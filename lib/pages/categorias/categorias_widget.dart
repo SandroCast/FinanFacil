@@ -363,10 +363,18 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                   ? dateTimeFormat(
                                                                       'dd/MM/y',
                                                                       _model
-                                                                          .datePicked1)
+                                                                          .datePicked1,
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    )
                                                                   : dateTimeFormat(
                                                                       'dd/MM/y',
-                                                                      getCurrentTimestamp),
+                                                                      getCurrentTimestamp,
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    ),
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
@@ -545,10 +553,18 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                   ? dateTimeFormat(
                                                                       'dd/MM/y',
                                                                       _model
-                                                                          .datePicked2)
+                                                                          .datePicked2,
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    )
                                                                   : dateTimeFormat(
                                                                       'dd/MM/y',
-                                                                      getCurrentTimestamp),
+                                                                      getCurrentTimestamp,
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    ),
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,

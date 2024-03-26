@@ -1,4 +1,4 @@
-# controle financeiro
+# Controle Financeiro Plus
 
 A new Flutter project.
 

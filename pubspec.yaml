@@ -1,4 +1,4 @@
-name: controle_financeiro
+name: controle_financeiro_plus
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -69,11 +69,23 @@ dependency_overrides:
   uuid: ^4.0.0
 
 dev_dependencies:
+  flutter_launcher_icons: 0.13.1
   flutter_lints: 3.0.0
+  image: 4.0.17
   lints: 3.0.0
 
   flutter_test:
     sdk: flutter
+
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  web:
+    generate: true
+  image_path: 'assets/images/app_launcher_icon.png'
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

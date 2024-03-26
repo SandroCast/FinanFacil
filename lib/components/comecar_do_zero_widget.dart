@@ -8,28 +8,19 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'deletar_categoria_model.dart';
-export 'deletar_categoria_model.dart';
+import 'comecar_do_zero_model.dart';
+export 'comecar_do_zero_model.dart';
 
-class DeletarCategoriaWidget extends StatefulWidget {
-  const DeletarCategoriaWidget({
-    super.key,
-    required this.id,
-    required this.titulo,
-    required this.tipo,
-  });
-
-  final int? id;
-  final String? titulo;
-  final String? tipo;
+class ComecarDoZeroWidget extends StatefulWidget {
+  const ComecarDoZeroWidget({super.key});
 
   @override
-  State<DeletarCategoriaWidget> createState() => _DeletarCategoriaWidgetState();
+  State<ComecarDoZeroWidget> createState() => _ComecarDoZeroWidgetState();
 }
 
-class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
+class _ComecarDoZeroWidgetState extends State<ComecarDoZeroWidget>
     with TickerProviderStateMixin {
-  late DeletarCategoriaModel _model;
+  late ComecarDoZeroModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -55,7 +46,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DeletarCategoriaModel());
+    _model = createModel(context, () => ComecarDoZeroModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -130,7 +121,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Text(
-                              'Excluir Categoria?',
+                              'Recomeçar do Zero?',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -155,7 +146,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'IMPORTANTE',
+                                    'ATENÇÃO',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -169,7 +160,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                     children: [
                                       Flexible(
                                         child: Text(
-                                          'Ao excluir uma categoria, também excluirá todas as receitas passadas e futuras referente a ela.',
+                                          'Ao confirmar, todos os seus lançamentos serão definitivamente excluidos. Essa ação não poderá ser desfeita.',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -181,58 +172,6 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                         ),
                                       ),
                                     ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 20.0, 0.0, 20.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    widget.titulo!,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    widget.tipo!,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: widget.tipo == 'Receita'
-                                              ? Color(0xFF00B048)
-                                              : Color(0xFFFD0101),
-                                        ),
                                   ),
                                 ],
                               ),
@@ -281,12 +220,25 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                await SQLiteManager.instance.excluirCategoria(
-                                  id: widget.id,
-                                );
+                                await SQLiteManager.instance.comecarDoZero();
                                 Navigator.pop(context);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Ação feita com sucesso.',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                  ),
+                                );
                               },
-                              text: 'Excluir',
+                              text: 'Zerar Tudo',
                               options: FFButtonOptions(
                                 height: 40.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(

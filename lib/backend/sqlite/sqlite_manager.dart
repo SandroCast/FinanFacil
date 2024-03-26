@@ -104,14 +104,10 @@ class SQLiteManager {
       );
 
   Future<List<LancamentosMesAtualRow>> lancamentosMesAtual({
-    String? ano,
-    String? mes,
     String? filtro,
   }) =>
       performLancamentosMesAtual(
         _database,
-        ano: ano,
-        mes: mes,
         filtro: filtro,
       );
 
@@ -215,6 +211,10 @@ class SQLiteManager {
         _database,
         idparcela: idparcela,
         dtagendada: dtagendada,
+      );
+
+  Future comecarDoZero() => performComecarDoZero(
+        _database,
       );
 
   /// END UPDATE QUERY CALLS

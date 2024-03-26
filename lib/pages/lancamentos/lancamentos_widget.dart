@@ -276,7 +276,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                   fontFamily: 'Readex Pro',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryBackground,
+                                                      .info,
                                                 ),
                                           ),
                                         ),
@@ -320,7 +320,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                     fontFamily: 'Readex Pro',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryBackground,
+                                                        .info,
                                                   ),
                                             ),
                                           ),
@@ -478,7 +478,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Colors.white,
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
                                                                           boxShadow: [
                                                                             BoxShadow(
                                                                               blurRadius: 4.0,
@@ -560,7 +560,11 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                         children: [
                                                                                           Text(
-                                                                                            'Data: ${dateTimeFormat('dd/MM/y', functions.stringParaDateTime(listaLancamentosItem.dtagendada!))}',
+                                                                                            'Data: ${dateTimeFormat(
+                                                                                              'dd/MM/y',
+                                                                                              functions.stringParaDateTime(listaLancamentosItem.dtagendada!),
+                                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                                            )}',
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryText,

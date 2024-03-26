@@ -66,11 +66,13 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
     ));
     _model.saldoVisivelFocusNode ??= FocusNode();
 
-    _model.saldoDigitadoController ??= TextEditingController(text: '0');
+    _model.saldoDigitadoController ??= TextEditingController();
     _model.saldoDigitadoFocusNode ??= FocusNode();
     _model.saldoDigitadoFocusNode!.addListener(() => setState(() {}));
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          _model.saldoDigitadoController?.text = '0';
+        }));
   }
 
   @override
@@ -505,7 +507,8 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                         24.0, 0.0, 24.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: Colors.white,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(

@@ -87,7 +87,7 @@ class _InicioWidgetState extends State<InicioWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -103,7 +103,8 @@ class _InicioWidgetState extends State<InicioWidget>
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 4.0,
@@ -545,15 +546,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         future: SQLiteManager
                                                             .instance
                                                             .lancamentosMesAtual(
-                                                          ano: FFAppState()
-                                                              .anoSelecionado
-                                                              .toString(),
-                                                          mes: functions
-                                                              .mesParaNumero(
-                                                                  FFAppState()
-                                                                      .mesSelecionado),
                                                           filtro:
-                                                              'tipo = \'Receita\'',
+                                                              'DATE(dt_agendada) like \'${FFAppState().anoSelecionado.toString()}-${functions.mesParaNumero(FFAppState().mesSelecionado)}-%\' and tipo = \'Receita\'',
                                                         ),
                                                         builder: (context,
                                                             snapshot) {
@@ -723,15 +717,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         future: SQLiteManager
                                                             .instance
                                                             .lancamentosMesAtual(
-                                                          ano: FFAppState()
-                                                              .anoSelecionado
-                                                              .toString(),
-                                                          mes: functions
-                                                              .mesParaNumero(
-                                                                  FFAppState()
-                                                                      .mesSelecionado),
                                                           filtro:
-                                                              'tipo = \'Despesa\'',
+                                                              'DATE(dt_agendada) like \'${FFAppState().anoSelecionado.toString()}-${functions.mesParaNumero(FFAppState().mesSelecionado)}-%\' and tipo = \'Despesa\'',
                                                         ),
                                                         builder: (context,
                                                             snapshot) {
@@ -808,11 +795,8 @@ class _InicioWidgetState extends State<InicioWidget>
                           ),
                           FutureBuilder<List<LancamentosMesAtualRow>>(
                             future: SQLiteManager.instance.lancamentosMesAtual(
-                              ano: FFAppState().anoSelecionado.toString(),
-                              mes: functions
-                                  .mesParaNumero(FFAppState().mesSelecionado),
                               filtro:
-                                  'tipo = \'Receita\' and status = \'PENDENTE\'',
+                                  'DATE(dt_agendada) <= \'${FFAppState().anoSelecionado.toString()}-${functions.mesParaNumero(FFAppState().mesSelecionado)}-31 23:59:59.999\' and tipo = \'Receita\' and status = \'PENDENTE\'',
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
@@ -998,7 +982,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                             MainAxisAlignment.spaceBetween,
                                                                         children: [
                                                                           Text(
-                                                                            'Previsão: ${dateTimeFormat('dd/MM/y', functions.stringParaDateTime(containerLancamentosMesAtualRowList.first.dtagendada!))}',
+                                                                            'Previsão: ${dateTimeFormat(
+                                                                              'dd/MM/y',
+                                                                              functions.stringParaDateTime(containerLancamentosMesAtualRowList.first.dtagendada!),
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            )}',
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
@@ -1093,7 +1081,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                         children: [
                                                                                           Text(
-                                                                                            'Previsão: ${dateTimeFormat('dd/MM/y', functions.stringParaDateTime(listaReceitasPendentesItem.dtagendada!))}',
+                                                                                            'Previsão: ${dateTimeFormat(
+                                                                                              'dd/MM/y',
+                                                                                              functions.stringParaDateTime(listaReceitasPendentesItem.dtagendada!),
+                                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                                            )}',
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
@@ -1197,8 +1189,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                     child: Container(
                                                       width: 60.0,
                                                       decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xFFE5E5E5),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
@@ -1263,8 +1256,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                     child: Container(
                                                       width: 60.0,
                                                       decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xFFE5E5E5),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         boxShadow: [
                                                           BoxShadow(
                                                             blurRadius: 4.0,
@@ -1293,7 +1287,14 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                 .toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
                                                           ),
                                                           Align(
                                                             alignment:
@@ -1337,11 +1338,8 @@ class _InicioWidgetState extends State<InicioWidget>
                             child: FutureBuilder<List<LancamentosMesAtualRow>>(
                               future:
                                   SQLiteManager.instance.lancamentosMesAtual(
-                                ano: FFAppState().anoSelecionado.toString(),
-                                mes: functions
-                                    .mesParaNumero(FFAppState().mesSelecionado),
                                 filtro:
-                                    'tipo = \'Despesa\' and status = \'PENDENTE\'',
+                                    'DATE(dt_agendada) <= \'${FFAppState().anoSelecionado.toString()}-${functions.mesParaNumero(FFAppState().mesSelecionado)}-31 23:59:59.999\' and tipo = \'Despesa\' and status = \'PENDENTE\'',
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -1536,7 +1534,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               MainAxisAlignment.spaceBetween,
                                                                           children: [
                                                                             Text(
-                                                                              'Previsão: ${dateTimeFormat('dd/MM/y', functions.stringParaDateTime(containerLancamentosMesAtualRowList.first.dtagendada!))}',
+                                                                              'Previsão: ${dateTimeFormat(
+                                                                                'dd/MM/y',
+                                                                                functions.stringParaDateTime(containerLancamentosMesAtualRowList.first.dtagendada!),
+                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                              )}',
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
@@ -1624,7 +1626,11 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                           children: [
                                                                                             Text(
-                                                                                              'Previsão: ${dateTimeFormat('dd/MM/y', functions.stringParaDateTime(listaReceitasPendentesItem.dtagendada!))}',
+                                                                                              'Previsão: ${dateTimeFormat(
+                                                                                                'dd/MM/y',
+                                                                                                functions.stringParaDateTime(listaReceitasPendentesItem.dtagendada!),
+                                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                                              )}',
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Readex Pro',
                                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
@@ -1728,8 +1734,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         width: 60.0,
                                                         decoration:
                                                             BoxDecoration(
-                                                          color:
-                                                              Color(0xFFE5E5E5),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           boxShadow: [
                                                             BoxShadow(
                                                               blurRadius: 4.0,
@@ -1797,8 +1804,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         width: 60.0,
                                                         decoration:
                                                             BoxDecoration(
-                                                          color:
-                                                              Color(0xFFE5E5E5),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           boxShadow: [
                                                             BoxShadow(
                                                               blurRadius: 4.0,
@@ -1828,7 +1836,14 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                   .toString(),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyMedium,
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
+                                                                  ),
                                                             ),
                                                             Align(
                                                               alignment:
@@ -1899,16 +1914,19 @@ class _InicioWidgetState extends State<InicioWidget>
                           child: Stack(
                             alignment: AlignmentDirectional(-1.0, 0.0),
                             children: [
-                              Container(
-                                width: 50.0,
-                                height: 50.0,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Image.network(
-                                  'https://picsum.photos/seed/71/600',
-                                  fit: BoxFit.cover,
+                              Opacity(
+                                opacity: 0.0,
+                                child: Container(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/_a09af384-d54d-40b9-956b-3c8a43a2eaf1-removebg-preview.png',
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                               Row(
@@ -1932,37 +1950,40 @@ class _InicioWidgetState extends State<InicioWidget>
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 20.0, 0.0),
-                                child: badges.Badge(
-                                  badgeContent: Text(
-                                    '1',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                        ),
-                                  ),
-                                  showBadge: true,
-                                  shape: badges.BadgeShape.circle,
-                                  badgeColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  elevation: 4.0,
+                              Opacity(
+                                opacity: 0.0,
+                                child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 8.0, 8.0, 8.0),
-                                  position: badges.BadgePosition.topEnd(),
-                                  animationType:
-                                      badges.BadgeAnimationType.scale,
-                                  toAnimate: true,
-                                  child: Align(
-                                    alignment: AlignmentDirectional(1.0, 0.0),
-                                    child: Icon(
-                                      Icons.notifications_none,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 30.0,
+                                      0.0, 0.0, 20.0, 0.0),
+                                  child: badges.Badge(
+                                    badgeContent: Text(
+                                      '1',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            color: Colors.white,
+                                          ),
+                                    ),
+                                    showBadge: true,
+                                    shape: badges.BadgeShape.circle,
+                                    badgeColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    elevation: 4.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8.0, 8.0, 8.0, 8.0),
+                                    position: badges.BadgePosition.topEnd(),
+                                    animationType:
+                                        badges.BadgeAnimationType.scale,
+                                    toAnimate: true,
+                                    child: Align(
+                                      alignment: AlignmentDirectional(1.0, 0.0),
+                                      child: Icon(
+                                        Icons.notifications_none,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 30.0,
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -120,3 +120,15 @@ WHERE id > 0 and id_parcela = '${idparcela}' and dt_agendada >= '${dtagendada}';
 }
 
 /// END EXCLUIRLANCAMENTOFUTURAS
+
+/// BEGIN COMECARDOZERO
+Future performComecarDoZero(
+  Database database,
+) {
+  final query = '''
+DELETE FROM lancamentos;
+''';
+  return database.rawQuery(query);
+}
+
+/// END COMECARDOZERO

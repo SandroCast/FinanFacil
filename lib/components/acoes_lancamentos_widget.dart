@@ -109,8 +109,11 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
 
     _model.dataController ??= TextEditingController(
         text: widget.lancamento != null
-            ? dateTimeFormat('dd/MM/y',
-                functions.stringParaDateTime(widget.lancamento!.dtagendada!))
+            ? dateTimeFormat(
+                'dd/MM/y',
+                functions.stringParaDateTime(widget.lancamento!.dtagendada!),
+                locale: FFLocalizations.of(context).languageCode,
+              )
             : 'Data');
     _model.dataFocusNode ??= FocusNode();
 
@@ -1310,17 +1313,26 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                       if (_model.datePicked !=
                                                           null) {
                                                         return dateTimeFormat(
-                                                            'dd/MM/y',
-                                                            _model.datePicked);
+                                                          'dd/MM/y',
+                                                          _model.datePicked,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        );
                                                       } else if (widget
                                                               .lancamento !=
                                                           null) {
                                                         return dateTimeFormat(
-                                                            'dd/MM/y',
-                                                            functions.stringParaDateTime(
-                                                                widget
-                                                                    .lancamento!
-                                                                    .dtagendada!));
+                                                          'dd/MM/y',
+                                                          functions.stringParaDateTime(
+                                                              widget.lancamento!
+                                                                  .dtagendada!),
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        );
                                                       } else {
                                                         return 'Data';
                                                       }
@@ -1427,7 +1439,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                   10.0, 0.0, 2.0, 0.0),
                                           child: Container(
                                             decoration: BoxDecoration(
-                                              color: Colors.white,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                             ),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
@@ -1525,7 +1539,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                   10.0, 0.0, 2.0, 0.0),
                                           child: Container(
                                             decoration: BoxDecoration(
-                                              color: Colors.white,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
                                             ),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional

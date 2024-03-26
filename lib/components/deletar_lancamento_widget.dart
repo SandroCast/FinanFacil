@@ -215,7 +215,8 @@ class _DeletarLancamentoWidgetState extends State<DeletarLancamentoWidget>
                                     24.0, 0.0, 24.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
