@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
@@ -55,7 +54,6 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   // State field(s) for data widget.
   FocusNode? dataFocusNode;
   TextEditingController? dataController;
-  final dataMask = MaskTextInputFormatter(mask: '##/##/####');
   String? Function(BuildContext, String?)? dataControllerValidator;
   DateTime? datePicked;
   // State field(s) for statusDespesa widget.

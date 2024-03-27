@@ -236,3 +236,8 @@ String? mesParaNumero(String mes) {
       return 'Mês inválido';
   }
 }
+
+String? datetimeParaString(String data) {
+  DateTime dataFormatada = DateTime.parse(data);
+  return '${dataFormatada.day.toString().padLeft(2, '0')}/${dataFormatada.month.toString().padLeft(2, '0')}/${dataFormatada.year.toString()}';
+}

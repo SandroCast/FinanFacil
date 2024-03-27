@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 import 'acoes_lancamentos_model.dart';
 export 'acoes_lancamentos_model.dart';
@@ -109,11 +108,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
 
     _model.dataController ??= TextEditingController(
         text: widget.lancamento != null
-            ? dateTimeFormat(
-                'dd/MM/y',
-                functions.stringParaDateTime(widget.lancamento!.dtagendada!),
-                locale: FFLocalizations.of(context).languageCode,
-              )
+            ? functions.datetimeParaString(widget.lancamento!.dtagendada!)
             : 'Data');
     _model.dataFocusNode ??= FocusNode();
 
@@ -541,7 +536,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                         ? FlutterFlowTheme.of(
                                                                 context)
                                                             .primary
-                                                        : Color(0xFFE0E3E7),
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
                                                 width: 2.0,
                                               ),
                                               borderRadius:
@@ -780,6 +777,11 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         () => _model.avistaValue = val),
                                     width: 30.0,
                                     height: 50.0,
+                                    searchHintTextStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                    searchTextStyle:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -787,6 +789,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                         ),
+                                    searchHintText: '',
                                     icon: Icon(
                                       Icons.keyboard_arrow_down_rounded,
                                       color: FlutterFlowTheme.of(context)
@@ -805,7 +808,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     hidesUnderline: true,
                                     disabled: widget.lancamento != null,
                                     isOverButton: true,
-                                    isSearchable: false,
+                                    isSearchable: true,
                                     isMultiSelect: false,
                                   ),
                                 ),
@@ -1079,7 +1082,14 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                             labelStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelMedium,
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                    ),
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1151,16 +1161,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                         context)
                                                                     .secondaryText,
                                                               ),
-                                                          keyboardType:
-                                                              TextInputType
-                                                                  .datetime,
                                                           validator: _model
                                                               .dataControllerValidator
                                                               .asValidator(
                                                                   context),
-                                                          inputFormatters: [
-                                                            _model.dataMask
-                                                          ],
                                                         ),
                                                       ),
                                                       if (FFAppState()
@@ -1397,6 +1401,12 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 _model.statusDespesaValue =
                                                     val),
                                             height: 50.0,
+                                            searchHintTextStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            searchTextStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -1408,6 +1418,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                               .secondaryText,
                                                     ),
                                             hintText: 'Status',
+                                            searchHintText: '',
                                             icon: Icon(
                                               Icons.keyboard_arrow_down_rounded,
                                               color:
@@ -1429,7 +1440,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                     16.0, 4.0, 16.0, 4.0),
                                             hidesUnderline: true,
                                             isOverButton: true,
-                                            isSearchable: false,
+                                            isSearchable: true,
                                             isMultiSelect: false,
                                           ),
                                         ),
@@ -1497,6 +1508,12 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 _model.statusReceitaValue =
                                                     val),
                                             height: 50.0,
+                                            searchHintTextStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            searchTextStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium,
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -1508,6 +1525,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                               .secondaryText,
                                                     ),
                                             hintText: 'Status',
+                                            searchHintText: '',
                                             icon: Icon(
                                               Icons.keyboard_arrow_down_rounded,
                                               color:
@@ -1529,7 +1547,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                     16.0, 4.0, 16.0, 4.0),
                                             hidesUnderline: true,
                                             isOverButton: true,
-                                            isSearchable: false,
+                                            isSearchable: true,
                                             isMultiSelect: false,
                                           ),
                                         ),

@@ -109,6 +109,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                     child: Stack(
                       children: [
                         SingleChildScrollView(
+                          primary: false,
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
