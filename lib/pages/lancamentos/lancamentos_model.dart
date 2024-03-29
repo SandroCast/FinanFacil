@@ -1,5 +1,6 @@
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/acoes_lancamentos_widget.dart';
+import '/components/alterar_status_widget.dart';
 import '/components/deletar_lancamento_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';

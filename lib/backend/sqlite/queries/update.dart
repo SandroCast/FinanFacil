@@ -132,3 +132,19 @@ DELETE FROM lancamentos;
 }
 
 /// END COMECARDOZERO
+
+/// BEGIN ALTERARSTATUS
+Future performAlterarStatus(
+  Database database, {
+  int? id,
+  String? status,
+}) {
+  final query = '''
+UPDATE lancamentos
+SET status = '${status}'
+WHERE id = ${id};
+''';
+  return database.rawQuery(query);
+}
+
+/// END ALTERARSTATUS

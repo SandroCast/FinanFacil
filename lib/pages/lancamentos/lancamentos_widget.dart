@@ -1,5 +1,6 @@
 import '/backend/sqlite/sqlite_manager.dart';
 import '/components/acoes_lancamentos_widget.dart';
+import '/components/alterar_status_widget.dart';
 import '/components/deletar_lancamento_widget.dart';
 import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -684,17 +685,17 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                              if (listaLancamentosItem.descricao == 'AJUSTE DE SALDO')
-                                                                                Row(
-                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                  children: [
-                                                                                    SizedBox(
-                                                                                      height: 35.0,
-                                                                                      child: VerticalDivider(
-                                                                                        thickness: 1.0,
-                                                                                        color: Color(0xCC9E9E9E),
-                                                                                      ),
+                                                                              Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  SizedBox(
+                                                                                    height: 35.0,
+                                                                                    child: VerticalDivider(
+                                                                                      thickness: 1.0,
+                                                                                      color: Color(0xCC9E9E9E),
                                                                                     ),
+                                                                                  ),
+                                                                                  if (listaLancamentosItem.descricao == 'AJUSTE DE SALDO')
                                                                                     Padding(
                                                                                       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
                                                                                       child: InkWell(
@@ -728,8 +729,78 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                         ),
                                                                                       ),
                                                                                     ),
-                                                                                  ],
-                                                                                ),
+                                                                                  if (listaLancamentosItem.status == 'PENDENTE')
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                      child: InkWell(
+                                                                                        splashColor: Colors.transparent,
+                                                                                        focusColor: Colors.transparent,
+                                                                                        hoverColor: Colors.transparent,
+                                                                                        highlightColor: Colors.transparent,
+                                                                                        onTap: () async {
+                                                                                          await showModalBottomSheet(
+                                                                                            isScrollControlled: true,
+                                                                                            backgroundColor: Colors.transparent,
+                                                                                            useSafeArea: true,
+                                                                                            context: context,
+                                                                                            builder: (context) {
+                                                                                              return GestureDetector(
+                                                                                                onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                                child: Padding(
+                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                  child: AlterarStatusWidget(
+                                                                                                    id: listaLancamentosItem.id!,
+                                                                                                    status: listaLancamentosItem.tipo == 'Receita' ? 'Recebido' : 'Pago',
+                                                                                                  ),
+                                                                                                ),
+                                                                                              );
+                                                                                            },
+                                                                                          ).then((value) => safeSetState(() {}));
+                                                                                        },
+                                                                                        child: Icon(
+                                                                                          Icons.check_circle,
+                                                                                          color: FlutterFlowTheme.of(context).success,
+                                                                                          size: 24.0,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  if ((listaLancamentosItem.descricao != 'AJUSTE DE SALDO') && (listaLancamentosItem.status != 'PENDENTE'))
+                                                                                    Padding(
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                      child: InkWell(
+                                                                                        splashColor: Colors.transparent,
+                                                                                        focusColor: Colors.transparent,
+                                                                                        hoverColor: Colors.transparent,
+                                                                                        highlightColor: Colors.transparent,
+                                                                                        onTap: () async {
+                                                                                          await showModalBottomSheet(
+                                                                                            isScrollControlled: true,
+                                                                                            backgroundColor: Colors.transparent,
+                                                                                            enableDrag: false,
+                                                                                            context: context,
+                                                                                            builder: (context) {
+                                                                                              return GestureDetector(
+                                                                                                onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                                child: Padding(
+                                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                                  child: AlterarStatusWidget(
+                                                                                                    id: listaLancamentosItem.id!,
+                                                                                                    status: 'PENDENTE',
+                                                                                                  ),
+                                                                                                ),
+                                                                                              );
+                                                                                            },
+                                                                                          ).then((value) => safeSetState(() {}));
+                                                                                        },
+                                                                                        child: Icon(
+                                                                                          Icons.access_time,
+                                                                                          color: FlutterFlowTheme.of(context).tertiary,
+                                                                                          size: 24.0,
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                ],
+                                                                              ),
                                                                             ],
                                                                           ),
                                                                         ),

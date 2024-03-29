@@ -217,5 +217,15 @@ class SQLiteManager {
         _database,
       );
 
+  Future alterarStatus({
+    int? id,
+    String? status,
+  }) =>
+      performAlterarStatus(
+        _database,
+        id: id,
+        status: status,
+      );
+
   /// END UPDATE QUERY CALLS
 }
