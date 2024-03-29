@@ -27,8 +27,6 @@ class AcoesCategoriasModel extends FlutterFlowModel<AcoesCategoriasWidget> {
   // Stores action output result for [Backend Call - SQLite (pesquisaTituloCategoria)] action in Button widget.
   List<PesquisaTituloCategoriaRow>? retornoVarificaCategoria;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -37,8 +35,4 @@ class AcoesCategoriasModel extends FlutterFlowModel<AcoesCategoriasWidget> {
     categoriaFocusNode?.dispose();
     categoriaController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -168,7 +168,10 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                         BoxShadow(
                                           blurRadius: 4.0,
                                           color: Color(0x33000000),
-                                          offset: Offset(0.0, 2.0),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
                                         )
                                       ],
                                       borderRadius: BorderRadius.circular(10.0),
@@ -183,6 +186,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -231,7 +235,10 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                         BoxShadow(
                                           blurRadius: 4.0,
                                           color: Color(0x33000000),
-                                          offset: Offset(0.0, 2.0),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
                                         )
                                       ],
                                       borderRadius: BorderRadius.circular(10.0),
@@ -246,6 +253,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -356,8 +364,9 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                                                       0x33000000),
                                                                   offset:
                                                                       Offset(
-                                                                          0.0,
-                                                                          2.0),
+                                                                    0.0,
+                                                                    2.0,
+                                                                  ),
                                                                 )
                                                               ],
                                                               borderRadius:
@@ -397,6 +406,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                                                               FlutterFlowTheme.of(context).secondaryText,
                                                                           fontSize:
                                                                               14.0,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                         ),
                                                                   ),
                                                                   Text(
@@ -411,6 +422,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                                                           color: listaCategoriasItem.tipo == 'Receita'
                                                                               ? Color(0xFF00B048)
                                                                               : Color(0xFFFD0101),
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                         ),
                                                                   ),
                                                                 ],
@@ -473,7 +486,9 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                                                 color: Color(
                                                                     0x33000000),
                                                                 offset: Offset(
-                                                                    0.0, 2.0),
+                                                                  0.0,
+                                                                  2.0,
+                                                                ),
                                                               )
                                                             ],
                                                             borderRadius:
@@ -524,6 +539,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                                                   .of(context)
                                                               .secondaryText,
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                 ),
@@ -565,6 +581,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                           fontFamily: 'Readex Pro',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          letterSpacing: 0.0,
                                         ),
                                     hintText: 'Tipo',
                                     icon: Icon(
@@ -599,6 +616,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                 ],
@@ -614,13 +632,22 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                   TextFormField(
                                     controller: _model.categoriaController,
                                     focusNode: _model.categoriaFocusNode,
+                                    autofocus: false,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       hintText: 'Categoria',
                                       hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
@@ -658,8 +685,13 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             BorderRadius.circular(8.0),
                                       ),
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Readex Pro',
+                                          letterSpacing: 0.0,
+                                        ),
+                                    minLines: null,
                                     validator: _model
                                         .categoriaControllerValidator
                                         .asValidator(context),
@@ -674,6 +706,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   if (FFAppState().campoObrigatorio ==
@@ -686,6 +719,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                 ],
@@ -782,6 +816,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.white,
+                                              letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
                                         borderSide: BorderSide(

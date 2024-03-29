@@ -276,7 +276,10 @@ class _NavBarWidgetState extends State<NavBarWidget>
                               BoxShadow(
                                 blurRadius: 10.0,
                                 color: Color(0x1A57636C),
-                                offset: Offset(0.0, -10.0),
+                                offset: Offset(
+                                  0.0,
+                                  -10.0,
+                                ),
                                 spreadRadius: 0.1,
                               )
                             ],
@@ -570,6 +573,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -630,6 +634,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBackground,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -686,6 +691,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBackground,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),

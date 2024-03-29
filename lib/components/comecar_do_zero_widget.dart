@@ -129,6 +129,7 @@ class _ComecarDoZeroWidgetState extends State<ComecarDoZeroWidget>
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                           ],
@@ -153,6 +154,7 @@ class _ComecarDoZeroWidgetState extends State<ComecarDoZeroWidget>
                                           fontFamily: 'Readex Pro',
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                   Row(
@@ -168,6 +170,7 @@ class _ComecarDoZeroWidgetState extends State<ComecarDoZeroWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -209,6 +212,7 @@ class _ComecarDoZeroWidgetState extends State<ComecarDoZeroWidget>
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
@@ -251,6 +255,7 @@ class _ComecarDoZeroWidgetState extends State<ComecarDoZeroWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(

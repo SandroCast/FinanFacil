@@ -138,6 +138,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                           ],
@@ -162,6 +163,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                           fontFamily: 'Readex Pro',
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                   Row(
@@ -177,6 +179,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -210,6 +213,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                         ),
                                   ),
@@ -232,6 +236,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                           color: widget.tipo == 'Receita'
                                               ? Color(0xFF00B048)
                                               : Color(0xFFFD0101),
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -270,6 +275,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
@@ -299,6 +305,7 @@ class _DeletarCategoriaWidgetState extends State<DeletarCategoriaWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(

@@ -179,6 +179,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ],
@@ -216,6 +217,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 30.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ],
@@ -240,6 +242,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ],
@@ -265,6 +268,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                   _model.saldoVisivelController,
                                               focusNode:
                                                   _model.saldoVisivelFocusNode,
+                                              autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelStyle: FlutterFlowTheme.of(
@@ -277,6 +281,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                                   context)
                                                               .secondaryText,
                                                       fontSize: 14.0,
+                                                      letterSpacing: 0.0,
                                                     ),
                                                 hintStyle: FlutterFlowTheme.of(
                                                         context)
@@ -284,6 +289,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                     .override(
                                                       fontFamily: 'Readex Pro',
                                                       color: Color(0xFF95A1AC),
+                                                      letterSpacing: 0.0,
                                                     ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
@@ -349,8 +355,10 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                             context)
                                                         .secondaryText,
                                                     fontSize: 16.0,
+                                                    letterSpacing: 0.0,
                                                   ),
                                               textAlign: TextAlign.center,
+                                              minLines: null,
                                               keyboardType:
                                                   TextInputType.number,
                                               validator: _model
@@ -380,8 +388,10 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                     });
                                                   },
                                                 ),
+                                                autofocus: false,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
+                                                  isDense: false,
                                                   labelText: 'Valor do Produto',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
@@ -394,6 +404,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                                     context)
                                                                 .secondaryText,
                                                         fontSize: 14.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   alignLabelWithHint: false,
                                                   hintStyle: FlutterFlowTheme
@@ -407,6 +418,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                                     context)
                                                                 .secondaryText,
                                                         fontSize: 16.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
@@ -468,7 +480,9 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                                   context)
                                                               .secondaryText,
                                                       fontSize: 1.0,
+                                                      letterSpacing: 0.0,
                                                     ),
+                                                minLines: null,
                                                 keyboardType:
                                                     TextInputType.number,
                                                 validator: _model
@@ -515,6 +529,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                           fontFamily: 'Readex Pro',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(
@@ -617,6 +632,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
+                                          letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(

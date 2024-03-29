@@ -65,8 +65,6 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   // Stores action output result for [Custom Action - geraUnicoID] action in Button widget.
   String? iDUnico;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -90,8 +88,4 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
     dataFocusNode?.dispose();
     dataController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

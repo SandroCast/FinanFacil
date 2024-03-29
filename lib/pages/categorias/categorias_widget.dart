@@ -65,7 +65,10 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                         BoxShadow(
                           blurRadius: 4.0,
                           color: Color(0x33000000),
-                          offset: Offset(0.0, 2.0),
+                          offset: Offset(
+                            0.0,
+                            2.0,
+                          ),
                         )
                       ],
                     ),
@@ -94,6 +97,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -145,6 +149,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                             context)
                                                         .secondaryText,
                                                     fontSize: 16.0,
+                                                    letterSpacing: 0.0,
                                                   ),
                                             ),
                                           ),
@@ -206,6 +211,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           color: Colors.white,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: BorderSide(
@@ -246,6 +252,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                 ),
@@ -291,6 +298,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                           'Outfit',
                                                                       fontSize:
                                                                           32.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
@@ -390,6 +399,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                         .secondaryText,
                                                                     fontSize:
                                                                         12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                             ),
                                                           ),
@@ -436,6 +447,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                 ),
@@ -481,6 +493,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                           'Outfit',
                                                                       fontSize:
                                                                           32.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w600,
@@ -580,6 +594,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                         .secondaryText,
                                                                     fontSize:
                                                                         12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                             ),
                                                           ),
@@ -694,9 +710,11 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                           4.0,
                                                                       color: Color(
                                                                           0x33000000),
-                                                                      offset: Offset(
-                                                                          0.0,
-                                                                          2.0),
+                                                                      offset:
+                                                                          Offset(
+                                                                        0.0,
+                                                                        2.0,
+                                                                      ),
                                                                     )
                                                                   ],
                                                                   borderRadius:
@@ -728,6 +746,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                               fontFamily: 'Readex Pro',
                                                                               color: resultQueryItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
                                                                               fontSize: 15.0,
+                                                                              letterSpacing: 0.0,
                                                                             ),
                                                                       ),
                                                                       Text(
@@ -753,6 +772,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                               fontFamily: 'Readex Pro',
                                                                               color: resultQueryItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
                                                                               fontSize: 15.0,
+                                                                              letterSpacing: 0.0,
                                                                             ),
                                                                       ),
                                                                     ],
@@ -785,7 +805,9 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                               color: Color(
                                                                   0x33000000),
                                                               offset: Offset(
-                                                                  0.0, 2.0),
+                                                                0.0,
+                                                                2.0,
+                                                              ),
                                                             )
                                                           ],
                                                           borderRadius:
@@ -822,6 +844,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                           .primaryText,
                                                                       fontSize:
                                                                           15.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -887,6 +911,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                       }(),
                                                                       fontSize:
                                                                           15.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -927,6 +953,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                                       .secondaryText,
                                                                   fontSize:
                                                                       16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                       ),
                                                     ],

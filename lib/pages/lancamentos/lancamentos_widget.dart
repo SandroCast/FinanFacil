@@ -95,7 +95,10 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                         BoxShadow(
                           blurRadius: 4.0,
                           color: Color(0x33000000),
-                          offset: Offset(0.0, 2.0),
+                          offset: Offset(
+                            0.0,
+                            2.0,
+                          ),
                         )
                       ],
                     ),
@@ -178,6 +181,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
                                                 fontSize: 17.0,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -277,6 +281,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .info,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -321,6 +326,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .info,
+                                                    letterSpacing: 0.0,
                                                   ),
                                             ),
                                           ),
@@ -483,7 +489,10 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                             BoxShadow(
                                                                               blurRadius: 4.0,
                                                                               color: Color(0x33000000),
-                                                                              offset: Offset(0.0, 2.0),
+                                                                              offset: Offset(
+                                                                                0.0,
+                                                                                2.0,
+                                                                              ),
                                                                             )
                                                                           ],
                                                                           borderRadius:
@@ -529,6 +538,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: listaLancamentosItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
                                                                                                   fontSize: 13.0,
+                                                                                                  letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.w500,
                                                                                                 ),
                                                                                           ),
@@ -551,6 +561,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: listaLancamentosItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
+                                                                                                  letterSpacing: 0.0,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -569,6 +580,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                   fontSize: 12.0,
+                                                                                                  letterSpacing: 0.0,
                                                                                                 ),
                                                                                           ),
                                                                                           Row(
@@ -598,6 +610,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                               fontFamily: 'Readex Pro',
                                                                                                               color: FlutterFlowTheme.of(context).primaryBackground,
                                                                                                               fontSize: 11.0,
+                                                                                                              letterSpacing: 0.0,
                                                                                                             ),
                                                                                                       ),
                                                                                                     ),
@@ -618,6 +631,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                             fontFamily: 'Readex Pro',
                                                                                                             color: FlutterFlowTheme.of(context).tertiary,
                                                                                                             fontSize: 12.0,
+                                                                                                            letterSpacing: 0.0,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ],
@@ -637,6 +651,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                             fontFamily: 'Readex Pro',
                                                                                                             color: FlutterFlowTheme.of(context).success,
                                                                                                             fontSize: 12.0,
+                                                                                                            letterSpacing: 0.0,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ],
@@ -656,6 +671,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                             fontFamily: 'Readex Pro',
                                                                                                             color: FlutterFlowTheme.of(context).success,
                                                                                                             fontSize: 12.0,
+                                                                                                            letterSpacing: 0.0,
                                                                                                           ),
                                                                                                     ),
                                                                                                   ],
@@ -755,6 +771,8 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                         context)
                                                                     .secondaryText,
                                                                 fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
                                                         ),
                                                       ],
@@ -855,6 +873,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                           iconColor:
                                               FlutterFlowTheme.of(context)
@@ -876,6 +895,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                           iconColor:
                                               FlutterFlowTheme.of(context)
@@ -940,6 +960,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                           iconColor:
                                               FlutterFlowTheme.of(context)
@@ -961,6 +982,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
+                                                letterSpacing: 0.0,
                                               ),
                                           iconColor:
                                               FlutterFlowTheme.of(context)

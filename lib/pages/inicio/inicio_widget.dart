@@ -109,7 +109,10 @@ class _InicioWidgetState extends State<InicioWidget>
                             BoxShadow(
                               blurRadius: 4.0,
                               color: Color(0x33000000),
-                              offset: Offset(0.0, 2.0),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
                             )
                           ],
                           borderRadius: BorderRadius.circular(30.0),
@@ -136,6 +139,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -206,6 +210,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 30.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               );
                                             },
@@ -229,6 +234,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 30.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ),
@@ -312,6 +318,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 12.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                   Stack(
@@ -385,6 +392,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 13.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               );
                                             },
@@ -405,6 +413,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                         fontFamily:
                                                             'Readex Pro',
                                                         fontSize: 13.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                             ),
                                             Container(
@@ -459,7 +468,10 @@ class _InicioWidgetState extends State<InicioWidget>
                                                 BoxShadow(
                                                   blurRadius: 4.0,
                                                   color: Color(0x33000000),
-                                                  offset: Offset(0.0, 2.0),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    2.0,
+                                                  ),
                                                 )
                                               ],
                                               borderRadius:
@@ -506,6 +518,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                       0xFF00B048),
                                                                   fontSize:
                                                                       16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           ),
                                                         ),
@@ -604,6 +618,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                       0xFF00B048),
                                                                   fontSize:
                                                                       20.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           );
                                                         },
@@ -630,7 +646,10 @@ class _InicioWidgetState extends State<InicioWidget>
                                                 BoxShadow(
                                                   blurRadius: 4.0,
                                                   color: Color(0x33000000),
-                                                  offset: Offset(0.0, 2.0),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    2.0,
+                                                  ),
                                                 )
                                               ],
                                               borderRadius:
@@ -677,6 +696,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                       0xFFFD0101),
                                                                   fontSize:
                                                                       16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           ),
                                                         ),
@@ -775,6 +796,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                       0xFFFD0101),
                                                                   fontSize:
                                                                       20.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           );
                                                         },
@@ -845,8 +868,10 @@ class _InicioWidgetState extends State<InicioWidget>
                                                           blurRadius: 4.0,
                                                           color:
                                                               Color(0x33000000),
-                                                          offset:
-                                                              Offset(0.0, 2.0),
+                                                          offset: Offset(
+                                                            0.0,
+                                                            2.0,
+                                                          ),
                                                         )
                                                       ],
                                                       borderRadius:
@@ -920,6 +945,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               FlutterFlowTheme.of(context).tertiary,
                                                                           fontSize:
                                                                               16.0,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                         ),
                                                                   ),
                                                                 ),
@@ -957,6 +984,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                  letterSpacing: 0.0,
                                                                                   fontWeight: FontWeight.w500,
                                                                                 ),
                                                                           ),
@@ -971,6 +999,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: Color(0xFF00B048),
+                                                                                  letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
                                                                         ],
@@ -991,6 +1020,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                                   fontSize: 12.0,
+                                                                                  letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
                                                                           Text(
@@ -1007,6 +1037,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                   fontFamily: 'Readex Pro',
                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                                   fontSize: 12.0,
+                                                                                  letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
                                                                         ],
@@ -1058,6 +1089,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                  letterSpacing: 0.0,
                                                                                                   fontWeight: FontWeight.w500,
                                                                                                 ),
                                                                                           ),
@@ -1072,6 +1104,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: Color(0xFF00B048),
+                                                                                                  letterSpacing: 0.0,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -1090,6 +1123,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                   fontSize: 12.0,
+                                                                                                  letterSpacing: 0.0,
                                                                                                 ),
                                                                                           ),
                                                                                           Text(
@@ -1106,6 +1140,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                                   fontFamily: 'Readex Pro',
                                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                   fontSize: 12.0,
+                                                                                                  letterSpacing: 0.0,
                                                                                                 ),
                                                                                           ),
                                                                                         ],
@@ -1148,6 +1183,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                           .secondaryText,
                                                                       fontSize:
                                                                           14.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
                                                               ),
                                                             ),
@@ -1198,7 +1235,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                             color: Color(
                                                                 0x33000000),
                                                             offset: Offset(
-                                                                0.0, 2.0),
+                                                              0.0,
+                                                              2.0,
+                                                            ),
                                                           )
                                                         ],
                                                         borderRadius:
@@ -1265,7 +1304,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                             color: Color(
                                                                 0x33000000),
                                                             offset: Offset(
-                                                                0.0, 2.0),
+                                                              0.0,
+                                                              2.0,
+                                                            ),
                                                           )
                                                         ],
                                                         borderRadius:
@@ -1294,6 +1335,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           ),
                                                           Align(
@@ -1395,7 +1438,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                             color: Color(
                                                                 0x33000000),
                                                             offset: Offset(
-                                                                0.0, 2.0),
+                                                              0.0,
+                                                              2.0,
+                                                            ),
                                                           )
                                                         ],
                                                         borderRadius:
@@ -1471,6 +1516,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                 FlutterFlowTheme.of(context).tertiary,
                                                                             fontSize:
                                                                                 16.0,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -1509,6 +1556,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                    letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w500,
                                                                                   ),
                                                                             ),
@@ -1523,6 +1571,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Readex Pro',
                                                                                     color: Color(0xFFFD0101),
+                                                                                    letterSpacing: 0.0,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -1543,6 +1592,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                     fontFamily: 'Readex Pro',
                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
                                                                                     fontSize: 12.0,
+                                                                                    letterSpacing: 0.0,
                                                                                   ),
                                                                             ),
                                                                             Text(
@@ -1559,6 +1609,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                     fontFamily: 'Readex Pro',
                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
                                                                                     fontSize: 12.0,
+                                                                                    letterSpacing: 0.0,
                                                                                   ),
                                                                             ),
                                                                           ],
@@ -1603,6 +1654,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Readex Pro',
                                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                    letterSpacing: 0.0,
                                                                                                     fontWeight: FontWeight.w500,
                                                                                                   ),
                                                                                             ),
@@ -1617,6 +1669,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                     fontFamily: 'Readex Pro',
                                                                                                     color: Color(0xFFFD0101),
+                                                                                                    letterSpacing: 0.0,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -1635,6 +1688,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                                     fontFamily: 'Readex Pro',
                                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                     fontSize: 12.0,
+                                                                                                    letterSpacing: 0.0,
                                                                                                   ),
                                                                                             ),
                                                                                             Text(
@@ -1651,6 +1705,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                                                     fontFamily: 'Readex Pro',
                                                                                                     color: FlutterFlowTheme.of(context).secondaryText,
                                                                                                     fontSize: 12.0,
+                                                                                                    letterSpacing: 0.0,
                                                                                                   ),
                                                                                             ),
                                                                                           ],
@@ -1692,6 +1747,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                             .secondaryText,
                                                                         fontSize:
                                                                             14.0,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                       ),
                                                                 ),
                                                               ),
@@ -1743,7 +1800,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                               color: Color(
                                                                   0x33000000),
                                                               offset: Offset(
-                                                                  0.0, 2.0),
+                                                                0.0,
+                                                                2.0,
+                                                              ),
                                                             )
                                                           ],
                                                           borderRadius:
@@ -1813,7 +1872,9 @@ class _InicioWidgetState extends State<InicioWidget>
                                                               color: Color(
                                                                   0x33000000),
                                                               offset: Offset(
-                                                                  0.0, 2.0),
+                                                                0.0,
+                                                                2.0,
+                                                              ),
                                                             )
                                                           ],
                                                           borderRadius:
@@ -1843,6 +1904,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryText,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                   ),
                                                             ),
                                                             Align(
@@ -1897,7 +1960,10 @@ class _InicioWidgetState extends State<InicioWidget>
                     BoxShadow(
                       blurRadius: 1.0,
                       color: Color(0x33000000),
-                      offset: Offset(0.0, 0.0),
+                      offset: Offset(
+                        0.0,
+                        0.0,
+                      ),
                     )
                   ],
                 ),
@@ -1945,6 +2011,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -1963,6 +2030,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                           .override(
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                     showBadge: true,

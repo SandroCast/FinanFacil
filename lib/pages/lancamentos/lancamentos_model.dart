@@ -33,8 +33,6 @@ class LancamentosModel extends FlutterFlowModel<LancamentosWidget> {
   set choiceMesValue(String? val) =>
       choiceMesValueController?.value = val != null ? [val] : [];
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     navBarModel = createModel(context, () => NavBarModel());
@@ -45,8 +43,4 @@ class LancamentosModel extends FlutterFlowModel<LancamentosWidget> {
     unfocusNode.dispose();
     navBarModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

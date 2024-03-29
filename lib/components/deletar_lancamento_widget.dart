@@ -135,6 +135,7 @@ class _DeletarLancamentoWidgetState extends State<DeletarLancamentoWidget>
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                           ],
@@ -162,6 +163,7 @@ class _DeletarLancamentoWidgetState extends State<DeletarLancamentoWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                         ),
                                   ),
@@ -185,6 +187,7 @@ class _DeletarLancamentoWidgetState extends State<DeletarLancamentoWidget>
                                                   'Receita'
                                               ? Color(0xFF00B048)
                                               : Color(0xFFFD0101),
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ],
@@ -223,6 +226,7 @@ class _DeletarLancamentoWidgetState extends State<DeletarLancamentoWidget>
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
@@ -256,6 +260,7 @@ class _DeletarLancamentoWidgetState extends State<DeletarLancamentoWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: Colors.white,
+                                      letterSpacing: 0.0,
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(

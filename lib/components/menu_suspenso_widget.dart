@@ -266,6 +266,7 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                                 .override(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                           ),
                         ),
@@ -320,6 +321,7 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                                         fontFamily: 'Readex Pro',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),
@@ -348,6 +350,7 @@ class _MenuSuspensoWidgetState extends State<MenuSuspensoWidget>
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),

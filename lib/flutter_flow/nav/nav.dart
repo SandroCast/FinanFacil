@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/sqlite/sqlite_manager.dart';
+
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -41,7 +43,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context) => Container(
                 color: Colors.transparent,
                 child: Image.asset(
-                  'assets/images/Capturar.PNG',
+                  'assets/images/Captura_de_tela_2024-03-28_134200.png',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -56,7 +58,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   builder: (context) => Container(
                     color: Colors.transparent,
                     child: Image.asset(
-                      'assets/images/Capturar.PNG',
+                      'assets/images/Captura_de_tela_2024-03-28_134200.png',
                       fit: BoxFit.cover,
                     ),
                   ),

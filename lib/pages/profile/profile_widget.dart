@@ -64,7 +64,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                             BoxShadow(
                               blurRadius: 3.0,
                               color: Color(0x33000000),
-                              offset: Offset(0.0, -1.0),
+                              offset: Offset(
+                                0.0,
+                                -1.0,
+                              ),
                             )
                           ],
                           borderRadius: BorderRadius.only(
@@ -98,6 +101,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.normal,
                                             ),
                                       ),
@@ -169,7 +173,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             'Mudar para modo escuro',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
                                                         ],
                                                       ),
@@ -233,9 +243,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                           4.0,
                                                                       color: Color(
                                                                           0x430B0D0F),
-                                                                      offset: Offset(
-                                                                          0.0,
-                                                                          2.0),
+                                                                      offset:
+                                                                          Offset(
+                                                                        0.0,
+                                                                        2.0,
+                                                                      ),
                                                                     )
                                                                   ],
                                                                   borderRadius:
@@ -312,7 +324,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                             'Mudar para modo claro',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                           ),
                                                         ],
                                                       ),
@@ -375,9 +393,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                                           4.0,
                                                                       color: Color(
                                                                           0x430B0D0F),
-                                                                      offset: Offset(
-                                                                          0.0,
-                                                                          2.0),
+                                                                      offset:
+                                                                          Offset(
+                                                                        0.0,
+                                                                        2.0,
+                                                                      ),
                                                                     )
                                                                   ],
                                                                   borderRadius:
@@ -430,7 +450,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                               ),
                                             ),
                                           ),
@@ -444,6 +469,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primary,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ],
@@ -510,7 +536,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Readex Pro',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
                                               ),
                                             ),

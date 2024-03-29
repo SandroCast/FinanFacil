@@ -197,6 +197,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         ? Color(0xFF00B048)
                                         : Color(0xFFFD0101),
                                     fontSize: 30.0,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                             if (widget.lancamento != null)
@@ -269,13 +270,22 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                             TextFormField(
                               controller: _model.descricaoController,
                               focusNode: _model.descricaoFocusNode,
+                              autofocus: false,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Descrição',
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
-                                hintStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color:
@@ -306,7 +316,13 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                              minLines: null,
                               validator: _model.descricaoControllerValidator
                                   .asValidator(context),
                             ),
@@ -319,6 +335,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context).error,
                                       fontSize: 14.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             if (FFAppState().campoObrigatorio ==
@@ -331,6 +348,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context).error,
                                       fontSize: 14.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                           ],
@@ -398,13 +416,25 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                           height: 50.0,
                                           searchHintTextStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           searchTextStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    letterSpacing: 0.0,
+                                                  ),
                                           hintText: 'Categoria...',
                                           searchHintText:
                                               'Pesquise a categoria...',
@@ -479,6 +509,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context).error,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                           ],
@@ -505,6 +536,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               _model.precoVisivelController,
                                           focusNode:
                                               _model.precoVisivelFocusNode,
+                                          autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText: 'Valor',
@@ -518,6 +550,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                   context)
                                                               .secondaryText,
                                                       fontSize: 14.0,
+                                                      letterSpacing: 0.0,
                                                     ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
@@ -525,6 +558,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                     .override(
                                                       fontFamily: 'Readex Pro',
                                                       color: Color(0xFF95A1AC),
+                                                      letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -585,7 +619,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
                                                 fontSize: 16.0,
+                                                letterSpacing: 0.0,
                                               ),
+                                          minLines: null,
                                           keyboardType: TextInputType.number,
                                           validator: _model
                                               .precoVisivelControllerValidator
@@ -614,8 +650,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 });
                                               },
                                             ),
+                                            autofocus: false,
                                             obscureText: false,
                                             decoration: InputDecoration(
+                                              isDense: false,
                                               labelText: 'Valor do Produto',
                                               labelStyle: FlutterFlowTheme.of(
                                                       context)
@@ -626,6 +664,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                             context)
                                                         .secondaryText,
                                                     fontSize: 14.0,
+                                                    letterSpacing: 0.0,
                                                   ),
                                               alignLabelWithHint: false,
                                               hintStyle: FlutterFlowTheme.of(
@@ -637,6 +676,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                             context)
                                                         .secondaryText,
                                                     fontSize: 16.0,
+                                                    letterSpacing: 0.0,
                                                   ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -688,7 +728,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           context)
                                                       .secondaryText,
                                                   fontSize: 1.0,
+                                                  letterSpacing: 0.0,
                                                 ),
+                                            minLines: null,
                                             keyboardType: TextInputType.number,
                                             validator: _model
                                                 .precoDigitadoControllerValidator
@@ -722,6 +764,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 15.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                     tileColor: FlutterFlowTheme.of(context)
@@ -745,6 +788,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context).error,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                           ],
@@ -779,15 +823,25 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     height: 50.0,
                                     searchHintTextStyle:
                                         FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
                                     searchTextStyle:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                        FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Readex Pro',
+                                              letterSpacing: 0.0,
+                                            ),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Readex Pro',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
+                                          letterSpacing: 0.0,
                                         ),
                                     searchHintText: '',
                                     icon: Icon(
@@ -829,16 +883,25 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         child: TextFormField(
                                           controller: _model.parcelasController,
                                           focusNode: _model.parcelasFocusNode,
+                                          autofocus: false,
                                           readOnly: widget.lancamento != null,
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText: 'Quantidade de Parcelas',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color:
@@ -882,7 +945,12 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             ),
                                           ),
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Readex Pro',
+                                                letterSpacing: 0.0,
+                                              ),
+                                          minLines: null,
                                           keyboardType: TextInputType.number,
                                           validator: _model
                                               .parcelasControllerValidator
@@ -901,6 +969,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     if (FFAppState().campoObrigatorio ==
@@ -914,6 +983,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     if (FFAppState().campoObrigatorio ==
@@ -927,6 +997,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                   ],
@@ -946,14 +1017,23 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               TextFormField(
                                 controller: _model.repeticoesController,
                                 focusNode: _model.repeticoesFocusNode,
+                                autofocus: false,
                                 readOnly: widget.lancamento != null,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Repetir quantas vezes?',
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
@@ -985,7 +1065,13 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
+                                minLines: null,
                                 keyboardType: TextInputType.number,
                                 validator: _model.repeticoesControllerValidator
                                     .asValidator(context),
@@ -999,6 +1085,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         fontFamily: 'Readex Pro',
                                         color:
                                             FlutterFlowTheme.of(context).error,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               if (FFAppState().campoObrigatorio ==
@@ -1011,6 +1098,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         fontFamily: 'Readex Pro',
                                         color:
                                             FlutterFlowTheme.of(context).error,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               if (FFAppState().campoObrigatorio ==
@@ -1023,6 +1111,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                         fontFamily: 'Readex Pro',
                                         color:
                                             FlutterFlowTheme.of(context).error,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                             ],
@@ -1075,6 +1164,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                               .dataController,
                                                           focusNode: _model
                                                               .dataFocusNode,
+                                                          autofocus: false,
                                                           obscureText: false,
                                                           decoration:
                                                               InputDecoration(
@@ -1089,11 +1179,19 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .secondaryText,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelMedium,
+                                                                    .labelMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
                                                             enabledBorder:
                                                                 OutlineInputBorder(
                                                               borderSide:
@@ -1160,7 +1258,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
                                                               ),
+                                                          minLines: null,
                                                           validator: _model
                                                               .dataControllerValidator
                                                               .asValidator(
@@ -1191,6 +1292,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                       .error,
                                                                   fontSize:
                                                                       14.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                 ),
                                                           ),
                                                         ),
@@ -1272,6 +1375,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                       'Outfit',
                                                                   fontSize:
                                                                       32.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600,
@@ -1403,10 +1508,18 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             height: 50.0,
                                             searchHintTextStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             searchTextStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -1416,6 +1529,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .secondaryText,
+                                                      letterSpacing: 0.0,
                                                     ),
                                             hintText: 'Status',
                                             searchHintText: '',
@@ -1466,6 +1580,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 10.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ),
@@ -1510,10 +1625,18 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             height: 50.0,
                                             searchHintTextStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .labelMedium,
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             searchTextStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Readex Pro',
+                                                      letterSpacing: 0.0,
+                                                    ),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -1523,6 +1646,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .secondaryText,
+                                                      letterSpacing: 0.0,
                                                     ),
                                             hintText: 'Status',
                                             searchHintText: '',
@@ -1573,6 +1697,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                           fontFamily:
                                                               'Readex Pro',
                                                           fontSize: 10.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                             ),
@@ -1591,6 +1716,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     .override(
                                       fontFamily: 'Readex Pro',
                                       color: FlutterFlowTheme.of(context).error,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                           ],
@@ -2037,6 +2163,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(

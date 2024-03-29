@@ -142,6 +142,7 @@ class _DeletarLancamentoParceladoWidgetState
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                   ),
                             ),
                           ],
@@ -166,6 +167,7 @@ class _DeletarLancamentoParceladoWidgetState
                                             fontFamily: 'Readex Pro',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),
@@ -209,6 +211,7 @@ class _DeletarLancamentoParceladoWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
@@ -253,6 +256,7 @@ class _DeletarLancamentoParceladoWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
@@ -296,6 +300,7 @@ class _DeletarLancamentoParceladoWidgetState
                                       .override(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
+                                        letterSpacing: 0.0,
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(

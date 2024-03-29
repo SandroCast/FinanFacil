@@ -29,8 +29,6 @@ class AjustarSaldoModel extends FlutterFlowModel<AjustarSaldoWidget> {
   // Stores action output result for [Custom Action - geraUnicoID] action in Button widget.
   String? iDUnicoGerado;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -42,8 +40,4 @@ class AjustarSaldoModel extends FlutterFlowModel<AjustarSaldoWidget> {
     saldoDigitadoFocusNode?.dispose();
     saldoDigitadoController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

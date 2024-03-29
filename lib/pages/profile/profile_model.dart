@@ -15,8 +15,6 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   // Model for NavBar component.
   late NavBarModel navBarModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     navBarModel = createModel(context, () => NavBarModel());
@@ -27,8 +25,4 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
     unfocusNode.dispose();
     navBarModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }
