@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -1971,94 +1970,30 @@ class _InicioWidgetState extends State<InicioWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 0.0, 0.0),
-                          child: Stack(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
-                            children: [
-                              Opacity(
-                                opacity: 0.0,
-                                child: Container(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Text(
+                              '${FFAppState().mesSelecionado} ${FFAppState().anoSelecionado.toString()}',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                   ),
-                                  child: Image.asset(
-                                    'assets/images/_a09af384-d54d-40b9-956b-3c8a43a2eaf1-removebg-preview.png',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      '${FFAppState().mesSelecionado} ${FFAppState().anoSelecionado.toString()}',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Opacity(
-                                opacity: 0.0,
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 20.0, 0.0),
-                                  child: badges.Badge(
-                                    badgeContent: Text(
-                                      '1',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Readex Pro',
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                          ),
-                                    ),
-                                    showBadge: true,
-                                    shape: badges.BadgeShape.circle,
-                                    badgeColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    elevation: 4.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 8.0, 8.0, 8.0),
-                                    position: badges.BadgePosition.topEnd(),
-                                    animationType:
-                                        badges.BadgeAnimationType.scale,
-                                    toAnimate: true,
-                                    child: Align(
-                                      alignment: AlignmentDirectional(1.0, 0.0),
-                                      child: Icon(
-                                        Icons.notifications_none,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 30.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
