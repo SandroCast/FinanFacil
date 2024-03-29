@@ -420,266 +420,256 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                 MainAxisSize
                                                                     .max,
                                                             children: [
-                                                              InkWell(
-                                                                splashColor: Colors
-                                                                    .transparent,
-                                                                focusColor: Colors
-                                                                    .transparent,
-                                                                hoverColor: Colors
-                                                                    .transparent,
-                                                                highlightColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                onTap:
-                                                                    () async {
-                                                                  if (listaLancamentosItem
-                                                                          .descricao !=
-                                                                      'AJUSTE DE SALDO') {
-                                                                    await showModalBottomSheet(
-                                                                      isScrollControlled:
-                                                                          true,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      useSafeArea:
-                                                                          true,
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (context) {
-                                                                        return GestureDetector(
-                                                                          onTap: () => _model.unfocusNode.canRequestFocus
-                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                              : FocusScope.of(context).unfocus(),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                MediaQuery.viewInsetsOf(context),
-                                                                            child:
-                                                                                AcoesLancamentosWidget(
-                                                                              tipo: listaLancamentosItem.tipo!,
-                                                                              lancamento: listaLancamentosItem,
-                                                                              ativo: 2,
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            10.0,
+                                                                            10.0),
+                                                                    child:
+                                                                        Container(
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        boxShadow: [
+                                                                          BoxShadow(
+                                                                            blurRadius:
+                                                                                4.0,
+                                                                            color:
+                                                                                Color(0x33000000),
+                                                                            offset:
+                                                                                Offset(
+                                                                              0.0,
+                                                                              2.0,
                                                                             ),
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    ).then((value) =>
-                                                                        safeSetState(
-                                                                            () {}));
-                                                                  }
-                                                                },
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          10.0),
+                                                                          )
+                                                                        ],
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(10.0),
+                                                                      ),
                                                                       child:
-                                                                          Container(
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
-                                                                          boxShadow: [
-                                                                            BoxShadow(
-                                                                              blurRadius: 4.0,
-                                                                              color: Color(0x33000000),
-                                                                              offset: Offset(
-                                                                                0.0,
-                                                                                2.0,
-                                                                              ),
-                                                                            )
-                                                                          ],
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(10.0),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              10.0,
-                                                                              5.0,
-                                                                              10.0),
-                                                                          child:
-                                                                              Row(
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Row(
                                                                             mainAxisSize:
-                                                                                MainAxisSize.min,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.spaceBetween,
+                                                                                MainAxisSize.max,
                                                                             children: [
-                                                                              Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                child: Container(
-                                                                                  width: 10.0,
-                                                                                  height: 38.0,
-                                                                                  decoration: BoxDecoration(
-                                                                                    color: listaLancamentosItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
-                                                                                  ),
-                                                                                ),
-                                                                              ),
                                                                               Expanded(
-                                                                                child: Padding(
-                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                  child: Column(
-                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                child: InkWell(
+                                                                                  splashColor: Colors.transparent,
+                                                                                  focusColor: Colors.transparent,
+                                                                                  hoverColor: Colors.transparent,
+                                                                                  highlightColor: Colors.transparent,
+                                                                                  onTap: () async {
+                                                                                    if (listaLancamentosItem.descricao != 'AJUSTE DE SALDO') {
+                                                                                      await showModalBottomSheet(
+                                                                                        isScrollControlled: true,
+                                                                                        backgroundColor: Colors.transparent,
+                                                                                        useSafeArea: true,
+                                                                                        context: context,
+                                                                                        builder: (context) {
+                                                                                          return GestureDetector(
+                                                                                            onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                            child: Padding(
+                                                                                              padding: MediaQuery.viewInsetsOf(context),
+                                                                                              child: AcoesLancamentosWidget(
+                                                                                                tipo: listaLancamentosItem.tipo!,
+                                                                                                lancamento: listaLancamentosItem,
+                                                                                                ativo: 2,
+                                                                                              ),
+                                                                                            ),
+                                                                                          );
+                                                                                        },
+                                                                                      ).then((value) => safeSetState(() {}));
+                                                                                    }
+                                                                                  },
+                                                                                  child: Row(
+                                                                                    mainAxisSize: MainAxisSize.min,
+                                                                                    mainAxisAlignment: MainAxisAlignment.start,
                                                                                     children: [
-                                                                                      Row(
-                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                        children: [
-                                                                                          Text(
-                                                                                            listaLancamentosItem.descricao!,
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Readex Pro',
-                                                                                                  color: listaLancamentosItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
-                                                                                                  fontSize: 13.0,
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FontWeight.w500,
-                                                                                                ),
+                                                                                      Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 5.0, 10.0),
+                                                                                        child: Container(
+                                                                                          width: 10.0,
+                                                                                          height: 38.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            color: listaLancamentosItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
                                                                                           ),
-                                                                                          Text(
-                                                                                            listaLancamentosItem.tipo == 'Receita'
-                                                                                                ? formatNumber(
-                                                                                                    listaLancamentosItem.valor!,
-                                                                                                    formatType: FormatType.custom,
-                                                                                                    currency: 'R\$ ',
-                                                                                                    format: ',##0.00#',
-                                                                                                    locale: 'pt_br',
-                                                                                                  )
-                                                                                                : formatNumber(
-                                                                                                    -(listaLancamentosItem.valor!),
-                                                                                                    formatType: FormatType.custom,
-                                                                                                    currency: '- R\$ ',
-                                                                                                    format: ',##0.00#',
-                                                                                                    locale: 'pt_br',
-                                                                                                  ),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Readex Pro',
-                                                                                                  color: listaLancamentosItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
-                                                                                          ),
-                                                                                        ],
+                                                                                        ),
                                                                                       ),
-                                                                                      Row(
-                                                                                        mainAxisSize: MainAxisSize.max,
-                                                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                                        children: [
-                                                                                          Text(
-                                                                                            'Data: ${dateTimeFormat(
-                                                                                              'dd/MM/y',
-                                                                                              functions.stringParaDateTime(listaLancamentosItem.dtagendada!),
-                                                                                              locale: FFLocalizations.of(context).languageCode,
-                                                                                            )}',
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  fontFamily: 'Readex Pro',
-                                                                                                  color: FlutterFlowTheme.of(context).secondaryText,
-                                                                                                  fontSize: 12.0,
-                                                                                                  letterSpacing: 0.0,
-                                                                                                ),
-                                                                                          ),
-                                                                                          Row(
+                                                                                      Flexible(
+                                                                                        child: Padding(
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 10.0),
+                                                                                          child: Column(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             children: [
-                                                                                              if (listaLancamentosItem.descricao != 'AJUSTE DE SALDO')
-                                                                                                Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
-                                                                                                  child: Container(
-                                                                                                    decoration: BoxDecoration(
-                                                                                                      color: FlutterFlowTheme.of(context).primary,
-                                                                                                      borderRadius: BorderRadius.circular(5.0),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  Text(
+                                                                                                    listaLancamentosItem.descricao!.maybeHandleOverflow(
+                                                                                                      maxChars: 50,
+                                                                                                      replacement: '…',
                                                                                                     ),
-                                                                                                    child: Padding(
-                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(5.0, 2.0, 5.0, 2.0),
-                                                                                                      child: Text(
-                                                                                                        () {
-                                                                                                          if (listaLancamentosItem.fixo == 1) {
-                                                                                                            return 'FIXO';
-                                                                                                          } else if (listaLancamentosItem.avista == 'A VISTA') {
-                                                                                                            return 'A VISTA';
-                                                                                                          } else {
-                                                                                                            return '${listaLancamentosItem.parcela?.toString()}/${listaLancamentosItem.totalparcelas?.toString()}';
-                                                                                                          }
-                                                                                                        }(),
-                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                              fontFamily: 'Readex Pro',
-                                                                                                              color: FlutterFlowTheme.of(context).primaryBackground,
-                                                                                                              fontSize: 11.0,
-                                                                                                              letterSpacing: 0.0,
-                                                                                                            ),
-                                                                                                      ),
-                                                                                                    ),
+                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                          fontFamily: 'Readex Pro',
+                                                                                                          color: listaLancamentosItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
+                                                                                                          fontSize: 13.0,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                          fontWeight: FontWeight.w500,
+                                                                                                        ),
                                                                                                   ),
-                                                                                                ),
-                                                                                              if (listaLancamentosItem.status == 'PENDENTE')
-                                                                                                Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  children: [
-                                                                                                    Icon(
-                                                                                                      Icons.access_time_rounded,
-                                                                                                      color: FlutterFlowTheme.of(context).tertiary,
-                                                                                                      size: 20.0,
-                                                                                                    ),
-                                                                                                    Text(
-                                                                                                      'PENDENTE',
-                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                            fontFamily: 'Readex Pro',
-                                                                                                            color: FlutterFlowTheme.of(context).tertiary,
-                                                                                                            fontSize: 12.0,
-                                                                                                            letterSpacing: 0.0,
+                                                                                                  Text(
+                                                                                                    listaLancamentosItem.tipo == 'Receita'
+                                                                                                        ? formatNumber(
+                                                                                                            listaLancamentosItem.valor!,
+                                                                                                            formatType: FormatType.custom,
+                                                                                                            currency: 'R\$ ',
+                                                                                                            format: ',##0.00#',
+                                                                                                            locale: 'pt_br',
+                                                                                                          )
+                                                                                                        : formatNumber(
+                                                                                                            -(listaLancamentosItem.valor!),
+                                                                                                            formatType: FormatType.custom,
+                                                                                                            currency: '- R\$ ',
+                                                                                                            format: ',##0.00#',
+                                                                                                            locale: 'pt_br',
                                                                                                           ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                              if (listaLancamentosItem.status == 'PAGO')
-                                                                                                Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  children: [
-                                                                                                    Icon(
-                                                                                                      Icons.check_circle,
-                                                                                                      color: FlutterFlowTheme.of(context).success,
-                                                                                                      size: 20.0,
-                                                                                                    ),
-                                                                                                    Text(
-                                                                                                      'PAGO',
-                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                            fontFamily: 'Readex Pro',
-                                                                                                            color: FlutterFlowTheme.of(context).success,
-                                                                                                            fontSize: 12.0,
-                                                                                                            letterSpacing: 0.0,
+                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                          fontFamily: 'Readex Pro',
+                                                                                                          color: listaLancamentosItem.tipo == 'Receita' ? Color(0xFF00B048) : Color(0xFFFD0101),
+                                                                                                          letterSpacing: 0.0,
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
+                                                                                              Row(
+                                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                                children: [
+                                                                                                  Text(
+                                                                                                    'Data: ${dateTimeFormat(
+                                                                                                      'dd/MM/y',
+                                                                                                      functions.stringParaDateTime(listaLancamentosItem.dtagendada!),
+                                                                                                      locale: FFLocalizations.of(context).languageCode,
+                                                                                                    )}',
+                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                          fontFamily: 'Readex Pro',
+                                                                                                          color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                                          fontSize: 12.0,
+                                                                                                          letterSpacing: 0.0,
+                                                                                                        ),
+                                                                                                  ),
+                                                                                                  Row(
+                                                                                                    mainAxisSize: MainAxisSize.max,
+                                                                                                    children: [
+                                                                                                      if (listaLancamentosItem.descricao != 'AJUSTE DE SALDO')
+                                                                                                        Padding(
+                                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                                          child: Container(
+                                                                                                            decoration: BoxDecoration(
+                                                                                                              color: FlutterFlowTheme.of(context).primary,
+                                                                                                              borderRadius: BorderRadius.circular(5.0),
+                                                                                                            ),
+                                                                                                            child: Padding(
+                                                                                                              padding: EdgeInsetsDirectional.fromSTEB(5.0, 2.0, 5.0, 2.0),
+                                                                                                              child: Text(
+                                                                                                                () {
+                                                                                                                  if (listaLancamentosItem.fixo == 1) {
+                                                                                                                    return 'FIXO';
+                                                                                                                  } else if (listaLancamentosItem.avista == 'A VISTA') {
+                                                                                                                    return 'A VISTA';
+                                                                                                                  } else {
+                                                                                                                    return '${listaLancamentosItem.parcela?.toString()}/${listaLancamentosItem.totalparcelas?.toString()}';
+                                                                                                                  }
+                                                                                                                }(),
+                                                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                      fontFamily: 'Readex Pro',
+                                                                                                                      color: FlutterFlowTheme.of(context).primaryBackground,
+                                                                                                                      fontSize: 11.0,
+                                                                                                                      letterSpacing: 0.0,
+                                                                                                                    ),
+                                                                                                              ),
+                                                                                                            ),
                                                                                                           ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
-                                                                                              if (listaLancamentosItem.status == 'RECEBIDO')
-                                                                                                Row(
-                                                                                                  mainAxisSize: MainAxisSize.max,
-                                                                                                  children: [
-                                                                                                    Icon(
-                                                                                                      Icons.check_circle,
-                                                                                                      color: FlutterFlowTheme.of(context).success,
-                                                                                                      size: 20.0,
-                                                                                                    ),
-                                                                                                    Text(
-                                                                                                      'RECEBIDO',
-                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                            fontFamily: 'Readex Pro',
-                                                                                                            color: FlutterFlowTheme.of(context).success,
-                                                                                                            fontSize: 12.0,
-                                                                                                            letterSpacing: 0.0,
-                                                                                                          ),
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                ),
+                                                                                                        ),
+                                                                                                      if (listaLancamentosItem.status == 'PENDENTE')
+                                                                                                        Row(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          children: [
+                                                                                                            Icon(
+                                                                                                              Icons.access_time_rounded,
+                                                                                                              color: FlutterFlowTheme.of(context).tertiary,
+                                                                                                              size: 20.0,
+                                                                                                            ),
+                                                                                                            Text(
+                                                                                                              'PENDENTE',
+                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                    fontFamily: 'Readex Pro',
+                                                                                                                    color: FlutterFlowTheme.of(context).tertiary,
+                                                                                                                    fontSize: 12.0,
+                                                                                                                    letterSpacing: 0.0,
+                                                                                                                  ),
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      if (listaLancamentosItem.status == 'PAGO')
+                                                                                                        Row(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          children: [
+                                                                                                            Icon(
+                                                                                                              Icons.check_circle,
+                                                                                                              color: FlutterFlowTheme.of(context).success,
+                                                                                                              size: 20.0,
+                                                                                                            ),
+                                                                                                            Text(
+                                                                                                              'PAGO',
+                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                    fontFamily: 'Readex Pro',
+                                                                                                                    color: FlutterFlowTheme.of(context).success,
+                                                                                                                    fontSize: 12.0,
+                                                                                                                    letterSpacing: 0.0,
+                                                                                                                  ),
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                      if (listaLancamentosItem.status == 'RECEBIDO')
+                                                                                                        Row(
+                                                                                                          mainAxisSize: MainAxisSize.max,
+                                                                                                          children: [
+                                                                                                            Icon(
+                                                                                                              Icons.check_circle,
+                                                                                                              color: FlutterFlowTheme.of(context).success,
+                                                                                                              size: 20.0,
+                                                                                                            ),
+                                                                                                            Text(
+                                                                                                              'RECEBIDO',
+                                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                                    fontFamily: 'Readex Pro',
+                                                                                                                    color: FlutterFlowTheme.of(context).success,
+                                                                                                                    fontSize: 12.0,
+                                                                                                                    letterSpacing: 0.0,
+                                                                                                                  ),
+                                                                                                            ),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
                                                                                             ],
                                                                                           ),
-                                                                                        ],
+                                                                                        ),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -697,7 +687,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                   ),
                                                                                   if (listaLancamentosItem.descricao == 'AJUSTE DE SALDO')
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 10.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -729,9 +719,9 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                         ),
                                                                                       ),
                                                                                     ),
-                                                                                  if (listaLancamentosItem.status == 'PENDENTE')
+                                                                                  if ((listaLancamentosItem.status != 'PENDENTE') && (listaLancamentosItem.descricao != 'AJUSTE DE SALDO'))
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 10.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -750,7 +740,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                   padding: MediaQuery.viewInsetsOf(context),
                                                                                                   child: AlterarStatusWidget(
                                                                                                     id: listaLancamentosItem.id!,
-                                                                                                    status: listaLancamentosItem.tipo == 'Receita' ? 'Recebido' : 'Pago',
+                                                                                                    status: 'PENDENTE',
                                                                                                   ),
                                                                                                 ),
                                                                                               );
@@ -764,9 +754,9 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                         ),
                                                                                       ),
                                                                                     ),
-                                                                                  if ((listaLancamentosItem.descricao != 'AJUSTE DE SALDO') && (listaLancamentosItem.status != 'PENDENTE'))
+                                                                                  if (listaLancamentosItem.status == 'PENDENTE')
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 10.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -785,7 +775,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                   padding: MediaQuery.viewInsetsOf(context),
                                                                                                   child: AlterarStatusWidget(
                                                                                                     id: listaLancamentosItem.id!,
-                                                                                                    status: 'PENDENTE',
+                                                                                                    status: listaLancamentosItem.tipo == 'Receita' ? 'RECEBIDO' : 'PAGO',
                                                                                                   ),
                                                                                                 ),
                                                                                               );
@@ -803,11 +793,11 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                               ),
                                                                             ],
                                                                           ),
-                                                                        ),
+                                                                        ],
                                                                       ),
                                                                     ),
-                                                                  ],
-                                                                ),
+                                                                  ),
+                                                                ],
                                                               ),
                                                             ],
                                                           );
