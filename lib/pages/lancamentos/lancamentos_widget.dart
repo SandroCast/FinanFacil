@@ -518,7 +518,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                                 children: [
                                                                                                   Text(
                                                                                                     listaLancamentosItem.descricao!.maybeHandleOverflow(
-                                                                                                      maxChars: 30,
+                                                                                                      maxChars: 20,
                                                                                                       replacement: '…',
                                                                                                     ),
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
