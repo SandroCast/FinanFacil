@@ -687,7 +687,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                   ),
                                                                                   if (listaLancamentosItem.descricao == 'AJUSTE DE SALDO')
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 10.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 10.0, 10.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -721,7 +721,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                     ),
                                                                                   if ((listaLancamentosItem.status != 'PENDENTE') && (listaLancamentosItem.descricao != 'AJUSTE DE SALDO'))
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 10.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 10.0, 10.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
@@ -756,7 +756,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                     ),
                                                                                   if (listaLancamentosItem.status == 'PENDENTE')
                                                                                     Padding(
-                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 5.0, 10.0),
+                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 10.0, 10.0),
                                                                                       child: InkWell(
                                                                                         splashColor: Colors.transparent,
                                                                                         focusColor: Colors.transparent,
