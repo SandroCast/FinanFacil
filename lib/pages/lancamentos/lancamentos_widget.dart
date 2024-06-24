@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -31,20 +32,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -53,10 +41,24 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().anoSelecionado = functions.obterAno(getCurrentTimestamp)!;
-        FFAppState().mesSelecionado = functions.obterMes(getCurrentTimestamp)!;
-      });
+      FFAppState().anoSelecionado = functions.obterAno(getCurrentTimestamp)!;
+      FFAppState().mesSelecionado = functions.obterMes(getCurrentTimestamp)!;
+      setState(() {});
+    });
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -129,32 +131,30 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         onTap: () async {
                                           if (FFAppState().mesSelecionado ==
                                               'Janeiro') {
-                                            setState(() {
-                                              FFAppState().mesSelecionado =
-                                                  functions
-                                                      .gerarListaDeMeses(
-                                                          FFAppState()
-                                                              .mesSelecionado)!
-                                                      .first;
-                                              FFAppState().anoSelecionado =
-                                                  FFAppState().anoSelecionado +
-                                                      -1;
-                                            });
+                                            FFAppState().mesSelecionado =
+                                                functions
+                                                    .gerarListaDeMeses(
+                                                        FFAppState()
+                                                            .mesSelecionado)!
+                                                    .first;
+                                            FFAppState().anoSelecionado =
+                                                FFAppState().anoSelecionado +
+                                                    -1;
+                                            setState(() {});
                                           } else {
-                                            setState(() {
-                                              FFAppState().mesSelecionado =
-                                                  functions
-                                                      .gerarListaDeMeses(
-                                                          FFAppState()
-                                                              .mesSelecionado)!
-                                                      .first;
-                                            });
+                                            FFAppState().mesSelecionado =
+                                                functions
+                                                    .gerarListaDeMeses(
+                                                        FFAppState()
+                                                            .mesSelecionado)!
+                                                    .first;
+                                            setState(() {});
                                           }
                                         },
                                         child: Icon(
                                           Icons.arrow_back_ios_new,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                              .primaryText,
                                           size: 24.0,
                                         ),
                                       ),
@@ -168,9 +168,8 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          setState(() {
-                                            FFAppState().Flutuante = 'meses';
-                                          });
+                                          FFAppState().Flutuante = 'meses';
+                                          setState(() {});
                                         },
                                         child: Text(
                                           '${FFAppState().mesSelecionado} ${FFAppState().anoSelecionado.toString()}',
@@ -198,32 +197,29 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         onTap: () async {
                                           if (FFAppState().mesSelecionado ==
                                               'Dezembro') {
-                                            setState(() {
-                                              FFAppState().mesSelecionado =
-                                                  functions
-                                                      .gerarListaDeMeses(
-                                                          FFAppState()
-                                                              .mesSelecionado)!
-                                                      .last;
-                                              FFAppState().anoSelecionado =
-                                                  FFAppState().anoSelecionado +
-                                                      1;
-                                            });
+                                            FFAppState().mesSelecionado =
+                                                functions
+                                                    .gerarListaDeMeses(
+                                                        FFAppState()
+                                                            .mesSelecionado)!
+                                                    .last;
+                                            FFAppState().anoSelecionado =
+                                                FFAppState().anoSelecionado + 1;
+                                            setState(() {});
                                           } else {
-                                            setState(() {
-                                              FFAppState().mesSelecionado =
-                                                  functions
-                                                      .gerarListaDeMeses(
-                                                          FFAppState()
-                                                              .mesSelecionado)!
-                                                      .last;
-                                            });
+                                            FFAppState().mesSelecionado =
+                                                functions
+                                                    .gerarListaDeMeses(
+                                                        FFAppState()
+                                                            .mesSelecionado)!
+                                                    .last;
+                                            setState(() {});
                                           }
                                         },
                                         child: Icon(
                                           Icons.arrow_forward_ios,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                              .primaryText,
                                           size: 24.0,
                                         ),
                                       ),
@@ -682,7 +678,7 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                                                                     height: 35.0,
                                                                                     child: VerticalDivider(
                                                                                       thickness: 1.0,
-                                                                                      color: Color(0xCC9E9E9E),
+                                                                                      color: FlutterFlowTheme.of(context).primaryText,
                                                                                     ),
                                                                                   ),
                                                                                   if (listaLancamentosItem.descricao == 'AJUSTE DE SALDO')
@@ -878,9 +874,8 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        setState(() {
-                          FFAppState().Flutuante = '';
-                        });
+                        FFAppState().Flutuante = '';
+                        setState(() {});
                       },
                       child: Container(
                         height: double.infinity,
@@ -918,11 +913,10 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         onChanged: (val) async {
                                           setState(() => _model.choiceAnoValue =
                                               val?.firstOrNull);
-                                          setState(() {
-                                            FFAppState().anoSelecionado =
-                                                functions.stringParaInt(
-                                                    _model.choiceAnoValue!)!;
-                                          });
+                                          FFAppState().anoSelecionado =
+                                              functions.stringParaInt(
+                                                  _model.choiceAnoValue!)!;
+                                          setState(() {});
                                         },
                                         selectedChipStyle: ChipStyle(
                                           backgroundColor: Color(0xFF66C3FF),
@@ -1006,10 +1000,9 @@ class _LancamentosWidgetState extends State<LancamentosWidget>
                                         onChanged: (val) async {
                                           setState(() => _model.choiceMesValue =
                                               val?.firstOrNull);
-                                          setState(() {
-                                            FFAppState().mesSelecionado =
-                                                _model.choiceMesValue!;
-                                          });
+                                          FFAppState().mesSelecionado =
+                                              _model.choiceMesValue!;
+                                          setState(() {});
                                         },
                                         selectedChipStyle: ChipStyle(
                                           backgroundColor: Color(0xFF66C3FF),

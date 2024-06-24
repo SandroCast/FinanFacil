@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'acoes_lancamentos_widget.dart' show AcoesLancamentosWidget;
@@ -25,19 +26,19 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
 
   // State field(s) for descricao widget.
   FocusNode? descricaoFocusNode;
-  TextEditingController? descricaoController;
-  String? Function(BuildContext, String?)? descricaoControllerValidator;
+  TextEditingController? descricaoTextController;
+  String? Function(BuildContext, String?)? descricaoTextControllerValidator;
   // State field(s) for categoria widget.
   int? categoriaValue;
   FormFieldController<int>? categoriaValueController;
   // State field(s) for precoVisivel widget.
   FocusNode? precoVisivelFocusNode;
-  TextEditingController? precoVisivelController;
-  String? Function(BuildContext, String?)? precoVisivelControllerValidator;
+  TextEditingController? precoVisivelTextController;
+  String? Function(BuildContext, String?)? precoVisivelTextControllerValidator;
   // State field(s) for precoDigitado widget.
   FocusNode? precoDigitadoFocusNode;
-  TextEditingController? precoDigitadoController;
-  String? Function(BuildContext, String?)? precoDigitadoControllerValidator;
+  TextEditingController? precoDigitadoTextController;
+  String? Function(BuildContext, String?)? precoDigitadoTextControllerValidator;
   // State field(s) for fixo widget.
   bool? fixoValue;
   // State field(s) for avista widget.
@@ -45,16 +46,16 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   FormFieldController<String>? avistaValueController;
   // State field(s) for parcelas widget.
   FocusNode? parcelasFocusNode;
-  TextEditingController? parcelasController;
-  String? Function(BuildContext, String?)? parcelasControllerValidator;
+  TextEditingController? parcelasTextController;
+  String? Function(BuildContext, String?)? parcelasTextControllerValidator;
   // State field(s) for repeticoes widget.
   FocusNode? repeticoesFocusNode;
-  TextEditingController? repeticoesController;
-  String? Function(BuildContext, String?)? repeticoesControllerValidator;
+  TextEditingController? repeticoesTextController;
+  String? Function(BuildContext, String?)? repeticoesTextControllerValidator;
   // State field(s) for data widget.
   FocusNode? dataFocusNode;
-  TextEditingController? dataController;
-  String? Function(BuildContext, String?)? dataControllerValidator;
+  TextEditingController? dataTextController;
+  String? Function(BuildContext, String?)? dataTextControllerValidator;
   DateTime? datePicked;
   // State field(s) for statusDespesa widget.
   String? statusDespesaValue;
@@ -71,21 +72,21 @@ class AcoesLancamentosModel extends FlutterFlowModel<AcoesLancamentosWidget> {
   @override
   void dispose() {
     descricaoFocusNode?.dispose();
-    descricaoController?.dispose();
+    descricaoTextController?.dispose();
 
     precoVisivelFocusNode?.dispose();
-    precoVisivelController?.dispose();
+    precoVisivelTextController?.dispose();
 
     precoDigitadoFocusNode?.dispose();
-    precoDigitadoController?.dispose();
+    precoDigitadoTextController?.dispose();
 
     parcelasFocusNode?.dispose();
-    parcelasController?.dispose();
+    parcelasTextController?.dispose();
 
     repeticoesFocusNode?.dispose();
-    repeticoesController?.dispose();
+    repeticoesTextController?.dispose();
 
     dataFocusNode?.dispose();
-    dataController?.dispose();
+    dataTextController?.dispose();
   }
 }

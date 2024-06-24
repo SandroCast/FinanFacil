@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -30,20 +31,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
     with TickerProviderStateMixin {
   late AjustarSaldoModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -56,7 +44,7 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
     super.initState();
     _model = createModel(context, () => AjustarSaldoModel());
 
-    _model.saldoVisivelController ??= TextEditingController(
+    _model.saldoVisivelTextController ??= TextEditingController(
         text: formatNumber(
       functions.numeroPositivo(0.0),
       formatType: FormatType.custom,
@@ -66,12 +54,26 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
     ));
     _model.saldoVisivelFocusNode ??= FocusNode();
 
-    _model.saldoDigitadoController ??= TextEditingController();
+    _model.saldoDigitadoTextController ??= TextEditingController();
     _model.saldoDigitadoFocusNode ??= FocusNode();
     _model.saldoDigitadoFocusNode!.addListener(() => setState(() {}));
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          _model.saldoDigitadoController?.text = '0';
+          _model.saldoDigitadoTextController?.text = '0';
         }));
   }
 
@@ -264,8 +266,8 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                         child: Stack(
                                           children: [
                                             TextFormField(
-                                              controller:
-                                                  _model.saldoVisivelController,
+                                              controller: _model
+                                                  .saldoVisivelTextController,
                                               focusNode:
                                                   _model.saldoVisivelFocusNode,
                                               autofocus: false,
@@ -358,33 +360,39 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                     letterSpacing: 0.0,
                                                   ),
                                               textAlign: TextAlign.center,
-                                              minLines: null,
                                               keyboardType:
                                                   TextInputType.number,
                                               validator: _model
-                                                  .saldoVisivelControllerValidator
+                                                  .saldoVisivelTextControllerValidator
                                                   .asValidator(context),
                                             ),
                                             Opacity(
                                               opacity: 0.0,
                                               child: TextFormField(
                                                 controller: _model
-                                                    .saldoDigitadoController,
+                                                    .saldoDigitadoTextController,
                                                 focusNode: _model
                                                     .saldoDigitadoFocusNode,
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
-                                                  '_model.saldoDigitadoController',
+                                                  '_model.saldoDigitadoTextController',
                                                   Duration(milliseconds: 0),
                                                   () async {
                                                     setState(() {
-                                                      _model.saldoVisivelController
+                                                      _model.saldoVisivelTextController
                                                               ?.text =
                                                           functions
                                                               .converteValorParaReal(
                                                                   _model
-                                                                      .saldoDigitadoController
+                                                                      .saldoDigitadoTextController
                                                                       .text)!;
+                                                      _model.saldoVisivelTextController
+                                                              ?.selection =
+                                                          TextSelection.collapsed(
+                                                              offset: _model
+                                                                  .saldoVisivelTextController!
+                                                                  .text
+                                                                  .length);
                                                     });
                                                   },
                                                 ),
@@ -482,11 +490,10 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                                       fontSize: 1.0,
                                                       letterSpacing: 0.0,
                                                     ),
-                                                minLines: null,
                                                 keyboardType:
                                                     TextInputType.number,
                                                 validator: _model
-                                                    .saldoDigitadoControllerValidator
+                                                    .saldoDigitadoTextControllerValidator
                                                     .asValidator(context),
                                               ),
                                             ),
@@ -533,7 +540,6 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(
-                                      color: Colors.transparent,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),
@@ -548,8 +554,8 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                           ? optionsSaldoAtualRowList
                                               .first.saldo!
                                           : 0.0,
-                                      functions.salvaPrecoBanco(
-                                          _model.saldoVisivelController.text)!,
+                                      functions.salvaPrecoBanco(_model
+                                          .saldoVisivelTextController.text)!,
                                     );
                                     if (_model.retornoAjuste != 0.0) {
                                       _model.iDUnicoGerado =
@@ -636,7 +642,6 @@ class _AjustarSaldoWidgetState extends State<AjustarSaldoWidget>
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(
-                                      color: Colors.transparent,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(8.0),

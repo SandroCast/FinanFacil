@@ -215,7 +215,6 @@ class _CategoriasWidgetState extends State<CategoriasWidget> {
                                                         ),
                                                 elevation: 3.0,
                                                 borderSide: BorderSide(
-                                                  color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:

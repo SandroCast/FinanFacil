@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -33,20 +34,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
     with TickerProviderStateMixin {
   late AcoesCategoriasModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -61,13 +49,27 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().abaCategoria = widget.aba!;
-      });
+      FFAppState().abaCategoria = widget.aba!;
+      setState(() {});
     });
 
-    _model.categoriaController ??= TextEditingController();
+    _model.categoriaTextController ??= TextEditingController();
     _model.categoriaFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -154,9 +156,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    setState(() {
-                                      FFAppState().abaCategoria = 1;
-                                    });
+                                    FFAppState().abaCategoria = 1;
+                                    setState(() {});
                                   },
                                   child: Container(
                                     width: 140.0,
@@ -221,9 +222,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    setState(() {
-                                      FFAppState().abaCategoria = 2;
-                                    });
+                                    FFAppState().abaCategoria = 2;
+                                    setState(() {});
                                   },
                                   child: Container(
                                     width: 140.0,
@@ -630,7 +630,7 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextFormField(
-                                    controller: _model.categoriaController,
+                                    controller: _model.categoriaTextController,
                                     focusNode: _model.categoriaFocusNode,
                                     autofocus: false,
                                     obscureText: false,
@@ -691,9 +691,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                           fontFamily: 'Readex Pro',
                                           letterSpacing: 0.0,
                                         ),
-                                    minLines: null,
                                     validator: _model
-                                        .categoriaControllerValidator
+                                        .categoriaTextControllerValidator
                                         .asValidator(context),
                                   ),
                                   if (FFAppState().campoObrigatorio ==
@@ -736,30 +735,27 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         var _shouldSetState = false;
-                                        setState(() {
-                                          FFAppState().campoObrigatorio = '';
-                                        });
+                                        FFAppState().campoObrigatorio = '';
+                                        setState(() {});
                                         if (_model.tipoValue == null ||
                                             _model.tipoValue == '') {
-                                          setState(() {
-                                            FFAppState().campoObrigatorio =
-                                                'novaCategoriaTipo';
-                                          });
+                                          FFAppState().campoObrigatorio =
+                                              'novaCategoriaTipo';
+                                          setState(() {});
                                           if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
                                           if (functions.letrasMaiusculas(_model
-                                                      .categoriaController
+                                                      .categoriaTextController
                                                       .text) ==
                                                   null ||
                                               functions.letrasMaiusculas(_model
-                                                      .categoriaController
+                                                      .categoriaTextController
                                                       .text) ==
                                                   '') {
-                                            setState(() {
-                                              FFAppState().campoObrigatorio =
-                                                  'novaCategoriaCategoria';
-                                            });
+                                            FFAppState().campoObrigatorio =
+                                                'novaCategoriaCategoria';
+                                            setState(() {});
                                             if (_shouldSetState)
                                               setState(() {});
                                             return;
@@ -770,7 +766,8 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             await SQLiteManager.instance
                                                 .pesquisaTituloCategoria(
                                           titulo: functions.letrasMaiusculas(
-                                              _model.categoriaController.text),
+                                              _model.categoriaTextController
+                                                  .text),
                                           tipo: _model.tipoValue,
                                         );
                                         _shouldSetState = true;
@@ -780,23 +777,21 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                           await SQLiteManager.instance
                                               .novaCategoria(
                                             titulo: functions.letrasMaiusculas(
-                                                _model
-                                                    .categoriaController.text),
+                                                _model.categoriaTextController
+                                                    .text),
                                             tipo: _model.tipoValue,
                                           );
                                           if (widget.tipo != null &&
                                               widget.tipo != '') {
                                             Navigator.pop(context);
                                           } else {
-                                            setState(() {
-                                              FFAppState().abaCategoria = 1;
-                                            });
+                                            FFAppState().abaCategoria = 1;
+                                            setState(() {});
                                           }
                                         } else {
-                                          setState(() {
-                                            FFAppState().campoObrigatorio =
-                                                'categoriaExistente';
-                                          });
+                                          FFAppState().campoObrigatorio =
+                                              'categoriaExistente';
+                                          setState(() {});
                                         }
 
                                         if (_shouldSetState) setState(() {});
@@ -820,7 +815,6 @@ class _AcoesCategoriasWidgetState extends State<AcoesCategoriasWidget>
                                             ),
                                         elevation: 3.0,
                                         borderSide: BorderSide(
-                                          color: Colors.transparent,
                                           width: 1.0,
                                         ),
                                         borderRadius:

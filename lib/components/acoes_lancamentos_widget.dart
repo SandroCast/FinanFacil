@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -41,20 +42,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
     with TickerProviderStateMixin {
   late AcoesLancamentosModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -69,16 +57,15 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().campoObrigatorio = '';
-      });
+      FFAppState().campoObrigatorio = '';
+      setState(() {});
     });
 
-    _model.descricaoController ??=
+    _model.descricaoTextController ??=
         TextEditingController(text: widget.lancamento?.descricao);
     _model.descricaoFocusNode ??= FocusNode();
 
-    _model.precoVisivelController ??= TextEditingController(
+    _model.precoVisivelTextController ??= TextEditingController(
         text: formatNumber(
       functions.numeroPositivo(
           widget.lancamento?.valor != null ? widget.lancamento!.valor! : 0.0),
@@ -89,7 +76,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
     ));
     _model.precoVisivelFocusNode ??= FocusNode();
 
-    _model.precoDigitadoController ??= TextEditingController(
+    _model.precoDigitadoTextController ??= TextEditingController(
         text: widget.lancamento?.valor != null
             ? functions
                 .converterDoubleParaInt(
@@ -98,19 +85,34 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
             : '0');
     _model.precoDigitadoFocusNode ??= FocusNode();
     _model.precoDigitadoFocusNode!.addListener(() => setState(() {}));
-    _model.parcelasController ??= TextEditingController(
+    _model.parcelasTextController ??= TextEditingController(
         text: widget.lancamento?.totalparcelas?.toString());
     _model.parcelasFocusNode ??= FocusNode();
 
-    _model.repeticoesController ??= TextEditingController(
+    _model.repeticoesTextController ??= TextEditingController(
         text: widget.lancamento?.totalparcelas?.toString());
     _model.repeticoesFocusNode ??= FocusNode();
 
-    _model.dataController ??= TextEditingController(
+    _model.dataTextController ??= TextEditingController(
         text: widget.lancamento != null
             ? functions.datetimeParaString(widget.lancamento!.dtagendada!)
             : 'Data');
     _model.dataFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -268,7 +270,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TextFormField(
-                              controller: _model.descricaoController,
+                              controller: _model.descricaoTextController,
                               focusNode: _model.descricaoFocusNode,
                               autofocus: false,
                               obscureText: false,
@@ -322,8 +324,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
-                              minLines: null,
-                              validator: _model.descricaoControllerValidator
+                              validator: _model.descricaoTextControllerValidator
                                   .asValidator(context),
                             ),
                             if (FFAppState().campoObrigatorio == 'descricao')
@@ -533,7 +534,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       children: [
                                         TextFormField(
                                           controller:
-                                              _model.precoVisivelController,
+                                              _model.precoVisivelTextController,
                                           focusNode:
                                               _model.precoVisivelFocusNode,
                                           autofocus: false,
@@ -621,32 +622,38 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           keyboardType: TextInputType.number,
                                           validator: _model
-                                              .precoVisivelControllerValidator
+                                              .precoVisivelTextControllerValidator
                                               .asValidator(context),
                                         ),
                                         Opacity(
                                           opacity: 0.0,
                                           child: TextFormField(
-                                            controller:
-                                                _model.precoDigitadoController,
+                                            controller: _model
+                                                .precoDigitadoTextController,
                                             focusNode:
                                                 _model.precoDigitadoFocusNode,
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
-                                              '_model.precoDigitadoController',
+                                              '_model.precoDigitadoTextController',
                                               Duration(milliseconds: 0),
                                               () async {
                                                 setState(() {
-                                                  _model.precoVisivelController
+                                                  _model.precoVisivelTextController
                                                           ?.text =
                                                       functions
                                                           .converteValorParaReal(
                                                               _model
-                                                                  .precoDigitadoController
+                                                                  .precoDigitadoTextController
                                                                   .text)!;
+                                                  _model.precoVisivelTextController
+                                                          ?.selection =
+                                                      TextSelection.collapsed(
+                                                          offset: _model
+                                                              .precoVisivelTextController!
+                                                              .text
+                                                              .length);
                                                 });
                                               },
                                             ),
@@ -730,10 +737,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                   fontSize: 1.0,
                                                   letterSpacing: 0.0,
                                                 ),
-                                            minLines: null,
                                             keyboardType: TextInputType.number,
                                             validator: _model
-                                                .precoDigitadoControllerValidator
+                                                .precoDigitadoTextControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
@@ -881,7 +887,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 ? 1.0
                                                 : 0.0,
                                         child: TextFormField(
-                                          controller: _model.parcelasController,
+                                          controller:
+                                              _model.parcelasTextController,
                                           focusNode: _model.parcelasFocusNode,
                                           autofocus: false,
                                           readOnly: widget.lancamento != null,
@@ -950,10 +957,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 fontFamily: 'Readex Pro',
                                                 letterSpacing: 0.0,
                                               ),
-                                          minLines: null,
                                           keyboardType: TextInputType.number,
                                           validator: _model
-                                              .parcelasControllerValidator
+                                              .parcelasTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -1015,7 +1021,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextFormField(
-                                controller: _model.repeticoesController,
+                                controller: _model.repeticoesTextController,
                                 focusNode: _model.repeticoesFocusNode,
                                 autofocus: false,
                                 readOnly: widget.lancamento != null,
@@ -1071,9 +1077,9 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       fontFamily: 'Readex Pro',
                                       letterSpacing: 0.0,
                                     ),
-                                minLines: null,
                                 keyboardType: TextInputType.number,
-                                validator: _model.repeticoesControllerValidator
+                                validator: _model
+                                    .repeticoesTextControllerValidator
                                     .asValidator(context),
                               ),
                               if (FFAppState().campoObrigatorio == 'repeticoes')
@@ -1161,7 +1167,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                             BoxDecoration(),
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .dataController,
+                                                              .dataTextController,
                                                           focusNode: _model
                                                               .dataFocusNode,
                                                           autofocus: false,
@@ -1261,9 +1267,8 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
-                                                          minLines: null,
                                                           validator: _model
-                                                              .dataControllerValidator
+                                                              .dataTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -1417,7 +1422,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                     });
                                                   }
                                                   setState(() {
-                                                    _model.dataController
+                                                    _model.dataTextController
                                                         ?.text = () {
                                                       if (_model.datePicked !=
                                                           null) {
@@ -1446,6 +1451,13 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                         return 'Data';
                                                       }
                                                     }();
+                                                    _model.dataTextController
+                                                            ?.selection =
+                                                        TextSelection.collapsed(
+                                                            offset: _model
+                                                                .dataTextController!
+                                                                .text
+                                                                .length);
                                                   });
                                                 },
                                                 child: Container(
@@ -1733,71 +1745,64 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   var _shouldSetState = false;
-                                  setState(() {
-                                    FFAppState().campoObrigatorio = '';
-                                  });
+                                  FFAppState().campoObrigatorio = '';
+                                  setState(() {});
                                   if (functions.letrasMaiusculas(_model
-                                              .descricaoController.text) ==
+                                              .descricaoTextController.text) ==
                                           null ||
                                       functions.letrasMaiusculas(_model
-                                              .descricaoController.text) ==
+                                              .descricaoTextController.text) ==
                                           '') {
-                                    setState(() {
-                                      FFAppState().campoObrigatorio =
-                                          'descricao';
-                                    });
+                                    FFAppState().campoObrigatorio = 'descricao';
+                                    setState(() {});
                                     if (_shouldSetState) setState(() {});
                                     return;
                                   } else {
-                                    if (functions.letrasMaiusculas(
-                                            _model.descricaoController.text) ==
+                                    if (functions.letrasMaiusculas(_model
+                                            .descricaoTextController.text) ==
                                         'AJUSTE DE SALDO') {
-                                      setState(() {
-                                        FFAppState().campoObrigatorio =
-                                            'descricaoReservado';
-                                      });
+                                      FFAppState().campoObrigatorio =
+                                          'descricaoReservado';
+                                      setState(() {});
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
                                       if (_model.categoriaValue == null) {
-                                        setState(() {
-                                          FFAppState().campoObrigatorio =
-                                              'categoria';
-                                        });
+                                        FFAppState().campoObrigatorio =
+                                            'categoria';
+                                        setState(() {});
                                         if (_shouldSetState) setState(() {});
                                         return;
                                       } else {
-                                        if ((_model.precoVisivelController
+                                        if ((_model.precoVisivelTextController
                                                             .text !=
                                                         null &&
-                                                    _model.precoVisivelController
+                                                    _model.precoVisivelTextController
                                                             .text !=
                                                         ''
-                                                ? functions.salvaPrecoBanco(
-                                                    _model
-                                                        .precoVisivelController
-                                                        .text)
+                                                ? functions.salvaPrecoBanco(_model
+                                                    .precoVisivelTextController
+                                                    .text)
                                                 : 0.0) ==
                                             0.0) {
-                                          setState(() {
-                                            FFAppState().campoObrigatorio =
-                                                'valor';
-                                          });
+                                          FFAppState().campoObrigatorio =
+                                              'valor';
+                                          setState(() {});
                                           if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
                                           if ((_model.fixoValue == false) &&
                                               (_model.avistaValue ==
                                                   'PARCELADO') &&
-                                              (_model.parcelasController.text ==
+                                              (_model.parcelasTextController
+                                                          .text ==
                                                       null ||
-                                                  _model.parcelasController
+                                                  _model.parcelasTextController
                                                           .text ==
                                                       '')) {
-                                            setState(() {
-                                              FFAppState().campoObrigatorio =
-                                                  'parcelas';
-                                            });
+                                            FFAppState().campoObrigatorio =
+                                                'parcelas';
+                                            setState(() {});
                                             if (_shouldSetState)
                                               setState(() {});
                                             return;
@@ -1805,15 +1810,13 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             if ((_model.fixoValue == false) &&
                                                 (_model.avistaValue ==
                                                     'PARCELADO') &&
-                                                !functions
-                                                    .verificaSeApenasNumero(
-                                                        _model
-                                                            .parcelasController
-                                                            .text)!) {
-                                              setState(() {
-                                                FFAppState().campoObrigatorio =
-                                                    'parcelasNum';
-                                              });
+                                                !functions.verificaSeApenasNumero(
+                                                    _model
+                                                        .parcelasTextController
+                                                        .text)!) {
+                                              FFAppState().campoObrigatorio =
+                                                  'parcelasNum';
+                                              setState(() {});
                                               if (_shouldSetState)
                                                 setState(() {});
                                               return;
@@ -1822,31 +1825,28 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                   (_model.avistaValue ==
                                                       'PARCELADO') &&
                                                   (functions.stringParaInt(_model
-                                                          .parcelasController
+                                                          .parcelasTextController
                                                           .text)! <
                                                       2)) {
-                                                setState(() {
-                                                  FFAppState()
-                                                          .campoObrigatorio =
-                                                      'parcelasMaior';
-                                                });
+                                                FFAppState().campoObrigatorio =
+                                                    'parcelasMaior';
+                                                setState(() {});
                                                 if (_shouldSetState)
                                                   setState(() {});
                                                 return;
                                               } else {
                                                 if ((_model.fixoValue ==
                                                         true) &&
-                                                    (_model.repeticoesController
+                                                    (_model.repeticoesTextController
                                                                 .text ==
                                                             null ||
-                                                        _model.repeticoesController
+                                                        _model.repeticoesTextController
                                                                 .text ==
                                                             '')) {
-                                                  setState(() {
-                                                    FFAppState()
-                                                            .campoObrigatorio =
-                                                        'repeticoes';
-                                                  });
+                                                  FFAppState()
+                                                          .campoObrigatorio =
+                                                      'repeticoes';
+                                                  setState(() {});
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
@@ -1856,13 +1856,12 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                       !functions
                                                           .verificaSeApenasNumero(
                                                               _model
-                                                                  .repeticoesController
+                                                                  .repeticoesTextController
                                                                   .text)!) {
-                                                    setState(() {
-                                                      FFAppState()
-                                                              .campoObrigatorio =
-                                                          'repeticoesNum';
-                                                    });
+                                                    FFAppState()
+                                                            .campoObrigatorio =
+                                                        'repeticoesNum';
+                                                    setState(() {});
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                     return;
@@ -1871,19 +1870,18 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                             true) &&
                                                         ((functions.stringParaInt(
                                                                     _model
-                                                                        .repeticoesController
+                                                                        .repeticoesTextController
                                                                         .text)! >
                                                                 72) ||
                                                             (functions.stringParaInt(
                                                                     _model
-                                                                        .repeticoesController
+                                                                        .repeticoesTextController
                                                                         .text)! <
                                                                 1))) {
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .campoObrigatorio =
-                                                            'repeticoesMax';
-                                                      });
+                                                      FFAppState()
+                                                              .campoObrigatorio =
+                                                          'repeticoesMax';
+                                                      setState(() {});
                                                       if (_shouldSetState)
                                                         setState(() {});
                                                       return;
@@ -1892,11 +1890,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                               null) &&
                                                           (widget.lancamento ==
                                                               null)) {
-                                                        setState(() {
-                                                          FFAppState()
-                                                                  .campoObrigatorio =
-                                                              'data';
-                                                        });
+                                                        FFAppState()
+                                                                .campoObrigatorio =
+                                                            'data';
+                                                        setState(() {});
                                                         if (_shouldSetState)
                                                           setState(() {});
                                                         return;
@@ -1907,11 +1904,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                     null ||
                                                                 _model.statusReceitaValue ==
                                                                     '')) {
-                                                          setState(() {
-                                                            FFAppState()
-                                                                    .campoObrigatorio =
-                                                                'status';
-                                                          });
+                                                          FFAppState()
+                                                                  .campoObrigatorio =
+                                                              'status';
+                                                          setState(() {});
                                                           if (_shouldSetState)
                                                             setState(() {});
                                                           return;
@@ -1922,11 +1918,10 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                                       null ||
                                                                   _model.statusDespesaValue ==
                                                                       '')) {
-                                                            setState(() {
-                                                              FFAppState()
-                                                                      .campoObrigatorio =
-                                                                  'status';
-                                                            });
+                                                            FFAppState()
+                                                                    .campoObrigatorio =
+                                                                'status';
+                                                            setState(() {});
                                                             if (_shouldSetState)
                                                               setState(() {});
                                                             return;
@@ -1961,18 +1956,17 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                                 EditarLancamentoParceladoWidget(
                                               descricao: functions
                                                   .letrasMaiusculas(_model
-                                                      .descricaoController
+                                                      .descricaoTextController
                                                       .text)!,
                                               idcategoria:
                                                   _model.categoriaValue!,
                                               valor: widget.tipo == 'Receita'
-                                                  ? functions.salvaPrecoBanco(
-                                                      _model
-                                                          .precoVisivelController
-                                                          .text)!
+                                                  ? functions.salvaPrecoBanco(_model
+                                                      .precoVisivelTextController
+                                                      .text)!
                                                   : (-(functions
                                                       .salvaPrecoBanco(_model
-                                                          .precoVisivelController
+                                                          .precoVisivelTextController
                                                           .text)!)),
                                               fixo: _model.fixoValue! ? 1 : 0,
                                               tipotransacao:
@@ -2002,13 +1996,16 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       await SQLiteManager.instance
                                           .editarLancamentoPorIDLancamento(
                                         descricao: functions.letrasMaiusculas(
-                                            _model.descricaoController.text)!,
+                                            _model
+                                                .descricaoTextController.text)!,
                                         idcategoria: _model.categoriaValue!,
                                         valor: widget.tipo == 'Receita'
                                             ? functions.salvaPrecoBanco(_model
-                                                .precoVisivelController.text)!
+                                                .precoVisivelTextController
+                                                .text)!
                                             : (-(functions.salvaPrecoBanco(
-                                                _model.precoVisivelController
+                                                _model
+                                                    .precoVisivelTextController
                                                     .text)!)),
                                         fixo: _model.fixoValue! ? 1 : 0,
                                         tipotransacao: _model.avistaValue,
@@ -2022,7 +2019,7 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             ? _model.statusReceitaValue!
                                             : _model.statusDespesaValue!,
                                         totalparcelas: int.tryParse(
-                                            _model.parcelasController.text),
+                                            _model.parcelasTextController.text),
                                         id: widget.lancamento?.id,
                                         idparcela: widget.lancamento?.idparcela,
                                       );
@@ -2036,25 +2033,30 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                             (_model.avistaValue ==
                                                 'PARCELADO')) ||
                                         (_model.fixoValue == true)) {
-                                      setState(() {
-                                        FFAppState().loop = 1;
-                                      });
-                                      while (functions.stringParaInt(_model
-                                                  .fixoValue!
-                                              ? _model.repeticoesController.text
-                                              : _model
-                                                  .parcelasController.text)! >=
+                                      FFAppState().loop = 1;
+                                      setState(() {});
+                                      while (functions.stringParaInt(
+                                              _model.fixoValue!
+                                                  ? _model
+                                                      .repeticoesTextController
+                                                      .text
+                                                  : _model
+                                                      .parcelasTextController
+                                                      .text)! >=
                                           FFAppState().loop) {
                                         await SQLiteManager.instance
                                             .novoLancamento(
                                           descricao: functions.letrasMaiusculas(
-                                              _model.descricaoController.text)!,
+                                              _model.descricaoTextController
+                                                  .text)!,
                                           idcategoria: _model.categoriaValue!,
                                           valor: widget.tipo == 'Receita'
                                               ? functions.salvaPrecoBanco(_model
-                                                  .precoVisivelController.text)!
+                                                  .precoVisivelTextController
+                                                  .text)!
                                               : (-(functions.salvaPrecoBanco(
-                                                  _model.precoVisivelController
+                                                  _model
+                                                      .precoVisivelTextController
                                                       .text)!)),
                                           fixo: _model.fixoValue! ? 1 : 0,
                                           tipotransacao: _model.avistaValue,
@@ -2067,27 +2069,30 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                               : _model.statusDespesaValue!,
                                           totalparcelas: _model.fixoValue!
                                               ? int.tryParse(_model
-                                                  .repeticoesController.text)
+                                                  .repeticoesTextController
+                                                  .text)
                                               : int.tryParse(_model
-                                                  .parcelasController.text),
+                                                  .parcelasTextController.text),
                                           idparcela: _model.iDUnico,
                                         );
-                                        setState(() {
-                                          FFAppState().loop =
-                                              FFAppState().loop + 1;
-                                        });
+                                        FFAppState().loop =
+                                            FFAppState().loop + 1;
+                                        setState(() {});
                                       }
                                     } else {
                                       await SQLiteManager.instance
                                           .novoLancamento(
                                         descricao: functions.letrasMaiusculas(
-                                            _model.descricaoController.text)!,
+                                            _model
+                                                .descricaoTextController.text)!,
                                         idcategoria: _model.categoriaValue!,
                                         valor: widget.tipo == 'Receita'
                                             ? functions.salvaPrecoBanco(_model
-                                                .precoVisivelController.text)!
+                                                .precoVisivelTextController
+                                                .text)!
                                             : (-(functions.salvaPrecoBanco(
-                                                _model.precoVisivelController
+                                                _model
+                                                    .precoVisivelTextController
                                                     .text)!)),
                                         fixo: _model.fixoValue! ? 1 : 0,
                                         tipotransacao: _model.avistaValue,
@@ -2167,7 +2172,6 @@ class _AcoesLancamentosWidgetState extends State<AcoesLancamentosWidget>
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),

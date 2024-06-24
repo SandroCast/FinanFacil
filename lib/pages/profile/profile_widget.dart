@@ -62,11 +62,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 3.0,
+                              blurRadius: 4.0,
                               color: Color(0x33000000),
                               offset: Offset(
                                 0.0,
-                                -1.0,
+                                2.0,
                               ),
                             )
                           ],
@@ -108,7 +108,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ),
                                     Divider(
                                       thickness: 1.0,
-                                      color: Color(0xCC989898),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -50,20 +51,7 @@ class _EditarLancamentoParceladoWidgetState
     with TickerProviderStateMixin {
   late EditarLancamentoParceladoModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 0.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -75,6 +63,21 @@ class _EditarLancamentoParceladoWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => EditarLancamentoParceladoModel());
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -242,7 +245,6 @@ class _EditarLancamentoParceladoWidgetState
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
@@ -268,9 +270,8 @@ class _EditarLancamentoParceladoWidgetState
                                     idparcela: widget.idparcela,
                                     parcela: widget.parcela,
                                   );
-                                  setState(() {
-                                    FFAppState().loop = 0;
-                                  });
+                                  FFAppState().loop = 0;
+                                  setState(() {});
                                   while (_model.retornoLancamentos!.length >
                                       FFAppState().loop) {
                                     await SQLiteManager.instance
@@ -295,9 +296,8 @@ class _EditarLancamentoParceladoWidgetState
                                           ?.id,
                                       idparcela: widget.idparcela,
                                     );
-                                    setState(() {
-                                      FFAppState().loop = FFAppState().loop + 1;
-                                    });
+                                    FFAppState().loop = FFAppState().loop + 1;
+                                    setState(() {});
                                   }
                                   Navigator.pop(context);
                                   Navigator.pop(context);
@@ -321,7 +321,6 @@ class _EditarLancamentoParceladoWidgetState
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
@@ -346,9 +345,8 @@ class _EditarLancamentoParceladoWidgetState
                                           .buscaLancamentosPorIDParcela(
                                     idparcela: widget.idparcela,
                                   );
-                                  setState(() {
-                                    FFAppState().loop = 1;
-                                  });
+                                  FFAppState().loop = 1;
+                                  setState(() {});
                                   while (_model.retornoLancamentosIdParcela!
                                           .length >=
                                       FFAppState().loop) {
@@ -381,9 +379,8 @@ class _EditarLancamentoParceladoWidgetState
                                           ?.id,
                                       idparcela: widget.idparcela,
                                     );
-                                    setState(() {
-                                      FFAppState().loop = FFAppState().loop + 1;
-                                    });
+                                    FFAppState().loop = FFAppState().loop + 1;
+                                    setState(() {});
                                   }
                                   Navigator.pop(context);
                                   Navigator.pop(context);
@@ -407,7 +404,6 @@ class _EditarLancamentoParceladoWidgetState
                                       ),
                                   elevation: 3.0,
                                   borderSide: BorderSide(
-                                    color: Colors.transparent,
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),

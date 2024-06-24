@@ -1,4 +1,4 @@
-# Controle Financeiro Plus
+# FinanFacil
 
 A new Flutter project.
 

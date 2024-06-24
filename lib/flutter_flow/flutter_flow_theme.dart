@@ -319,7 +319,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
 
-  late Color common1 = Color(0xA367FF9E);
+  late Color common1 = Color(0xFF67FF9E);
   late Color common2 = Color(0xFFFF5B5B);
 }
 

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'ajustar_saldo_widget.dart' show AjustarSaldoWidget;
@@ -18,12 +19,12 @@ class AjustarSaldoModel extends FlutterFlowModel<AjustarSaldoWidget> {
 
   // State field(s) for saldoVisivel widget.
   FocusNode? saldoVisivelFocusNode;
-  TextEditingController? saldoVisivelController;
-  String? Function(BuildContext, String?)? saldoVisivelControllerValidator;
+  TextEditingController? saldoVisivelTextController;
+  String? Function(BuildContext, String?)? saldoVisivelTextControllerValidator;
   // State field(s) for saldoDigitado widget.
   FocusNode? saldoDigitadoFocusNode;
-  TextEditingController? saldoDigitadoController;
-  String? Function(BuildContext, String?)? saldoDigitadoControllerValidator;
+  TextEditingController? saldoDigitadoTextController;
+  String? Function(BuildContext, String?)? saldoDigitadoTextControllerValidator;
   // Stores action output result for [Custom Action - calcularAjusteSaldo] action in Button widget.
   double? retornoAjuste;
   // Stores action output result for [Custom Action - geraUnicoID] action in Button widget.
@@ -35,9 +36,9 @@ class AjustarSaldoModel extends FlutterFlowModel<AjustarSaldoWidget> {
   @override
   void dispose() {
     saldoVisivelFocusNode?.dispose();
-    saldoVisivelController?.dispose();
+    saldoVisivelTextController?.dispose();
 
     saldoDigitadoFocusNode?.dispose();
-    saldoDigitadoController?.dispose();
+    saldoDigitadoTextController?.dispose();
   }
 }
